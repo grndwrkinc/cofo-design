@@ -1,0 +1,51 @@
+{% if section.settings.title != blank %}
+  <h2>{{ section.settings.title }}</h2>
+{% endif %}
+{% if section.settings.text != blank %}
+  {{ section.settings.text }}
+{% endif %}
+{% if section.blocks.size > 0 %}
+  <div>
+    {% for block in section.blocks %}
+      <!-- <p> -->
+        {% if block.settings.grid_html != blank %}
+          {{ block.settings.grid_html }}
+        {% endif %}
+      <!-- </p> -->
+    {% endfor %}
+  </div>
+{% endif %}
+
+{% schema %}
+  {
+    "name": "About Text Grid",
+    "class": "about-text-grid",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Title"
+      },
+      {
+        "type": "html",
+        "id": "text",
+        "label": "Text",
+        "default": "Text"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "about_grid",
+        "name": "About Grid",
+        "settings": [
+          {
+            "type": "html",
+            "id": "grid_html",
+            "label": "Grid Html"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

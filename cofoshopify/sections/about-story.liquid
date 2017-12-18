@@ -1,0 +1,82 @@
+<div class="container-full">
+  {% if section.settings.title != blank %}
+    <h2>{{ section.settings.title }}</h2>
+  {% endif %}
+  {% if section.settings.text != blank %}
+    <p>{{ section.settings.text }}</p>
+  {% endif %}
+  {% if section.settings.video_url != blank %}
+    <iframe width="420" height="315" src="{{ section.settings.video_url }}"></iframe>
+  {% endif %}
+</div>
+<div class="container-medium">
+  {% if section.blocks.size > 0 %}
+    {% for block in section.blocks %}
+      <div class="item">
+        {% if block.settings.image != blank %}
+          {{ block.settings.image | img_url: '160x160', scale: 2 | img_tag: block.settings.image.alt, 'icon-bar__image' }}
+        {% else %}
+          {{ 'logo' | placeholder_svg_tag: 'placeholder-svg' }}
+        {% endif %}
+        {% if block.settings.title != blank %}
+          <h3>{{ block.settings.title }}</h3>
+        {% endif %}
+        {% if block.settings.html != blank %}
+          <p>{{ block.settings.html }}</p>
+        {% endif %}
+      </div>
+    {% endfor %}
+  {% endif %}
+</div>
+
+{% schema %}
+  {
+    "name": "About Story",
+    "class": "about-story",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Title"
+      },
+      {
+        "type": "text",
+        "id": "text",
+        "label": "Text",
+        "default": "Text"
+      },
+      {
+        "type": "video_url",
+        "id": "video_url",
+        "label": "Video URL",
+        "accept": ["youtube", "vimeo"],
+        "default": "https://www.youtube.com/embed/c13spOr8V7k"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "founders_block",
+        "name": "Founder",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Heading",
+            "default": "Title"
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Founders Image"
+          },
+          {
+            "type": "html",
+            "id": "html",
+            "label": "Founders Html"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

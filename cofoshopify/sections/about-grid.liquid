@@ -1,0 +1,54 @@
+{% if section.settings.title != blank %}
+  <h2>{{ section.settings.title }}</h2>
+{% endif %}
+{% if section.blocks.size > 0 %}
+  <div>
+    {% for block in section.blocks %}
+      <div>
+        {% if block.settings.image != blank %}
+          {{ block.settings.image | img_url: '160x160', scale: 2 | img_tag: block.settings.image.alt, 'icon-bar__image' }}
+        {% else %}
+          {{ 'logo' | placeholder_svg_tag: 'placeholder-svg' }}
+        {% endif %}
+        <p>
+          {% if block.settings.grid_html != blank %}
+            {{ block.settings.grid_html }}
+          {% endif %}
+        </p>
+      </div>
+    {% endfor %}
+  </div>
+{% endif %}
+
+{% schema %}
+  {
+    "name": "About Grid",
+    "class": "about-grid",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Image with text"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "about_grid",
+        "name": "About Grid",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "html",
+            "id": "grid_html",
+            "label": "Grid Html"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
