@@ -7,12 +7,13 @@
  * @package ndrscrs
  */
 
-get_header(); ?>
+get_header(); 
+?>
 
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
 
-		<?php
+<?php
 		while ( have_posts() ) : the_post();
 
 			$ch = curl_init();
@@ -30,10 +31,7 @@ get_header(); ?>
 			curl_close($ch);
 
 			$product = $product->product;
-
-			var_dump($product); 
-
-			?>
+?>
 			<!-- Add fallback for no product available -->
 
 			<div class="product-hero">
@@ -48,22 +46,39 @@ get_header(); ?>
 			<div class="product-details">
 				<h4><?php echo $product->variants[0]->price; ?></h4>
 				<h3><?php echo $product->title; ?></h3>
-				<div class="variant">
-					<p>Colour</p>
-					<ul>
-						<?php foreach($product->variants as $variant){
-							echo '<li class="' . $variant->title . '">';
-							echo $variant->title;
-							echo '</li>';
-						} ?>
+
+<?php
+				foreach ($product->options as $option) :
+?>
+				<div class="variant-attribute">
+					<h5><?php echo $option->name; ?></h5>
+					<ul id="variant-attribute-options">
+<?php 
+					$cnt = 0;
+					foreach($product->variants as $variant) : // This inner loop will need to change when there are more than one $production->options
+?>
+						<li>
+							<input type="radio" name="variant" value="<?php echo $variant->id; ?>" id="<?php echo $variant->product_id . "_" . $variant->id; ?>" <?php if(!$cnt) { ?>checked<?php } ?>>
+							<label for="<?php echo $variant->product_id . "_" . $variant->id; ?>"><?php echo $variant->title; ?></label>
+						</li>
+<?php
+						$cnt++;
+					endforeach;
+?>
 					</ul>
 				</div>
-				<div class="variant">
-					<p></p>
-				</div>
+
+<?php
+				endforeach;
+?>
+				<button id="add-to-cart">Add to cart</button>
 			</div>
 			<div class="product-nav"></div>
-			<div class="product-explore"></div>
+			
+			<div class="product-explore">
+				<?php the_post_thumbnail(); ?>
+			</div>
+			
 			<div class="product-dimensions"></div>
 			<div class="product-craftsmanship"></div>
 			<?php $post_object = get_field('designer');
@@ -82,8 +97,13 @@ get_header(); ?>
 			<?php endif; ?>
 			</div>
 
-		<?php endwhile; // End of the loop.
-		?>
+<?php 
+		echo "<pre>";
+		var_dump($product); 
+		echo "</pre>";
+
+		endwhile; // End of the loop.
+?>
 
 		</main><!-- #main -->
 	</div><!-- #primary -->
