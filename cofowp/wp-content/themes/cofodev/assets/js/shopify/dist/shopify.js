@@ -5276,15 +5276,19 @@ var addCartEventListeners = function addCartEventListeners(checkout) {
 	// Set the cart counter
 	updateCartCounter(checkout);
 
+	//Set up the cart
+	updateCartContents(checkout);
+
 	// When the variant is changed, change the images
 	$('#variant-attribute-options li :radio').on('click', function (event) {});
 
+	//Toggle the cart
 	$('.nav-cart a').on('click', function (event) {
-		//Toggle the cart
-		$('#cart').toggle();
-
-		//Add line items to the #cart div
-		updateCartContents(checkout);
+		if ($('#cart').css('z-index') == "-1") {
+			$('#cart').css('z-index', "1");
+		} else {
+			$('#cart').css('z-index', "-1");
+		}
 	});
 
 	// Add items to the cart
@@ -5312,9 +5316,15 @@ var updateCartContents = function updateCartContents(checkout) {
 		return [lineItem.title, lineItem.variant.title, lineItem.quantity, lineItem.variant.price];
 	});
 
-	var cartContent = lineItems.reduce(function (markup, lineItem) {
-		return markup + '<div class="cart-item"><div class="product-title">' + lineItem[0] + '</div><div class="variant-title">' + lineItem[1] + '</div><div class="variant-quantity">' + lineItem[2] + '</div><div class="variant-price">' + lineItem[3] + '</div></div>';
-	}, "");
+	var cartContent = void 0;
+
+	if (lineItems.length) {
+		cartContent = lineItems.reduce(function (markup, lineItem) {
+			return markup + '<div class="cart-item"><div class="product-title">' + lineItem[0] + '</div><div class="variant-title">' + lineItem[1] + '</div><div class="variant-quantity">' + lineItem[2] + '</div><div class="variant-price">' + lineItem[3] + '</div></div>';
+		}, "");
+	} else {
+		cartContent = "Empty cart";
+	}
 
 	console.log(cartContent);
 
