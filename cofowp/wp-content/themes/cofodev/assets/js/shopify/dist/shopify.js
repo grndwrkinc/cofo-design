@@ -5271,36 +5271,64 @@ if (checkoutID) {
 
 var addCartEventListeners = function addCartEventListeners(checkout) {
 	//Set the Cart link in the nav to point to the current shopping cart
-	$('.nav-cart a').attr('href', checkout.webUrl);
+	// $('.nav-cart a').attr('href',"http://shop.cofo-dev.grndwrk.ca/cart/");
 
-	//Set the cart counter
+	// Set the cart counter
 	updateCartCounter(checkout);
 
 	// When the variant is changed, change the images
 	$('#variant-attribute-options li :radio').on('click', function (event) {});
 
+	$('.nav-cart a').on('click', function (event) {
+		//Toggle the cart
+		$('#cart').toggle();
+
+		//Add line items to the #cart div
+		updateCartContents(checkout);
+	});
+
+	// Add items to the cart
 	$('#add-to-cart').on('click', function (event) {
 		var checkoutId = checkout.id;
+		var variantId = $('input[name=variant]:checked').val();
 		var lineItems = [{
-			variantId: btoa("gid://shopify/ProductVariant/" + $('input[name=variant]:checked').val()), // https://github.com/Shopify/js-buy-sdk/issues/105#issuecomment-313111323
+			variantId: btoa("gid://shopify/ProductVariant/" + variantId), // https://github.com/Shopify/js-buy-sdk/issues/105#issuecomment-313111323
 			quantity: 1
 		}];
 
 		client.checkout.addLineItems(checkoutId, lineItems).then(function (checkout) {
 			//Update the cart counter
 			updateCartCounter(checkout);
+
+			//Add line items to the #cart div
+			updateCartContents(checkout);
 		});
 	});
+};
+
+var updateCartContents = function updateCartContents(checkout) {
+	var $cart = $('#cart');
+	var lineItems = checkout.lineItems.map(function (lineItem) {
+		return [lineItem.title, lineItem.variant.title, lineItem.quantity, lineItem.variant.price];
+	});
+
+	var cartContent = lineItems.reduce(function (markup, lineItem) {
+		return markup + '<div class="cart-item"><div class="product-title">' + lineItem[0] + '</div><div class="variant-title">' + lineItem[1] + '</div><div class="variant-quantity">' + lineItem[2] + '</div><div class="variant-price">' + lineItem[3] + '</div></div>';
+	}, "");
+
+	console.log(cartContent);
+
+	$cart.html(cartContent);
 };
 
 var updateCartCounter = function updateCartCounter(checkout) {
 	console.log(checkout);
 	// Set the cart count
-	var cartCount = checkout.lineItems.map(function (lineItem) {
+	var cartCount = checkout.lineItems.length ? checkout.lineItems.map(function (lineItem) {
 		return lineItem.quantity;
 	}).reduce(function (count, quantity) {
 		return count + quantity;
-	});
+	}) : 0;
 	$('.nav-cart-counter').text(cartCount);
 };
 

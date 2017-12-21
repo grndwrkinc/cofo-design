@@ -89,24 +89,6 @@ get_header(); ?>
 			</div>
 
 
-			<div class="product-details">
-				<h4>$<?php echo $product->variants[0]->price; ?></h4>
-				<h3><?php echo $product->title; ?></h3>
-				<div class="variant">
-					<p>Colour</p>
-					<ul>
-						<?php foreach($product->variants as $variant){
-							echo '<li class="' . $variant->title . '">';
-							echo $variant->title;
-							echo '</li>';
-						} ?>
-					</ul>
-				</div>
-				<div class="variant">
-					<p></p>
-				</div>
-				<p><a class="btn" href="#">Add to cart</a></p>
-			</div>
 			<div class="product-explore">
 				<!-- 360 image goes here -->
 				<?php if( have_rows('product_shots') ): ?>

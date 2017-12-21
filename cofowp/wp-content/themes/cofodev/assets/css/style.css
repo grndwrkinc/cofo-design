@@ -846,6 +846,17 @@ object {
 header {
   padding: 3.6rem 0; }
 
+#cart {
+  width: 380px;
+  background-color: #f4f4f4;
+  border: 10px solid #181818;
+  height: 50vh;
+  position: absolute;
+  right: 0;
+  top: 120px;
+  z-index: 1;
+  display: none; }
+
 /*--------------------------------------------------------------
 ## Footer
 --------------------------------------------------------------*/
@@ -908,5 +919,3 @@ footer .btn {
 /*--------------------------------------------------------------
 ## Media Queries
 --------------------------------------------------------------*/
-
-/*# sourceMappingURL=style.css.map */
