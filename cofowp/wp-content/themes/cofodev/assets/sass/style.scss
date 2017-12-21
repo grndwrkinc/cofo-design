@@ -45,7 +45,7 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 --------------------------------------------------------------*/
 @import "bourbon";
 @import "bourbon", "neat";
-@import "variables/variables";
+@import "variables-site/variables-site";
 
 
 
@@ -58,7 +58,6 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 /*--------------------------------------------------------------
 # Elements
 --------------------------------------------------------------*/
-@import "sassline-base/sassline-base";
 @import "elements/elements";
 
 /*--------------------------------------------------------------

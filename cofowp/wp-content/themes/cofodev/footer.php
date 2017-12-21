@@ -14,9 +14,28 @@
 	</div><!-- #content -->
 
 	<footer id="colophon" class="site-footer" role="contentinfo">
-		<div class="site-info">
-			
-		</div><!-- .site-info -->
+		<div class="footer-cta dark">
+			<div class="medium-container">
+				<a href="<?php get_home_url(); ?>">
+					<img class="logo" src="/wp-content/themes/cofodev/assets/images/cofo_logo_white.png" alt="">
+				</a>
+				<div class="newsletter">
+					<p>Let's keep in touch!</p>
+					<a href="http://www.google.ca" class="btn">Join our mailing list</a>
+				</div>
+				<div class="social-nav">
+					<?php wp_nav_menu( array(
+					    'menu' => 'Social Media Footer Menu' // Do not fall back to first non-empty menu.
+					) ); ?>
+				</div>
+			</div>
+		</div>
+		<div class="footer-nav">
+			<?php wp_nav_menu( array(
+			    'menu' => 'Footer Menu' // Do not fall back to first non-empty menu.
+			) ); ?>
+		</div>
+		<p>Copyright © COFO Design Challenge 2017</p>
 	</footer><!-- #colophon -->
 </div><!-- #page -->
 

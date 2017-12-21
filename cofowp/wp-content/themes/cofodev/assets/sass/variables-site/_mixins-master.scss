@@ -4,6 +4,12 @@
 	font-size: $sizeValue * 1rem;
 }
 
+// Rem output with px fallback
+@mixin line-height($sizeValue: 1) {
+	line-height: ($sizeValue * 16) * 1px;
+	line-height: $sizeValue * 1rem;
+}
+
 // Center block
 @mixin center-block {
 	display: block;
@@ -22,3 +28,13 @@
 @mixin clearfix-after() {
 	clear: both;
 }
+
+@mixin border-black {
+	border: 6px solid $black;
+}
+
+@mixin semi-bold {
+	font-weight: 600;
+}
+
+

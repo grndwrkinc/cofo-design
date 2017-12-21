@@ -103,10 +103,10 @@ add_action( 'widgets_init', 'ndrscrs_widgets_init' );
  */
 function ndrscrs_scripts() {
 	//Screen stylesheet
-	wp_enqueue_style( 'ndrscrs-style', 'http://' . $_SERVER['SERVER_NAME'] . '/wp-content/themes/ndrscrs/assets/css/style.css', array(), '1.1' );
+	wp_enqueue_style( 'ndrscrs-style', 'http://' . $_SERVER['SERVER_NAME'] . '/wp-content/themes/cofodev/assets/css/style.css', array(), '1.1' );
 
 	//Print stylesheet
-	wp_enqueue_style( 'ndrscrs-print-style', 'http://' . $_SERVER['SERVER_NAME'] . '/wp-content/themes/ndrscrs/assets/css/print.css', null, null, 'print' );
+	wp_enqueue_style( 'ndrscrs-print-style', 'http://' . $_SERVER['SERVER_NAME'] . '/wp-content/themes/cofodev/assets/css/print.css', null, null, 'print' );
 
 	wp_enqueue_style('font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css');
 
@@ -115,15 +115,15 @@ function ndrscrs_scripts() {
    	wp_register_script('jquery', "http" . ($_SERVER['SERVER_PORT'] == 443 ? "s" : "") . "://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js", false, null);
    	wp_enqueue_script('jquery');
 
-	wp_enqueue_script( 'ndrscrs-navigation', 'http://' . $_SERVER['SERVER_NAME'] . '/wp-content/themes/ndrscrs/assets/js/navigation.js', array(), '20151215', true  );
+	wp_enqueue_script( 'ndrscrs-navigation', 'http://' . $_SERVER['SERVER_NAME'] . '/wp-content/themes/cofodev/assets/js/navigation.js', array(), '20151215', true  );
 
 	//Scrollmagic required JS
-	wp_register_script('greenSock', 'http://' . $_SERVER['SERVER_NAME'] . '/wp-content/themes/ndrscrs/assets/js/greensock/TweenMax.min.js', array(), '1.14.1', false);
+	wp_register_script('greenSock', 'http://' . $_SERVER['SERVER_NAME'] . '/wp-content/themes/cofodev/assets/js/greensock/TweenMax.min.js', array(), '1.14.1', false);
 
 	wp_enqueue_script('ScrollMagic', "http" . ($_SERVER['SERVER_PORT'] == 443 ? "s" : "") . "://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.min.js", false, null);
 	wp_enqueue_script('ScrollMagicDebug', "http" . ($_SERVER['SERVER_PORT'] == 443 ? "s" : "") . "://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/debug.addIndicators.min.js", false, null);
 
-	wp_enqueue_script( 'fluidvids', 'http://' . $_SERVER['SERVER_NAME'] . '/wp-content/themes/ndrscrs/assets/js/fluidvids/dist/fluidvids.min.js', array(), '2.4.1', true);
+	wp_enqueue_script( 'fluidvids', 'http://' . $_SERVER['SERVER_NAME'] . '/wp-content/themes/cofodev/assets/js/fluidvids/dist/fluidvids.min.js', array(), '2.4.1', true);
 
 	wp_enqueue_script( '_s-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
 
@@ -157,3 +157,11 @@ require get_template_directory() . '/inc/customizer.php';
  * Load Jetpack compatibility file.
  */
 require get_template_directory() . '/inc/jetpack.php';
+
+//Page Slug Body Class
+function add_slug_body_class( $classes ) {
+	global $post;
+	if ( isset( $post ) ) {
+		$classes[] = $post->post_type . '-' . $post->post_name;
+	} return $classes; }
+add_filter( 'body_class', 'add_slug_body_class' );

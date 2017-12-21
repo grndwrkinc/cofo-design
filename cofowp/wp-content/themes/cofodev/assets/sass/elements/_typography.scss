@@ -1,3 +1,7 @@
+html {
+	font-size: 62.5%;
+}
+
 body,
 button,
 input,
@@ -11,11 +15,36 @@ textarea {
 
 h1, h2, h3, h4, h5, h6 {
 	clear: both;
-	color:pink;
+	font-family: $font__main;
+	font-weight: bold;
+	text-transform: uppercase;
+	color: $black;
+	letter-spacing: 1px;
+}
+
+h1 {
+	@include font-size(6.8);
+}
+
+h2 {
+	@include font-size(4.2);
+	@include line-height(4.2);
+}
+
+h3 {
+	@include font-size(2.6);
+	margin-bottom: 1.2rem;
+}
+
+h4 {
+	@include font-size(1.8);
+	@include semi-bold;
 }
 
 p {
-	margin-bottom: 1.5em;
+	margin-bottom: 1.2rem;
+	@include font-size(1.4);
+	color: $black;
 }
 
 dfn, cite, em, i {
@@ -28,6 +57,11 @@ blockquote {
 
 address {
 	margin: 0 0 1.5em;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
 }
 
 pre {
@@ -59,3 +93,24 @@ mark, ins {
 big {
 	font-size: 125%;
 }
+
+nav li {
+	@include font-size(1.4);
+}
+
+span.highlight {
+	color: white;
+	background-color: $black;
+	padding: 0 1rem;
+}
+
+.pre-header {
+	text-transform: uppercase;
+    color: $grey;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+
+
+
