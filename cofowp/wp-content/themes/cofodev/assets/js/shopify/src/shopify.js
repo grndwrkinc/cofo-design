@@ -28,7 +28,7 @@ else {
 
 const addCartEventListeners = function(checkout) {
 	//Set the Cart link in the nav to point to the current shopping cart
-	$('.nav-cart a').attr('href',checkout.webUrl);
+	$('.nav-cart a').attr('href',"http://shop.cofo-dev.grndwrk.ca/");
 
 	//Set the cart counter
 	updateCartCounter(checkout);
@@ -55,7 +55,7 @@ const addCartEventListeners = function(checkout) {
 const updateCartCounter = function(checkout) {
 	console.log(checkout);
 	// Set the cart count
-	const cartCount = checkout.lineItems.map(lineItem => lineItem.quantity).reduce((count,quantity) => count + quantity);
+	const cartCount = (checkout.lineItems.length) ? checkout.lineItems.map(lineItem => lineItem.quantity).reduce((count,quantity) => count + quantity) : 0;
 	$('.nav-cart-counter').text(cartCount);
 }
 

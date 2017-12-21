@@ -5271,7 +5271,7 @@ if (checkoutID) {
 
 var addCartEventListeners = function addCartEventListeners(checkout) {
 	//Set the Cart link in the nav to point to the current shopping cart
-	$('.nav-cart a').attr('href', checkout.webUrl);
+	$('.nav-cart a').attr('href', "http://shop.cofo-dev.grndwrk.ca/");
 
 	//Set the cart counter
 	updateCartCounter(checkout);
@@ -5296,11 +5296,11 @@ var addCartEventListeners = function addCartEventListeners(checkout) {
 var updateCartCounter = function updateCartCounter(checkout) {
 	console.log(checkout);
 	// Set the cart count
-	var cartCount = checkout.lineItems.map(function (lineItem) {
+	var cartCount = checkout.lineItems.length ? checkout.lineItems.map(function (lineItem) {
 		return lineItem.quantity;
 	}).reduce(function (count, quantity) {
 		return count + quantity;
-	});
+	}) : 0;
 	$('.nav-cart-counter').text(cartCount);
 };
 
