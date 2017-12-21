@@ -1,13 +1,37 @@
 import Client from 'shopify-buy';
 
+const ls = window.localStorage;
+const checkoutID = ls.getItem("checkoutID");
 const client = Client.buildClient({
 	domain: 'cofodesign-com.myshopify.com',
 	storefrontAccessToken: '8bc18701933e1f8b51aa4119d960e0ff'
 });
 
-// Create an empty checkout
-client.checkout.create().then((checkout) => {
+//Append a container for the cart counter to the DOM in the header
+$('.nav-cart a').append("<span class='nav-cart-counter'></span>");
 
+//Check if a checkout exists
+if(checkoutID) {
+	//If yes, use it.
+	client.checkout.fetch(checkoutID).then((checkout) => {
+		addCartEventListeners(checkout);
+	});
+}
+else {
+	//Otherwise, create a new empty checkout
+	client.checkout.create().then((checkout) => {
+		//Save the checkout ID to local storage
+		ls.setItem('checkoutID', checkout.id);
+		addCartEventListeners(checkout);
+	});
+}
+
+const addCartEventListeners = function(checkout) {
+	//Set the Cart link in the nav to point to the current shopping cart
+	$('.nav-cart a').attr('href',checkout.webUrl);
+
+	//Set the cart counter
+	updateCartCounter(checkout);
 
 	// When the variant is changed, change the images
 	$('#variant-attribute-options li :radio').on('click', function(event) {
@@ -22,9 +46,16 @@ client.checkout.create().then((checkout) => {
 		}];
 		
 		client.checkout.addLineItems(checkoutId, lineItems).then((checkout) => {
-		  console.log(checkout); // Checkout with two additional line items
-		  console.log(checkout.lineItems) // Line items on the checkout
+		  //Update the cart counter
+		  updateCartCounter(checkout);
 		});
 	});
+}
 
-});
+const updateCartCounter = function(checkout) {
+	console.log(checkout);
+	// Set the cart count
+	const cartCount = checkout.lineItems.map(lineItem => lineItem.quantity).reduce((count,quantity) => count + quantity);
+	$('.nav-cart-counter').text(cartCount);
+}
+
