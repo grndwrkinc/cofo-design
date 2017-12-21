@@ -7,13 +7,12 @@
  * @package ndrscrs
  */
 
-get_header(); 
-?>
+get_header(); ?>
 
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
 
-<?php
+		<?php
 		while ( have_posts() ) : the_post();
 
 			$ch = curl_init();
@@ -31,10 +30,23 @@ get_header();
 			curl_close($ch);
 
 			$product = $product->product;
-?>
+
+			// var_dump($product); 
+			// //Get the variants in arrays to aid the variant picker
+			// $megaArray = [];
+			// foreach($product->variants as $variant){
+			// 	$variantArray = [];
+			// 	if(!in_array($variant->option1, $variantArray)){
+			// 		array_push($variantArray,$variant->option1,$variant->option2);
+   //      		}
+			// 	array_push($megaArray,$variantArray);
+			// }
+			// var_dump($megaArray);
+
+			?>
 			<!-- Add fallback for no product available -->
 
-			<div class="product-hero">
+			<div class="product-hero hero">
 				<div class="hero" style="background-image: url(<?php the_post_thumbnail_url(); ?>)"></div>
 				<div class="description">
 					<?php the_content(); ?>
@@ -43,6 +55,8 @@ get_header();
 					</div>
 				</div>
 			</div>
+
+
 			<div class="product-details">
 				<h4><?php echo $product->variants[0]->price; ?></h4>
 				<h3><?php echo $product->title; ?></h3>
@@ -73,14 +87,65 @@ get_header();
 ?>
 				<button id="add-to-cart">Add to cart</button>
 			</div>
-			<div class="product-nav"></div>
-			
-			<div class="product-explore">
-				<?php the_post_thumbnail(); ?>
+
+
+			<div class="product-details">
+				<h4>$<?php echo $product->variants[0]->price; ?></h4>
+				<h3><?php echo $product->title; ?></h3>
+				<div class="variant">
+					<p>Colour</p>
+					<ul>
+						<?php foreach($product->variants as $variant){
+							echo '<li class="' . $variant->title . '">';
+							echo $variant->title;
+							echo '</li>';
+						} ?>
+					</ul>
+				</div>
+				<div class="variant">
+					<p></p>
+				</div>
+				<p><a class="btn" href="#">Add to cart</a></p>
 			</div>
-			
-			<div class="product-dimensions"></div>
-			<div class="product-craftsmanship"></div>
+			<div class="product-explore">
+				<!-- 360 image goes here -->
+				<?php if( have_rows('product_shots') ): ?>
+	    			<?php while( have_rows('product_shots') ): the_row(); 
+	    				
+	    				$image = get_sub_field('image');
+	    				$content = get_sub_field('text'); ?>
+
+	    				<?php if( $image ): ?>
+    						<img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt'] ?>" />
+    					<?php endif; ?>
+
+	    				<div class="details">
+	    					<p><?php if( $content ): ?>
+	    						<?php echo $content; ?>
+	    					<?php endif; ?></p>
+	    				</div>
+
+	    			<?php endwhile; ?>
+	    		<?php endif; ?>
+			</div>
+			<div class="product-dimensions">
+				<h2>Imagine <?php the_title(); ?> in your space</h2>
+				<?php $image = get_field('product_dimensions_image');
+				if( !empty($image) ): ?>
+					<img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" />
+				<?php endif; ?>
+			</div>
+			<div class="product-craftsmanship text-images-section">
+				<p class="pre-header">Craftsmanship</p>
+				<h2><?php the_field('craftsmanship_title'); ?></h2>
+				<div class="inner">
+		    		<?php if( have_rows('craftsmanship_details') ): ?>
+		    			<?php while( have_rows('craftsmanship_details') ): the_row(); 
+		    				get_template_part( 'template-parts/content', 'imagetext' );
+		    			endwhile; ?>
+		    		<?php endif; ?>
+		    	</div>
+			</div>
 			<?php $post_object = get_field('designer');
 
 			if( $post_object ): 
@@ -90,8 +155,18 @@ get_header();
 
 				?>
 			   <div class="product-designer">
-			    	<h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
-			    	<span>Post Object Custom Field: <?php the_field('field_name'); ?></span>
+			    	<p>Designed by</p>
+			    	<h2><?php the_title(); ?></h2>
+			    	<div class="inner">
+			    		<p><?php the_content(); ?></p>
+			    		<?php if( have_rows('designer_info') ): ?>
+			    			<?php while( have_rows('designer_info') ): the_row(); 
+			    				
+			    			get_template_part( 'template-parts/content', 'imagetext' );
+
+			    			endwhile; ?>
+			    		<?php endif; ?>
+			    	</div>
 			    </div>
 			    <?php wp_reset_postdata(); // IMPORTANT - reset the $post object so the rest of the page works correctly ?>
 			<?php endif; ?>
