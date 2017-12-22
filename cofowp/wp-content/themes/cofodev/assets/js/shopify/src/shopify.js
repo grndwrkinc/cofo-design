@@ -10,15 +10,18 @@ const client = Client.buildClient({
 //Append a container for the cart counter to the DOM in the header
 $('.nav-cart a').append("<span class='nav-cart-counter'></span>");
 
-//Check if a checkout exists
+/**
+ * Get the Checkout Object and hook up the cart event listeners
+ */
+
 if(checkoutID) {
-	//If yes, use it.
+	//Use the checkoutID that already exists in local storage
 	client.checkout.fetch(checkoutID).then((checkout) => {
 		addCartEventListeners(checkout);
 	});
 }
 else {
-	//Otherwise, create a new empty checkout
+	//This is a new session, create a new empty Checkout
 	client.checkout.create().then((checkout) => {
 		//Save the checkout ID to local storage
 		ls.setItem('checkoutID', checkout.id);
@@ -33,29 +36,29 @@ const addCartEventListeners = function(checkout) {
 	//Set the Cart link in the nav to point to the current shopping cart
 	// $('.nav-cart a').attr('href',"http://shop.cofo-dev.grndwrk.ca/cart/");
 
-	// Set the cart counter
+	// Initialize the cart counter
 	updateCartCounter(checkout);
 
-	//Set up the cart
+	//Initialize the cart
 	updateCartContents(checkout);
 
-	// When the variant is changed, change the images
-	$('#variant-attribute-options li :radio').on('click', function(event) {
-	});
+	// Add to cart
+	addToCartListener(checkout);
+
+	// Swap the product images when variant is changed
+	swapProductImagesListener(checkout);
+
+	// Toggle cart visiblity
+	toggleCartListener();
+}
 
 
-	//Toggle the cart
-	$('.nav-cart a').on('click', function(event) {
-		if($('#cart').css('z-index') == "-1") {
-			$('#cart').css('z-index', "1");			
-		}
-		else {
-			$('#cart').css('z-index', "-1");
-		}
-	});
 
-	// Add items to the cart
-	$('#add-to-cart').on('click', function(event) {
+/**
+ * addToCartListener()
+ */
+const addToCartListener = function(checkout) {
+	$('#add-to-cart').on('click', function() { 
 		const checkoutId = checkout.id;
 		const variantId = $('input[name=variant]:checked').val();
 		const lineItems = [{
@@ -75,6 +78,37 @@ const addCartEventListeners = function(checkout) {
 
 
 
+/**
+ * swapProductImagesListener()
+ */
+const swapProductImagesListener = function(checkout) {
+	$('#variant-attribute-options li :radio').on('click', function() { 
+		/** do something **/
+	});
+}
+
+
+
+/**
+ * toggleCartListener()
+ */
+ const toggleCartListener = function() {
+ 	$('.nav-cart a').on('click', function(event) {
+		if($('#cart').css('z-index') == "-1") {
+			$('#cart').css('z-index', "1");			
+		}
+		else {
+			$('#cart').css('z-index', "-1");
+		}
+	});
+ }
+
+
+
+/**
+ * updateCartContents()
+ * Updates the visible cart contents on the front end
+ */
 
 const updateCartContents = function(checkout) {
 	const $cart = $('#cart');
@@ -84,11 +118,14 @@ const updateCartContents = function(checkout) {
 
 	let cartContent;
 
+	//Haz items
 	if(lineItems.length) {
 		cartContent = lineItems.reduce((markup,lineItem) => {
 			return markup + '<div class="cart-item"><div class="product-title">' + lineItem[0] + '</div><div class="variant-title">' + lineItem[1] + '</div><div class="variant-quantity">' + lineItem[2] + '</div><div class="variant-price">' + lineItem[3] + '</div></div>';
 		}, "");
 	}
+
+	//Cart is empty
 	else {
 		cartContent = "Empty cart";
 	}
@@ -100,6 +137,10 @@ const updateCartContents = function(checkout) {
 
 
 
+/**
+ * updateCartCounter()
+ * Updates the quantity indicator on the cart link in the main nav
+ */
 
 const updateCartCounter = function(checkout) {
 	console.log(checkout);

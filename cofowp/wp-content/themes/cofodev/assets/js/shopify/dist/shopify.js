@@ -5254,14 +5254,17 @@ var client = _shopifyBuy2.default.buildClient({
 //Append a container for the cart counter to the DOM in the header
 $('.nav-cart a').append("<span class='nav-cart-counter'></span>");
 
-//Check if a checkout exists
+/**
+ * Get the Checkout Object and hook up the cart event listeners
+ */
+
 if (checkoutID) {
-	//If yes, use it.
+	//Use the checkoutID that already exists in local storage
 	client.checkout.fetch(checkoutID).then(function (checkout) {
 		addCartEventListeners(checkout);
 	});
 } else {
-	//Otherwise, create a new empty checkout
+	//This is a new session, create a new empty Checkout
 	client.checkout.create().then(function (checkout) {
 		//Save the checkout ID to local storage
 		ls.setItem('checkoutID', checkout.id);
@@ -5273,26 +5276,27 @@ var addCartEventListeners = function addCartEventListeners(checkout) {
 	//Set the Cart link in the nav to point to the current shopping cart
 	// $('.nav-cart a').attr('href',"http://shop.cofo-dev.grndwrk.ca/cart/");
 
-	// Set the cart counter
+	// Initialize the cart counter
 	updateCartCounter(checkout);
 
-	//Set up the cart
+	//Initialize the cart
 	updateCartContents(checkout);
 
-	// When the variant is changed, change the images
-	$('#variant-attribute-options li :radio').on('click', function (event) {});
+	// Add to cart
+	addToCartListener(checkout);
 
-	//Toggle the cart
-	$('.nav-cart a').on('click', function (event) {
-		if ($('#cart').css('z-index') == "-1") {
-			$('#cart').css('z-index', "1");
-		} else {
-			$('#cart').css('z-index', "-1");
-		}
-	});
+	// Swap the product images when variant is changed
+	swapProductImagesListener(checkout);
 
-	// Add items to the cart
-	$('#add-to-cart').on('click', function (event) {
+	// Toggle cart visiblity
+	toggleCartListener();
+};
+
+/**
+ * addToCartListener()
+ */
+var addToCartListener = function addToCartListener(checkout) {
+	$('#add-to-cart').on('click', function () {
 		var checkoutId = checkout.id;
 		var variantId = $('input[name=variant]:checked').val();
 		var lineItems = [{
@@ -5310,6 +5314,33 @@ var addCartEventListeners = function addCartEventListeners(checkout) {
 	});
 };
 
+/**
+ * swapProductImagesListener()
+ */
+var swapProductImagesListener = function swapProductImagesListener(checkout) {
+	$('#variant-attribute-options li :radio').on('click', function () {
+		/** do something **/
+	});
+};
+
+/**
+ * toggleCartListener()
+ */
+var toggleCartListener = function toggleCartListener() {
+	$('.nav-cart a').on('click', function (event) {
+		if ($('#cart').css('z-index') == "-1") {
+			$('#cart').css('z-index', "1");
+		} else {
+			$('#cart').css('z-index', "-1");
+		}
+	});
+};
+
+/**
+ * updateCartContents()
+ * Updates the visible cart contents on the front end
+ */
+
 var updateCartContents = function updateCartContents(checkout) {
 	var $cart = $('#cart');
 	var lineItems = checkout.lineItems.map(function (lineItem) {
@@ -5318,18 +5349,27 @@ var updateCartContents = function updateCartContents(checkout) {
 
 	var cartContent = void 0;
 
+	//Haz items
 	if (lineItems.length) {
 		cartContent = lineItems.reduce(function (markup, lineItem) {
 			return markup + '<div class="cart-item"><div class="product-title">' + lineItem[0] + '</div><div class="variant-title">' + lineItem[1] + '</div><div class="variant-quantity">' + lineItem[2] + '</div><div class="variant-price">' + lineItem[3] + '</div></div>';
 		}, "");
-	} else {
-		cartContent = "Empty cart";
 	}
+
+	//Cart is empty
+	else {
+			cartContent = "Empty cart";
+		}
 
 	console.log(cartContent);
 
 	$cart.html(cartContent);
 };
+
+/**
+ * updateCartCounter()
+ * Updates the quantity indicator on the cart link in the main nav
+ */
 
 var updateCartCounter = function updateCartCounter(checkout) {
 	console.log(checkout);
