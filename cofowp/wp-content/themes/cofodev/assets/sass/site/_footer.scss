@@ -10,6 +10,9 @@
 }
 
 .social-nav ul {
+
+	margin-top: 2.4rem;
+
 	li {
 		@include font-size(1.8);
 		padding: 0;
@@ -50,13 +53,18 @@ footer {
 		border: 2px solid white;
 		display: inline-block;
 	}
+
+	.medium-container {
+		padding: 0;
+	}
 }
 
 .footer-cta {
-	padding: 4rem 0;
+	padding: 4.8rem 0;
 	
 	.medium-container {
 		display: flex;
+		align-items: center;
 		justify-content: space-between;
 	}
 }

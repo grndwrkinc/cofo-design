@@ -45,13 +45,13 @@ get_header(); ?>
 					</div>
 				</div>
 			</div>
-			<div class="large-container">
-				<div class="text-section">
+			<div class="large-container home-challenge">
+				<div class="text-section-offset">
 					<p class="pre-header">Design Challenge</p>
 					<h2><span class="highlight"><?php the_field('design_challenge_header'); ?></span></h2>
 					<p><?php the_field('design_challenge_text'); ?></p>
+					<a href="/design-challenge" class="btn">View challenge details</a>
 				</div>
-				<a href="/design-challenge" class="btn">View challenge details</a>
 				<h3>Here's how it works</h3>
 				<?php if( have_rows('design_challenge_steps') ): ?>
 					<ol class="text-steps">

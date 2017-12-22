@@ -19,7 +19,9 @@ get_header(); ?>
 			<div class="hero" style="background-image: url(<?php the_post_thumbnail_url(); ?>)">	
 				<div class="hero-text">
 					<h1 class="white"><span class="highlight"><?php the_title(); ?></span></h1>
-					<p><?php the_field('subtitle'); ?></p>
+					<div class="bordered">	
+						<p><?php the_field('subtitle'); ?></p>
+					</div>
 				</div>
 			</div>
 			<div class="section-container text-section-offset">
@@ -45,10 +47,15 @@ get_header(); ?>
 				<h2><?php the_field('process_section_header'); ?></h2>
 				<p><?php the_field('process_section_text'); ?></p>
 				<?php if( have_rows('process_section_group') ): ?>
+					<?php $counter = 1; ?>
+					<div class="process-container">
 	    			<?php while( have_rows('process_section_group') ): the_row(); 
 	    				
 	    				$header = get_sub_field('header');
-	    				$content = get_sub_field('text'); ?>
+	    				$content = get_sub_field('text'); 
+	    				if($counter == 1 || $counter == 4):
+	    					echo '<div class="process-half">';
+	    				endif; ?>
 
 	    				<div class="bordered">
 	    					<h3><?php if( $header ): ?>
@@ -58,8 +65,13 @@ get_header(); ?>
 	    						<?php echo $content; ?>
 	    					<?php endif; ?></p>
 	    				</div>
-
+						<?php 
+							if($counter == 3 || $counter == 5):
+								echo '</div>';
+							endif; 
+							$counter++; ?>
 	    			<?php endwhile; ?>
+	    			</div>
 	    		<?php endif; ?>
 			</div>
 			<div class="section-container dark">
@@ -80,20 +92,24 @@ get_header(); ?>
 	    			$header = get_sub_field('title');
     				$content = get_sub_field('text'); ?>
 
-    				<?php if( $image ): ?>
-    					<img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt'] ?>" />
-    				<?php endif; ?>
-					<div class="details">
-						<h4><?php if( $header ): ?>
-    						<?php echo $header; ?>
-    					<?php endif; ?></h4>
+					<div class="founder">
+						<div class="details-container">
+	    				<?php if( $image ): ?>
+	    					<img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt'] ?>" />
+	    				<?php endif; ?>
+	    					<div class="details">
+								<h4><?php if( $header ): ?>
+		    						<?php echo $header; ?>
+		    					<?php endif; ?></h4>
+							</div>
+						</div>
+	    				<div class="bordered">
+	    					<p><?php if( $content ): ?>
+	    						<?php echo $content; ?>
+	    					<?php endif; ?></p>
+	    				</div>
+						
 					</div>
-    				<div class="bordered">
-    					<p><?php if( $content ): ?>
-    						<?php echo $content; ?>
-    					<?php endif; ?></p>
-    				</div>
-
 					<?php endwhile; ?>
 	    		<?php endif; ?>
 			</div>
