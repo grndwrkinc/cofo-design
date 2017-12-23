@@ -1,4 +1,27 @@
 table {
-	margin: 0 0 1.5em;
+	margin: 0 auto 1.5em;
 	width: 100%;
+    font-size: 2rem;
+}
+
+td {
+	padding: 30px 10px;
+}
+
+th {
+	padding: 10px 10px;
+	text-align: left;
+	font-weight: bold;
+}
+
+td, th {
+	border-bottom: 1px solid #ddd;
+}
+
+.variant-title {
+	font-size: 1.3rem;
+}
+
+.cart-footer {
+	text-align: right;
 }

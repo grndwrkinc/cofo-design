@@ -464,8 +464,26 @@ button, .btn {
   text-transform: uppercase; }
 
 table {
-  margin: 0 0 1.5em;
-  width: 100%; }
+  margin: 0 auto 1.5em;
+  width: 100%;
+  font-size: 2rem; }
+
+td {
+  padding: 30px 10px; }
+
+th {
+  padding: 10px 10px;
+  text-align: left;
+  font-weight: bold; }
+
+td, th {
+  border-bottom: 1px solid #ddd; }
+
+.variant-title {
+  font-size: 1.3rem; }
+
+.cart-footer {
+  text-align: right; }
 
 button,
 input[type="button"],
@@ -845,16 +863,6 @@ object {
 
 header {
   padding: 3.6rem 0; }
-
-#cart {
-  width: 380px;
-  background-color: #f4f4f4;
-  border: 10px solid #181818;
-  height: 50vh;
-  position: absolute;
-  right: 0;
-  top: 120px;
-  z-index: -1; }
 
 /*--------------------------------------------------------------
 ## Footer

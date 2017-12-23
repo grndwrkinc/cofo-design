@@ -17,7 +17,7 @@ $('.nav-cart a').append("<span class='nav-cart-counter'></span>");
 if(checkoutID) {
 	//Use the checkoutID that already exists in local storage
 	client.checkout.fetch(checkoutID).then((checkout) => {
-		addCartEventListeners(checkout);
+		initCart(checkout);
 	});
 }
 else {
@@ -25,22 +25,19 @@ else {
 	client.checkout.create().then((checkout) => {
 		//Save the checkout ID to local storage
 		ls.setItem('checkoutID', checkout.id);
-		addCartEventListeners(checkout);
+		initCart(checkout);
 	});
 }
 
 
 
 
-const addCartEventListeners = function(checkout) {
+const initCart = function(checkout) {
 	//Set the Cart link in the nav to point to the current shopping cart
 	// $('.nav-cart a').attr('href',"http://shop.cofo-dev.grndwrk.ca/cart/");
 
 	// Initialize the cart counter
 	updateCartCounter(checkout);
-
-	//Initialize the cart
-	updateCartContents(checkout);
 
 	// Add to cart
 	addToCartListener(checkout);
@@ -48,8 +45,9 @@ const addCartEventListeners = function(checkout) {
 	// Swap the product images when variant is changed
 	swapProductImagesListener(checkout);
 
-	// Toggle cart visiblity
-	toggleCartListener();
+	if($('body').hasClass('page-cart')) {
+		getCartContents(checkout);
+	}
 }
 
 
@@ -69,9 +67,6 @@ const addToCartListener = function(checkout) {
 		client.checkout.addLineItems(checkoutId, lineItems).then((checkout) => {
 		  //Update the cart counter
 		  updateCartCounter(checkout);
-
-		  //Add line items to the #cart div
-		  updateCartContents(checkout);
 		});
 	});
 }
@@ -90,30 +85,14 @@ const swapProductImagesListener = function(checkout) {
 
 
 /**
- * toggleCartListener()
- */
- const toggleCartListener = function() {
- 	$('.nav-cart a').on('click', function(event) {
-		if($('#cart').css('z-index') == "-1") {
-			$('#cart').css('z-index', "1");			
-		}
-		else {
-			$('#cart').css('z-index', "-1");
-		}
-	});
- }
-
-
-
-/**
- * updateCartContents()
- * Updates the visible cart contents on the front end
+ * getCartContents()
+ * 
  */
 
-const updateCartContents = function(checkout) {
+const getCartContents = function(checkout) {
 	const $cart = $('#cart');
 	const lineItems = checkout.lineItems.map(lineItem => {
-		return [lineItem.title,lineItem.variant.title,lineItem.quantity,lineItem.variant.price]
+		return [lineItem.id,lineItem.variant.id,lineItem.title,lineItem.variant.title,lineItem.quantity,lineItem.variant.price]
 	});
 
 	let cartContent;
@@ -121,8 +100,37 @@ const updateCartContents = function(checkout) {
 	//Haz items
 	if(lineItems.length) {
 		cartContent = lineItems.reduce((markup,lineItem) => {
-			return markup + '<div class="cart-item"><div class="product-title">' + lineItem[0] + '</div><div class="variant-title">' + lineItem[1] + '</div><div class="variant-quantity">' + lineItem[2] + '</div><div class="variant-price">' + lineItem[3] + '</div></div>';
-		}, "");
+			const lineItemID = lineItem[0];
+			const variantID = lineItem[1];
+			const productTitle = lineItem[2];
+			const variantTitle = lineItem[3];
+			const variantQuantity = lineItem[4];
+			const variantPrice = lineItem[5];
+
+			markup += '<tr class="cart-item">';
+			markup += 	'<td><a href="#" class="remove-line-item" data-product-id="' + lineItemID + '" data-variant-id="' + variantID + '">( x )</a></td>';
+			markup +=	'<td class="product">';
+			markup +=		'<span class="product-title">' + productTitle + '</span><br>';
+			markup +=		'<span class="variant-title">' + variantTitle + '</span>';
+			markup +=	'</td>';
+			markup +=	'<td class="variant-price">$';
+			markup +=		parseFloat(variantPrice).formatMoney(2);
+			markup +=	'</td>';
+			markup +=	'<td class="variant-quantity">';
+			markup +=		'<input data-product-id="' + lineItemID + '" data-variant-id="' + variantID + '" type="number" min="0" pattern="[0-9]*" value="' + variantQuantity + '">';
+			markup +=	'</td>';
+			markup +=	'<td class="total">$';
+			markup +=		(variantQuantity * variantPrice).formatMoney(2);
+			markup +=	'</td>';
+			markup +='</tr>';
+			return markup;
+		}, "<tr><th></th><th>Product</th><th>Price</th><th>Quantity</th><th>Total</th></tr>");
+
+		cartContent = '<table>' + cartContent + '</table>';
+		cartContent += '<div class="cart-footer">';
+		cartContent += '	<div class="cart-subtotal" style="height:50px;"><span class="cart-subtotal-title">Subtotal</span><span class="cart-subtotal-amount">$' + parseFloat(checkout.totalPrice).formatMoney(2) + '</span></div>';
+		cartContent += '	<div><a href="#" class="btn btn-update-cart">Update</a> <a href="#" class="btn btn-checkout">Checkout</a></div>';
+		cartContent += '</div>';
 	}
 
 	//Cart is empty
@@ -130,9 +138,47 @@ const updateCartContents = function(checkout) {
 		cartContent = "Empty cart";
 	}
 
-	console.log(cartContent);
-
 	$cart.html(cartContent);
+	$('a.remove-line-item').on('click', removeLineItem);
+	$('.btn-checkout').attr('href',checkout.webUrl);
+	$('.btn-update-cart').on('click', function(event) {
+		event.preventDefault();
+		updateCart();
+	})
+}
+
+
+
+/**
+ * removeLineItem()
+ * Updates the quantity indicator on the cart link in the main nav
+ */
+
+const removeLineItem = function(event) {
+	event.preventDefault();
+	$($(this).parent().siblings('.variant-quantity').find('input')).val(0);
+	updateCart();
+}
+
+const updateCart = function() {
+	const lineItems = $('.cart-item').toArray().map(cartItem => {
+		const id = $(cartItem).find('.variant-quantity input').data('product-id');
+		const quantity = $(cartItem).find('.variant-quantity input').val();
+		const variantId = $(cartItem).find('.variant-quantity input').data('variant-id');
+		return {
+			id : id,
+			quantity: parseInt(quantity),
+			variantId: variantId
+		};
+	});
+
+	client.checkout.updateLineItems(checkoutID, lineItems).then(checkout => {
+		//Update the cart counter
+		updateCartCounter(checkout);
+
+		//Add line items to the #cart div
+		getCartContents(checkout);
+	});
 }
 
 
@@ -149,3 +195,15 @@ const updateCartCounter = function(checkout) {
 	$('.nav-cart-counter').text(cartCount);
 }
 
+
+
+Number.prototype.formatMoney = function(c, d, t){
+var n = this, 
+    c = isNaN(c = Math.abs(c)) ? 2 : c, 
+    d = d == undefined ? "." : d, 
+    t = t == undefined ? "," : t, 
+    s = n < 0 ? "-" : "", 
+    i = String(parseInt(n = Math.abs(Number(n) || 0).toFixed(c))), 
+    j = (j = i.length) > 3 ? j % 3 : 0;
+   return s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
+ };

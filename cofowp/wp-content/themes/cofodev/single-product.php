@@ -7,21 +7,22 @@
  * @package ndrscrs
  */
 
-get_header(); ?>
+get_header(); 
+
+$apiKey = '0804f07642e66e6ea0f18eb356b3079c';
+$pwd = '10873519cffcddb7f84951a786c6eb5c';
+//#{apikey}:#{password}@#{shop-name}.myshopify.com/admin/#{resource}.json
+?>
 
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
 
-		<?php
+<?php
 		while ( have_posts() ) : the_post();
 
 			$ch = curl_init();
 
 			$productID = get_field('product_id');
-			$apiKey = '0804f07642e66e6ea0f18eb356b3079c';
-			$pwd = '10873519cffcddb7f84951a786c6eb5c';
-			//#{apikey}:#{password}@#{shop-name}.myshopify.com/admin/#{resource}.json
-
 			$baseUrl = "https://" . $apiKey . ":" . $pwd . "@cofodesign-com.myshopify.com/admin/products/" . $productID . ".json";
 
 			curl_setopt($ch, CURLOPT_URL, $baseUrl);
@@ -38,7 +39,7 @@ get_header(); ?>
 			// 	$variantArray = [];
 			// 	if(!in_array($variant->option1, $variantArray)){
 			// 		array_push($variantArray,$variant->option1,$variant->option2);
-   //      		}
+   			//  }
 			// 	array_push($megaArray,$variantArray);
 			// }
 			// var_dump($megaArray);
