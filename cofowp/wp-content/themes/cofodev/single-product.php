@@ -40,8 +40,6 @@ $pwd = '10873519cffcddb7f84951a786c6eb5c';
 				array_push($productImages, $image->src);
 			};
 
-			var_dump($productImages);
-
 ?>
 			<!-- Add fallback for no product available -->
 
@@ -72,7 +70,8 @@ $pwd = '10873519cffcddb7f84951a786c6eb5c';
 						    
 	?>
 							<li>
-								<label for="<?php echo $variant->product_id . "_" . $variant->id; ?>"><?php echo $variant->title; ?>
+								<label for="<?php echo $variant->product_id . "_" . $variant->id; ?>">
+									
 									<input type="radio" name="variant" value="<?php echo $variant->id; ?>" id="<?php echo $variant->product_id . "_" . $variant->id; ?>" <?php if(!$cnt) { ?>checked<?php } ?>>
 									<img src="<?php echo $imgSrc; ?>" alt="">
 								</label>
@@ -196,9 +195,9 @@ $pwd = '10873519cffcddb7f84951a786c6eb5c';
 		<?php endif; ?>
 
 <?php 
-		echo "<pre>";
-		var_dump($product); 
-		echo "</pre>";
+		// echo "<pre>";
+		// var_dump($product); 
+		// echo "</pre>";
 
 		endwhile; // End of the loop.
 ?>

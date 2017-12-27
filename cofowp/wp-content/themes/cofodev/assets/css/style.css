@@ -666,6 +666,8 @@ p:empty {
   position: absolute;
   top: -4.8rem;
   right: 0; }
+  .product-details h3 {
+    margin-bottom: 0; }
   .product-details img {
     border-radius: 50%; }
 
@@ -675,16 +677,27 @@ p:empty {
     width: 60%;
     padding: 3rem 0; }
 
+.product-explore .img-container {
+  position: relative; }
+.product-explore .img-container:hover .open {
+  opacity: 1; }
 .product-explore .open {
-  position: relative;
+  position: absolute;
+  top: 0;
+  right: 0;
   width: 48px;
-  height: 48px; }
+  height: 48px;
+  opacity: 0;
+  transition: all 0.3s ease; }
+  .product-explore .open:hover {
+    cursor: pointer; }
 .product-explore .open:after, .product-explore .open:before {
   content: '';
   width: 100%;
   height: 1px;
   background-color: #141414;
-  position: absolute; }
+  position: absolute;
+  top: 50%; }
 .product-explore .open:after {
   transform: rotate(90deg); }
 
@@ -746,10 +759,27 @@ p:empty {
     width: auto; }
 
 .variant-attribute {
-  display: flex; }
+  display: flex;
+  align-items: center;
+  margin-bottom: 2.4rem; }
+  .variant-attribute p {
+    margin-bottom: 0;
+    padding-right: 0.6rem; }
   .variant-attribute ul {
     display: flex;
     list-style-type: none; }
+  .variant-attribute li {
+    padding: 0.6rem; }
+  .variant-attribute img {
+    width: 42px;
+    padding: 6px;
+    cursor: pointer; }
+  .variant-attribute label > input {
+    visibility: hidden;
+    position: absolute; }
+  .variant-attribute label > input:checked + img {
+    border: 2px solid #141414;
+    padding: 4px; }
 
 .fixed {
   padding: 0;
