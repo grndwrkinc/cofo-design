@@ -33,14 +33,22 @@ $pwd = '10873519cffcddb7f84951a786c6eb5c';
 			curl_close($ch);
 
 			$product = $product->product;
+
+			//Make an array of all the product images to grab variant swatches
+			$productImages = array();
+			foreach($product->images as $image) {
+				array_push($productImages, $image->src);
+			};
+
+			var_dump($productImages);
+
 ?>
 			<!-- Add fallback for no product available -->
 
 			<div class="product-hero hero">
 				<div class="hero" style="background-image: url(<?php the_post_thumbnail_url(); ?>)"></div>
 			</div>
-
-			<div class="medium-container product-container">
+			<div class="medium-container fixed">
 				<div class="product-details bordered">
 					<h4>$<?php echo $product->variants[0]->price; ?></h4>
 					<h3><?php echo $product->title; ?></h3>
@@ -49,15 +57,25 @@ $pwd = '10873519cffcddb7f84951a786c6eb5c';
 					foreach ($product->options as $option) :
 	?>
 					<div class="variant-attribute">
-						<h5><?php echo $option->name; ?></h5>
+						<p><?php echo $option->name; ?></p>
 						<ul id="variant-attribute-options">
 	<?php 
 						$cnt = 0;
 						foreach($product->variants as $variant) : // This inner loop will need to change when there are more than one $production->options
+							//Remove special characters and whitespace from variant title to match variant swatch image name
+							$scrubTitle = preg_replace("/[^a-zA-Z]/", "", strtolower($variant->title));
+							foreach($productImages as $src){
+								if(strpos($src, $scrubTitle)){
+									$imgSrc = $src;
+								}
+							}
+						    
 	?>
 							<li>
-								<input type="radio" name="variant" value="<?php echo $variant->id; ?>" id="<?php echo $variant->product_id . "_" . $variant->id; ?>" <?php if(!$cnt) { ?>checked<?php } ?>>
-								<label for="<?php echo $variant->product_id . "_" . $variant->id; ?>"><?php echo $variant->title; ?></label>
+								<label for="<?php echo $variant->product_id . "_" . $variant->id; ?>"><?php echo $variant->title; ?>
+									<input type="radio" name="variant" value="<?php echo $variant->id; ?>" id="<?php echo $variant->product_id . "_" . $variant->id; ?>" <?php if(!$cnt) { ?>checked<?php } ?>>
+									<img src="<?php echo $imgSrc; ?>" alt="">
+								</label>
 							</li>
 	<?php
 							$cnt++;
@@ -71,6 +89,8 @@ $pwd = '10873519cffcddb7f84951a786c6eb5c';
 	?>
 					<button id="add-to-cart">Add to cart</button>
 				</div>
+			</div>
+			<div class="medium-container product-container">
 
 				<div class="product-text offset">
 					<?php the_content(); ?>
@@ -110,7 +130,10 @@ $pwd = '10873519cffcddb7f84951a786c6eb5c';
 		    				$content = get_sub_field('text'); ?>
 
 		    				<?php if( $image ): ?>
-	    						<img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt'] ?>" />
+		    					<div class="img-container">
+	    							<img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt'] ?>" />
+	    							<div class="open"></div>
+		    					</div>
 	    					<?php endif; ?>
 
 	    					<p><?php if( $content ): ?>
@@ -173,9 +196,9 @@ $pwd = '10873519cffcddb7f84951a786c6eb5c';
 		<?php endif; ?>
 
 <?php 
-		// echo "<pre>";
-		// var_dump($product); 
-		// echo "</pre>";
+		echo "<pre>";
+		var_dump($product); 
+		echo "</pre>";
 
 		endwhile; // End of the loop.
 ?>

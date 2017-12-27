@@ -133,6 +133,7 @@ function ndrscrs_scripts() {
 
 	//Theme scripts
 	wp_enqueue_script( 'shopify', '//' . $_SERVER['HTTP_HOST'] . '/wp-content/themes/cofodev/assets/js/shopify/dist/shopify.js', array(), '2.4.1', true);
+	wp_enqueue_script( 'cofo', '//' . $_SERVER['HTTP_HOST'] . '/wp-content/themes/cofodev/assets/js/scripts-min.js', array(), '2.4.1', true);
 }
 add_action( 'wp_enqueue_scripts', 'ndrscrs_scripts' );
 
@@ -168,3 +169,25 @@ function add_slug_body_class( $classes ) {
 		$classes[] = $post->post_type . '-' . $post->post_name;
 	} return $classes; }
 add_filter( 'body_class', 'add_slug_body_class' );
+
+//Pre-populate repeater fields in products with Shopify variants
+function my_acf_load_value($value, $post_id, $field) {
+  // set the new field value
+  $value = array(
+    // add a nested array for each row
+    array(
+      // add an array item for each sub field
+      'variant' => 'Value for Field 1'
+    )
+  );
+  return $value;
+}
+add_filter('acf/load_value/name=variants', 'my_acf_load_value', 10, 3);
+
+
+
+
+
+
+
+

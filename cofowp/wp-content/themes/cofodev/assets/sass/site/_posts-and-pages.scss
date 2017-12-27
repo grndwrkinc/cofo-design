@@ -87,6 +87,10 @@ p:empty {
 	position: absolute;
 	top: -4.8rem;
     right: 0;
+
+    img {
+    	border-radius: 50%;
+    }
 }
 
 .product-container {
@@ -95,6 +99,29 @@ p:empty {
 	.offset {
 		width: 60%;
 		padding: 3rem 0;
+	}
+}
+
+.product-explore {
+
+	.open {
+		position: relative;
+		width: 48px;
+		height: 48px;
+	}
+
+	.open:after, .open:before {
+		content: '';
+		width: 100%;
+		height: 1px;
+		background-color: $black;
+		position: absolute;
+		// top: 1.2rem;
+		// right: 1.2rem;
+	}
+
+	.open:after {
+		transform: rotate(90deg);
 	}
 }
 
@@ -186,6 +213,28 @@ p:empty {
 
 	.btn {
 		width: auto;	
+	}
+}
+
+.variant-attribute {
+	display: flex;
+
+	ul {
+		display: flex;
+		list-style-type: none;
+	}
+}
+
+.fixed {
+	padding: 0;
+	position: relative;
+	left: 0;
+	right: 0;
+	z-index: 1;
+
+	&.scrolled {
+		position: fixed !important;
+		top: 155px !important;
 	}
 }
 
@@ -328,6 +377,18 @@ p:empty {
 			margin-left: auto;
 		}
 	}
+
+	.bordered {
+		width: auto;
+	}
+
+	ul {
+		li {
+			list-style-type: none;
+			@include font-size(1.4);
+			margin-bottom: 0.6rem;
+		}
+	}
 }
 
 
@@ -433,6 +494,7 @@ p:empty {
 	width: 90%;
 	background-color: #EEEEEE;
 	padding: 12rem;
+	position: relative;
 
 	ul {
 		list-style-type: none;
@@ -441,6 +503,13 @@ p:empty {
 
 	li {
 		padding: 0.6rem 0;
+	}
+
+	h3 {
+		position: absolute;
+		transform: rotate(-90deg);
+		left: 15%;
+    	top: 0;
 	}
 
 	.header {
@@ -457,6 +526,87 @@ p:empty {
 .categories-inner {
 	display: flex;
 	justify-content: space-between;
+}
+
+.page-design-challenge {
+	.hero-text {
+		h1 {
+			width: 60%;
+		}
+
+		h4 {
+			margin: 2.4rem 0 4.8rem 0;
+		}
+
+		p {
+			@include semi-bold;
+			margin-top: 1.2rem;
+
+			a {
+				padding-bottom: 0.4rem;
+				border-bottom: 2px solid black;
+			}
+		}
+	}
+
+	.process-half:first-of-type {
+
+		.bordered:first-of-type {
+			li:before {
+				content: '+';
+				padding-right: 1.2rem;
+			}
+		}
+
+		.bordered:last-of-type {
+			border-top: 0;
+		}
+	}
+
+	.process-half:last-of-type {
+		.bordered {
+			border-left: 0;
+		}
+	}
+}
+
+.challenge-details {
+
+	padding-top: 0;
+	text-align: center;
+
+	p {
+		text-align: center;
+		margin-top: 1.2rem;
+		@include semi-bold;
+		
+		a {
+			padding-bottom: 0.4rem;
+	    	border-bottom: 2px solid black;
+		}
+	}
+
+	a {
+		margin: 0 auto;
+	}
+}
+
+.challenge-share {
+	background-color: $lightgrey;
+	padding: 12rem;
+
+	h4 {
+		text-align: center;
+	}
+
+	.social-nav ul li {
+		border: 0;
+		background-color: $black;
+
+		i {
+			color: white;
+		}
+	}
 }
 
 
