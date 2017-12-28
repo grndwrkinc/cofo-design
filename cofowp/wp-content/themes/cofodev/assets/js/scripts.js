@@ -9,6 +9,7 @@ cofo.init = function() {
 
 	if($('.single-product').length){
 		cofo.fixDetails();
+		cofo.productGallery();
 	}
 
 };
@@ -37,8 +38,60 @@ cofo.fixDetails = function() {
 			details.removeClass('scrolled');
 			details.css({'position': 'relative', 'top': 0 });
 		}
-		console.log(offset, dimensionsTop, detailsHeight);
+		// console.log(offset, dimensionsTop, detailsHeight);
 	});
+};
+
+cofo.productGallery = function() {
+	//Determine which image has been clicked and open the gallery
+	$('.open').on('click', function(){
+		$('.image-gallery').fadeIn();
+		var activeClass = $(this).siblings().attr('class');
+		//Match images by class
+		$('.thumbnail-img').each(function (index){
+			if($(this).hasClass(activeClass)){
+				$(this).addClass('active');
+				//Clone the active thumbnail and add to main gallery element
+				$(this).children('img').clone().appendTo('.image-gallery .main-img');
+			} else {
+				$(this).removeClass('active');
+			}
+		});
+	});
+
+	$('.close').on('click', function(){
+		$('.image-gallery').fadeOut('slow', function(){
+			$('.image-gallery .main-img').empty();
+		});
+		$('.thumbnail-img').removeClass('active').removeClass('prev').removeClass('next');
+	});
+
+	//When a thumnail is clicked, empty the main container, add the coresponding img
+	$('.thumbnail-img').on('click', function(){
+		$('.thumbnail-img').removeClass('active');
+		$(this).addClass('active');
+		$('.image-gallery .main-img').empty();
+		//Clone the active thumbnail and add to main gallery element
+		$(this).clone().appendTo('.image-gallery .main-img');
+	});
+
+	//Prev/next buttons
+	$('.btn-prev').on('click', function(){
+
+	});
+
+	$('.btn-next').on('click', function(){
+		//If there is a next sibling, make it active
+		if($('.thumbnails .active').next().hasClass('thumbnail-img')){
+			$('.thumbnails .active').next().addClass('next');
+			// $('.thumbnail-img').removeClass('active');
+			// $('.thumbnails .next').next().addClass('active');
+			// $('.thumbnails .next').removeClass('next');
+		} else {
+			console.log('no next!');
+		}
+	});
+
 };
 
 //*****************************************************************

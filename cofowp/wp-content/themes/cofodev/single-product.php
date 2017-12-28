@@ -122,7 +122,8 @@ get_header();
 				</div>
 
 				<div class="product-explore offset">
-					<?php if( have_rows('product_shots') ): ?>
+					<?php if( have_rows('product_shots') ): 
+						$cnt = 0; ?>
 		    			<?php while( have_rows('product_shots') ): the_row(); 
 		    				
 		    				$image = get_sub_field('image');
@@ -130,7 +131,7 @@ get_header();
 
 		    				<?php if( $image ): ?>
 		    					<div class="img-container">
-	    							<img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt'] ?>" />
+	    							<img class="no<?php echo $cnt; ?>" src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt'] ?>" />
 	    							<div class="open"></div>
 		    					</div>
 	    					<?php endif; ?>
@@ -139,10 +140,15 @@ get_header();
 	    						<?php echo $content; ?>
 	    					<?php endif; ?></p>
 
-		    			<?php endwhile; ?>
+		    			<?php $cnt++;
+							endwhile; ?>
 		    		<?php endif; ?>
 				</div>
 			</div>
+
+			<?php 
+				get_template_part( 'template-parts/content', 'gallery' );
+			?>
 
 			<div class="product-dimensions large-container">
 				<p class="pre-header">Dimensions</p>
@@ -205,7 +211,7 @@ get_header();
 			<h4>Design Challenge</h4>
 			<p>If you are a student or recent graduate and want to see your ideas in the real world, enter now. </p>
 			<a href="/design-challenge" class="btn">View Challenge Details</a>
-		</div>
+		</div>	
 		</main><!-- #main -->
 	</div><!-- #primary -->
 
