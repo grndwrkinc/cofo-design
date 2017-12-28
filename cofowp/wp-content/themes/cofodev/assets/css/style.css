@@ -540,6 +540,22 @@ select {
 textarea {
   width: 100%; }
 
+.page-submit .hero {
+  background-color: #141414;
+  padding: 12rem 0; }
+  .page-submit .hero .hero-text {
+    position: relative;
+    top: auto;
+    right: auto;
+    left: auto;
+    transform: none; }
+  .page-submit .hero ul {
+    color: white;
+    margin-top: 4.8rem; }
+  .page-submit .hero li {
+    border-top: 0;
+    width: auto; }
+
 .page-content .wp-smiley,
 .entry-content .wp-smiley,
 .comment-content .wp-smiley {

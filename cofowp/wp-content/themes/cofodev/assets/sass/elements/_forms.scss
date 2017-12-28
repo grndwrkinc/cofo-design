@@ -58,3 +58,39 @@ select {
 textarea {
 	width: 100%;
 }
+
+//SUBMISSION PAGE
+
+.page-submit {
+
+	.hero {
+		background-color: $black;
+		padding: 12rem 0;
+
+		.hero-text {
+			position: relative;
+			top: auto;
+			right: auto;
+			left: auto;
+			transform: none;
+		}
+
+		ul {
+			color: white;
+			margin-top: 4.8rem;
+		}
+
+		li {
+			border-top: 0;
+			width: auto;
+		}
+	}
+}
+
+
+
+
+
+
+
+

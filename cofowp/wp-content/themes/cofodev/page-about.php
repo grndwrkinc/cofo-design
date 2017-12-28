@@ -78,8 +78,6 @@ get_header(); ?>
 				<div class="medium-container">
 					<h2><?php the_field('story_section_header'); ?></h2>
 					<p><?php the_field('story_section_text'); ?></p>
-				</div>
-				<div class="fluid-vid">
 					<?php the_field('story_section_video'); ?>
 				</div>
 			</div>
@@ -108,7 +106,6 @@ get_header(); ?>
 	    						<?php echo $content; ?>
 	    					<?php endif; ?></p>
 	    				</div>
-						
 					</div>
 					<?php endwhile; ?>
 	    		<?php endif; ?>
