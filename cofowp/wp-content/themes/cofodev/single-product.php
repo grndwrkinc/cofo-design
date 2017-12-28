@@ -9,8 +9,8 @@
 
 get_header(); 
 
-$apiKey = '0804f07642e66e6ea0f18eb356b3079c';
-$pwd = '10873519cffcddb7f84951a786c6eb5c';
+// API_KEY = '0804f07642e66e6ea0f18eb356b3079c';
+// PASSWORD = '10873519cffcddb7f84951a786c6eb5c';
 //#{apikey}:#{password}@#{shop-name}.myshopify.com/admin/#{resource}.json
 ?>
 
@@ -24,8 +24,8 @@ $pwd = '10873519cffcddb7f84951a786c6eb5c';
 
 			$productID = get_field('product_id');
 
-			$baseUrl = "https://" . $apiKey . ":" . $pwd . "@cofodesign-com.myshopify.com/admin/products/" . $productID . ".json";
-			// $baseUrl = "https://" . $apiKey . ":" . $pwd . "@cofodesign-com.myshopify.com/admin/checkouts/Z2lkOi8vc2hvcGlmeS9DaGVja291dC80NThhZmViOThhZTBiNGY0OTAyODlmNjcwNTc0ZDFiNj9rZXk9MTY5ZGEzZTdmMTAxZjdlM2NhMDMzYTAwNzU1YjEwNjU=.json";
+			$baseUrl = "https://" . API_KEY . ":" . PASSWORD . "@cofodesign-com.myshopify.com/admin/products/" . $productID . ".json";
+			// $baseUrl = "https://" . API_KEY . ":" . PASSWORD . "@cofodesign-com.myshopify.com/admin/checkouts/Z2lkOi8vc2hvcGlmeS9DaGVja291dC80NThhZmViOThhZTBiNGY0OTAyODlmNjcwNTc0ZDFiNj9rZXk9MTY5ZGEzZTdmMTAxZjdlM2NhMDMzYTAwNzU1YjEwNjU=.json";
 
 			curl_setopt($ch, CURLOPT_URL, $baseUrl);
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
