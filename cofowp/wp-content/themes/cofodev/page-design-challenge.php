@@ -15,10 +15,16 @@ get_header(); ?>
 			<div class="hero" style="background-image: url(<?php the_post_thumbnail_url(); ?>)">	
 				<div class="hero-text">
 					<h1 class="white"><span class="highlight"><?php the_title(); ?></span></h1>
-					<p><?php the_field('subtitle'); ?></p>
+					<h4><?php the_field('subtitle'); ?></h4>
+					<a href="/submit" class="btn">Submit your design</a>
+					<p><a href="/rules-and-regulations">View rules and regulations</a></p>
 				</div>
 			</div>
-			<div class="medium-container challenge-mood-board"></div>
+			<div class="medium-container challenge-mood-board">
+				<p class="pre-header"><?php the_field('inspiration_header'); ?></p>
+				<h2><span class="highlight"><?php the_field('inspiration_text'); ?></span></h2>
+				<p><?php the_field('inspiration_text_cont'); ?></p>
+			</div>
 			<div class="challenge-categories">
 				<h3>Categories</h3>
 					<div class="categories-inner">
@@ -57,6 +63,59 @@ get_header(); ?>
 					<p><?php the_content(); ?></p>
 				<?php endwhile; // End of the loop.
 				?>
+			</div>
+			<div class="medium-container">
+				<div class="process-container">
+				<?php if( have_rows('challenge_details') ): ?>
+					<?php $counter = 1; ?>
+	    			<?php while( have_rows('challenge_details') ): the_row(); 
+	    				
+	    				$header = get_sub_field('header');
+	    				$icon = get_sub_field('icon'); 
+	    				if($counter == 1 || $counter == 3):
+	    					echo '<div class="process-half">';
+	    				endif; ?>
+
+					<div class="bordered">
+						<h3><?php if( $header ): ?>
+							<?php echo $header; ?>
+						<?php endif; ?></h3>
+
+	    				<?php if( have_rows('items') ): ?>
+	    					<ul>
+			    			<?php while( have_rows('items') ): the_row(); 
+			    				
+			    				$item = get_sub_field('item');
+
+			    				if( $item ): ?>
+		    						<li><?php echo $item; ?></li>
+		    					<?php endif; ?>
+
+			    			<?php endwhile; ?>
+			    			</ul>
+			    		<?php endif; ?>
+	    			</div>
+					<?php 
+						if($counter == 2 || $counter == 3):
+							echo '</div>';
+						endif; 
+						$counter++; ?>
+	    			<?php endwhile; ?>
+	    		<?php endif; ?>
+	    		</div>
+			</div>
+			<div class="medium-container challenge-details">
+	    		<a href="/submit" class="btn">Submit your design</a>
+				<p><a href="/rules-and-regulations">View rules and regulations</a></p>
+			</div>
+			<div class="challenge-share">
+				<h4>Share the challenge</h4>
+				<div class="social-nav">
+					<ul>
+						<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+						<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+					</ul>
+				</div>
 			</div>
 		</main><!-- #main -->
 	</div><!-- #primary -->
