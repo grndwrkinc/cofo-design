@@ -14,29 +14,33 @@ get_header(); ?>
 			<div class="home-hero" style="background-image: url(<?php the_post_thumbnail_url(); ?>)">
 				<?php
 				while ( have_posts() ) : the_post(); ?>
-				<div class="text-lego">
-					<?php the_title( '<h1><span class="highlight">', '</span></h1>' ); ?>
-					<div class="bordered"> <?php
-					the_content();
-					$post_object = get_field('featured_product');
+				<div class="hero-text">
+					<div class="text-lego">
+						<?php the_title( '<h1><span class="highlight">', '</span></h1>' ); ?>
+						<div class="bordered"> <?php
+						the_content();
+						$post_object = get_field('featured_product');
 
-					if( $post_object ): 
+						if( $post_object ): 
 
-						$post = $post_object;
-						setup_postdata( $post ); ?>
+							$post = $post_object;
+							setup_postdata( $post ); ?>
 
-						<a href="<?php the_permalink(); ?>" class="btn">View <?php the_title(); ?></a>
+							<a href="<?php the_permalink(); ?>" class="btn">View <?php the_title(); ?></a>
 
-						<?php wp_reset_postdata(); 
-					 endif; ?>
+							<?php wp_reset_postdata(); 
+						 endif; ?>
+						</div>
 					</div>
 				</div>
 				<?php endwhile; // End of the loop.
 				?>
 			</div>
-			<div class="section-container home-about">
+			<div class="section-container home-about-img">
 				<?php $image = get_field('secondary_hero_image'); ?>
 				<img src="<?php echo $image['url'] ?>" alt="<?php echo $image['alt']; ?>">
+			</div>
+			<div class="medium-container home-about">
 				<div class="text-lego">
 					<h2><span class="highlight"><?php the_field('secondary_header'); ?></span></h2>
 					<div class="bordered">
@@ -45,7 +49,7 @@ get_header(); ?>
 					</div>
 				</div>
 			</div>
-			<div class="large-container home-challenge">
+			<div class="medium-container home-challenge">
 				<div class="text-section-offset">
 					<p class="pre-header">Design Challenge</p>
 					<h2><span class="highlight"><?php the_field('design_challenge_header'); ?></span></h2>

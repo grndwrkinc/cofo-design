@@ -18,14 +18,12 @@ get_header();
 
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
-			<div class="hero" style="background-image: url(<?php the_post_thumbnail_url(); ?>)">	
-				<div class="hero-text">
-					<h1 class="white"><span class="highlight"><?php the_title(); ?></span></h1>
-					<p><?php the_field('subtitle'); ?></p>
-				</div>
+			<div class="medium-container" style="background-image: url(<?php the_post_thumbnail_url(); ?>)">	
+				<h1 class="white"><span class="highlight"><?php the_title(); ?></span></h1>
+				<p><?php the_field('subtitle'); ?></p>
 			</div>
 
-			<div id="cart" class="section-container">
+			<div id="cart" class="medium-container">
 			</div>
 
 		</main><!-- #main -->
