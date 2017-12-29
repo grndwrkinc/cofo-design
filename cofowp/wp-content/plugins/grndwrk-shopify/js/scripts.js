@@ -20,15 +20,20 @@ $("#post").on('submit', function(event) {
 
 });
 
-//Add row button event listener
+//'Add Row' button event listener
 $('a[data-event="add-row"]').on('click',function() {
 	var $el = $(this);
 
 	if($el.parents('[data-name="360_image_viewer"]').length) {
 		var variants = $.parseJSON($("#gwsh_product_variants").val());
-		var $field = acf.get_closest_field( $el, 'repeater' );
+		var $field = acf.get_closest_field( $el, 'repeater' ); // ACF magic
 		var $select = $field.find('.acf-input > select');
 		
+		//On a new Product, when you click 'Add Row' the first time
+		// an empty <select> field will be added to the page. We need to
+		// populate it with the variants as <option> fields.
+		// We only need to do this once because the next row 
+		// (when 'Add Row' is clicked) will be 'cloned' by ACF.
 		if($select.length == 1 && $select.find('option').length == 0) {
 			for(var i=0; i< variants.length; i++) {
 				$select.append($('<option>',{
