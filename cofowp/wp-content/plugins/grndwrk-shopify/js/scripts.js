@@ -1,4 +1,6 @@
 
+
+
 $('.select-product').on('click', gwsh_selectProduct);
 
 $('.edit-product').on('click', gwsh_editProductSelection);
@@ -17,33 +19,31 @@ $("#post").on('submit', function(event) {
 		alert('You need to select a product.');
 		return false; //Prevent the form from submitting.
 	}
-
 });
 
 //'Add Row' button event listener
 $('a[data-event="add-row"]').on('click',function() {
 	var $el = $(this);
+	var variants = $.parseJSON($("#gwsh_product_variants").val());
+	var $field = acf.get_closest_field( $el, 'repeater' ); // ACF magic
+	var $select = $field.find('.acf-input > select');
 
-	if($el.parents('[data-name="360_image_viewer"]').length) {
-		var variants = $.parseJSON($("#gwsh_product_variants").val());
-		var $field = acf.get_closest_field( $el, 'repeater' ); // ACF magic
-		var $select = $field.find('.acf-input > select');
-		
-		//On a new Product, when you click 'Add Row' the first time
-		// an empty <select> field will be added to the page. We need to
-		// populate it with the variants as <option> fields.
-		// We only need to do this once because the next row 
-		// (when 'Add Row' is clicked) will be 'cloned' by ACF.
-		if($select.length == 1 && $select.find('option').length == 0) {
-			for(var i=0; i< variants.length; i++) {
-				$select.append($('<option>',{
-					value: variants[i].product_id + "_" + variants[i].id,
-					text: variants[i].title
-				}));
-			}
+	//On a new Product, when you click 'Add Row' the first time
+	// an empty <select> field will be added to the page. We need to
+	// populate it with the variants as <option> fields.
+	// We only need to do this once because the next row 
+	// (when 'Add Row' is clicked) will be 'cloned' by ACF.
+	if($select.length == 1 && $select.find('option').length == 0) {
+		for(var i=0; i< variants.length; i++) {
+			$select.append($('<option>',{
+				value: variants[i].product_id + "_" + variants[i].id,
+				text: variants[i].title
+			}));
 		}
 	}
 });
+
+
 
 function gwsh_selectProduct() {
 	var $selected = $("#gwsh_select_product option:selected");
