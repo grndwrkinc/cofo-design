@@ -8,10 +8,6 @@
  */
 
 get_header(); 
-
-// API_KEY = '0804f07642e66e6ea0f18eb356b3079c';
-// PASSWORD = '10873519cffcddb7f84951a786c6eb5c';
-//#{apikey}:#{password}@#{shop-name}.myshopify.com/admin/#{resource}.json
 ?>
 
 	<div id="primary" class="content-area">
@@ -19,20 +15,9 @@ get_header();
 
 <?php
 		while ( have_posts() ) : the_post();
-
-			$ch = curl_init();
-
-			$productID = get_field('product_id');
-
-			$baseUrl = "https://" . API_KEY . ":" . PASSWORD . "@cofodesign-com.myshopify.com/admin/products/" . $productID . ".json";
-			// $baseUrl = "https://" . API_KEY . ":" . PASSWORD . "@cofodesign-com.myshopify.com/admin/checkouts/Z2lkOi8vc2hvcGlmeS9DaGVja291dC80NThhZmViOThhZTBiNGY0OTAyODlmNjcwNTc0ZDFiNj9rZXk9MTY5ZGEzZTdmMTAxZjdlM2NhMDMzYTAwNzU1YjEwNjU=.json";
-
-			curl_setopt($ch, CURLOPT_URL, $baseUrl);
-			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-			$product = json_decode(curl_exec($ch));
-			curl_close($ch);
-
-			$product = $product->product;
+			// $productID = get_field('product_id');
+			$productID = get_post_meta($post->ID, "gwsh_product_id", true);
+			$product = gwsh_getProduct($productID);
 
 			//Make an array of all the product images to grab variant swatches
 			$productImages = array();
@@ -51,13 +36,13 @@ get_header();
 					<h4>$<?php echo $product->variants[0]->price; ?></h4>
 					<h3><?php echo $product->title; ?></h3>
 
-	<?php
+<?php
 					foreach ($product->options as $option) :
-	?>
+?>
 					<div class="variant-attribute">
 						<p><?php echo $option->name; ?></p>
 						<ul id="variant-attribute-options">
-	<?php 
+<?php 
 						$cnt = 0;
 						foreach($product->variants as $variant) : // This inner loop will need to change when there are more than one $production->options
 							//Remove special characters and whitespace from variant title to match variant swatch image name
@@ -68,7 +53,7 @@ get_header();
 								}
 							}
 						    
-	?>
+?>
 							<li>
 								<label for="<?php echo $variant->product_id . "_" . $variant->id; ?>">
 									
@@ -76,16 +61,16 @@ get_header();
 									<img src="<?php echo $imgSrc; ?>" alt="">
 								</label>
 							</li>
-	<?php
+<?php
 							$cnt++;
 						endforeach;
-	?>
+?>
 						</ul>
 					</div>
 
-	<?php
+<?php
 					endforeach;
-	?>
+?>
 					<button id="add-to-cart">Add to cart</button>
 				</div>
 			</div>
@@ -195,9 +180,9 @@ get_header();
 		<?php endif; ?>
 
 <?php 
-		// echo "<pre>";
-		// var_dump($product); 
-		// echo "</pre>";
+		echo "<pre>";
+		var_dump($productID);
+		echo "</pre>";
 
 		endwhile; // End of the loop.
 ?>
