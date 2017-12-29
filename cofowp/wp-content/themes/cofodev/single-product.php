@@ -186,9 +186,9 @@ get_header();
 		<?php endif; ?>
 
 <?php 
-		echo "<pre>";
-		var_dump($productID);
-		echo "</pre>";
+		// echo "<pre>";
+		// var_dump($productID);
+		// echo "</pre>";
 
 		endwhile; // End of the loop.
 ?>
