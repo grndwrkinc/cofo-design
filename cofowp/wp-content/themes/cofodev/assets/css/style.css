@@ -974,17 +974,17 @@ p:empty {
     font-size: 1.4rem;
     margin-bottom: 0.6rem; }
 
-.home-hero, .hero {
-  height: 80vh;
+.home-hero, .product-hero, .hero {
+  height: 100vh;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover; }
-  .home-hero h1, .hero h1 {
+  .home-hero h1, .product-hero h1, .hero h1 {
     line-height: 108.8px;
     line-height: 6.8rem; }
 
 .hero {
-  height: 60vh;
+  height: 85vh;
   position: relative; }
 
 .text-lego {
@@ -1172,6 +1172,8 @@ p:empty {
 
 header {
   padding: 3.6rem 0; }
+  header img {
+    width: 84px; }
 
 /*--------------------------------------------------------------
 ## Footer
@@ -1220,6 +1222,8 @@ footer .btn {
   display: inline-block; }
 footer .medium-container {
   padding: 0; }
+footer img {
+  width: 84px; }
 
 .footer-cta {
   padding: 4.8rem 0; }
