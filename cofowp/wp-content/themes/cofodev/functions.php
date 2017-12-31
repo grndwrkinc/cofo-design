@@ -118,12 +118,11 @@ function ndrscrs_scripts() {
 	wp_enqueue_script( 'ndrscrs-navigation', '//' . $_SERVER['HTTP_HOST'] . '/wp-content/themes/cofodev/assets/js/navigation.js', array(), '20151215', true  );
 
 	//Scrollmagic required JS
-	wp_register_script('greenSock', 'http://' . $_SERVER['SERVER_NAME'] . '/wp-content/themes/cofodev/assets/js/greensock/TweenMax.min.js', array(), '1.14.1', false);
-	wp_enqueue_script('ScrollMagic', "http" . ($_SERVER['SERVER_PORT'] == 443 ? "s" : "") . "://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.min.js", false, null);
-	wp_enqueue_script('ScrollMagicDebug', "http" . ($_SERVER['SERVER_PORT'] == 443 ? "s" : "") . "://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/debug.addIndicators.min.js", false, null);
+	wp_register_script('greenSock', '//' . $_SERVER['HTTP_HOST'] . '/wp-content/themes/cofodev/assets/js/greensock/TweenMax.min.js', array(), '1.14.1', false);
+	wp_enqueue_script('ScrollMagic', "//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.min.js", false, null);
+	wp_enqueue_script('ScrollMagicDebug', "//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/debug.addIndicators.min.js", false, null);
 
 	wp_enqueue_script( 'fluidvids', '//' . $_SERVER['HTTP_HOST'] . '/wp-content/themes/cofodev/assets/js/fluidvids/dist/fluidvids.min.js', array(), '2.4.1', true);
-	wp_enqueue_script( 'fluidvids', 'http://' . $_SERVER['SERVER_NAME'] . '/wp-content/themes/cofodev/assets/js/fluidvids/dist/fluidvids.min.js', array(), '2.4.1', true);
 
 	wp_enqueue_script( '_s-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
 
@@ -132,8 +131,8 @@ function ndrscrs_scripts() {
 	}
 
 	//Theme scripts
-	wp_enqueue_script( 'shopify', '//' . $_SERVER['HTTP_HOST'] . '/wp-content/themes/cofodev/assets/js/shopify/dist/shopify.js', array(), '2.4.1', true);
-	wp_enqueue_script( 'cofo', '//' . $_SERVER['HTTP_HOST'] . '/wp-content/themes/cofodev/assets/js/scripts-min.js', array(), '2.4.1', true);
+	wp_enqueue_script( 'shopify-scripts', '//' . $_SERVER['HTTP_HOST'] . '/wp-content/themes/cofodev/assets/js/shopify/dist/shopify.js', array(), '2.4.1', true);
+	wp_enqueue_script( 'cofo-scripts', '//' . $_SERVER['HTTP_HOST'] . '/wp-content/themes/cofodev/assets/js/scripts-min.js', array(), '2.4.1', true);
 }
 add_action( 'wp_enqueue_scripts', 'ndrscrs_scripts' );
 
