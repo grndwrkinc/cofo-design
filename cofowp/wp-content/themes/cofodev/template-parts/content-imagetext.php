@@ -19,6 +19,7 @@
 		<img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt'] ?>" />
 	<?php endif; ?>
 
+	<?php if($content) : ?>
 	<div class="details">
 		<h3><?php if( $title ): ?>
 			<?php echo $title; ?>
@@ -27,4 +28,5 @@
 			<?php echo $content; ?>
 		<?php endif; ?></p>
 	</div>
+	<?php endif; ?>
 </div>
