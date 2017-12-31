@@ -125,16 +125,14 @@ get_header();
 	    			
 	    			while( have_rows('360_image_viewer') ): the_row(); 
 		    			$variant = get_sub_field('variant');
-	    				$images = get_sub_field('images'); 
-	    				$firstImage = $images[0]; // get the first image
-	    				$ext = array(); preg_match('/\.\w{3,4}($|\?)/', $firstImage['url'], $ext); //get the file extension of the first image
-	    				$path = dirname($firstImage['url']); //get the file path of the first image
-	    				$path = explode("http://", $path);
-	    				$path = explode($_SERVER["HTTP_HOST"], $path[1]);
-	    				$filePrefix = preg_replace("/[^a-zA-Z]/", "-", strtolower(get_the_title())) . "-" . preg_replace("/[^a-zA-Z]/", "", strtolower($product->variants[$variantCnt++]->title)) . "-";
+	    				$images = get_sub_field('images');
 
+	    				// Extract the image paths from the $images array, then 
+	    				// join them into a string representing an array like:
+	    				// ['url1', 'url2', 'url3',...]
+	    				$imageArrayString = "['" . join("','", array_column($images, 'url'))  . "']"; 
 ?>
-					<div id="viewer_<?php echo $variant; ?>" class="threesixty" data-id="<?php echo $variant; ?>">
+					<div id="viewer_<?php echo $variant; ?>" class="threesixty togglable <?php if($selected != $variant) echo "hidden"; ?>" data-id="<?php echo $variant; ?>">
 						<div class="spinner"><span>0%</span></div>
 						<ol class="threesixty_images"></ol>
 					</div>
@@ -149,13 +147,13 @@ get_header();
 						$viewerScript .= "			endFrame: " . sizeof($images) . ",\n"; // end frame for the auto spin animation
 						$viewerScript .= "			currentFrame: 1,\n"; // This the start frame for auto spin
 						$viewerScript .= "			imgList: '.threesixty_images',\n"; // selector for image list
-						$viewerScript .= "			progress: '.spinner',\n"; // selector to show the loading progress
-						$viewerScript .= "			imagePath:'" . $path[1] . "/',\n"; // path of the image assets
-						$viewerScript .= "			filePrefix: '" . $filePrefix . "',\n"; // file prefix if any
-						$viewerScript .= "			ext: '" . $ext[0] . "',\n"; // extention for the assets
-						$viewerScript .= "			height: 1000,\n";
-						$viewerScript .= "			width: 447,\n";
-						$viewerScript .= "			navigation: true,\n";
+						$viewerScript .= "			progress: '#viewer_" . $variant . " .spinner',\n"; // selector to show the loading progress
+						$viewerScript .= "			imgArray: " . $imageArrayString . ",\n"; // path of the image assets
+						$viewerScript .= "			height: 384,\n";
+						$viewerScript .= "			width: 576,\n";
+						// $viewerScript .= "			navigation: false,\n";
+						$viewerScript .= "			responsive: true,\n";
+						$viewerScript .= "			showCursor: true,\n";
 						$viewerScript .= "			plugins: ['ThreeSixtyFullscreen']\n";
 						$viewerScript .= "		});\n";
 						$viewerScript .= "	}\n";

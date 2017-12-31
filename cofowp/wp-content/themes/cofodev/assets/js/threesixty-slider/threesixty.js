@@ -161,7 +161,7 @@
     };
 
     /**
-     * @method loadImages
+     * @method imageLoaded
      * @private
      * The function gets triggers once the image is loaded. We also update
      * the progress percentage in this function.
@@ -178,7 +178,8 @@
           base.showImages();
           base.showNavigation();
         });
-      } else {
+      } 
+      else {
         base.loadImages();
       }
     };

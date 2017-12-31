@@ -42,17 +42,11 @@ cofo.initProductDetails = function() {
 			$details.removeClass('fixed');
 			$details.css({'position': 'relative', 'top': 0 });
 		}
-		// console.log(offset, dimensionsTop, detailsHeight);
 	});
 
-	// var activeVariant = $('.swatch-toggle input:checked');
-	// console.log(activeVariant);
 
 	$('.swatch-toggle').on('mouseup', function() {
-		
 		activeVariant = $(this).attr('for');
-		console.log(activeVariant);
-		
 		$('.togglable')
 			.addClass('hidden')
 			.each(function() {
@@ -60,7 +54,7 @@ cofo.initProductDetails = function() {
 					$(this).removeClass('hidden');
 				}
 			});
-
+		$(window).trigger('resize');
 	});
 };
 

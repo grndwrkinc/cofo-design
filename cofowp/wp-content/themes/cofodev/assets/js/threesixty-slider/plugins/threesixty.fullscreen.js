@@ -86,6 +86,7 @@
     };
 
     plugin.toggleButton = function() {
+      isFullscreen = !isFullscreen;
       if (isFullscreen) {
         $button.css({
           'background-position': '0px 0px'
