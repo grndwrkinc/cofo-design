@@ -44,7 +44,7 @@
                     "key": "field_5a381a1d78719",
                     "label": "Text",
                     "name": "text",
-                    "type": "text",
+                    "type": "textarea",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -55,9 +55,9 @@
                     },
                     "default_value": "",
                     "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": ""
+                    "maxlength": "",
+                    "rows": 3,
+                    "new_lines": ""
                 },
                 {
                     "key": "field_5a381a287871a",
@@ -97,11 +97,11 @@
     ],
     "menu_order": 0,
     "position": "normal",
-    "style": "default",
+    "style": "seamless",
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1514563548
+    "modified": 1514652854
 }
