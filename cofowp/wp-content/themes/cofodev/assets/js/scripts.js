@@ -1,5 +1,5 @@
 var cofo = {};
-var masonryInit = true; // set Masonry init flag
+// var masonryInit = true; // set Masonry init flag
 
 $(document).ready(function () {
   cofo.init();
@@ -8,47 +8,69 @@ $(document).ready(function () {
 cofo.init = function() {
 
 	if($('.single-product').length){
-		cofo.fixDetails();
-		cofo.productGallery();
+		cofo.initProductDetails();
+		cofo.initProductGallery();
 	}
 
 };
 
-//Set the Product Details container to fixed when user scrolls down page
-cofo.fixDetails = function() {
+//Initialize the Product Details container
+cofo.initProductDetails = function() {
 
-	var details = $('.fixed');
-	var detailsHeight = $('.product-details').outerHeight();
-	var scrollTop = (details.offset().top) - 155;
+	var $details = $('.product-details-container');
+	var heroOverlap = 155;
+	var detailsHeight = $('#product-details').outerHeight();
+	var scrollTop = ($details.offset().top) - heroOverlap;
+	var offset, dimensionsTop, activeVariant;
 
+	// Fix/unfix the container on scroll
 	$(window).scroll(function() {
-		var offset = $(this).scrollTop();
-		var dimensionsTop = $('.product-dimensions').offset().top;
+		offset = $(this).scrollTop();
+		dimensionsTop = $('.product-dimensions').offset().top;
+		
 		//Fix product details
 		if( offset >= scrollTop ) {
-			details.addClass('scrolled');
+			$details.addClass('fixed');
 		} 
 		//Unfix and position product details
-		if( (offset + detailsHeight + 155) >= dimensionsTop ) {
-			details.removeClass('scrolled');
-			details.css({'position': 'absolute', 'top': dimensionsTop - detailsHeight});
+		if( (offset + detailsHeight + heroOverlap) >= dimensionsTop ) {
+			$details.removeClass('fixed');
+			$details.css({'position': 'absolute', 'top': dimensionsTop - detailsHeight});
 		} 
 		//Unfix and return to OG position
 		if( offset < scrollTop ) {
-			details.removeClass('scrolled');
-			details.css({'position': 'relative', 'top': 0 });
+			$details.removeClass('fixed');
+			$details.css({'position': 'relative', 'top': 0 });
 		}
 		// console.log(offset, dimensionsTop, detailsHeight);
 	});
+
+	// var activeVariant = $('.swatch-toggle input:checked');
+	// console.log(activeVariant);
+
+	$('.swatch-toggle').on('mouseup', function() {
+		
+		activeVariant = $(this).attr('for');
+		console.log(activeVariant);
+		
+		$('.togglable')
+			.addClass('hidden')
+			.each(function() {
+				if($(this).data('id') === activeVariant) {
+					$(this).removeClass('hidden');
+				}
+			});
+
+	});
 };
 
-cofo.productGallery = function() {
+cofo.initProductGallery = function() {
 	//Determine which image has been clicked and open the gallery
 	$('.open').on('click', function(){
 		$('.image-gallery').fadeIn();
 		var activeClass = $(this).siblings().attr('class');
 		//Match images by class
-		$('.thumbnail-img').each(function (index){
+		$('.thumbnail-img').each(function(){
 			if($(this).hasClass(activeClass)){
 				$(this).addClass('active');
 				//Clone the active thumbnail and add to main gallery element

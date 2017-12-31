@@ -7,6 +7,9 @@
  * @package ndrscrs
  */
 
+wp_enqueue_style('threesixty_style', '//' . $_SERVER['HTTP_HOST'] . '/wp-content/themes/cofodev/assets/js/threesixty-slider/styles/threesixty.css');
+wp_enqueue_script( 'threesixty_script', '//' . $_SERVER['HTTP_HOST'] . '/wp-content/themes/cofodev/assets/js/threesixty-slider/threesixty-min.js', array('jquery'), '2.0.4', true);
+wp_enqueue_script( 'threesixty_plugin', '//' . $_SERVER['HTTP_HOST'] . '/wp-content/themes/cofodev/assets/js/threesixty-slider/plugins/threesixty.fullscreen-min.js', array('threesixty_script'), '1.0.0', true);
 get_header(); 
 ?>
 
@@ -15,9 +18,14 @@ get_header();
 
 <?php
 		while ( have_posts() ) : the_post();
-			// $productID = get_field('product_id');
+			$productVariants = get_post_meta($post->ID, "gwsh_product_variants", true);
 			$productID = get_post_meta($post->ID, "gwsh_product_id", true);
 			$product = gwsh_getProduct($productID);
+			$selected = $product->variants[0]->product_id . "_" . $product->variants[0]->id;
+
+			// Load the product variants into the page as a JS variable
+			// that can be referenced later in scripts.js
+			wp_add_inline_script('cofo-scripts', 'var variants = ' . $productVariants, 'before'); 
 
 			//Make an array of all the product images to grab variant swatches
 			$productImages = array();
@@ -27,55 +35,73 @@ get_header();
 
 ?>
 			<!-- Add fallback for no product available -->
-
+			<!-- ########## HERO IMAGE ########## -->
 			<div class="product-hero hero">
-				<div class="hero" style="background-image: url(<?php the_post_thumbnail_url(); ?>)"></div>
+<?php
+				if( have_rows('hero_image') ):
+					while ( have_rows('hero_image') ): the_row();
+						$variant = get_sub_field('variant');
+	    				$image = get_sub_field('image'); 
+?>
+				<div class="togglable hero <?php if($selected != $variant) echo "hidden"; ?>" style="background-image: url(<?php echo $image; ?>)" data-id="<?php echo $variant; ?>"></div>
+<?php
+					endwhile;
+				endif;
+?>
 			</div>
-			<div class="medium-container fixed">
-				<div class="product-details bordered">
+
+			<!-- ########## PRODUCT DETAILS (NAME, PRICE, VARIANTS, ADD TO CART) ########## -->
+			<div class="product-details-container medium-container">
+				<div id="product-details" class="bordered">
 					<h4>$<?php echo $product->variants[0]->price; ?></h4>
-					<h3><?php echo $product->title; ?></h3>
+					<h3><?php the_title(); ?></h3>
 
 <?php
-					foreach ($product->options as $option) :
+			foreach ($product->options as $option) :
 ?>
 					<div class="variant-attribute">
 						<p><?php echo $option->name; ?></p>
 						<ul id="variant-attribute-options">
 <?php 
-						$cnt = 0;
-						foreach($product->variants as $variant) : // This inner loop will need to change when there are more than one $production->options
-							//Remove special characters and whitespace from variant title to match variant swatch image name
-							$scrubTitle = preg_replace("/[^a-zA-Z]/", "", strtolower($variant->title));
-							foreach($productImages as $src){
-								if(strpos($src, $scrubTitle)){
-									$imgSrc = $src;
-								}
-							}
-						    
+				$cnt = 0;
+				// $selected = "";
+
+				foreach($product->variants as $variant) : // This inner loop will need to change when there are more than one $production->options
+
+					$id = $variant->product_id . "_" . $variant->id;
+					// if($cnt == 0) $selected = $id;
+
+					//Remove special characters and whitespace from variant title to match variant swatch image name
+					$scrubTitle = preg_replace("/[^a-zA-Z]/", "", strtolower($variant->title));
+					foreach($productImages as $src){
+						if(strpos($src, $scrubTitle)){
+							$imgSrc = $src;
+						}
+					}
 ?>
 							<li>
-								<label for="<?php echo $variant->product_id . "_" . $variant->id; ?>">
-									
-									<input type="radio" name="variant" value="<?php echo $variant->id; ?>" id="<?php echo $variant->product_id . "_" . $variant->id; ?>" <?php if(!$cnt) { ?>checked<?php } ?>>
+								<label class="swatch-toggle" for="<?php echo $variant->product_id . "_" . $variant->id; ?>">
+									<input type="radio" name="variant" value="<?php echo $variant->id; ?>" id="<?php echo $id; ?>" <?php if(!$cnt) { ?>checked<?php } ?>>
 									<img src="<?php echo $imgSrc; ?>" alt="">
 								</label>
 							</li>
 <?php
-							$cnt++;
-						endforeach;
+					$cnt++;
+				endforeach;
 ?>
 						</ul>
 					</div>
 
 <?php
-					endforeach;
+			endforeach;
 ?>
 					<button id="add-to-cart">Add to cart</button>
 				</div>
 			</div>
+
 			<div class="medium-container product-container">
 
+				<!-- ########## PRODUCT DESCRIPTION ########## -->
 				<div class="product-text offset">
 					<?php the_content(); ?>
 					<div class="social">
@@ -90,60 +116,123 @@ get_header();
 					</div>
 				</div>
 
+				<!-- ########## 360 IMAGE VIEWER ########## -->
 				<div class="product-360 offset">
-					<?php if( have_rows('360_images') ): ?>
-						<div class="360-images-container">
-		    			<?php while( have_rows('360_images') ): the_row(); 
-		    				
-		    				$image = get_sub_field('360_single_image'); ?>
-		    				<?php if( $image ): ?>
-	    						<img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt'] ?>" />
-	    					<?php endif; ?>
+<?php 
+				if( have_rows('360_image_viewer') ): 
+    				$variantCnt = 0;
+    				$viewerScript = "";
+	    			
+	    			while( have_rows('360_image_viewer') ): the_row(); 
+		    			$variant = get_sub_field('variant');
+	    				$images = get_sub_field('images'); 
+	    				$firstImage = $images[0]; // get the first image
+	    				$ext = array(); preg_match('/\.\w{3,4}($|\?)/', $firstImage['url'], $ext); //get the file extension of the first image
+	    				$path = dirname($firstImage['url']); //get the file path of the first image
+	    				$path = explode("http://", $path);
+	    				$path = explode($_SERVER["HTTP_HOST"], $path[1]);
+	    				$filePrefix = preg_replace("/[^a-zA-Z]/", "-", strtolower(get_the_title())) . "-" . preg_replace("/[^a-zA-Z]/", "", strtolower($product->variants[$variantCnt++]->title)) . "-";
 
-		    			<?php endwhile; ?>
-		    			</div>
-		    		<?php endif; ?>
-					<p><?php the_field('360_image_text'); ?></p>
+?>
+					<div id="viewer_<?php echo $variant; ?>" class="threesixty" data-id="<?php echo $variant; ?>">
+						<div class="spinner"><span>0%</span></div>
+						<ol class="threesixty_images"></ol>
+					</div>
+<?php
+
+						$viewerScript .= "$(document).ready(function() {\n";
+						$viewerScript .= "	initViewer_" . $variant . "();\n";
+						$viewerScript .= "	var viewer_" . $variant . ";\n";
+						$viewerScript .= "	function initViewer_" . $variant . "() {\n";
+						$viewerScript .= "		viewer_" . $variant . " = $('#viewer_" . $variant . "').ThreeSixty({\n";
+						$viewerScript .= "			totalFrames: " . sizeof($images) . ",\n"; // Total no. of image you have for 360 slider"
+						$viewerScript .= "			endFrame: " . sizeof($images) . ",\n"; // end frame for the auto spin animation
+						$viewerScript .= "			currentFrame: 1,\n"; // This the start frame for auto spin
+						$viewerScript .= "			imgList: '.threesixty_images',\n"; // selector for image list
+						$viewerScript .= "			progress: '.spinner',\n"; // selector to show the loading progress
+						$viewerScript .= "			imagePath:'" . $path[1] . "/',\n"; // path of the image assets
+						$viewerScript .= "			filePrefix: '" . $filePrefix . "',\n"; // file prefix if any
+						$viewerScript .= "			ext: '" . $ext[0] . "',\n"; // extention for the assets
+						$viewerScript .= "			height: 1000,\n";
+						$viewerScript .= "			width: 447,\n";
+						$viewerScript .= "			navigation: true,\n";
+						$viewerScript .= "			plugins: ['ThreeSixtyFullscreen']\n";
+						$viewerScript .= "		});\n";
+						$viewerScript .= "	}\n";
+						$viewerScript .= "});\n";
+
+					endwhile;
+
+					// echo "<pre>";
+					// var_dump($viewerScript);
+					// echo "</pre>";
+
+					wp_add_inline_script('threesixty_script', $viewerScript, 'after'); 
+
+				endif; 
+?>
+					<p><?php the_field('360_text'); ?></p>
 				</div>
 
+				<!-- ########## PRODUCT DETAIL IMAGES ########## -->
+<?php 
+				if( have_rows('product_shots') ): 
+					
+					$cnt = 0;
+?>
 				<div class="product-explore offset">
-					<?php if( have_rows('product_shots') ): 
-						$cnt = 0; ?>
-		    			<?php while( have_rows('product_shots') ): the_row(); 
-		    				
-		    				$image = get_sub_field('image');
-		    				$content = get_sub_field('text'); ?>
-
-		    				<?php if( $image ): ?>
-		    					<div class="img-container">
-	    							<img class="no<?php echo $cnt; ?>" src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt'] ?>" />
-	    							<div class="open"></div>
-		    					</div>
-	    					<?php endif; ?>
-
-	    					<p><?php if( $content ): ?>
-	    						<?php echo $content; ?>
-	    					<?php endif; ?></p>
-
-		    			<?php $cnt++;
-							endwhile; ?>
-		    		<?php endif; ?>
+<?php
+					while( have_rows('product_shots') ): the_row();
+	    				$variant = get_sub_field('variant');
+						if( have_rows('images') ) : 
+							while( have_rows('images') ) : the_row();
+								$image = get_sub_field('image');
+								$description = get_sub_field('description');
+?>
+					<div class="togglable img-container <?php if($selected != $variant) echo "hidden"; ?>" data-id="<?php echo $variant; ?>" >
+						<img class="no<?php echo $cnt; ?>" src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt'] ?>" />
+						<div class="open"></div>
+    					<p><?php if( $description ) echo $description; ?></p>
+					</div>
+<?php
+								$cnt++;
+							endwhile;
+						endif;
+					endwhile; 
+?>
 				</div>
+<?php
+				endif; 
+?>
 			</div>
 
-			<?php 
-				get_template_part( 'template-parts/content', 'gallery' );
-			?>
+			<!-- ########## GALLERY ########## -->
+<?php 
+			get_template_part( 'template-parts/content', 'gallery' );
+?>
 
+			<!-- ########## DIMENSIONS ########## -->
+<?php
+				if( have_rows('product_dimensions_images') ) :
+?>
 			<div class="product-dimensions large-container">
 				<p class="pre-header">Dimensions</p>
 				<h2><span class="highlight">Imagine <?php the_title(); ?> in your space</span></h2>
-				<?php $image = get_field('product_dimensions_image');
-				if( !empty($image) ): ?>
-					<img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" />
-				<?php endif; ?>
+<?php
+					while( have_rows('product_dimensions_images')) : the_row();
+						$variant = get_sub_field('variant');
+						$image = get_sub_field('image');
+?>
+				<img class="togglable <?php if($selected != $variant) echo "hidden"; ?>" data-id="<?php echo $variant; ?>" src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" />
+<?php 
+					endwhile;
+?>
 			</div>
+<?php
+				endif; 
+?>
 
+			<!-- ########## CRAFTSMANSHIP ########## -->
 			<div class="product-craftsmanship text-images-section">
 				<p class="pre-header">Craftsmanship</p>
 				<h2><span class="highlight"><?php the_field('craftsmanship_title'); ?></span></h2>
@@ -155,14 +244,16 @@ get_header();
 		    		<?php endif; ?>
 		    	</div>
 			</div>
-			<?php $post_object = get_field('designer');
+
+			<!-- ########## PRODUCT DESIGNER ########## -->
+<?php 
+			$post_object = get_field('designer');
 
 			if( $post_object ): 
+				$post = $post_object;
+				setup_postdata( $post ); 
 
-			$post = $post_object;
-			setup_postdata( $post ); 
-
-			?>
+?>
 		   <div class="product-designer">
 		   		<div class="designer-details">
 		   			<img src="<?php the_post_thumbnail_url(); ?>" alt="">
