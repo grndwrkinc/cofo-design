@@ -25,11 +25,13 @@ get_header(); ?>
 				</div>
 			</div>
 			<div class="section-container text-section-offset">
-				<?php
-				while ( have_posts() ) : the_post();
-					the_content(); 
-				endwhile; // End of the loop.
-				?>
+				<div class="medium-container">
+					<?php
+					while ( have_posts() ) : the_post();
+						the_content(); 
+					endwhile; // End of the loop.
+					?>
+				</div>
 			</div>
 			<div class="section-container text-images-section">
 				<h2><?php the_field('text_images_section_header') ?></h2>
@@ -74,10 +76,14 @@ get_header(); ?>
 	    			</div>
 	    		<?php endif; ?>
 			</div>
-			<div class="section-container dark">
+			<div class="section-container about-meet dark">
 				<div class="medium-container">
 					<h2><?php the_field('story_section_header'); ?></h2>
 					<p><?php the_field('story_section_text'); ?></p>
+				</div>
+			</div>
+			<div class="section-container about-video">
+				<div class="medium-container">
 					<?php the_field('story_section_video'); ?>
 				</div>
 			</div>

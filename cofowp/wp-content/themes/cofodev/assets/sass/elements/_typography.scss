@@ -24,16 +24,18 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
 	@include font-size(6.8);
+	@include line-height(7.2);
 }
 
 h2 {
 	@include font-size(4.2);
-	@include line-height(4.2);
+	@include line-height(4.8);
 	margin-bottom: 2.4rem;
 }
 
 h3 {
 	@include font-size(2.6);
+	@include line-height(4.8);
 	margin-bottom: 1.2rem;
 }
 
@@ -44,8 +46,15 @@ h4 {
 
 p {
 	margin-bottom: 1.2rem;
-	@include font-size(1.4);
+	@include font-size(1.6);
+	@include line-height(2.4);
 	color: $black;
+}
+
+li {
+	margin-bottom: 1.2rem;
+	@include font-size(1.6);
+	@include line-height(2.4);
 }
 
 dfn, cite, em, i {

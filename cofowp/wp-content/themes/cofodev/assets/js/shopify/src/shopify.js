@@ -56,7 +56,7 @@ const initCart = function(checkout) {
  * addToCartListener()
  */
 const addToCartListener = function(checkout) {
-	$('#add-to-cart').on('click', function() { 
+	$('#add-to-cart').on('click', function() {  
 		const checkoutId = checkout.id;
 		const variantId = $('input[name=variant]:checked').val();
 		const lineItems = [{
@@ -92,7 +92,7 @@ const swapProductImagesListener = function(checkout) {
 const getCartContents = function(checkout) {
 	const $cart = $('#cart');
 	const lineItems = checkout.lineItems.map(lineItem => {
-		return [lineItem.id,lineItem.variant.id,lineItem.title,lineItem.variant.title,lineItem.quantity,lineItem.variant.price]
+		return [lineItem.id,lineItem.variant.id,lineItem.title,lineItem.variant.title,lineItem.quantity,lineItem.variant.price,lineItem.variant.image.src]
 	});
 
 	let cartContent;
@@ -106,29 +106,29 @@ const getCartContents = function(checkout) {
 			const variantTitle = lineItem[3];
 			const variantQuantity = lineItem[4];
 			const variantPrice = lineItem[5];
+			const variantImg = lineItem[6];
 
 			markup += '<tr class="cart-item">';
-			markup += 	'<td><a href="#" class="remove-line-item" data-product-id="' + lineItemID + '" data-variant-id="' + variantID + '">( x )</a></td>';
+			markup += 	'<td><a href="#" class="remove-line-item" data-product-id="' + lineItemID + '" data-variant-id="' + variantID + '"> </a></td>';
+			markup += 	'<td class="product-img"><img src="' + variantImg + '" alt=""></td>';
 			markup +=	'<td class="product">';
 			markup +=		'<span class="product-title">' + productTitle + '</span><br>';
-			markup +=		'<span class="variant-title">' + variantTitle + '</span>';
-			markup +=	'</td>';
-			markup +=	'<td class="variant-price">$';
-			markup +=		parseFloat(variantPrice).formatMoney(2);
+			markup +=		'<span class="variant-title">Style: ' + variantTitle + '</span>';
 			markup +=	'</td>';
 			markup +=	'<td class="variant-quantity">';
 			markup +=		'<input data-product-id="' + lineItemID + '" data-variant-id="' + variantID + '" type="number" min="0" pattern="[0-9]*" value="' + variantQuantity + '">';
 			markup +=	'</td>';
-			markup +=	'<td class="total">$';
-			markup +=		(variantQuantity * variantPrice).formatMoney(2);
+			markup +=	'<td class="variant-price right">$';
+			markup +=		parseFloat(variantPrice).formatMoney(2);
 			markup +=	'</td>';
 			markup +='</tr>';
 			return markup;
-		}, "<tr><th></th><th>Product</th><th>Price</th><th>Quantity</th><th>Total</th></tr>");
+		}, "<tr><th></th><th colspan='2'>Description</th><th>Qty</th><th class='right'>Price</th></tr>");
 
 		cartContent = '<table>' + cartContent + '</table>';
 		cartContent += '<div class="cart-footer">';
-		cartContent += '	<div class="cart-subtotal" style="height:50px;"><span class="cart-subtotal-title">Subtotal</span><span class="cart-subtotal-amount">$' + parseFloat(checkout.totalPrice).formatMoney(2) + '</span></div>';
+		cartContent += '	<div class="cart-subtotal"><h4><span class="cart-subtotal-title">Subtotal</span><span class="cart-subtotal-amount">$' + parseFloat(checkout.totalPrice).formatMoney(2) + '</span></h4>';
+		cartContent += '	<p>Shipping & taxes calculated at checkout</p></div>';
 		cartContent += '	<div><a href="#" class="btn btn-update-cart">Update</a> <a href="#" class="btn btn-checkout">Checkout</a></div>';
 		cartContent += '</div>';
 	}
