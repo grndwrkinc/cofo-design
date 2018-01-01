@@ -1,5 +1,5 @@
 html {
-	font-size: 62.5%;
+	font-size: 62.5%; //10px
 }
 
 body,
@@ -24,13 +24,13 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
 	@include font-size(6.8);
-	@include line-height(7.2);
+	@include line-height(6.8);
 }
 
 h2 {
 	@include font-size(4.2);
-	@include line-height(4.8);
-	margin-bottom: 2.4rem;
+	@include line-height(4.2);
+	margin-bottom: 3rem;
 }
 
 h3 {
@@ -45,9 +45,9 @@ h4 {
 }
 
 p {
-	margin-bottom: 1.2rem;
 	@include font-size(1.6);
 	@include line-height(2.4);
+	margin-bottom: 3rem;
 	color: $black;
 }
 
@@ -129,6 +129,7 @@ span.lowlight {
     color: $grey;
     font-weight: 600;
     letter-spacing: 2px;
+    margin-bottom: 1rem;
 }
 
 

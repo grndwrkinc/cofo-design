@@ -151,7 +151,6 @@ get_header();
 						$viewerScript .= "			imgArray: " . $imageArrayString . ",\n"; // path of the image assets
 						$viewerScript .= "			height: 384,\n";
 						$viewerScript .= "			width: 576,\n";
-						// $viewerScript .= "			navigation: false,\n";
 						$viewerScript .= "			responsive: true,\n";
 						$viewerScript .= "			showCursor: true,\n";
 						$viewerScript .= "			plugins: ['ThreeSixtyFullscreen']\n";
