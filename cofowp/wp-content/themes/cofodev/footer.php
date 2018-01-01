@@ -17,7 +17,7 @@
 		<div class="footer-cta dark">
 			<div class="medium-container">
 				<a href="<?php get_home_url(); ?>">
-					<img class="logo" src="/wp-content/themes/cofodev/assets/images/cofo_logo_white.png" alt="">
+					<img class="logo" src="/wp-content/themes/cofodev/assets/images/logo-white.svg" alt="">
 				</a>
 				<div class="newsletter">
 					<p>Let's keep in touch!</p>
@@ -30,7 +30,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="footer-nav">
+		<div class="footer-nav medium-container">
 			<?php wp_nav_menu( array(
 			    'menu' => 'Footer Menu' // Do not fall back to first non-empty menu.
 			) ); ?>

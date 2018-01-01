@@ -4,8 +4,9 @@
 	justify-content: center;
 	
 	li {
-		padding: 0 2rem;
-		@include font-size(1.4);
+		padding: 0 1.4rem;
+		margin: 0;
+		@include font-size(1.6);
 	}
 }
 
@@ -22,8 +23,8 @@
 		margin: 0 1rem;
 
 		a {
-			width: 48px;
-			height: 48px;
+			width: 54px;
+			height: 54px;
 			display: block;
 		}
 
@@ -32,25 +33,26 @@
 			top: 50%;
 			left: 50%;
 			transform: translate(-50%, -50%);
+			font-size: 2.4rem;
 		}
 	}
 }
 
 .footer-nav {
-	max-width: 1200px;
-	width: 100%;
-	margin: 2.4rem auto;
-	@include semi-bold;
+	margin: 3rem auto 1.4rem;
 }
 
 footer {
 	p {
 		text-align: center;
-		@include font-size(1.2);
+		@include font-size(1.4);
+		font-weight: 600;
+		color: #696969;
+		margin-bottom: 6.5rem;
 	}
 
 	.btn {
-		border: 2px solid white;
+		border: 3px solid white;
 		display: inline-block;
 	}
 
@@ -59,12 +61,12 @@ footer {
 	}
 
 	img {
-		width: 84px;
+		width: 102px;
 	}
 }
 
 .footer-cta {
-	padding: 4.8rem 0;
+	padding: 8rem 0;
 	
 	.medium-container {
 		display: flex;
@@ -74,10 +76,10 @@ footer {
 }
 
 .newsletter p {
-	@include font-size(1.4);
+	@include font-size(1.8);
 	text-transform: uppercase;
 	font-weight: bold;
 	letter-spacing: 1px;
 	text-align: left;
-	@include semi-bold;
+	margin-bottom: 1rem;
 }

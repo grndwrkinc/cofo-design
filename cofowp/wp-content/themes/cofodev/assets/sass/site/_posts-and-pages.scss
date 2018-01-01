@@ -55,17 +55,9 @@ p:empty,
 	margin: 0 auto;
 }
 
-.hero-text {
-	// padding-top: 10%;
-	// position: absolute;
-	// top: 50%;
-	// left: 50%;
-	// transform: translate(-50%, -50%);
-}
-
 .details {
 	background: $black;
-	padding: 3.6rem;
+	padding: 3.8rem;
 
 	p, h3 {
 		color: white;
@@ -76,9 +68,27 @@ p:empty,
 	}
 }
 
+.text-section-offset {
+	width: 75%;
+	margin-left: 10%;
+	background-color: $lightgrey;
+	padding: 10rem;
+
+	h2 {
+		width: 80%;
+	}
+
+	.btn {
+		display: inline-block;
+	}
+
+	.medium-container {
+		padding: 0 0 6rem 0;
+	}
+}
+
 
 //HOME PAGE
-
 .home-hero, .product-hero, .hero {
 	min-height: calc(100vh - 151px);
 	background-repeat: no-repeat;
@@ -87,7 +97,7 @@ p:empty,
 }
 
 .hero {
-	height: calc(85vh - 162px);
+	min-height: calc(85vh - 151px);
 	position: relative;
 }
 
@@ -139,15 +149,11 @@ p:empty,
 
 .home-about {
 	position: relative;
+	z-index: 1;
 	padding-top: 0;
 	padding-bottom: 0;
 	margin-top: -13.28%;
 	margin-bottom: -13.28%;
-
-	.text-lego {
-		position: relative;
-		z-index: 1;
-	}
 
 	h2 {
 		width: 170px;
@@ -161,7 +167,7 @@ p:empty,
 }
 
 .home-challenge {
-	margin-bottom: 30rem;
+	margin-bottom: 25rem;
 	position: relative;
 
 	.medium-container,
@@ -184,8 +190,7 @@ p:empty,
 	}
 
 	.text-section-offset {
-		padding-right: 19rem;
-		padding-bottom: 20rem;
+		padding: 12rem 19rem 20rem 14rem;
 		margin-left: 0;
 	}
 
@@ -207,7 +212,6 @@ p:empty,
 
 
 //PRODUCT PAGE
-
 .product-hero {
 	
 }
@@ -420,9 +424,10 @@ p:empty,
 }
 
 //ABOUT PAGE
-
 .page-about {
 	.hero-text {
+
+		margin-left: 25%;
 
 		h1 {
 			width: 50%;
@@ -430,33 +435,23 @@ p:empty,
 
 		.bordered {
 			margin-left: 8rem;
+			
+			p {
+				margin-bottom: 0;
+			}
 		}
+
 	}
 
 	.text-section-offset {
-		padding-bottom: 24rem;
-		margin-bottom: -24rem;
+	    padding: 10rem;
+		padding-bottom: 18rem;
+		margin-bottom: -18rem;
 		width: 60%;
 	}
 
-}
-
-.text-section-offset {
-	width: 75%;
-	margin-left: 10%;
-	background-color: $lightgrey;
-	padding: 12rem 14rem;	
-
-	h2 {
-		width: 80%;
-	}
-
-	.btn {
-		display: inline-block;
-	}
-
-	.medium-container {
-		padding: 0 0 12rem 0;
+	.what-we-do h2 {
+		width: 36%;
 	}
 }
 

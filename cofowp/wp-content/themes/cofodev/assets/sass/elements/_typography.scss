@@ -9,7 +9,7 @@ select,
 textarea {
 	color: $color__text-main;
 	font-family: $font__main;
-	@include font-size(1);
+	@include font-size(1.6);
 	line-height: $font__line-height-body;
 }
 
@@ -35,12 +35,13 @@ h2 {
 
 h3 {
 	@include font-size(2.6);
-	@include line-height(4.8);
+	@include line-height(2.6);
 	margin-bottom: 1.2rem;
 }
 
 h4 {
 	@include font-size(1.8);
+	@include line-height(1.8);
 	@include semi-bold;
 }
 

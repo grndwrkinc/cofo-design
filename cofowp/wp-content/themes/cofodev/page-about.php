@@ -17,15 +17,15 @@ get_header(); ?>
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
 			<div class="hero" style="background-image: url(<?php the_post_thumbnail_url(); ?>)">	
-				<div class="hero-text">
-					<h1 class="white"><span class="highlight"><?php the_title(); ?></span></h1>
+				<div class="hero-text large-container">
+					<h1><span class="highlight"><?php the_title(); ?></span></h1>
 					<div class="bordered">	
 						<p><?php the_field('subtitle'); ?></p>
 					</div>
 				</div>
 			</div>
 			<div class="section-container text-section-offset">
-				<div class="medium-container">
+				<div class="medium-container what-we-do">
 					<?php
 					while ( have_posts() ) : the_post();
 						the_content(); 
@@ -34,7 +34,7 @@ get_header(); ?>
 				</div>
 			</div>
 			<div class="section-container text-images-section">
-				<h2><?php the_field('text_images_section_header') ?></h2>
+				<h2><span class="highlight"><?php the_field('text_images_section_header') ?><span></h2>
 	    		<?php if( have_rows('text_images_group') ): ?>
 	    			<div class="inner">
 	    			<?php while( have_rows('text_images_group') ): the_row(); 
