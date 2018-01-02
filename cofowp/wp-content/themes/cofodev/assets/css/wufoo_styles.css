@@ -10,7 +10,7 @@ button,
 input,
 select,
 textarea {
-  color: #404040;
+  color: #141414;
   font-family: "Montserrat", sans-serif;
   font-size: 16px;
   font-size: 1rem;
@@ -64,13 +64,202 @@ a {
   text-decoration: none;
   color: inherit; }
 
-pre {
-  background: #eee;
-  font-family: "Courier 10 Pitch", Courier, monospace;
-  font-size: 15px;
-  font-size: 0.9375rem;
-  line-height: 1.6;
-  margin-bottom: 1.6em;
-  max-width: 100%;
-  overflow: auto;
-  padding: 1.6em; }
+header.info[class] {
+  display: none;
+}
+
+.section, form li.first, form li.section {
+  background-color: #EEEEEE;
+  padding: 2.4rem;
+  text-align: center;
+  text-transform: none;
+  margin-top: 6rem;
+}
+
+form li.first {
+  margin-top: 0;
+}
+
+.wufoo .section h3 {
+  text-transform: none;
+  font-size: 2.4rem;
+  border-top: 0;
+}
+
+.wufoo .section div {
+  font-size: 1.4rem;
+}
+
+.wufoo .section h3, .wufoo .section div {
+  font-family: "Montserrat", sans-serif;
+}
+
+.section section div {
+  color: #696969;
+}
+
+.wufoo label.desc, .wufoo legend.desc {
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  font-family: "Montserrat", sans-serif;
+}
+
+form span.req {
+  display: none !important;
+}
+
+form li:not(.section) {
+  border-bottom: 1px solid #141414;
+  padding: 12px 1.5%;
+}
+
+.wufoo li.focused {
+  background-color: white;
+}
+
+li.btn-next {
+  text-align: right;
+  border-bottom: none !important;
+}
+
+.btn input, .wufoo input.btTxt.submit {
+  background-color: #141414;
+  color: white;
+  padding: 2rem 3rem;
+  font-size: 14px;
+  text-transform: uppercase;
+  border: 0;
+  display: inline-block;
+  font-weight: 600;
+}
+
+.wufoo .paging-context, 
+.marker, 
+span.symbol,
+#previousPageButton {
+  display: none;
+}
+
+input.medium, select.medium {
+  width: 97%;
+}
+
+.wufoo input.text, .wufoo textarea.textarea, 
+.wufoo input.file, .wufoo select.select,
+.wufoo label.choice {
+  font-size: 26px !important;
+  font-weight: 300;
+  color: #696969;
+  border: 0;
+  background: none;
+  font-family: "Montserrat", sans-serif;
+}
+
+.wufoo textarea.textarea, .wufoo label.choice {
+  font-size: 16px !important;
+}
+
+.wufoo textarea.textarea {
+  min-width: 97%;
+}
+
+.wufoo input.file {
+  font-size: 12px !important;
+}
+
+form li.dropdown div select.select {
+  background: transparent;
+  background-size: 40px;
+  background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+  background-repeat: no-repeat;
+  background-position-x: 100%;
+  background-position-y: 0px;
+  -webkit-appearance: none;
+}
+
+form li.dropdown div select.select::-ms-expand {
+    display: none;
+}
+
+form li.leftHalf {
+  width: calc(47% - 1px) !important;
+}
+
+.leftHalf {
+  border-right: 1px solid #141414;
+}
+
+.full {
+  width: 100% !important;
+}
+
+.datepicker {
+  transform: translateY(-24px);
+}
+
+.wufoo li.dateofbirth {
+  width: 100%;
+  position: relative;
+}
+
+.wufoo li.dateofbirth span {
+  width: 30%;
+  border-right: 1px solid #141414;
+  padding: 0 12px;
+  margin: 0;
+}
+
+.wufoo li.dateofbirth span:nth-of-type(5) {
+  border-right: 0;
+}
+
+.wufoo li.dateofbirth span input {
+  width: 100%;
+}
+
+#cal227 {
+  position: absolute;
+  left: 160px;
+  border-right: none;
+}
+
+form li.date span label {
+  text-align: left;
+  color: #696969;
+}
+
+form li .instruct {
+  visibility: visible;
+  left: 0 !important;
+  opacity: 1;
+  position: relative;
+}
+
+form p.error {
+  font-family: "Montserrat", sans-serif;
+  color: #141414;
+}
+
+.wufoo li.checkbox {
+  width: 100%;
+}
+
+.noborder, form li.buttons {
+  border: none !important;
+}
+
+.confirm h2 {
+  color: #696969;
+  font-family: "Montserrat", sans-serif;
+  font-size: 42px;
+  font-weight: bold;
+  width: 50%;
+  margin: 0 auto;
+}
+
+
+
+
+
+
+
