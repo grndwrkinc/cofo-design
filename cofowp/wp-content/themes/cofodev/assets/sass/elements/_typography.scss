@@ -19,18 +19,19 @@ h1, h2, h3, h4, h5, h6 {
 	font-weight: bold;
 	text-transform: uppercase;
 	color: $black;
-	letter-spacing: 1px;
 }
 
 h1 {
 	@include font-size(6.8);
 	@include line-height(6.8);
+	letter-spacing: -0.6px;	
 }
 
 h2 {
 	@include font-size(4.2);
 	@include line-height(4.2);
 	margin-bottom: 4rem;
+	letter-spacing: -0.6px;
 }
 
 h3 {
@@ -133,7 +134,7 @@ span.lowlight {
 	text-transform: uppercase;
     color: $grey;
     font-weight: 600;
-    letter-spacing: 2px;
+    letter-spacing: 3.2px;
     margin-bottom: 1rem;
 }
 
