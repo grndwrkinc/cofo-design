@@ -4,7 +4,7 @@
     "fields": [
         {
             "key": "field_5a39618c94fab",
-            "label": "Text Images Section Header",
+            "label": "Differentiators Section Heading",
             "name": "text_images_section_header",
             "type": "text",
             "instructions": "",
@@ -23,7 +23,7 @@
         },
         {
             "key": "field_5a3961af94fac",
-            "label": "Text Images Group",
+            "label": "Differentiators Section Content",
             "name": "text_images_group",
             "type": "repeater",
             "instructions": "",
@@ -106,7 +106,7 @@
         },
         {
             "key": "field_5a3967e095852",
-            "label": "Process Section Header",
+            "label": "Process Section Heading",
             "name": "process_section_header",
             "type": "text",
             "instructions": "",
@@ -125,9 +125,9 @@
         },
         {
             "key": "field_5a3967f395853",
-            "label": "Process Section Text",
+            "label": "Process Section Description",
             "name": "process_section_text",
-            "type": "text",
+            "type": "textarea",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -138,13 +138,13 @@
             },
             "default_value": "",
             "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
+            "maxlength": "",
+            "rows": 3,
+            "new_lines": ""
         },
         {
             "key": "field_5a3967fe95854",
-            "label": "Process Section Group",
+            "label": "Process Section Content",
             "name": "process_section_group",
             "type": "repeater",
             "instructions": "",
@@ -184,7 +184,7 @@
                     "key": "field_5a39681595856",
                     "label": "Text",
                     "name": "text",
-                    "type": "text",
+                    "type": "textarea",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -195,15 +195,15 @@
                     },
                     "default_value": "",
                     "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": ""
+                    "maxlength": "",
+                    "rows": 3,
+                    "new_lines": ""
                 }
             ]
         },
         {
             "key": "field_5a396aed49e06",
-            "label": "Story Section Header",
+            "label": "Cofounders Section Heading",
             "name": "story_section_header",
             "type": "text",
             "instructions": "",
@@ -222,7 +222,7 @@
         },
         {
             "key": "field_5a396af849e07",
-            "label": "Story Section Text",
+            "label": "Cofounders Section Description",
             "name": "story_section_text",
             "type": "text",
             "instructions": "",
@@ -241,7 +241,7 @@
         },
         {
             "key": "field_5a396b0249e08",
-            "label": "Story Section Video",
+            "label": "Cofounders Section Video",
             "name": "story_section_video",
             "type": "text",
             "instructions": "",
@@ -260,7 +260,7 @@
         },
         {
             "key": "field_5a396b4549e09",
-            "label": "Founders Group",
+            "label": "Cofounders Section Content",
             "name": "founders_group",
             "type": "repeater",
             "instructions": "",
@@ -300,7 +300,7 @@
                     "key": "field_5a396b6749e0b",
                     "label": "Text",
                     "name": "text",
-                    "type": "text",
+                    "type": "textarea",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -311,9 +311,9 @@
                     },
                     "default_value": "",
                     "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": ""
+                    "maxlength": "",
+                    "rows": 3,
+                    "new_lines": ""
                 },
                 {
                     "key": "field_5a396b6f49e0c",
@@ -359,5 +359,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1514787901
+    "modified": 1514857506
 }

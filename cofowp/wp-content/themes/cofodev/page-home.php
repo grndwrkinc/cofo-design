@@ -11,7 +11,7 @@ get_header(); ?>
 
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
-			<div class="home-hero" style="background-image: url(<?php the_post_thumbnail_url(); ?>)">
+			<section class="hero" style="background-image: url(<?php the_post_thumbnail_url(); ?>)">
 				<?php
 				while ( have_posts() ) : the_post(); ?>
 				<div class="hero-text large-container">
@@ -33,22 +33,24 @@ get_header(); ?>
 				</div>
 				<?php endwhile; // End of the loop.
 				?>
-			</div>
+			</section>
 			
-			<div class="section-container home-about-img">
-				<?php $image = get_field('secondary_hero_image'); ?>
-				<img src="<?php echo $image['url'] ?>" alt="<?php echo $image['alt']; ?>">
-			</div>
-			
-			<div class="medium-container home-about">
-				<h2><span class="highlight"><?php the_field('secondary_header'); ?></span></h2>
-				<div class="bordered">
-					<p><?php the_field('secondary_text'); ?></p>
-					<a href="/about" class="btn">Learn more <?php the_field('secondary_header'); ?></a>
+			<section class="home-about">
+				<div class="home-about-img">
+					<?php $image = get_field('secondary_hero_image'); ?>
+					<img src="<?php echo $image['url'] ?>" alt="<?php echo $image['alt']; ?>">
 				</div>
-			</div>
+				
+				<div class="medium-container home-about-content">
+					<h2><span class="highlight"><?php the_field('secondary_header'); ?></span></h2>
+					<div class="bordered">
+						<p><?php the_field('secondary_text'); ?></p>
+						<a href="/about" class="btn">Learn more <?php the_field('secondary_header'); ?></a>
+					</div>
+				</div>
+			</section>
 			
-			<div class="section-container home-challenge">
+			<section class="home-challenge">
 				<div class="medium-container">
 					<div class="text-section-offset">
 						<p class="pre-header">Design Challenge</p>
@@ -75,7 +77,7 @@ get_header(); ?>
 			    		<?php endif; ?>
 			    	</div>
 				</div>
-			</div>
+			</section>
 
 
 		</main><!-- #main -->

@@ -77,9 +77,10 @@ footer {
 
 .newsletter p {
 	@include font-size(1.8);
+	line-height: 1;
 	text-transform: uppercase;
 	font-weight: bold;
 	letter-spacing: 1px;
 	text-align: left;
-	margin-bottom: 1rem;
+	margin-bottom: 0.7rem;
 }

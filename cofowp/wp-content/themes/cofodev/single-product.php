@@ -36,7 +36,7 @@ get_header();
 ?>
 			<!-- Add fallback for no product available -->
 			<!-- ########## HERO IMAGE ########## -->
-			<div class="product-hero hero">
+			<div class="hero">
 <?php
 				if( have_rows('hero_image') ):
 					while ( have_rows('hero_image') ): the_row();

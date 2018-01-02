@@ -12,6 +12,9 @@ cofo.init = function() {
 		cofo.initProductGallery();
 	}
 
+	if($('.page-about').length){
+		cofo.fluidVids();
+	}
 };
 
 //Initialize the Product Details container
