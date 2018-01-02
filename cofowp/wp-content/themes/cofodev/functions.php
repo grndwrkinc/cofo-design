@@ -129,7 +129,7 @@ function ndrscrs_scripts() {
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
-
+	
 	//Theme scripts
 	wp_enqueue_script( 'shopify-scripts', '//' . $_SERVER['HTTP_HOST'] . '/wp-content/themes/cofodev/assets/js/shopify/dist/shopify.js', array(), '2.4.1', true);
 	wp_enqueue_script( 'cofo-scripts', '//' . $_SERVER['HTTP_HOST'] . '/wp-content/themes/cofodev/assets/js/scripts-min.js', array(), '2.4.1', true);

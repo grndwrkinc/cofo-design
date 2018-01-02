@@ -80,9 +80,19 @@ textarea {
 			margin-top: 4.8rem;
 		}
 
+		.text-steps span {
+			color: white;
+		}
+
 		li {
 			border-top: 0;
 			width: auto;
+		}
+
+		p {
+			margin-top: 4.8rem;
+			color: white;
+			@include semi-bold;
 		}
 	}
 }
