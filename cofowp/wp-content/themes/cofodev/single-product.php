@@ -232,7 +232,7 @@ get_header();
 			<!-- ########## CRAFTSMANSHIP ########## -->
 			<div class="product-craftsmanship text-images-section">
 				<p class="pre-header">Craftsmanship</p>
-				<h2><span class="highlight"><?php the_field('craftsmanship_title'); ?></span></h2>
+				<h2><span class="highlight" data-title="<?php the_field('craftsmanship_title'); ?>"><?php the_field('craftsmanship_title'); ?></span></h2>
 				<div class="inner">
 		    		<?php if( have_rows('craftsmanship_details') ): ?>
 		    			<?php while( have_rows('craftsmanship_details') ): the_row(); 

@@ -9,8 +9,8 @@ p:empty,
 	@include border-black;
 	background: white;
 	padding: 5rem;
-	min-width: 360px;
-	width: 25%;
+	// min-width: 360px;
+	// width: 25%;
 
 	// p {
 	// 	margin-bottom: 2.4rem;
@@ -68,6 +68,7 @@ p:empty,
 
 .text-section-offset {
 	width: 60%;
+	max-width: 108rem;
 	margin-left: 10%;
 	background-color: $lightgrey;
 	padding: 10rem;
@@ -91,6 +92,9 @@ p:empty,
 .home .hero,
 .single-product .hero {
 	min-height: calc(100vh - 151px);
+}
+.hero-text .bordered {
+	width: 36rem;
 }
 
 
@@ -151,7 +155,9 @@ p:empty,
 	position: absolute;
 	z-index: 1;
 	bottom: -23rem;
-	right: 15%;
+	// right: 15%;
+	left: 50%;
+	transform: translateX(-50%);
 	padding-top: 0;
 	padding-bottom: 0;
 
@@ -162,7 +168,7 @@ p:empty,
 
 	.bordered {
 		margin-left: auto;
-		min-width: 410px;
+		width: 41rem;
 	}
 }
 
@@ -188,7 +194,7 @@ p:empty,
 
 	.text-section-offset {
 		width: 72%;
-		padding: 12rem 19rem 20rem 14rem;
+		padding: 12% 19% 20% 14%;
 		margin-left: 0;
 	}
 
@@ -228,6 +234,7 @@ p:empty,
 	position: absolute;
 	top: -4.8rem;
     right: 0;
+    min-width: 30rem;
 
     h3 {
     	margin-bottom: 0;
@@ -242,7 +249,7 @@ p:empty,
 	position: relative;
 
 	.offset {
-		width: 60%;
+		width: 62%;
 		padding: 3rem 0;
 	}
 	.product-text {
@@ -255,6 +262,10 @@ p:empty,
 
 	.img-container {
 		position: relative;
+
+		img {
+			max-width: 40rem;
+		}
 	}
 
 	.img-container:hover {
@@ -451,8 +462,8 @@ p:empty,
 	}
 
 	&.text-section-offset {
-		padding-bottom: 42rem;
-		margin-bottom: -42rem;
+		padding-bottom: 32%;
+		margin-bottom: -32%;
 	}
 }
 
@@ -468,7 +479,7 @@ p:empty,
 		position: absolute;
 		// top: 10rem;
 		top: 5%;
-		right: 20%;
+		left: 65%;
 		width: 17rem;
 	}
 
@@ -477,20 +488,21 @@ p:empty,
 		
 		.details {
 			transform: translateY(-4.8rem);
-			margin-bottom: -4.8rem;
-			max-width: 480px;
+			margin-bottom: -4.8rem;			
 		}
 
 		&:nth-child(1), &:nth-child(4) {
 			width: 28%;
 
 			.details {
-				width: 85%;
+				max-width: 34.5rem;
+				// width: 85%;
 			}
 		}
 		&:nth-child(2), &:nth-child(3) {
 			.details {
-				width: 65%;
+				max-width: 40rem;
+				// width: 65%;
 			}
 		}
 
@@ -563,7 +575,7 @@ p:empty,
 }
 
 .about-cofounders-video {
-	padding-top: 0;
+	padding: 0 10%;
 	margin-top: -24rem;
 
 	.medium-container {
@@ -607,6 +619,7 @@ p:empty,
 
 	.bordered {
 		transform: translateY(6rem);
+		width: 36rem;
 	}
 
 	img {
@@ -687,7 +700,7 @@ p:empty,
 
 	.bordered {
 		width: auto;
-		min-width: 300px;
+		min-width: 30rem;
 	}
 
 	ul {

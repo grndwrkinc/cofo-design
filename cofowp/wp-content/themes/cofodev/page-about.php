@@ -91,12 +91,10 @@ get_header(); ?>
 				</div>
 
 				<div class="about-cofounders-video">
-					<div class="medium-container">
-						<?php the_field('story_section_video'); ?>
-					</div>
+					<?php the_field('story_section_video'); ?>
 				</div>
 
-				<div class="about-cofounders-founders medium-container">
+				<div class="about-cofounders-founders large-container">
 					<h3>The Cofounders</h3>
 					<?php if( have_rows('founders_group') ): ?>
 		    			<?php while( have_rows('founders_group') ): the_row(); 
