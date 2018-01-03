@@ -36,7 +36,7 @@ hr {
 
 img {
 	height: auto; /* Make sure images are scaled correctly. */
-	max-width: 100%; /* Adhere to container width. */
+	width: 100%; /* Adhere to container width. Let's those images go wild. */
 }
 
 @import "buttons";

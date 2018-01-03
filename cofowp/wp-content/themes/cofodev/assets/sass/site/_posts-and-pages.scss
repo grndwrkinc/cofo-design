@@ -132,20 +132,28 @@ p:empty,
 	}
 }
 
+.home-about {
+	position: relative;
+}
+
 .home-about-img {
 	width: 90%;
 	display: block;
 	margin-left: auto;
 	padding-top: 10%;
+
+	img {
+		display: block;
+	}
 }
 
 .home-about-content {
-	position: relative;
+	position: absolute;
 	z-index: 1;
+	bottom: -23rem;
+	right: 15%;
 	padding-top: 0;
 	padding-bottom: 0;
-	margin-top: -13.28%;
-	margin-bottom: -13.28%;
 
 	h2 {
 		width: 170px;
@@ -159,16 +167,13 @@ p:empty,
 }
 
 .home-challenge {
+	margin-top: 10%;
 	margin-bottom: calc(19rem + 10%);
 	position: relative;
 
 	.medium-container,
 	.large-container {
 		padding: 0;
-	}
-
-	.medium-container {
-		padding-top: 6rem;
 	}
 
 	.large-container {
