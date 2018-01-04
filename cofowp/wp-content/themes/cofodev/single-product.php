@@ -134,6 +134,7 @@ get_header();
 ?>
 					<div id="viewer_<?php echo $variant; ?>" class="threesixty togglable <?php if($selected != $variant) echo "hidden"; ?>" data-id="<?php echo $variant; ?>">
 						<div class="spinner"><span>0%</span></div>
+						<div class="instructions"><img src="/wp-content/themes/cofodev/assets/images/drag-to-rotate.png" width=132 height=60 /></div>
 						<ol class="threesixty_images"></ol>
 					</div>
 <?php
