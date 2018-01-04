@@ -65,7 +65,6 @@ textarea {
 
 	.hero {
 		background-color: $black;
-		padding: 12rem 0;
 
 		.hero-text {
 			position: relative;
@@ -73,6 +72,12 @@ textarea {
 			right: auto;
 			left: auto;
 			transform: none;
+			padding-left: 10%;
+			z-index: 2;
+		}
+
+		h1 {
+			width: 80%;
 		}
 
 		ul {
@@ -93,6 +98,7 @@ textarea {
 			margin-top: 4.8rem;
 			color: white;
 			@include semi-bold;
+			width: 80%;
 		}
 	}
 }
