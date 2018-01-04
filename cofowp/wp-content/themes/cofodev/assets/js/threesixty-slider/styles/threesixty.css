@@ -53,6 +53,17 @@
   line-height: 30px;
   display: block;
 }
+.threesixty .instructions {
+  width: 132px;
+  height: 60px;
+  position: absolute;
+  z-index: 1;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: none;
+}
+
 .threesixty .nav_bar {
   position: absolute;
   top: 10px;

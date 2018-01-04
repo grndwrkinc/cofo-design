@@ -196,6 +196,7 @@
     base.showImages = function () {
       base.$el.find('.txtC').fadeIn();
       base.$el.find(AppConfig.imgList).fadeIn();
+      $('.threesixty .instructions').fadeIn();
       base.ready = true;
       AppConfig.ready = true;
 
