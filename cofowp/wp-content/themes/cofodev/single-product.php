@@ -208,6 +208,7 @@ get_header();
 
 			<!-- ########## GALLERY ########## -->
 <?php 
+			set_query_var( 'selected', $selected );
 			get_template_part( 'template-parts/content', 'gallery' );
 ?>
 
