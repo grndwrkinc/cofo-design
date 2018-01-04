@@ -497,7 +497,36 @@ button, .btn {
   text-transform: uppercase;
   border: 0;
   display: inline-block;
-  font-weight: 600; }
+  font-weight: 600;
+  position: relative;
+  z-index: 1; }
+
+button:before, .btn:before {
+  content: '';
+  position: absolute;
+  background: white;
+  bottom: 3px;
+  left: 3px;
+  right: calc(100% - 3px);
+  top: 3px;
+  z-index: -1;
+  transition: all 0.5s ease; }
+
+button:hover, .btn:hover {
+  color: #141414; }
+  button:hover:before, .btn:hover:before {
+    right: 3px; }
+
+footer .btn {
+  border: 3px solid white;
+  display: inline-block; }
+footer .btn:before {
+  bottom: 0;
+  left: 0;
+  right: 100%;
+  top: 0; }
+footer .btn:hover:before {
+  right: 0; }
 
 button {
   width: 100%; }
@@ -1098,6 +1127,10 @@ p:empty,
     margin-top: 0; }
     .social .social-nav ul li {
       border: 2px solid #141414; }
+      .social .social-nav ul li a {
+        background-image: radial-gradient(circle at center, #141414 50%, transparent 50%); }
+      .social .social-nav ul li a:hover {
+        color: white; }
 
 .product-designer {
   width: 90%;
@@ -1472,6 +1505,22 @@ header {
     text-transform: uppercase;
     padding: 0 2.25rem;
     margin-bottom: 0; }
+    #site-navigation li a {
+      display: block;
+      position: relative; }
+    #site-navigation li a:after {
+      content: '';
+      position: absolute;
+      height: 2px;
+      width: 0;
+      left: 0;
+      bottom: -2px;
+      background-color: white;
+      transition: all 0.3s ease; }
+    #site-navigation li.nounderline a:after {
+      display: none; }
+    #site-navigation li a:hover:after {
+      width: 100%; }
   #site-navigation .nav-cart-counter {
     display: inline-block;
     position: relative;
@@ -1513,13 +1562,26 @@ header {
     .social-nav ul li a {
       width: 54px;
       height: 54px;
-      display: block; }
+      display: block;
+      z-index: 1;
+      position: relative; }
     .social-nav ul li i {
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
       font-size: 2.4rem; }
+  .social-nav ul a {
+    background-image: radial-gradient(circle at center, white 50%, transparent 50%);
+    background-repeat: no-repeat;
+    transition: background-size 0.3s, color 0.3s;
+    background-size: 0 0;
+    background-position: 50% 50%;
+    border-radius: 50%; }
+  .social-nav ul a:hover {
+    background-size: 200% 200%;
+    color: #141414;
+    border-radius: 50%; }
 
 .footer-nav {
   margin: 3rem auto 1.4rem; }
@@ -1531,9 +1593,6 @@ footer p {
   font-weight: 600;
   color: #696969;
   margin-bottom: 6.5rem; }
-footer .btn {
-  border: 3px solid white;
-  display: inline-block; }
 footer .medium-container {
   padding: 0; }
 footer img {

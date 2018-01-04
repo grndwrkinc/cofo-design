@@ -7,6 +7,46 @@ button, .btn {
 	border: 0;
 	display: inline-block;
 	font-weight: 600;
+	position: relative;
+	z-index: 1;
+}
+
+button:before, .btn:before {
+	content: '';
+	position: absolute;
+	background: white;
+	bottom: 3px;
+	left: 3px;
+	right: calc(100% - 3px);
+	top: 3px;
+	z-index: -1;
+	transition: all 0.5s ease;
+}
+
+button:hover, .btn:hover {
+	color: $black;
+
+	&:before {
+		right: 3px;
+	}
+}
+
+footer {
+	.btn {
+		border: 3px solid white;
+		display: inline-block;
+	}
+
+	.btn:before {
+		bottom: 0;
+		left: 0;
+		right: 100% ;
+		top: 0;
+	}
+
+	.btn:hover:before {
+		right: 0;
+	}
 }
 
 button {
