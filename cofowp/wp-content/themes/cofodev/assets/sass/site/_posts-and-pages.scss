@@ -293,6 +293,10 @@ p:empty,
 		padding-left: 10%;
 		padding-right: 10%;
 	}
+
+	.threesixty_images img {
+		cursor: url(../images/plus-cursor.svg) 22 22, crosshair;
+	}
 }
 
 
@@ -304,7 +308,9 @@ p:empty,
 		img {
 			max-width: 56%;
 			display: block;
+			cursor: url(../images/plus-cursor.svg) 22 22, crosshair;
 		}
+
 
 		p {
 			position: absolute;

@@ -63,9 +63,9 @@ cofo.initProductDetails = function() {
 
 cofo.initProductGallery = function() {
 	//Determine which image has been clicked and open the gallery
-	$('.open').on('click', function(){
+	$('.product-explore img').on('click', function(){
 		$('.image-gallery').fadeIn();
-		var activeClass = $(this).siblings().attr('class');
+		var activeClass = $(this).attr('class');
 		//Match images by class
 		$('.thumbnail-img').each(function(){
 			if($(this).hasClass(activeClass)){

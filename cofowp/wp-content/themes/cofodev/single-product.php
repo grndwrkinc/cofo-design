@@ -191,7 +191,6 @@ get_header();
 ?>
 					<div class="togglable img-container <?php if($selected != $variant) echo "hidden"; ?>" data-id="<?php echo $variant; ?>" >
 						<img class="no<?php echo $cnt; ?>" src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt'] ?>" />
-						<div class="open"></div>
     					<p><?php if( $description ) echo $description; ?></p>
 					</div>
 <?php

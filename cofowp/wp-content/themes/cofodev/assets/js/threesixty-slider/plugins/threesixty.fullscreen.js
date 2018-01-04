@@ -22,7 +22,7 @@
       pfx = ['webkit', 'moz', 'ms', 'o', ''];
 
     // Attach event to the plugin
-    $button.bind('click', function(event) {
+    $el.bind('mouseup', function(event) {
       plugin.onClickHandler.apply(this, event);
     });
 
@@ -69,20 +69,23 @@
      */
     plugin.init = function() {
       plugin.setStyles();
-      $el.prepend($button);
+      // $el.prepend($button);
     };
 
     plugin.onClickHandler = function(e) {
       var elem;
-      if (typeof $el.attr('id') !== 'undefined') {
-        elem = document.getElementById($el.attr('id'));
-      } else if (typeof $el.parent().attr('id') !== 'undefined') {
-        elem = document.getElementById($el.parent().attr('id'));
-      } else {
-        return false;
-      }
+      
+      if(!$el.hasClass('dragging')) {
+        if (typeof $el.attr('id') !== 'undefined') {
+          elem = document.getElementById($el.attr('id'));
+        } else if (typeof $el.parent().attr('id') !== 'undefined') {
+          elem = document.getElementById($el.parent().attr('id'));
+        } else {
+          return false;
+        }
 
-      plugin.toggleFullscreen(elem);
+        plugin.toggleFullscreen(elem);
+      }
     };
 
     plugin.toggleButton = function() {

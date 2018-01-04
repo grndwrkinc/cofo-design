@@ -417,21 +417,26 @@
         event.preventDefault();
 
         if ((event.type === 'mousedown' && event.which === 1) || event.type === 'touchstart') {
+          console.log('mousedown');
           AppConfig.pointerStartPosX = base.getPointerEvent(event).pageX;
           AppConfig.dragging = true;
           AppConfig.onDragStart(AppConfig.currentFrame);
         } else if (event.type === 'touchmove') {
           base.trackPointer(event);
         } else if (event.type === 'touchend') {
-          AppConfig.dragging = false;
+          AppConfig.dragging = false; base.$el.removeClass('dragging');
           AppConfig.onDragStop(AppConfig.endFrame);
         }
       });
 
-      $(document).bind('mouseup', function () {
-        AppConfig.dragging = false;
-        AppConfig.onDragStop(AppConfig.endFrame);
-        $(this).css('cursor', 'none');
+      $(document).bind('mouseup', function (event) {
+        console.log('mouseup');
+        if (AppConfig.dragging) {
+          event.preventDefault();
+          AppConfig.dragging = false; base.$el.removeClass('dragging');
+          AppConfig.onDragStop(AppConfig.endFrame);
+          $(this).css('cursor', 'none');
+        }
       });
 
       $(window).bind('resize', function () {
@@ -439,7 +444,9 @@
       });
 
       $(document).bind('mousemove', function (event) {
+        console.log('mousemove');
         if (AppConfig.dragging) {
+          base.$el.addClass('dragging');
           event.preventDefault();
           if(!base.browser.isIE && AppConfig.showCursor) {
             base.$el.css('cursor', 'url(assets/images/hand_closed.png), auto');
