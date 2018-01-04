@@ -99,7 +99,7 @@ get_header();
 				</div>
 			</div>
 
-			<div class="medium-container product-container">
+			<div class="product-container medium-container">
 
 				<!-- ########## PRODUCT DESCRIPTION ########## -->
 				<div class="product-text offset">
@@ -170,6 +170,9 @@ get_header();
 ?>
 					<p><?php the_field('360_text'); ?></p>
 				</div>
+			</div>
+
+			<div class="product-container large-container">
 
 				<!-- ########## PRODUCT DETAIL IMAGES ########## -->
 <?php 
@@ -213,14 +216,18 @@ get_header();
 				if( have_rows('product_dimensions_images') ) :
 ?>
 			<div class="product-dimensions large-container">
-				<p class="pre-header">Dimensions</p>
-				<h2><span class="highlight">Imagine <?php the_title(); ?> in your space</span></h2>
+				<div class="small-container">
+					<p class="pre-header">Dimensions</p>
+					<h2><span class="highlight">Imagine <?php the_title(); ?> in your space</span></h2>
+				</div>
 <?php
 					while( have_rows('product_dimensions_images')) : the_row();
 						$variant = get_sub_field('variant');
 						$image = get_sub_field('image');
 ?>
-				<img class="togglable <?php if($selected != $variant) echo "hidden"; ?>" data-id="<?php echo $variant; ?>" src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" />
+				<div class="togglable img-container <?php if($selected != $variant) echo "hidden"; ?>" data-id="<?php echo $variant; ?>">
+					<img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" />
+				</div>
 <?php 
 					endwhile;
 ?>
@@ -230,15 +237,22 @@ get_header();
 ?>
 
 			<!-- ########## CRAFTSMANSHIP ########## -->
-			<div class="product-craftsmanship text-images-section">
-				<p class="pre-header">Craftsmanship</p>
-				<h2><span class="highlight" data-title="<?php the_field('craftsmanship_title'); ?>"><?php the_field('craftsmanship_title'); ?></span></h2>
+			<div class="product-craftsmanship">
+				<div class="medium-container">
+					<p class="pre-header">Craftsmanship</p>
+					<h2><span class="highlight" data-title="<?php the_field('craftsmanship_title'); ?>"><?php the_field('craftsmanship_title'); ?></span></h2>
+				</div>
 				<div class="inner">
-		    		<?php if( have_rows('craftsmanship_details') ): ?>
-		    			<?php while( have_rows('craftsmanship_details') ): the_row(); 
-		    				get_template_part( 'template-parts/content', 'imagetext' );
-		    			endwhile; ?>
-		    		<?php endif; ?>
+<?php
+				$images = get_field('craftsmanship_detail_images');
+
+				foreach ($images as $image) {
+?>
+					<div class="flex-item"><img src="<?php echo $image['url']; ?>" /></div>
+<?php
+				}
+?>
+
 		    	</div>
 			</div>
 

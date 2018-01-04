@@ -28,7 +28,7 @@ get_header(); ?>
 			</section>
 
 			<section class="about-what-we-do text-section-offset">
-				<div class="medium-container">
+				<div class="small-container">
 					<?php
 					while ( have_posts() ) : the_post();
 						the_content(); 
@@ -38,9 +38,9 @@ get_header(); ?>
 			</section>
 
 			<section class="about-differentiators">
-				<h2><span class="highlight"><?php the_field('text_images_section_header') ?><span></h2>
 	    		<?php if( have_rows('text_images_group') ): ?>
 	    			<div class="inner">
+						<h2><span class="highlight"><?php the_field('text_images_section_header') ?><span></h2>
 	    			<?php while( have_rows('text_images_group') ): the_row(); 
 
 	    			get_template_part( 'template-parts/content', 'imagetext' );
@@ -94,7 +94,7 @@ get_header(); ?>
 					<?php the_field('story_section_video'); ?>
 				</div>
 
-				<div class="about-cofounders-founders large-container">
+				<div class="about-cofounders-founders medium-container">
 					<h3>The Cofounders</h3>
 					<?php if( have_rows('founders_group') ): ?>
 		    			<?php while( have_rows('founders_group') ): the_row(); 

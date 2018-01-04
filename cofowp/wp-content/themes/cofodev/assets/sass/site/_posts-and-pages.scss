@@ -37,20 +37,24 @@ p:empty,
 	color: white;
 }
 
-.medium-container, .large-container {
-	padding: 10% 20px;
-}
-
+.small-container,
+.medium-container, 
 .large-container {
-	max-width: 1200px;
+	padding: 10% 20px;
 	width: 100%;
 	margin: 0 auto;
+}
+
+.small-container {
+	max-width: 800px;
 }
 
 .medium-container {
 	max-width: 1000px;
-	width: 100%;
-	margin: 0 auto;
+}
+
+.large-container {
+	max-width: 1200px;
 }
 
 .details {
@@ -232,16 +236,21 @@ p:empty,
 
 #product-details {
 	position: absolute;
-	top: -4.8rem;
+	top: -14rem;
     right: 0;
     min-width: 30rem;
 
     h3 {
-    	margin-bottom: 0;
+    	margin-bottom: 3rem;
+    }
+
+    h4 {
+    	margin-bottom: 1rem;
     }
 
     img {
     	border-radius: 50%;
+    	display: block;
     }
 }
 
@@ -255,22 +264,68 @@ p:empty,
 	.product-text {
 		width: 55%;
 	}
+
+	&.medium-container,
+	&.large-container {
+		padding-bottom: 0;
+	}
+
+	&.large-container {
+		padding-top: 0;
+		padding-left: 0;
+	}
+}
+
+.product-360 {
+	p {
+		margin-top: 5rem;
+		padding-left: 10%;
+		padding-right: 10%;
+	}
 }
 
 
 .product-explore {
-
 	.img-container {
 		position: relative;
+		margin-bottom: 10%;
 
 		img {
-			max-width: 40rem;
+			max-width: 56%;
+			display: block;
+		}
+
+		p {
+			position: absolute;
+			top: 50%;
+			left: 0;
+			transform: translateY(-50%);
+			width: 35%;
+			padding-left: 40px;
 		}
 	}
 
 	.img-container:hover {
 		.open {
 			opacity: 1;
+		}
+	}
+
+	.img-container:not(.hidden):nth-child(3n),
+	.img-container:not(.hidden):nth-child(3n+1) {
+		img {
+			margin-left: auto;
+		}
+	}
+
+	.img-container:not(.hidden):nth-of-type(3n+2) {
+		img {
+			max-width: 71%;
+		}
+		p {
+			padding-left: 0;
+			left: auto;
+			right: 0;
 		}
 	}
 
@@ -302,11 +357,55 @@ p:empty,
 	}
 }
 
-.product-dimensions, .product-craftsmanship {
+.product-dimensions,
+.product-craftsmanship {
 	padding-top: 0;
+	position: relative;
 
 	h2 {
-		width: 40%;
+		width: 25rem;
+	}
+}
+
+.product-dimensions {
+	.small-container {
+		padding: 0;
+		position: relative;
+		z-index: 1;
+	}
+
+	.img-container {
+		margin-top: -10%;
+
+		img {
+			// width: 42.5%;
+			max-width: 78rem;
+			margin-left: auto;
+			display: block;
+		}
+	}
+}
+
+.product-craftsmanship {
+	width: 90%;
+	margin-left: auto;
+	margin-bottom: 10%;
+	margin-top: 10%;
+	position: relative;
+
+	.inner {
+		display: flex;
+	}
+
+	.flex-item {
+		flex: 2 2 10%;
+		margin-left: 5%;
+	}
+
+	.medium-container {
+		padding: 0;
+		position: absolute;
+		top: -20rem;
 	}
 }
 
@@ -383,6 +482,7 @@ p:empty,
 	display: flex;
 	align-items: center;
 	transform: translateY(-6rem);
+	margin-bottom: calc(-6rem + 10%);
 
 	p {
 		margin-bottom: 0;
@@ -410,6 +510,7 @@ p:empty,
 
 	li {
 		padding: 0.6rem;
+		margin-bottom: 0;
 	}
 
 	img {
@@ -454,7 +555,10 @@ p:empty,
 	h2 {
 		width: 17rem;
 	}
+	max-width: 100%;
+	padding: 10%;
 
+	.small-container,
 	.medium-container {
 		padding-top: 0;
 		padding-left: 0;
@@ -467,7 +571,8 @@ p:empty,
 	}
 }
 
-.about-differentiators, .text-images-section {
+// .about-differentiators, .text-images-section {
+.about-differentiators {
 	position: relative;
 
 	.inner {
@@ -478,7 +583,7 @@ p:empty,
 	h2 {
 		position: absolute;
 		// top: 10rem;
-		top: 5%;
+		top: 10%;
 		left: 65%;
 		width: 17rem;
 	}
@@ -491,7 +596,7 @@ p:empty,
 			margin-bottom: -4.8rem;			
 		}
 
-		&:nth-child(1), &:nth-child(4) {
+		&:nth-of-type(1), &:nth-of-type(4) {
 			width: 28%;
 
 			.details {
@@ -499,33 +604,33 @@ p:empty,
 				// width: 85%;
 			}
 		}
-		&:nth-child(2), &:nth-child(3) {
+		&:nth-of-type(2), &:nth-of-type(3) {
 			.details {
 				max-width: 40rem;
 				// width: 65%;
 			}
 		}
 
-		&:nth-child(3), &:nth-child(4) {
+		&:nth-of-type(3), &:nth-of-type(4) {
 			.details {
 				margin-left: auto;
 			}
 		}
 
-		// &:nth-child(even){
+		// &:nth-of-type(even){
 		// }
-		&:nth-child(1) {
+		&:nth-of-type(1) {
 			margin-left: 19%;
 		}
-		&:nth-child(2) {
+		&:nth-of-type(2) {
 			// margin-top: 35rem;
 			margin-top: 23%;
 			margin-left: auto;
 		}
-		&:nth-child(3) {
+		&:nth-of-type(3) {
 			margin-top: -5%;
 		}
-		&:nth-child(4) {
+		&:nth-of-type(4) {
 			margin-top: 11%;
 			margin-left: 11%;
 		}
@@ -619,7 +724,7 @@ p:empty,
 
 	.bordered {
 		transform: translateY(6rem);
-		width: 36rem;
+		max-width: 36rem;
 	}
 
 	img {
@@ -637,6 +742,10 @@ p:empty,
 
 		.details {
 			float: right;
+		}
+
+		.bordered {
+			max-width: 48rem;
 		}
 	}
 
