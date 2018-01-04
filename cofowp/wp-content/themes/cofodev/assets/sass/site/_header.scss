@@ -22,6 +22,32 @@ header {
 		text-transform: uppercase;
 		padding: 0 2.25rem;
 		margin-bottom: 0;
+
+		a {
+			display: block;
+			position: relative;
+		}
+
+		a:after {
+			content: '';
+		    position: absolute;
+		    height: 2px;
+		    width: 0;
+		    left: 0;
+		    bottom: -2px;
+		    background-color: white;
+		    transition: all 0.3s ease;
+		}
+
+		&.nounderline a:after {
+			display: none;
+		}
+
+		a:hover {
+			&:after {
+				width: 100%;
+			}
+		}
 	}
 
 	.nav-cart-counter {

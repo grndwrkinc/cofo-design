@@ -26,6 +26,8 @@
 			width: 54px;
 			height: 54px;
 			display: block;
+			z-index: 1;
+			position: relative;
 		}
 
 		i {
@@ -35,6 +37,21 @@
 			transform: translate(-50%, -50%);
 			font-size: 2.4rem;
 		}
+	}
+
+	a {
+        background-image: radial-gradient(circle at center , white 50%, transparent 50%);
+        background-repeat: no-repeat;
+        transition: background-size 0.3s, color 0.3s;
+        background-size: 0 0;
+        background-position: 50% 50%;
+        border-radius: 50%;
+    }
+
+	a:hover {
+	    background-size: 200% 200%;
+	    color: $black;
+	    border-radius: 50%;
 	}
 }
 
@@ -49,11 +66,6 @@ footer {
 		font-weight: 600;
 		color: #696969;
 		margin-bottom: 6.5rem;
-	}
-
-	.btn {
-		border: 3px solid white;
-		display: inline-block;
 	}
 
 	.medium-container {

@@ -13,17 +13,30 @@ get_header(); ?>
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
 			<div class="hero" style="background-image: url(<?php the_post_thumbnail_url(); ?>)">	
-				<div class="hero-text">
-					<h1 class="white"><span class="highlight"><?php the_title(); ?></span></h1>
-					<h4><?php the_field('subtitle'); ?></h4>
-					<a href="/submit" class="btn">Submit your design</a>
-					<p><a href="/rules-and-regulations">View rules and regulations</a></p>
+				<div class="large-container">
+					<div class="hero-text">
+						<h1><span class="highlight"><?php the_title(); ?></span></h1>
+						<h4><?php the_field('subtitle'); ?></h4>
+						<a href="/submit" class="btn">Submit your design</a>
+						<p><a href="/rules-and-regulations">View rules and regulations</a></p>
+					</div>
 				</div>
 			</div>
 			<div class="medium-container challenge-mood-board">
-				<p class="pre-header"><?php the_field('inspiration_header'); ?></p>
-				<h2><span class="highlight"><?php the_field('inspiration_text'); ?></span></h2>
-				<p><?php the_field('inspiration_text_cont'); ?></p>
+				<?php  $images = get_field('mood_board_gallery');
+				if( $images ): ?>
+			    <div class="masonry-gallery">
+			    	<div class="grid-sizer"></div>
+			    	<div class="grid-item">
+			    		<p class="pre-header"><?php the_field('inspiration_header'); ?></p>
+			    		<h2><span class="highlight"><?php the_field('inspiration_text'); ?></span></h2>
+			    		<p><?php the_field('inspiration_text_cont'); ?></p>
+			    	</div>
+				    <?php foreach( $images as $image ): ?>
+				        <img class="grid-item <?php echo $image['caption']; ?>" src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" />
+				    <?php endforeach; ?>
+			    </div>
+				<?php endif; ?>
 			</div>
 			<div class="challenge-categories">
 				<h3>Categories</h3>
@@ -35,8 +48,8 @@ get_header(); ?>
 		    				$icon = get_sub_field('icon'); ?>
 
 						<ul>
-							<li><?php if( $icon ): ?>
-								<?php echo $icon; ?>
+							<li class="icon"><?php if( $icon ): ?>
+								<img src="<?php echo $icon['url']; ?>" alt="<?php echo $icon['alt']; ?>" />
 							<?php endif; ?></li>
 
 		    				<?php if( $header ): ?>

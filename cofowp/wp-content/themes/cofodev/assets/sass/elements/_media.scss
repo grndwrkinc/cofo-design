@@ -209,6 +209,25 @@ object {
 	transform: rotate(45deg);
 }
 
+//MASONRY
+
+.grid-item {
+	width: 30%;
+	margin-top: 2.4rem;
+}
+
+.grid-sizer {
+	width: 30%;
+}
+
+.grid-item.small {
+	width: 25%;
+}
+
+.grid-item.large {
+	width: 45%;
+}
+
 
 
 

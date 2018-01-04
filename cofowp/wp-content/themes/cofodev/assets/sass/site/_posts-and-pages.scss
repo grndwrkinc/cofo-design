@@ -441,6 +441,14 @@ p:empty,
 
 		li {
 			border: 2px solid $black;
+
+			a {
+		        background-image: radial-gradient(circle at center , $black 50%, transparent 50%);
+		    }
+
+			a:hover {
+			    color: white;
+			}
 		}
 	}
 }
@@ -868,6 +876,14 @@ p:empty,
 		padding: 0.6rem 0;
 	}
 
+	li.icon {
+		text-align: center;
+
+		img {
+			width: 54px;
+		}
+	}
+
 	h3 {
 		position: absolute;
 		transform: rotate(-90deg);
@@ -895,6 +911,9 @@ p:empty,
 
 .page-design-challenge {
 	.hero-text {
+
+		padding-left: 5%;
+		
 		h1 {
 			width: 60%;
 		}

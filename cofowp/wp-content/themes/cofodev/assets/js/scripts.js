@@ -15,6 +15,10 @@ cofo.init = function() {
 	if($('.page-about').length){
 		cofo.fluidVids();
 	}
+
+	if($('.page-design-challenge').length){
+		cofo.initMasonry();
+	}
 };
 
 //Initialize the Product Details container
@@ -129,6 +133,18 @@ cofo.initProductGallery = function() {
 	// 	}
 	// });
 
+};
+
+cofo.initMasonry = function() {
+	var $container = $('.masonry-gallery');
+
+	$container.masonry({
+		gutter: 24,
+		columnWidth: ".grid-sizer",
+		itemSelector: '.grid-item',
+		transitionDuration: 0,
+		percentPosition: true
+	});
 };
 
 //*****************************************************************
