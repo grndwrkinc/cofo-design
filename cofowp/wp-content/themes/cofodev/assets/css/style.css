@@ -1541,7 +1541,7 @@ header {
       background-color: white;
       transition: all 0.3s ease; }
     #site-navigation li.nounderline {
-      animation: slidedown 0.4s ease; }
+      animation: slidedown 0.6s ease; }
     #site-navigation li.nounderline a:after {
       display: none; }
     #site-navigation li a:hover:after {
@@ -1572,7 +1572,7 @@ header {
   0% {
     opacity: 0;
     transform: translateY(-12px); }
-  50% {
+  40% {
     opacity: 0;
     transform: translateY(-12px); }
   100% {

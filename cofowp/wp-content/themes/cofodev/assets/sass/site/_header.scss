@@ -41,7 +41,7 @@ header {
 		}
 
 		&.nounderline {
-			animation: slidedown 0.4s ease;
+			animation: slidedown 0.6s ease;
 		}
 
 		&.nounderline a:after {
@@ -79,7 +79,7 @@ header {
 
 @keyframes slidedowndelay {
 	0%   { opacity: 0; transform: translateY(-12px); }
-	50%   { opacity: 0; transform: translateY(-12px); }
+	40%   { opacity: 0; transform: translateY(-12px); }
   100%   { opacity: 1; transform: translateY(0); }
 }
 
