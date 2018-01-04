@@ -839,6 +839,10 @@ p:empty,
 		padding: 0.6rem 0;
 	}
 
+	li.icon {
+		text-align: center;
+	}
+
 	h3 {
 		position: absolute;
 		transform: rotate(-90deg);
@@ -866,6 +870,9 @@ p:empty,
 
 .page-design-challenge {
 	.hero-text {
+
+		padding-left: 5%;
+		
 		h1 {
 			width: 60%;
 		}
