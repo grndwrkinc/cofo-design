@@ -139,16 +139,15 @@ object {
 
 .main-img {
 	text-align: center;	
+	height: calc(100vh - 130px);
 	
 	img {
-		max-width: 80rem;
+		height: 100%;
+		width: auto;
 	}
 }
 
 .thumbnails {
-	// width: 50%;
-	// display: flex;
-	// margin-left: auto;
 	float: right;
 
 	.thumbnail-img {
