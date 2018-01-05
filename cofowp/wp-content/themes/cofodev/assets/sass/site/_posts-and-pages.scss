@@ -9,18 +9,20 @@ p:empty,
 	@include border-black;
 	background: white;
 	padding: 5rem;
-	// min-width: 360px;
-	// width: 25%;
-
-	// p {
-	// 	margin-bottom: 2.4rem;
-	// }
 
 	.btn {
 		display: inline-block;
 		width: 100%;
 		text-align: center;
 		align-self: center;
+
+		&:before {
+			border: 3px solid $black;
+		}
+	}
+
+	button:before {
+		border: 3px solid $black;
 	}
 }
 
@@ -480,12 +482,12 @@ p:empty,
 		margin-top: 0;
 
 		li {
-			border: 2px solid $black;
 			background-color: white;
 
 			a {
 		        background-image: radial-gradient(circle at center , $black 50%, transparent 50%);
 		        background-color: white;
+		        border: 2px solid $black;
 		    }
 
 			a:hover {

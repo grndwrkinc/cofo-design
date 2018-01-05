@@ -17,7 +17,6 @@
 	li {
 		@include font-size(1.8);
 		padding: 0;
-		border: 2px solid white;
 		border-radius: 50%;
 		position: relative;
 		margin: 0 1rem;
@@ -29,6 +28,7 @@
 			z-index: 1;
 			position: relative;
 			background-color: $black;
+			border: 2px solid white;
 		}
 
 		i {
@@ -78,15 +78,16 @@
 	    position: absolute;
 	    height: 1px;
 	    width: 0;
-	    left: 0;
+	    right: 0;
 	    bottom: -2px;
 	    background-color: $grey;
-	    transition: all 0.3s ease;
+	    transition: width 0.3s ease;
 	}
 
 	a:hover {
 		&:after {
 			width: 100%;
+			left: 0;
 		}
 	}
 }
