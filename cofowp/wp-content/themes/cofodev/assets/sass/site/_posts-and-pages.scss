@@ -481,13 +481,19 @@ p:empty,
 
 		li {
 			border: 2px solid $black;
+			background-color: white;
 
 			a {
 		        background-image: radial-gradient(circle at center , $black 50%, transparent 50%);
+		        background-color: white;
 		    }
 
 			a:hover {
 			    color: white;
+
+			    i {
+			    	color: white;
+			    }
 			}
 		}
 	}
