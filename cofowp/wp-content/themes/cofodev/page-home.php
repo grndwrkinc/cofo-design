@@ -38,12 +38,12 @@ get_header(); ?>
 			<section class="home-about">
 				<div class="home-about-img">
 					<?php $image = get_field('secondary_hero_image'); ?>
-					<img src="<?php echo $image['url'] ?>" alt="<?php echo $image['alt']; ?>">
+					<img class="fadein" src="<?php echo $image['url'] ?>" alt="<?php echo $image['alt']; ?>">
 				</div>
 				
-				<div class="medium-container home-about-content">
-					<h2><span class="highlight"><?php the_field('secondary_header'); ?></span></h2>
-					<div class="bordered">
+				<div class="medium-container home-about-content anm-container">
+					<h2 class="anm-item slideright-item"><span class="highlight"><?php the_field('secondary_header'); ?></span></h2>
+					<div class="bordered anm-item slideright-item">
 						<p><?php the_field('secondary_text'); ?></p>
 						<a href="/about" class="btn">Learn more <?php the_field('secondary_header'); ?></a>
 					</div>
@@ -52,24 +52,24 @@ get_header(); ?>
 			
 			<section class="home-challenge">
 				<div class="medium-container">
-					<div class="text-section-offset">
-						<p class="pre-header">Design Challenge</p>
-						<h2><span class="highlight"><?php the_field('design_challenge_header'); ?></span></h2>
-						<p><?php the_field('design_challenge_text'); ?></p>
-						<a href="/design-challenge" class="btn">View challenge details</a>
+					<div class="text-section-offset fadein anm-container">
+						<p class="pre-header anm-item slideright-item">Design Challenge</p>
+						<h2 class="anm-item slideright-item"><span class="highlight"><?php the_field('design_challenge_header'); ?></span></h2>
+						<p class="anm-item slideright-item"><?php the_field('design_challenge_text'); ?></p>
+						<a href="/design-challenge" class="btn anm-item slideright-item">View challenge details</a>
 					</div>
 				</div>
 
-				<div class="large-container">
+				<div class="large-container anm-container">
 					<div>
-						<h3>Here's how it works</h3>
+						<h3 class="fadein-item anm-item">Here's how it works</h3>
 						<?php if( have_rows('design_challenge_steps') ): ?>
 							<ol class="text-steps">
 								<?php $counter = 1; ?>
 			    			<?php while( have_rows('design_challenge_steps') ): the_row(); 
 			    				
 			    				$content = get_sub_field('text'); ?>
-			    				<li><span><?php echo '0' . $counter; ?></span><?php if( $content ): echo $content; endif; ?></li>
+			    				<li class="slideright-item anm-item"><span><?php echo '0' . $counter; ?></span><?php if( $content ): echo $content; endif; ?></li>
 								<?php $counter++; ?>
 
 			    			<?php endwhile; ?>

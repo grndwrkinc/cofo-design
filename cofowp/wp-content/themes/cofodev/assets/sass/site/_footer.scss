@@ -57,6 +57,28 @@
 
 .footer-nav {
 	margin: 3rem auto 1.4rem;
+
+	a {
+		display: block;
+		position: relative;
+	}
+
+	a:after {
+		content: '';
+	    position: absolute;
+	    height: 1px;
+	    width: 0;
+	    left: 0;
+	    bottom: -2px;
+	    background-color: $grey;
+	    transition: all 0.3s ease;
+	}
+
+	a:hover {
+		&:after {
+			width: 100%;
+		}
+	}
 }
 
 footer {
@@ -64,7 +86,7 @@ footer {
 		text-align: center;
 		@include font-size(1.4);
 		font-weight: 600;
-		color: #696969;
+		color: $grey;
 		margin-bottom: 6.5rem;
 	}
 
