@@ -77,21 +77,11 @@ cofo.initProductGallery = function() {
 	//Determine which image has been clicked and open the gallery
 	$('.product-explore img').on('click', function(){
 		$('.image-gallery').fadeIn(100);
-		var activeClass = $(this).attr('class');
+		var activeClass = $(this).attr('class').split(" ")[0];
 		//Match images by class
 		$('.thumbnail-img').each(function(){
 			if($(this).hasClass(activeClass)){
-				$(this).addClass('active');
-				$('.main-img')
-					.addClass('hidden')
-					.each(function(){
-						if($(this).hasClass(activeClass)){
-							$(this).removeClass('hidden');
-						}
-					});
-
-			} else {
-				$(this).removeClass('active');
+				$(this).addClass('active').click();
 			}
 		});
 	});
@@ -100,7 +90,19 @@ cofo.initProductGallery = function() {
 		$('.image-gallery').fadeOut(100);
 	});
 
-	//When a thumnail is clicked, empty the main container, add the coresponding img
+	// Keyboard events
+	$(document).on('keyup', function(e) {
+		switch(e.which) {
+			//esc - close modal
+			case 27 : e.preventDefault(); $('.close').trigger('click'); break;
+			//left arrow - previous
+			case 37 : e.preventDefault(); $('.btn-prev').trigger('click'); break;
+			//right arrow - next
+			case 39 : e.preventDefault(); $('.btn-next').trigger('click'); break;
+		}
+	});
+
+	//When a thumbnail is clicked, empty the main container, add the coresponding img
 	$('.thumbnail-img').on('click', function(){
 		$('.thumbnail-img').removeClass('active');
 		var activeClass = $(this).removeClass('thumbnail-img togglable').attr('class');

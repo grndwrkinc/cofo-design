@@ -25,7 +25,7 @@
 					$image = get_sub_field('image');
 					$description = get_sub_field('description');
 ?>
-		<div class="main-img togglable no<?php echo $cnt; ?> <?php if($selected != $variant) echo "hidden"; ?>" data-id="<?php echo $variant; ?>">
+		<div class="main-img togglable no<?php echo $cnt; ?> hidden" data-id="<?php echo $variant; ?>">
 			<img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt'] ?>" />
 		</div>
 
