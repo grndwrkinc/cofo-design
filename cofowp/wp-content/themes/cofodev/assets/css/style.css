@@ -1160,7 +1160,6 @@ p:empty,
   .product-craftsmanship .inner {
     display: flex; }
   .product-craftsmanship .flex-item {
-    flex: 2 2 10%;
     margin-left: 5%; }
   .product-craftsmanship .medium-container {
     padding: 0;
