@@ -16,7 +16,7 @@ assets/password.js:
 assets/theme.js:
   development: 2017-11-30T12:16:22-05:00   b762f5a064c773b56dfce88c09349089
 assets/theme.scss.liquid:
-  development: 2017-12-15T11:27:38-05:00   ecd25bf4c83c815a05e8e6d63c419785
+  development: 2018-01-04T21:35:41-05:00   c70d2868531b9b03cdad73f2d4699aef
 assets/vendor.js:
   development: 2017-11-30T12:16:23-05:00   cb7c4217c9b6feb844647b361accfe6c
 config/settings_data.json:
@@ -60,7 +60,7 @@ sections/article-template.liquid:
 sections/blog-template.liquid:
   development: 2017-11-30T12:16:20-05:00   5757170836346c1082ffba4ef408857e
 sections/cart-template.liquid:
-  development: 2017-12-15T12:54:49-05:00   e75a633ba7556cdad4b9bacdd1f9e4eb
+  development: 2018-01-04T21:37:04-05:00   e75a633ba7556cdad4b9bacdd1f9e4eb
 sections/challenge-list.liquid:
   development: 2017-12-13T16:30:54-05:00   b9c89090a21b204296c89594bdebae35
 sections/challenge-text.liquid:

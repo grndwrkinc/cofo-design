@@ -912,11 +912,11 @@ p:empty,
   background-size: cover;
   position: relative; }
 
-.hero-text h1, .hero-text h4, .hero-text .bordered, .hero-text p.animate, .hero-text a.animate {
+.hero-text h1, .hero-text h4, .hero-text .bordered, .hero-text p.animate, .hero-text a.animate, .hero-text .text-steps {
   transform: translateX(-24px);
   opacity: 0;
   transition: all 0.5s ease; }
-  .hero-text h1.animate-me, .hero-text h4.animate-me, .hero-text .bordered.animate-me, .hero-text p.animate.animate-me, .hero-text a.animate.animate-me {
+  .hero-text h1.animate-me, .hero-text h4.animate-me, .hero-text .bordered.animate-me, .hero-text p.animate.animate-me, .hero-text a.animate.animate-me, .hero-text .text-steps.animate-me {
     transform: translateX(0);
     opacity: 1; }
 
@@ -1493,8 +1493,7 @@ p:empty,
   .challenge-share h4 {
     text-align: center; }
   .challenge-share .social-nav ul li {
-    border: 0;
-    background-color: #141414; }
+    border: 0; }
     .challenge-share .social-nav ul li i {
       color: white; }
 
@@ -1653,7 +1652,8 @@ header {
       height: 54px;
       display: block;
       z-index: 1;
-      position: relative; }
+      position: relative;
+      background-color: #141414; }
     .social-nav ul li i, .challenge-share .social-nav ul li i {
       position: absolute;
       top: 50%;
@@ -1666,7 +1666,8 @@ header {
     transition: background-size 0.3s, color 0.3s;
     background-size: 0 0;
     background-position: 50% 50%;
-    border-radius: 50%; }
+    border-radius: 50%;
+    background-color: #141414; }
   .social-nav ul a:hover, .challenge-share .social-nav ul a:hover {
     background-size: 200% 200%;
     color: #141414;
