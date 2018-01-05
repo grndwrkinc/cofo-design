@@ -7,6 +7,9 @@ $(document).ready(function () {
 
 cofo.init = function() {
 
+	cofo.animatePageElements();
+	cofo.animateHero();
+
 	if($('.single-product').length){
 		cofo.initProductDetails();
 		cofo.initProductGallery();
@@ -144,6 +147,83 @@ cofo.initMasonry = function() {
 		itemSelector: '.grid-item',
 		transitionDuration: 0,
 		percentPosition: true
+	});
+};
+
+cofo.animateHero = function() {
+
+	var herokids = $('.hero-text').children();
+	var timer = 300;
+
+	herokids.each(function(){
+		var _this = this;
+
+		setTimeout(function(){ 
+			$(_this).addClass('animate-me');
+		}, timer);
+		timer = timer + 200;
+	});
+
+
+};
+
+cofo.animatePageElements = function() {
+	//find each animation element
+	var fadein = $('.fadein');
+	var slideright = $('.slideright');
+	var slideup = $('.slideup');
+	var animationSet = $('.anm-container');
+	// add animate-me class when element is in view
+	cofo.animateOne(fadein);
+	cofo.animateOne(slideup);
+	cofo.animateOne(slideright);
+	cofo.animateSet(animationSet);
+	//do the same on scroll
+	$(window).scroll(function() {
+		cofo.animateOne(fadein);
+		cofo.animateOne(slideup);
+		cofo.animateOne(slideright);
+		cofo.animateSet(animationSet);
+	});
+};
+
+cofo.animateOne = function(elements){
+	// add animate-me class when element is in view
+	var scrolled = $(window).scrollTop() + $(window).height();
+	elements.each(function(){
+		var _this = this;
+		// get top measurement
+		var offset = $(_this).offset().top + 48;
+		//add animation class if scrolled into view
+		if(scrolled > offset){
+			$(_this).addClass('animate-me');
+		}
+	});
+};
+
+cofo.animateSet = function(elements){
+	// add animate-me class when container element is in view
+	var scrolled = $(window).scrollTop() + $(window).height();
+	elements.each(function(){
+		var _this = this;
+		// get top measurement
+		var offset = $(_this).offset().top + 48;
+
+		if(scrolled > offset){
+			//find all children to be animated
+			var children = $(_this).find('.anm-item');
+			var timer = 300;
+
+			children.each(function(){
+				var _this = this;
+
+				setTimeout(function(){ 
+					$(_this).addClass('animate-me');
+				}, timer);
+				timer = timer + 150;
+			});
+
+		}
 	});
 };
 

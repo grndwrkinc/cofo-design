@@ -24,6 +24,10 @@ header {
 		padding: 0 2.25rem;
 		margin-bottom: 0;
 
+		&:nth-of-type(1), &:nth-of-type(5) {
+			animation: slidedownsuperdelay 0.6s ease;
+		}
+
 		a {
 			display: block;
 			position: relative;
@@ -80,6 +84,12 @@ header {
 @keyframes slidedowndelay {
 	0%   { opacity: 0; transform: translateY(-12px); }
 	40%   { opacity: 0; transform: translateY(-12px); }
+  100%   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slidedownsuperdelay {
+	0%   { opacity: 0; transform: translateY(-12px); }
+	60%   { opacity: 0; transform: translateY(-12px); }
   100%   { opacity: 1; transform: translateY(0); }
 }
 

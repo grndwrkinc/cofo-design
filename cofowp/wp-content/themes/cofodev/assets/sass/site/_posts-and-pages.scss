@@ -93,12 +93,52 @@ p:empty,
 	background-size: cover;
 	position: relative;
 }
+
+.hero-text {
+	h1, h4, .bordered, p.animate, a.animate {
+		transform: translateX(-24px);
+		opacity: 0;
+		transition: all 0.5s ease;
+
+		&.animate-me {
+			transform: translateX(0);
+			opacity: 1;
+		}
+	}
+}
+
 .home .hero,
 .single-product .hero {
 	min-height: calc(100vh - 151px);
 }
 .hero-text .bordered {
 	width: 36rem;
+}
+
+//SITE WIDE ANIMATIONS/TRANSITIONS
+
+.slideright, .slideright-item {
+	@include slideright-start; 
+
+	&.animate-me {
+		@include slideright-end;
+	}
+}
+
+.slideup, .slideup-item {
+	@include slideup-start; 
+
+	&.animate-me {
+		@include slideup-end;
+	}
+}
+
+.fadein, .fadein-item {
+	@include fadein-start; 
+
+	&.animate-me {
+		@include fadein-end;
+	}
 }
 
 
@@ -619,6 +659,7 @@ p:empty,
 
 	h2 {
 		position: absolute;
+		z-index: 1;
 		// top: 10rem;
 		top: 10%;
 		left: 65%;
@@ -629,8 +670,10 @@ p:empty,
 		width: 45%;
 		
 		.details {
-			transform: translateY(-4.8rem);
-			margin-bottom: -4.8rem;			
+			margin-top: -4.8rem;	
+			margin-bottom: -4.8rem;	
+			position: relative;
+			z-index: 1;		
 		}
 
 		&:nth-of-type(1), &:nth-of-type(4) {
