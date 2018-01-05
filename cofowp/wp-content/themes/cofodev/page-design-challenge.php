@@ -125,8 +125,11 @@ get_header(); ?>
 				<h4 class="anm-item slideright-item">Share the challenge</h4>
 				<div class="social-nav anm-item slideright-item">
 					<ul>
-						<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-						<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+						<li>
+							<?php global $wp;
+							$url = home_url( $wp->request ); ?>
+							<a class="social-share" href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $url; ?>" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+						<li><a class="social-share" href="https://twitter.com/intent/tweet?text=Hello%20world" data-size="large" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
 					</ul>
 				</div>
 			</div>

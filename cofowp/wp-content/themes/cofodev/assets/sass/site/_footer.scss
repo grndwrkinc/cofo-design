@@ -10,7 +10,7 @@
 	}
 }
 
-.social-nav ul {
+.social-nav ul, .challenge-share .social-nav ul {
 
 	margin-top: 2.4rem;
 
@@ -52,7 +52,15 @@
 	    background-size: 200% 200%;
 	    color: $black;
 	    border-radius: 50%;
+
+	    i {
+	    	color: $black;
+	    }
 	}
+}
+
+.challenge-share .social-nav ul li {
+	border: 0;
 }
 
 .footer-nav {
@@ -79,6 +87,10 @@
 			width: 100%;
 		}
 	}
+}
+
+.challenge-share .social-nav ul li i {
+
 }
 
 footer {
