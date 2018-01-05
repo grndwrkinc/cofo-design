@@ -5305,6 +5305,7 @@ var addToCartListener = function addToCartListener(checkout) {
 		client.checkout.addLineItems(checkoutId, lineItems).then(function (checkout) {
 			//Update the cart counter
 			updateCartCounter(checkout);
+			window.location.href = '/cart/';
 		});
 	});
 };

@@ -67,6 +67,7 @@ const addToCartListener = function(checkout) {
 		client.checkout.addLineItems(checkoutId, lineItems).then((checkout) => {
 		  //Update the cart counter
 		  updateCartCounter(checkout);
+		  window.location.href= '/cart/';
 		});
 	});
 }
