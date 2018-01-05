@@ -1179,11 +1179,15 @@ p:empty,
   .social .social-nav ul {
     margin-top: 0; }
     .social .social-nav ul li {
-      border: 2px solid #141414; }
+      border: 2px solid #141414;
+      background-color: white; }
       .social .social-nav ul li a {
-        background-image: radial-gradient(circle at center, #141414 50%, transparent 50%); }
+        background-image: radial-gradient(circle at center, #141414 50%, transparent 50%);
+        background-color: white; }
       .social .social-nav ul li a:hover {
         color: white; }
+        .social .social-nav ul li a:hover i {
+          color: white; }
 
 .product-designer {
   width: 90%;
