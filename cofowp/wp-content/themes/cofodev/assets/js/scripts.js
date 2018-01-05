@@ -23,7 +23,6 @@ cofo.init = function() {
 
 //Initialize the Product Details container
 cofo.initProductDetails = function() {
-
 	var $details = $('.product-details-container');
 	var heroOverlap = 155;
 	var detailsHeight = $('#product-details').outerHeight();
@@ -51,7 +50,6 @@ cofo.initProductDetails = function() {
 		}
 	});
 
-
 	$('.swatch-toggle').on('mouseup', function() {
 		activeVariant = $(this).attr('for');
 		$('.togglable')
@@ -68,14 +66,12 @@ cofo.initProductDetails = function() {
 cofo.initProductGallery = function() {
 	//Determine which image has been clicked and open the gallery
 	$('.product-explore img').on('click', function(){
-		$('.image-gallery').fadeIn();
+		$('.image-gallery').fadeIn(100);
 		var activeClass = $(this).attr('class');
 		//Match images by class
 		$('.thumbnail-img').each(function(){
 			if($(this).hasClass(activeClass)){
 				$(this).addClass('active');
-				//Clone the active thumbnail and add to main gallery element
-				// $(this).children('img').clone().appendTo('.image-gallery .main-img');
 				$('.main-img')
 					.addClass('hidden')
 					.each(function(){
@@ -91,8 +87,7 @@ cofo.initProductGallery = function() {
 	});
 
 	$('.close').on('click', function(){
-		$('.image-gallery').fadeOut('slow');
-		// $('.thumbnail-img').removeClass('active').removeClass('prev').removeClass('next');
+		$('.image-gallery').fadeOut(100);
 	});
 
 	//When a thumnail is clicked, empty the main container, add the coresponding img
@@ -100,12 +95,6 @@ cofo.initProductGallery = function() {
 		$('.thumbnail-img').removeClass('active');
 		var activeClass = $(this).removeClass('thumbnail-img togglable').attr('class');
 		$(this).addClass('active thumbnail-img togglable');
-
-		// $('.image-gallery .main-img').empty();
-		//Clone the active thumbnail and add to main gallery element
-		// $(this).clone().appendTo('.image-gallery .main-img');
-		
-		console.log(activeClass, 'poop');
 
 		$('.main-img')
 			.addClass('hidden')
@@ -117,21 +106,31 @@ cofo.initProductGallery = function() {
 	});
 
 	//Prev/next buttons
-	// $('.btn-prev').on('click', function(){
+	$('.btn-prev').on('click', function() {
+		var $thumbs = $('.image-gallery .thumbnails .thumbnail-img').not('.hidden');
+		var $active = $('.image-gallery .thumbnails .thumbnail-img.active').removeClass('active');
+		if ($active.prev() && $active.prev().not('.hidden').length) {
+			$active.prev().addClass('active');
+		}
+		else {
+			$thumbs.last().addClass('active');
+		}
 
-	// });
+		$('.image-gallery .thumbnails .thumbnail-img.active').click();
+	});
 
-	// $('.btn-next').on('click', function(){
-	// 	//If there is a next sibling, make it active
-	// 	if($('.thumbnails .active').next().hasClass('thumbnail-img')){
-	// 		$('.thumbnails .active').next().addClass('next');
-	// 		// $('.thumbnail-img').removeClass('active');
-	// 		// $('.thumbnails .next').next().addClass('active');
-	// 		// $('.thumbnails .next').removeClass('next');
-	// 	} else {
-	// 		console.log('no next!');
-	// 	}
-	// });
+	$('.btn-next').on('click', function() {
+		var $thumbs = $('.image-gallery .thumbnails .thumbnail-img').not('.hidden');
+		var $active = $('.image-gallery .thumbnails .thumbnail-img.active').removeClass('active');
+		if ($active.next() && $active.next().not('.hidden').length) {
+			$active.next().addClass('active');
+		}
+		else {
+			$thumbs.first().addClass('active');
+		}
+
+		$('.image-gallery .thumbnails .thumbnail-img.active').click();
+	});
 
 };
 

@@ -418,7 +418,6 @@
         event.preventDefault();
 
         if ((event.type === 'mousedown' && event.which === 1) || event.type === 'touchstart') {
-          console.log('mousedown');
           AppConfig.pointerStartPosX = base.getPointerEvent(event).pageX;
           AppConfig.dragging = true;
           AppConfig.onDragStart(AppConfig.currentFrame);
@@ -431,7 +430,6 @@
       });
 
       $(document).bind('mouseup', function (event) {
-        console.log('mouseup');
         if (AppConfig.dragging) {
           event.preventDefault();
           AppConfig.dragging = false; base.$el.removeClass('dragging');
@@ -445,7 +443,6 @@
       });
 
       $(document).bind('mousemove', function (event) {
-        console.log('mousemove');
         if (AppConfig.dragging) {
           base.$el.addClass('dragging');
           event.preventDefault();
