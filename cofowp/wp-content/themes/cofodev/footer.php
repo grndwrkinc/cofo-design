@@ -14,7 +14,7 @@
 	</div><!-- #content -->
 
 	<footer id="colophon" class="site-footer" role="contentinfo">
-		<div class="footer-cta dark">
+		<div class="footer-cta dark slideup">
 			<div class="medium-container">
 				<a href="<?php get_home_url(); ?>">
 					<img class="logo" src="/wp-content/themes/cofodev/assets/images/logo-white.svg" alt="">

@@ -151,7 +151,6 @@ cofo.initMasonry = function() {
 };
 
 cofo.animateHero = function() {
-
 	var herokids = $('.hero-text').children();
 	var timer = 300;
 
@@ -163,8 +162,6 @@ cofo.animateHero = function() {
 		}, timer);
 		timer = timer + 200;
 	});
-
-
 };
 
 cofo.animatePageElements = function() {

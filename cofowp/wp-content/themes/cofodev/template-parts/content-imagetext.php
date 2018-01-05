@@ -16,11 +16,11 @@
 
 <div class="container anm-container">
 	<?php if( $image ): ?>
-		<img class="anm-item slideright-item" src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt'] ?>" />
+		<img class="anm-item slideup-item" src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt'] ?>" />
 	<?php endif; ?>
 
 	<?php if($content) : ?>
-	<div class="details anm-item slideright-item">
+	<div class="details anm-item slideup-item">
 		<h3><?php if( $title ): ?>
 			<?php echo $title; ?>
 		<?php endif; ?></h3>
