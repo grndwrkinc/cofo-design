@@ -37,4 +37,35 @@
 	font-weight: 600;
 }
 
+@mixin slideright-start {
+	transform: translateX(-24px);
+	opacity: 0;
+	transition: all 0.6s ease;
+}
+
+@mixin slideright-end {
+	transform: translateX(0);
+	opacity: 1;
+}
+
+@mixin slideup-start {
+	transform: translateY(24px);
+	opacity: 0;
+	transition: all 0.6s ease;
+}
+
+@mixin slideup-end {
+	transform: translateY(0);
+	opacity: 1;
+}
+
+@mixin fadein-start {
+	opacity: 0;
+	transition: all 0.6s ease;
+}
+
+@mixin fadein-end {
+	opacity: 1;
+}
+
 

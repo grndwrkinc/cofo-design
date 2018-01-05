@@ -17,8 +17,8 @@ get_header(); ?>
 					<div class="hero-text">
 						<h1><span class="highlight"><?php the_title(); ?></span></h1>
 						<h4><?php the_field('subtitle'); ?></h4>
-						<a href="/submit" class="btn">Submit your design</a>
-						<p><a href="/rules-and-regulations">View rules and regulations</a></p>
+						<a href="/submit" class="btn animate">Submit your design</a>
+						<p class="animate"><a href="/rules-and-regulations">View rules and regulations</a></p>
 					</div>
 				</div>
 			</div>
@@ -38,8 +38,8 @@ get_header(); ?>
 			    </div>
 				<?php endif; ?>
 			</div>
-			<div class="challenge-categories">
-				<h3>Categories</h3>
+			<div class="challenge-categories anm-container">
+				<h3 class="fadein">Categories</h3>
 					<div class="categories-inner">
 					<?php if( have_rows('categories') ): ?>
 		    			<?php while( have_rows('categories') ): the_row(); 
@@ -47,7 +47,7 @@ get_header(); ?>
 		    				$header = get_sub_field('header');
 		    				$icon = get_sub_field('icon'); ?>
 
-						<ul>
+						<ul class="anm-item slideright-item">
 							<li class="icon"><?php if( $icon ): ?>
 								<img src="<?php echo $icon['url']; ?>" alt="<?php echo $icon['alt']; ?>" />
 							<?php endif; ?></li>
@@ -73,7 +73,7 @@ get_header(); ?>
 		    		<?php endif; ?>
 		    	</div>
 		    	<?php while ( have_posts() ) : the_post(); ?>
-					<p><?php the_content(); ?></p>
+					<div class="anm-item slideright-item"><?php the_content(); ?></div>
 				<?php endwhile; // End of the loop.
 				?>
 			</div>
@@ -121,12 +121,15 @@ get_header(); ?>
 	    		<a href="/submit" class="btn">Submit your design</a>
 				<p><a href="/rules-and-regulations">View rules and regulations</a></p>
 			</div>
-			<div class="challenge-share">
-				<h4>Share the challenge</h4>
-				<div class="social-nav">
+			<div class="challenge-share anm-container fadein">
+				<h4 class="anm-item slideright-item">Share the challenge</h4>
+				<div class="social-nav anm-item slideright-item">
 					<ul>
-						<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-						<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+						<li>
+							<?php global $wp;
+							$url = home_url( $wp->request ); ?>
+							<a class="social-share" href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $url; ?>" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+						<li><a class="social-share" href="https://twitter.com/intent/tweet?text=Hello%20world" data-size="large" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
 					</ul>
 				</div>
 			</div>

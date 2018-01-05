@@ -52,7 +52,7 @@ get_header();
 
 			<!-- ########## PRODUCT DETAILS (NAME, PRICE, VARIANTS, ADD TO CART) ########## -->
 			<div class="product-details-container medium-container">
-				<div id="product-details" class="bordered">
+				<div id="product-details" class="bordered slideup">
 					<h4>$<?php echo $product->variants[0]->price; ?></h4>
 					<h3><?php the_title(); ?></h3>
 
@@ -191,7 +191,7 @@ get_header();
 								$description = get_sub_field('description');
 ?>
 					<div class="togglable img-container <?php if($selected != $variant) echo "hidden"; ?>" data-id="<?php echo $variant; ?>" >
-						<img class="no<?php echo $cnt; ?>" src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt'] ?>" />
+						<img class="no<?php echo $cnt; ?> slideup" src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt'] ?>" />
     					<p><?php if( $description ) echo $description; ?></p>
 					</div>
 <?php
@@ -227,7 +227,7 @@ get_header();
 						$image = get_sub_field('image');
 ?>
 				<div class="togglable img-container <?php if($selected != $variant) echo "hidden"; ?>" data-id="<?php echo $variant; ?>">
-					<img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" />
+					<img class="slideup" src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" />
 				</div>
 <?php 
 					endwhile;
@@ -249,7 +249,7 @@ get_header();
 
 				foreach ($images as $image) {
 ?>
-					<div class="flex-item"><img src="<?php echo $image['url']; ?>" /></div>
+					<div class="flex-item"><img class="sideup" src="<?php echo $image['url']; ?>" /></div>
 <?php
 				}
 ?>
@@ -267,12 +267,12 @@ get_header();
 
 ?>
 		   <div class="product-designer">
-		   		<div class="designer-details">
-		   			<img src="<?php the_post_thumbnail_url(); ?>" alt="">
+		   		<div class="designer-details anm-container">
+		   			<img class="anm-item slideup-item" src="<?php the_post_thumbnail_url(); ?>" alt="">
 		   			<div class="details">
-				    	<p class="pre-header">Designed by</p>
-				    	<h2><span class="highlight"><?php the_title(); ?></span></h2>
-			    		<p><?php the_content(); ?></p>
+				    	<p class="pre-header anm-item slideright-item">Designed by</p>
+				    	<h2><span class="highlight anm-item slideright-item"><?php the_title(); ?></span></h2>
+			    		<p class="anm-item slideright-item"><?php the_content(); ?></p>
 		   			</div>
 		   		</div>
 	    		<?php if( have_rows('designer_info') ): ?>
