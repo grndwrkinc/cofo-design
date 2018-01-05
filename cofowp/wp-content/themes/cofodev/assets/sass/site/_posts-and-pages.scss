@@ -95,7 +95,7 @@ p:empty,
 }
 
 .hero-text {
-	h1, h4, .bordered, p.animate, a.animate {
+	h1, h4, .bordered, p.animate, a.animate, .text-steps {
 		transform: translateX(-24px);
 		opacity: 0;
 		transition: all 0.5s ease;
@@ -1031,7 +1031,6 @@ p:empty,
 
 	.social-nav ul li {
 		border: 0;
-		background-color: $black;
 
 		i {
 			color: white;
