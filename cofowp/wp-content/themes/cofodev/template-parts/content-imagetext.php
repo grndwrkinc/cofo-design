@@ -14,13 +14,13 @@
 	$content = get_sub_field('text');
 	$title = get_sub_field('title'); ?>
 
-<div class="container anm-container">
+<div class="container">
 	<?php if( $image ): ?>
-		<img class="anm-item slideup-item" src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt'] ?>" />
+		<img class="slideup" src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt'] ?>" />
 	<?php endif; ?>
 
 	<?php if($content) : ?>
-	<div class="details anm-item slideup-item">
+	<div class="details slideup">
 		<h3><?php if( $title ): ?>
 			<?php echo $title; ?>
 		<?php endif; ?></h3>

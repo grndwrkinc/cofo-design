@@ -1164,7 +1164,8 @@ p:empty,
   .product-craftsmanship .medium-container {
     padding: 0;
     position: absolute;
-    top: -20rem; }
+    top: -20rem;
+    z-index: 1; }
 
 .social {
   display: flex;
@@ -1225,9 +1226,9 @@ p:empty,
   width: 100%;
   max-width: 960px;
   margin: 0 auto;
+  margin-top: -6rem;
   display: flex;
   align-items: center;
-  transform: translateY(-6rem);
   margin-bottom: calc(-6rem + 10%); }
   .challenge-cta p {
     margin-bottom: 0; }

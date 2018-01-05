@@ -464,6 +464,7 @@ p:empty,
 		padding: 0;
 		position: absolute;
 		top: -20rem;
+		z-index: 1;
 	}
 }
 
@@ -563,9 +564,9 @@ p:empty,
 	width: 100%;
 	max-width: 960px;
 	margin: 0 auto;
+	margin-top: -6rem;
 	display: flex;
 	align-items: center;
-	transform: translateY(-6rem);
 	margin-bottom: calc(-6rem + 10%);
 
 	p {

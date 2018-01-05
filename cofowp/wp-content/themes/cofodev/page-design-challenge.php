@@ -27,19 +27,19 @@ get_header(); ?>
 				if( $images ): ?>
 			    <div class="masonry-gallery">
 			    	<div class="grid-sizer"></div>
-			    	<div class="grid-item">
-			    		<p class="pre-header"><?php the_field('inspiration_header'); ?></p>
-			    		<h2><span class="highlight"><?php the_field('inspiration_text'); ?></span></h2>
-			    		<p><?php the_field('inspiration_text_cont'); ?></p>
+			    	<div class="grid-item anm-container">
+			    		<p class="pre-header anm-item slideright-item"><?php the_field('inspiration_header'); ?></p>
+			    		<h2 class="anm-item slideright-item"><span class="highlight"><?php the_field('inspiration_text'); ?></span></h2>
+			    		<p class="anm-item slideright-item"><?php the_field('inspiration_text_cont'); ?></p>
 			    	</div>
 				    <?php foreach( $images as $image ): ?>
-				        <img class="grid-item <?php echo $image['caption']; ?>" src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" />
+				        <img class="grid-item slideup <?php echo $image['caption']; ?>" src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" />
 				    <?php endforeach; ?>
 			    </div>
 				<?php endif; ?>
 			</div>
 			<div class="challenge-categories anm-container">
-				<h3 class="fadein">Categories</h3>
+					<h3 class="fadein">Categories</h3>
 					<div class="categories-inner">
 					<?php if( have_rows('categories') ): ?>
 		    			<?php while( have_rows('categories') ): the_row(); 
@@ -78,7 +78,7 @@ get_header(); ?>
 				?>
 			</div>
 			<div class="medium-container">
-				<div class="process-container">
+				<div class="process-container slideup">
 				<?php if( have_rows('challenge_details') ): ?>
 					<?php $counter = 1; ?>
 	    			<?php while( have_rows('challenge_details') ): the_row(); 

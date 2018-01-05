@@ -60,11 +60,13 @@ get_header(); ?>
 					</div>
 				</div>
 
-				<div class="large-container anm-container">
+				<div class="large-container">
 					<div>
-						<h3 class="fadein-item anm-item">Here's how it works</h3>
+						<div class="slideup">
+							<h3>Here's how it works</h3>
+						</div>
 						<?php if( have_rows('design_challenge_steps') ): ?>
-							<ol class="text-steps">
+							<ol class="text-steps anm-container">
 								<?php $counter = 1; ?>
 			    			<?php while( have_rows('design_challenge_steps') ): the_row(); 
 			    				

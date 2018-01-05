@@ -55,7 +55,7 @@ get_header(); ?>
 				<p><?php the_field('process_section_text'); ?></p>
 				<?php if( have_rows('process_section_group') ): ?>
 					<?php $counter = 1; ?>
-					<div class="process-container">
+					<div class="process-container slideup">
 	    			<?php while( have_rows('process_section_group') ): the_row(); 
 	    				
 	    				$header = get_sub_field('header');

@@ -104,13 +104,13 @@ get_header();
 				<!-- ########## PRODUCT DESCRIPTION ########## -->
 				<div class="product-text offset">
 					<?php the_content(); ?>
-					<div class="social">
-						<p>Share</p>
+					<div class="social anm-container">
+						<p class="anm-item slideright-item">Share</p>
 						<div class="social-nav">
 							<ul>
-								<li><a href="#"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
-								<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-								<li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+								<li class="anm-item slideright-item"><a href="#"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
+								<li class="anm-item slideright-item"><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+								<li class="anm-item slideright-item"><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
 							</ul>
 						</div>
 					</div>
@@ -217,9 +217,9 @@ get_header();
 				if( have_rows('product_dimensions_images') ) :
 ?>
 			<div class="product-dimensions large-container">
-				<div class="small-container">
-					<p class="pre-header">Dimensions</p>
-					<h2><span class="highlight">Imagine <?php the_title(); ?> in your space</span></h2>
+				<div class="small-container anm-container">
+					<p class="pre-header slideright-item anm-item">Dimensions</p>
+					<h2 class="slideright-item anm-item"><span class="highlight">Imagine <?php the_title(); ?> in your space</span></h2>
 				</div>
 <?php
 					while( have_rows('product_dimensions_images')) : the_row();
@@ -239,9 +239,9 @@ get_header();
 
 			<!-- ########## CRAFTSMANSHIP ########## -->
 			<div class="product-craftsmanship">
-				<div class="medium-container">
-					<p class="pre-header">Craftsmanship</p>
-					<h2><span class="highlight" data-title="<?php the_field('craftsmanship_title'); ?>"><?php the_field('craftsmanship_title'); ?></span></h2>
+				<div class="medium-container anm-container">
+					<p class="pre-header anm-item slideright-item">Craftsmanship</p>
+					<h2 class="anm-item slideright-item"><span class="highlight" data-title="<?php the_field('craftsmanship_title'); ?>"><?php the_field('craftsmanship_title'); ?></span></h2>
 				</div>
 				<div class="inner">
 <?php
@@ -249,7 +249,7 @@ get_header();
 
 				foreach ($images as $image) {
 ?>
-					<div class="flex-item"><img class="sideup" src="<?php echo $image['url']; ?>" /></div>
+					<div class="flex-item"><img class="slideup" src="<?php echo $image['url']; ?>" /></div>
 <?php
 				}
 ?>
@@ -271,8 +271,8 @@ get_header();
 		   			<img class="anm-item slideup-item" src="<?php the_post_thumbnail_url(); ?>" alt="">
 		   			<div class="details">
 				    	<p class="pre-header anm-item slideright-item">Designed by</p>
-				    	<h2><span class="highlight anm-item slideright-item"><?php the_title(); ?></span></h2>
-			    		<p class="anm-item slideright-item"><?php the_content(); ?></p>
+				    	<h2 class=" anm-item slideright-item"><span class="highlight"><?php the_title(); ?></span></h2>
+			    		<div class="anm-item slideright-item"><?php the_content(); ?></div>
 		   			</div>
 		   		</div>
 	    		<?php if( have_rows('designer_info') ): ?>
@@ -295,7 +295,7 @@ get_header();
 
 		endwhile; // End of the loop.
 ?>
-		<div class="challenge-cta bordered">
+		<div class="challenge-cta bordered slideup">
 			<h4>Design Challenge</h4>
 			<p>If you are a student or recent graduate and want to see your ideas in the real world, enter now. </p>
 			<a href="/design-challenge" class="btn">View Challenge Details</a>
