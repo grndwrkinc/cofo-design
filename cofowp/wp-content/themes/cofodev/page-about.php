@@ -38,16 +38,21 @@ get_header(); ?>
 			</section>
 
 			<section class="about-differentiators">
-	    		<?php if( have_rows('text_images_group') ): ?>
-	    			<div class="inner">
-						<h2 class="slideright"><span class="highlight"><?php the_field('text_images_section_header') ?><span></h2>
-	    			<?php while( have_rows('text_images_group') ): the_row(); 
-
+<?php 
+    		if( have_rows('text_images_group') ): ?>
+    			<div class="inner masonry-gallery">
+					<h2 class="slideright"><span class="highlight"><?php the_field('text_images_section_header') ?><span></h2>
+<?php 
+    			while( have_rows('text_images_group') ): the_row(); 
 	    			get_template_part( 'template-parts/content', 'imagetext' );
-
-					endwhile; ?>
-					</div>
-	    		<?php endif; ?>
+				endwhile; 
+?>
+    				<div class="grid-sizer"></div>
+    				<div class="gutter-sizer"></div>
+				</div>
+<?php 
+			endif;
+?>
 			</section>
 
 			<section class="about-process medium-container">

@@ -14,7 +14,7 @@
 	$content = get_sub_field('text');
 	$title = get_sub_field('title'); ?>
 
-<div class="container">
+<div class="container grid-item">
 	<?php if( $image ): ?>
 		<img class="slideup" src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt'] ?>" />
 	<?php endif; ?>

@@ -19,7 +19,7 @@ cofo.init = function() {
 		cofo.fluidVids();
 	}
 
-	if($('.page-design-challenge').length){
+	if($('.page-design-challenge').length || $('.page-about').length){
 		cofo.initMasonry();
 	}
 
@@ -150,11 +150,12 @@ cofo.initMasonry = function() {
 	var $container = $('.masonry-gallery');
 
 	$container.masonry({
-		gutter: 24,
+		gutter: ".gutter-sizer",
 		columnWidth: ".grid-sizer",
 		itemSelector: '.grid-item',
 		transitionDuration: 0,
-		percentPosition: true
+		percentPosition: true,
+		stamp: '.stamp'
 	});
 };
 

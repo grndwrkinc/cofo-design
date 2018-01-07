@@ -27,14 +27,15 @@ get_header(); ?>
 				if( $images ): ?>
 			    <div class="masonry-gallery">
 			    	<div class="grid-sizer"></div>
-			    	<div class="grid-item anm-container">
+			    	<div class="gutter-sizer"></div>
+			    	<div class="mood-board-description stamp anm-container">
 			    		<p class="pre-header anm-item slideright-item"><?php the_field('inspiration_header'); ?></p>
 			    		<h2 class="anm-item slideright-item"><span class="highlight"><?php the_field('inspiration_text'); ?></span></h2>
 			    		<p class="anm-item slideright-item"><?php the_field('inspiration_text_cont'); ?></p>
 			    	</div>
-				    <?php foreach( $images as $image ): ?>
-				        <img class="grid-item slideup <?php echo $image['caption']; ?>" src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" />
-				    <?php endforeach; ?>
+				    <?php $cnt = 0; foreach( $images as $image ): ?>
+				        <img class="grid-item slideup img<?php echo $cnt; ?> <?php echo $image['caption']; ?>" src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" />
+				    <?php $cnt++; endforeach; ?>
 			    </div>
 				<?php endif; ?>
 			</div>

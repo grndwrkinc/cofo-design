@@ -215,22 +215,39 @@ object {
 }
 
 //MASONRY
+.page-design-challenge {
 
-.grid-item {
-	width: 30%;
-	margin-top: 2.4rem;
+	.grid-sizer {
+		width: 10%;
+	}
+
+	.gutter-sizer {
+		width: 5%;
+	}
+
+	.grid-item {
+		width: 5%;
+		margin-top: 5%;
+		
+		&.small {
+			width: 10%;
+		}
+		&.medium {
+			width: 25%;
+		}
+		&.large {
+			width: 40%;
+		}
+	}
 }
 
-.grid-sizer {
-	width: 30%;
-}
-
-.grid-item.small {
-	width: 25%;
-}
-
-.grid-item.large {
-	width: 45%;
+.page-about {
+	.grid-sizer {
+		width: 45%;
+	}
+	.gutter-sizer {
+		width: 45%;
+	}
 }
 
 
