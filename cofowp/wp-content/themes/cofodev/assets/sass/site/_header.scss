@@ -112,6 +112,98 @@ header {
 	}
 }
 
+@media (max-width: 766px) {
+
+	header {
+		padding: 2.4rem 1.2rem;
+	}
+
+	.main-navigation {
+		display: none;
+	}
+
+	.hamburger {
+
+		cursor: pointer;
+		position: relative;
+		padding: 2rem 0;
+
+		.patty, &:after, &:before {
+			width: 3.6rem;
+			height: 2px;
+			background-color: white;
+		}
+
+		&:after, &:before {
+			content: '';
+			position: absolute;
+		}
+
+		&:after {
+			bottom: 1rem;
+		}
+
+		&:before {
+			top: 1rem;
+		}
+	}
+
+	.mobile-menu {
+		display: none;
+	}
+
+	.mobile-nav {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	.mobile-nav.opened {
+		display: block;
+		position: fixed;
+		background-color: $black;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		right: 0;
+		z-index: 1;
+		padding: 2.4rem 1.2rem;
+
+		.mobile-menu {
+			display: block;
+			margin-top: 1.2rem;
+		}
+
+		li {
+			text-transform: uppercase;
+			font-weight: bold;
+			@include font-size(3.4);
+			@include line-height(3.4);
+			padding: 8px 0;
+		}
+
+		.logo, .nav-cart {
+			display: none;
+		}
+
+		.hamburger {
+
+			.patty {
+				display: none;
+			}
+
+			&:before {
+				transform: translateY(9px) rotate(45deg);
+			}
+
+			&:after {
+				transform: translateY(-9px) rotate(-45deg);
+			}
+		}
+	}
+
+}
+
 
 
 

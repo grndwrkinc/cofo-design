@@ -175,4 +175,12 @@ span.lowlight {
 	}
 }
 
+@media (max-width: 766px) {
+
+	h1 {
+		@include font-size(3.4);
+		@include line-height(3.4);
+	}
+}
+
 
