@@ -147,6 +147,27 @@ span.lowlight {
     margin-bottom: 1rem;
 }
 
+@media (max-width: 1023px) {
+	.pre-header {
+		@include font-size(1.2);
+	}
 
+	h1 {
+		@include font-size(5.5);
+		@include line-height(5.5);
+	}
+
+	h2 {
+		@include font-size(3.2);
+		@include line-height(3.2);
+		// margin-bottom: 4rem;
+	}
+
+	h3 {
+		@include font-size(2);
+		@include line-height(2);
+		// margin-bottom: 1.2rem;
+	}
+}
 
 

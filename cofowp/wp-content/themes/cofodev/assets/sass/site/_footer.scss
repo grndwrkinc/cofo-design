@@ -134,3 +134,13 @@ footer {
 	text-align: left;
 	margin-bottom: 0.7rem;
 }
+
+@media (max-width: 1023px) {
+	#menu-footer-menu li a {
+		@include font-size(1.4);
+	}
+
+	footer p {
+		margin-bottom: 4rem;
+	}
+}

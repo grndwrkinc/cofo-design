@@ -2,8 +2,7 @@ header {
 	padding: 3.6rem 0;
 
 	img {
-		width: 84px;
-		height: 79px;
+		width: 8.4rem;
 		display: block;
 	}
 }
@@ -103,7 +102,15 @@ header {
   100%   { opacity: 1; transform: translateY(0); }
 }
 
+@media (max-width: 1023px) {
+	header {
+		padding: 2.5rem 0;
 
+		img {
+			width: 6rem;
+		}
+	}
+}
 
 
 

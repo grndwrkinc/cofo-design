@@ -1,2 +1,32 @@
 //IE 10 and 11 specific styles
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {}
+
+@media (max-width: 1023px) {
+	.home-challenge {
+		margin-bottom: calc(5rem + 10%);
+
+		.text-section-offset {
+			padding-top: 22rem;
+		}
+
+		.large-container {
+			margin-top: -11rem;
+		}
+
+		h3 {
+			top: 26rem;
+		}
+	}
+}
+
+@media (max-width: 999px) {
+	.bordered {
+		padding: calc(2rem + 2%);
+	}
+
+	.home-challenge {
+		.text-section-offset {
+			width: 90%;
+		}
+	}
+}
