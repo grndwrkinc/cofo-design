@@ -10,7 +10,8 @@
 wp_enqueue_style('threesixty_style', '//' . $_SERVER['HTTP_HOST'] . '/wp-content/themes/cofodev/assets/js/threesixty-slider/styles/threesixty.css');
 wp_enqueue_script( 'threesixty_script', '//' . $_SERVER['HTTP_HOST'] . '/wp-content/themes/cofodev/assets/js/threesixty-slider/threesixty-min.js', array('jquery'), '2.0.4', true);
 wp_enqueue_script( 'threesixty_plugin', '//' . $_SERVER['HTTP_HOST'] . '/wp-content/themes/cofodev/assets/js/threesixty-slider/plugins/threesixty.fullscreen-min.js', array('threesixty_script'), '1.0.0', true);
-get_header(); 
+get_header();
+
 ?>
 
 	<div id="primary" class="content-area">
@@ -41,7 +42,7 @@ get_header();
 			<!-- ########## PRODUCT DETAILS (NAME, PRICE, VARIANTS, ADD TO CART) ########## -->
 			<div class="product-details-container medium-container">
 				<div id="product-details" class="bordered slideup">
-					<h4>$<?php echo $product->variants[0]->price; ?></h4>
+					<h4>$<?php echo number_format(floatval($product->variants[0]->price),2); ?></h4>
 					<h3><?php the_title(); ?></h3>
 
 <?php
@@ -83,7 +84,7 @@ get_header();
 <?php
 			endforeach;
 ?>
-					<button id="add-to-cart">Add to cart</button>
+					<button id="add-to-cart">Pre-order</button>
 				</div>
 			</div>
 
@@ -98,7 +99,7 @@ get_header();
 							<ul>
 								<li class="anm-item slideright-item"><a href="#"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
 								<li class="anm-item slideright-item"><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-								<li class="anm-item slideright-item"><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+								<li class="anm-item slideright-item"><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
 							</ul>
 						</div>
 					</div>
@@ -260,7 +261,7 @@ get_header();
 		   			<div class="details">
 				    	<p class="pre-header anm-item slideright-item">Designed by</p>
 				    	<h2 class=" anm-item slideright-item"><span class="highlight"><?php the_title(); ?></span></h2>
-			    		<div class="anm-item slideright-item"><?php the_content(); ?></div>
+			    		<div class=""><?php the_content(); ?></div>
 		   			</div>
 		   		</div>
 	    		<?php if( have_rows('designer_info') ): ?>

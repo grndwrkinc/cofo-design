@@ -10,7 +10,7 @@
 	}
 }
 
-.social-nav ul, .challenge-share .social-nav ul {
+.social-nav ul {
 
 	margin-top: 2.4rem;
 
@@ -28,7 +28,7 @@
 			z-index: 1;
 			position: relative;
 			background-color: $black;
-			border: 2px solid white;
+			border: 3px solid white;
 		}
 
 		i {
@@ -61,8 +61,8 @@
 	}
 }
 
-.challenge-share .social-nav ul li {
-	border: 0;
+.challenge-share .social-nav ul li a {
+	border: none;
 }
 
 .footer-nav {

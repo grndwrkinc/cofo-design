@@ -20,7 +20,7 @@
 	<?php endif; ?>
 
 	<?php if($content) : ?>
-	<div class="details slideup">
+	<div class="details">
 		<h3><?php if( $title ): ?>
 			<?php echo $title; ?>
 		<?php endif; ?></h3>

@@ -8,6 +8,17 @@ header {
 	}
 }
 
+.nav-underline {
+	content: '';
+    position: absolute;
+    height: 2px;
+    width: 0;
+    right: 0;
+    bottom: -2px;
+    background-color: white;
+    transition: width 0.3s ease;
+}
+
 #site-navigation {
 	font-weight: 400;
 	
@@ -33,15 +44,8 @@ header {
 			position: relative;
 		}
 
-		a:after {
-			content: '';
-		    position: absolute;
-		    height: 2px;
-		    width: 0;
-		    right: 0;
-		    bottom: -2px;
-		    background-color: white;
-		    transition: width 0.3s ease;
+		a:after, &.active a:after {
+			@extend .nav-underline;
 		}
 
 		&.nounderline {
@@ -57,6 +61,11 @@ header {
 				width: 100%;
 				left: 0;
 			}
+		}
+
+		&.active a:after {
+			width: 100%;
+			left: 0;
 		}
 	}
 

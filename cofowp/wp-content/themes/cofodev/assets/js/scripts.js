@@ -177,18 +177,32 @@ cofo.animatePageElements = function() {
 	//find each animation element
 	var fadein = $('.fadein');
 	var slideright = $('.slideright');
+	var slideleft = $('.slideleft');
 	var slideup = $('.slideup');
+	var slideupright = $('.slideupright');
+	var slidedownright = $('.slidedownright');
+	var slideupleft = $('.slideupleft');
 	var animationSet = $('.anm-container');
+
 	// add animate-me class when element is in view
 	cofo.animateOne(fadein);
 	cofo.animateOne(slideup);
 	cofo.animateOne(slideright);
+	cofo.animateOne(slideleft);
+	cofo.animateOne(slideupright);
+	cofo.animateOne(slidedownright);
+	cofo.animateOne(slideupleft);
 	cofo.animateSet(animationSet);
+	
 	//do the same on scroll
 	$(window).scroll(function() {
 		cofo.animateOne(fadein);
 		cofo.animateOne(slideup);
 		cofo.animateOne(slideright);
+		cofo.animateOne(slideleft);
+		cofo.animateOne(slideupright);
+		cofo.animateOne(slidedownright);
+		cofo.animateOne(slideupleft);
 		cofo.animateSet(animationSet);
 	});
 };
@@ -198,8 +212,12 @@ cofo.animateOne = function(elements){
 	var scrolled = $(window).scrollTop() + $(window).height();
 	elements.each(function(){
 		var _this = this;
+		var extraOffset = 200;
 		// get top measurement
-		var offset = $(_this).offset().top + 48;
+		if($(_this).is($("#product-details"))) {
+			extraOffset = 0;
+		}
+		var offset = $(_this).offset().top + extraOffset;
 		//add animation class if scrolled into view
 		if(scrolled > offset){
 			$(_this).addClass('animate-me');
@@ -213,7 +231,7 @@ cofo.animateSet = function(elements){
 	elements.each(function(){
 		var _this = this;
 		// get top measurement
-		var offset = $(_this).offset().top + 48;
+		var offset = $(_this).offset().top + 200;
 
 		if(scrolled > offset){
 			//find all children to be animated

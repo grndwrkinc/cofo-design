@@ -113,7 +113,7 @@ const getCartContents = function(checkout) {
 			markup += 	'<td><a href="#" class="remove-line-item" data-product-id="' + lineItemID + '" data-variant-id="' + variantID + '"> </a></td>';
 			markup += 	'<td class="product-img"><img src="' + variantImg + '" alt=""></td>';
 			markup +=	'<td class="product">';
-			markup +=		'<span class="product-title">' + productTitle + '</span><br>';
+			markup +=		'<span class="product-title">' + productTitle + ' (Pre-order<sup>1</sup>)</span><br>';
 			markup +=		'<span class="variant-title">Style: ' + variantTitle + '</span>';
 			markup +=	'</td>';
 			markup +=	'<td class="variant-quantity">';
@@ -128,8 +128,11 @@ const getCartContents = function(checkout) {
 
 		cartContent = '<table>' + cartContent + '</table>';
 		cartContent += '<div class="cart-footer">';
-		cartContent += '	<div class="cart-subtotal"><h4><span class="cart-subtotal-title">Subtotal</span><span class="cart-subtotal-amount">$' + parseFloat(checkout.totalPrice).formatMoney(2) + '</span></h4>';
-		cartContent += '	<p>Shipping & taxes calculated at checkout</p></div>';
+		cartContent += '	<div class="cart-subtotal">';
+		cartContent += '		<h4><span class="cart-subtotal-title">Subtotal</span><span class="cart-subtotal-amount">$' + parseFloat(checkout.totalPrice).formatMoney(2) + '</span></h4>';
+		cartContent += '		<p>Shipping & taxes calculated at checkout</p>';
+		cartContent += '		<p class="preorder-disclaimer"><sup>1</sup><small>Your credit card will be charged immediately upon completing the purchase of a pre-ordered item. You will be notified when your order has shipped at a later date.</small></p>';
+		cartContent += '	</div>';
 		cartContent += '	<div><a href="#" class="btn btn-update-cart">Update</a> <a href="#" class="btn btn-checkout">Checkout</a></div>';
 		cartContent += '</div>';
 	}

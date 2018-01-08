@@ -39,6 +39,11 @@ img {
 	width: 100%; /* Adhere to container width. Let's those images go wild. */
 }
 
+small,sup {
+	font-size: 1.3rem;
+}
+
+
 @import "buttons";
 
 @import "tables";

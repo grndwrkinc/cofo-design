@@ -27,7 +27,11 @@ get_header(); ?>
 				</div>
 			</section>
 
-			<section class="about-what-we-do text-section-offset fadein anm-container">
+			<section class="about-cofounders-video text-section-offset">
+				<?php the_field('story_section_video'); ?>
+			</section>
+
+			<section class="about-what-we-do text-section-offset anm-container">
 				<div class="small-container">
 					<?php
 					while ( have_posts() ) : the_post();
@@ -59,17 +63,27 @@ get_header(); ?>
 				<h2 class="slideright"><span class="highlight"><?php the_field('process_section_header'); ?></span></h2>
 				<p><?php the_field('process_section_text'); ?></p>
 				<?php if( have_rows('process_section_group') ): ?>
-					<?php $counter = 1; ?>
-					<div class="process-container slideup">
+<?php 
+						$counter = 1;
+?>
+					<div class="process-container anm-container">
 	    			<?php while( have_rows('process_section_group') ): the_row(); 
 	    				
+						switch($counter) {
+							case 1: $animation = "slidedownright"; break;
+							case 2: $animation = "slideright"; break;
+							case 3: $animation = "slideupright"; break;
+							case 4: $animation = "slideleft"; break;
+							case 5: $animation = "slideupleft"; break;
+						}
+
 	    				$header = get_sub_field('header');
 	    				$content = get_sub_field('text'); 
 	    				if($counter == 1 || $counter == 4):
 	    					echo '<div class="process-half">';
 	    				endif; ?>
 
-	    				<div class="bordered">
+	    				<div class="bordered anm-item <?php echo $animation; ?>">
 	    					<h3><?php if( $header ): ?>
 	    						<?php echo $header; ?>
 	    					<?php endif; ?></h3>
@@ -87,19 +101,15 @@ get_header(); ?>
 	    		<?php endif; ?>
 			</section>
 
-			<section class="about-cofounders">
-				<div class="about-cofounders-lead dark">
+			<section class="about-cofounders dark">
+				<div class="about-cofounders-lead">
 					<div class="medium-container">
 						<h2 class="slideright"><span class="lowlight"><?php the_field('story_section_header'); ?></span></h2>
 						<p><?php the_field('story_section_text'); ?></p>
 					</div>
 				</div>
 
-				<div class="about-cofounders-video">
-					<?php the_field('story_section_video'); ?>
-				</div>
-
-				<div class="about-cofounders-founders medium-container anm-container">
+				<div class="about-cofounders-founders large-container anm-container">
 					<h3 class="fadein">The Cofounders</h3>
 					<?php if( have_rows('founders_group') ): ?>
 		    			<?php while( have_rows('founders_group') ): the_row(); 
@@ -119,7 +129,7 @@ get_header(); ?>
 			    					<?php endif; ?></h4>
 								</div>
 							</div>
-		    				<div class="bordered">
+		    				<div class="bordered dark">
 		    					<p><?php if( $content ): ?>
 		    						<?php echo $content; ?>
 		    					<?php endif; ?></p>
