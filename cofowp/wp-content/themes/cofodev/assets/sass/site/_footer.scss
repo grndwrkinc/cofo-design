@@ -153,3 +153,52 @@ footer {
 		@include font-size(1.6);
 	}
 }
+
+@media (max-width: 766px) {
+
+	.footer-cta .medium-container {
+		flex-direction: column;
+
+		a {
+			margin-bottom: 2.4rem;
+		}
+
+		li a {
+			margin-bottom: 0;
+		}
+	}
+
+	.footer-cta {
+		padding: 6rem 2rem;
+	}
+
+	.social-nav ul li a {
+		height: 40px;
+		width: 40px;
+
+		i {
+			@include font-size(1.8);
+		}
+	}
+
+	.footer-nav ul {
+		display: block;
+		text-align: center;
+
+		li {
+			padding: 0.5rem 0;
+		}
+	}
+
+	.footer-nav a:after {
+		display: none;
+	}
+
+	.newsletter p {
+		text-align: center;
+	}
+}
+
+
+
+

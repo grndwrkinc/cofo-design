@@ -147,3 +147,93 @@
 		}
 	}
 }
+
+@media (max-width: 766px) {
+
+	//HOME PAGE
+	.hero-text .bordered {
+		width: calc(100% - 4rem);
+	}
+
+	.home .hero {
+		min-height: 65vh;
+	}
+
+	.home .hero .hero-text .bordered {
+		margin-left: 0;
+		position: absolute;
+		bottom: -12rem;
+	}
+
+	.home-about {
+		margin-top: 16rem;
+	}
+
+	.home-about-img {
+		width: 100%;
+	}
+
+	.home-about-content {
+		position: relative;
+		bottom: 8rem;
+	}
+
+	.home-about-content .bordered {
+		width: 100%;
+	}
+
+	.home-challenge {
+		margin-top: 0;
+		margin-bottom: 0;
+
+		.text-section-offset {
+			background-color: white;
+			width: 100%;
+
+			.btn {
+				width: 100%;
+				text-align: center;
+			}
+		}
+	}
+
+
+
+	.home-challenge .text-section-offset {
+		padding: 0 2rem;
+	}
+
+	.home-challenge .large-container {
+		margin-top: 8rem;
+		background-color: $lightgrey;
+		padding: 6rem 2rem;
+	}
+
+	.home-challenge .large-container div {
+		width: 100%;
+	}
+
+	.home-challenge h3 {
+		top: 12rem;
+		left: 2rem;
+	}
+
+	.home-challenge ol.text-steps {
+		display: block;
+		width: 100%;
+		margin: 0;
+
+		li {
+			width: 80%;
+			margin: 2.4rem 0 2.4rem 20%;
+			padding: 1.2rem 0rem 2.4rem 0rem;
+		}
+
+		span {
+			padding: 0 1.2rem 2rem 0;
+		}
+	}
+
+}
+
+

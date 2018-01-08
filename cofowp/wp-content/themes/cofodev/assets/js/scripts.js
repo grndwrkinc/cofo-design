@@ -23,6 +23,9 @@ cofo.init = function() {
 		cofo.initMasonry();
 	}
 
+	//Open/close mobile menu
+	cofo.mobileNav();
+
 	//Open FB share in modal 
 	$('.social-share').click(function(e) {
         e.preventDefault();
@@ -249,6 +252,14 @@ cofo.animateSet = function(elements){
 
 		}
 	});
+};
+
+cofo.mobileNav = function(){
+
+	$('.hamburger').on('click', function(){
+		$('.mobile-nav').toggleClass('opened');
+	});
+
 };
 
 //*****************************************************************

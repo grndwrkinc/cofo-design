@@ -30,6 +30,18 @@
 		<nav id="site-navigation" class="main-navigation" role="navigation">
 			<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu' ) ); ?>
 		</nav><!-- #site-navigation -->
+		<div class="mobile-nav">
+			<div class="hamburger">
+				<div class="patty"></div>
+			</div>
+			<div class="mobile-menu">
+				<?php wp_nav_menu( array( 'menu' => 'Mobile Menu' ) ); ?>
+			</div>
+			<a class="logo" href="<?php get_home_url(); ?>">
+				<img class="logo" src="/wp-content/themes/cofodev/assets/images/logo-white.svg" alt="">
+			</a>
+			<a class="nav-cart" href="/cart">Cart</a>
+		</div>
 	</header><!-- #masthead -->
 
 	<div id="content" class="site-content">
