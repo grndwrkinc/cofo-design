@@ -138,6 +138,31 @@
 	.challenge-cta {
 		margin-top: -4rem;
 	}
+
+	.page-design-challenge .img3.small {
+	    width: 25%;
+	}
+
+	.challenge-categories {
+		h3 {
+			top: 25%;
+			transform-origin: bottom left;
+		}
+
+		ul {
+			width: 33.33%;
+
+			&:nth-of-type(4),
+			&:nth-of-type(5) {
+				width: 50%;
+				margin-top: 7%;
+			}
+		}
+
+		li {
+			text-align: center;
+		}
+	}
 }
 
 @media (max-width: 999px) {

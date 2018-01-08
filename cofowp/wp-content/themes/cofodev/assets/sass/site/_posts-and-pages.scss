@@ -36,6 +36,7 @@ p:empty,
 
 	.bordered {
 		border-color: white;
+		background-color: $black;
 	}
 
 	.details {
@@ -714,8 +715,8 @@ p:empty,
 	h2 {
 		position: absolute;
 		z-index: 1;
-		top: 10%;
-		left: 65%;
+		top: 2%;
+    	left: 43%;
 		width: 17rem;
 	}
 
@@ -729,7 +730,7 @@ p:empty,
 		}
 
 		&:nth-of-type(1), &:nth-of-type(4) {
-			width: 27.5%;
+			width: 28%;
 
 			.details {
 				max-width: 34.5rem;
@@ -751,17 +752,16 @@ p:empty,
 			margin-left: 17%;
 		}
 		&:nth-of-type(2) {
-			margin-top: -25%;
+			margin-top: 15%;
 			right: 0!important;
     		left: auto!important;
 		}
 		&:nth-of-type(3) {
-			margin-top: -10%;
+			margin-top: 8%;
 		}
 		&:nth-of-type(4) {
-			margin-top: -22%;
-			margin-left: 11%;
-			right: 17%!important;
+			margin-top: 10%;
+			right: 19%!important;
     		left: auto!important;
 		}
 
@@ -790,6 +790,10 @@ p:empty,
 }
 
 .about-process {
+	margin-top: 10%;
+	padding-left: 0;
+	padding-right: 0;
+
 	h2 {
 		width: 23rem;
 	}
@@ -797,7 +801,6 @@ p:empty,
 
 .about-cofounders {
 	padding-bottom: 18rem;
-	border-bottom: 1px solid #222;
 }
 
 .about-cofounders-lead {
@@ -810,13 +813,24 @@ p:empty,
 }
 
 .about-cofounders-video {
-	padding: 7% 7% 0;
+	padding: 0 10%;
 	max-width: 100%;
-	// margin-top: -24rem;
-	// padding-bottom: 0;
 
 	.medium-container {
 		padding: 0;
+	}
+
+	.text-section-offset {
+		margin-left: 0;
+		max-width: 100%;
+		width: 75%;
+		padding: 10% 0 0;
+	}
+
+	.about-video-container {
+		background-color: #eee;
+		padding-left: 10%;
+		width: 90%;
 	}
 }
 
@@ -833,7 +847,7 @@ p:empty,
 
 	h4 {
 		margin-bottom: 0;
-		// color: white;
+		color: white;
 	}
 }
 
@@ -986,10 +1000,6 @@ p:empty,
 		@include font-size(1.4);
 	}
 
-	li {
-		padding: 0.6rem 0;
-	}
-
 	li.icon {
 		text-align: center;
 
@@ -1022,6 +1032,7 @@ p:empty,
 	justify-content: space-between;
 	max-width: 960px;
 	margin-left: auto;
+	flex-wrap: wrap;
 }
 
 .page-design-challenge {

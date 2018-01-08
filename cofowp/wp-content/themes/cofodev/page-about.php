@@ -27,8 +27,11 @@ get_header(); ?>
 				</div>
 			</section>
 
-			<section class="about-cofounders-video text-section-offset">
-				<?php the_field('story_section_video'); ?>
+			<section class="about-cofounders-video">
+				<div class="text-section-offset"></div>
+				<div class="about-video-container">
+					<?php the_field('story_section_video'); ?>
+				</div>
 			</section>
 
 			<section class="about-what-we-do text-section-offset anm-container">
@@ -59,49 +62,61 @@ get_header(); ?>
 ?>
 			</section>
 
-			<section class="about-process medium-container">
-				<h2 class="slideright"><span class="highlight"><?php the_field('process_section_header'); ?></span></h2>
-				<p><?php the_field('process_section_text'); ?></p>
-				<?php if( have_rows('process_section_group') ): ?>
+			<section class="about-process dark">
+				<div class="medium-container">
+					<h2 class="slideright"><span class="highlight"><?php the_field('process_section_header'); ?></span></h2>
+					<p><?php the_field('process_section_text'); ?></p>
 <?php 
+					if( have_rows('process_section_group') ):
 						$counter = 1;
 ?>
-					<div class="process-container anm-container">
-	    			<?php while( have_rows('process_section_group') ): the_row(); 
-	    				
-						switch($counter) {
-							case 1: $animation = "slidedownright"; break;
-							case 2: $animation = "slideright"; break;
-							case 3: $animation = "slideupright"; break;
-							case 4: $animation = "slideleft"; break;
-							case 5: $animation = "slideupleft"; break;
-						}
+						<div class="process-container anm-container">
+<?php 
+						while( have_rows('process_section_group') ): the_row(); 
+		    				
+							switch($counter) {
+								case 1: $animation = "slidedownright"; break;
+								case 2: $animation = "slideright"; break;
+								case 3: $animation = "slideupright"; break;
+								case 4: $animation = "slideleft"; break;
+								case 5: $animation = "slideupleft"; break;
+							}
 
-	    				$header = get_sub_field('header');
-	    				$content = get_sub_field('text'); 
-	    				if($counter == 1 || $counter == 4):
-	    					echo '<div class="process-half">';
-	    				endif; ?>
+		    				$header = get_sub_field('header');
+		    				$content = get_sub_field('text'); 
+		    				if($counter == 1 || $counter == 4) :
+?>
+	    					<div class="process-half">
+<?php
+		    				endif;
+?>
 
-	    				<div class="bordered anm-item <?php echo $animation; ?>">
-	    					<h3><?php if( $header ): ?>
-	    						<?php echo $header; ?>
-	    					<?php endif; ?></h3>
-	    					<p><?php if( $content ): ?>
-	    						<?php echo $content; ?>
-	    					<?php endif; ?></p>
-	    				</div>
-						<?php 
+			    				<div class="bordered anm-item <?php echo $animation; ?>">
+			    					<h3><?php if( $header ): ?>
+			    						<?php echo $header; ?>
+			    					<?php endif; ?></h3>
+			    					<p><?php if( $content ): ?>
+			    						<?php echo $content; ?>
+			    					<?php endif; ?></p>
+			    				</div>
+<?php 
 							if($counter == 3 || $counter == 5):
-								echo '</div>';
+?>
+							</div>
+<?php
 							endif; 
-							$counter++; ?>
-	    			<?php endwhile; ?>
-	    			</div>
-	    		<?php endif; ?>
+
+							$counter++; 
+		    			endwhile;
+?>
+		    			</div>
+<?php 
+					endif;
+?>
+	    		</div>
 			</section>
 
-			<section class="about-cofounders dark">
+			<section class="about-cofounders">
 				<div class="about-cofounders-lead">
 					<div class="medium-container">
 						<h2 class="slideright"><span class="lowlight"><?php the_field('story_section_header'); ?></span></h2>
@@ -129,7 +144,7 @@ get_header(); ?>
 			    					<?php endif; ?></h4>
 								</div>
 							</div>
-		    				<div class="bordered dark">
+		    				<div class="bordered">
 		    					<p><?php if( $content ): ?>
 		    						<?php echo $content; ?>
 		    					<?php endif; ?></p>

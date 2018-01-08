@@ -1,12 +1,12 @@
 // Rem output with px fallback
 @mixin font-size($sizeValue: 1) {
-	font-size: ($sizeValue * 16) * 1px;
+	font-size: ($sizeValue * 10) * 1px;
 	font-size: $sizeValue * 1rem;
 }
 
 // Rem output with px fallback
 @mixin line-height($sizeValue: 1) {
-	line-height: ($sizeValue * 16) * 1px;
+	line-height: ($sizeValue * 10) * 1px;
 	line-height: $sizeValue * 1rem;
 }
 
