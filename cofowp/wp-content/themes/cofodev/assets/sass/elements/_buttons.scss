@@ -42,3 +42,10 @@ footer {
 button {
 	width: 100%;
 }
+
+@media (max-width: 1023px) {
+
+	button, .btn {
+		padding: 1.5rem 2rem;
+	}
+}

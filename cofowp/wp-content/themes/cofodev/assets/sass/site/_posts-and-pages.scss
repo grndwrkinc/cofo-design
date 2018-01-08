@@ -607,7 +607,7 @@ p:empty,
 
 .challenge-cta {
 	width: 100%;
-	max-width: 960px;
+	max-width: 100rem;
 	margin: 0 auto;
 	margin-top: -6rem;
 	display: flex;
@@ -616,6 +616,8 @@ p:empty,
 
 	p {
 		margin-bottom: 0;
+		padding-left: 2rem;
+		padding-right: 2rem;
 	}
 
 	.btn {
