@@ -1954,7 +1954,12 @@ header {
   border: none; }
 
 .footer-nav {
-  margin: 3rem auto 1.4rem; }
+  margin: 3rem auto 1.4rem;
+  display: flex;
+  flex-direction: space-around;
+  align-items: center; }
+  .footer-nav p {
+    width: 33.3%; }
   .footer-nav a {
     display: block;
     position: relative; }
@@ -1970,6 +1975,9 @@ header {
   .footer-nav a:hover:after {
     width: 100%;
     left: 0; }
+
+.menu-footer-menu-container ul li {
+  list-style-type: none; }
 
 .page-cart footer p,
 footer p {
@@ -2050,7 +2058,17 @@ footer img {
     display: none; }
 
   .newsletter p {
-    text-align: center; } }
+    text-align: center; }
+
+  .menu-footer-menu-container {
+    margin-top: 4rem; }
+    .menu-footer-menu-container li {
+      text-align: center; } }
+@media only screen and (max-width: 480px) {
+  .footer-nav {
+    display: block; }
+    .footer-nav p {
+      width: 100%; } }
 /*--------------------------------------------------------------
 ## Media Queries
 --------------------------------------------------------------*/
