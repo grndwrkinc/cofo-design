@@ -259,8 +259,10 @@ get_header();
 		   		<div class="designer-details anm-container">
 		   			<img class="anm-item slideup-item" src="<?php the_post_thumbnail_url(); ?>" alt="">
 		   			<div class="details">
-				    	<p class="pre-header anm-item slideright-item">Designed by</p>
-				    	<h2 class=" anm-item slideright-item"><span class="highlight"><?php the_title(); ?></span></h2>
+		   				<div class="for-fixin">
+		   					<p class="pre-header anm-item slideright-item">Designed by</p>
+				    		<h2 class=" anm-item slideright-item"><span class="highlight"><?php the_title(); ?></span></h2>
+		   				</div>
 			    		<div class=""><?php the_content(); ?></div>
 		   			</div>
 		   		</div>

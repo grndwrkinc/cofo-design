@@ -11,7 +11,9 @@ cofo.init = function() {
 	cofo.animateHero();
 
 	if($('.single-product').length){
-		cofo.initProductDetails();
+		if($(window).width() > 600) {
+			cofo.initProductDetails();
+		}
 		cofo.initProductGallery();
 	}
 

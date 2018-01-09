@@ -205,7 +205,7 @@
 		width: calc(100% - 4rem);
 	}
 
-	.home .hero {
+	.home .hero, .single-product .hero {
 		min-height: 65vh;
 	}
 
@@ -355,4 +355,160 @@
 			width: 100%;
 		}
 	}
+
+	//PRODUCT PAGE
+
+	#product-details {
+		position: relative;
+		top: -4rem;
+    	right: 0
+	}
+
+	.product-details-container.fixed {
+		position: relative !important;
+		top: 0 !important;
+	}
+
+	.product-container .offset {
+		width: 100%;
+		padding-top: 0;
+	}
+
+	.product-text.offset p {
+		padding: 0 2rem;
+	}
+
+	.social p {
+		margin-right: 0;
+		margin-bottom: 0;
+	}
+
+	.product-360 {
+		margin-top: 5rem;
+
+		p {
+			padding: 0;
+		}
+	}
+
+	.threesixty .instructions {
+		width: 100px;
+		bottom: 0;
+	}
+
+	.product-dimensions {
+		padding-bottom: 10rem;
+
+		.img-container {
+			margin-top: 0;
+
+			img {
+				max-width: 100%;
+			}
+		}
+
+		h2 {
+			width: 100%;
+		}
+	}
+
+	.product-craftsmanship {
+		margin-top: 0;
+		margin-bottom: 10rem;
+
+		.medium-container {
+			position: relative;
+			top: 0;
+		}
+
+		h2 {
+			width: 80%;
+		}
+
+		.inner {
+			display: block;
+
+			.flex-item:nth-of-type(1){
+				margin-left: 0;
+				margin-bottom: 2rem;
+				width: 70%;
+			}
+
+			.flex-item:nth-of-type(2){
+				margin-left: 0;
+				padding-left: 2rem;
+				width: 100%;
+			}
+		}
+	}
+
+	.product-designer {
+		width: 100%;
+		padding: 2rem 0 8rem 0;
+
+		.details {
+			padding: 2rem;
+		}
+
+		.designer-details {
+			display: block;
+			position: relative;
+			padding-top: 10rem;
+
+			.for-fixin {
+				position: absolute;
+				top: 4rem;
+				text-align: right;
+				width: calc(100% - 4rem);
+    			padding: 0 2rem;
+			}
+
+			h2, img {
+				width: 100%;
+			}
+
+			img {
+				padding-right: 2rem;
+			}
+		}
+
+		.designer-extras {
+			display: block;
+
+			.container:nth-of-type(1) {
+				padding-top: 4rem;
+				padding-left: 2rem;
+			}
+
+			.container:nth-of-type(2) {
+				padding-top: 4rem;
+				padding-left: 0;
+				padding-right: 2rem;
+
+				.details {
+					padding-left: 2rem;
+				}
+			}
+		}
+	}
+
+	.challenge-cta {
+		display: block;
+		padding: 2rem;
+		margin-bottom: 8rem;
+
+		p, h4 {
+			padding: 0;
+			margin-bottom: 2rem;
+		}
+	}
+
+
 }
+
+
+
+
+
+
+
