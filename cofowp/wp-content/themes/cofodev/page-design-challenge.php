@@ -79,45 +79,63 @@ get_header(); ?>
 				?>
 			</div>
 			<div class="medium-container">
-				<div class="process-container slideup">
-				<?php if( have_rows('challenge_details') ): ?>
-					<?php $counter = 1; ?>
-	    			<?php while( have_rows('challenge_details') ): the_row(); 
+				<div class="process-container anm-container">
+<?php 
+				if( have_rows('challenge_details') ):
+					$counter = 1; 
+
+					while( have_rows('challenge_details') ): the_row(); 
+
+	    				switch($counter) {
+							case 1: $animation = "slidedownright-2"; break;
+							case 2: $animation = "slideupright"; break;
+							case 3: $animation = "slideleft"; break;
+						}
 	    				
 	    				$header = get_sub_field('header');
 	    				$icon = get_sub_field('icon'); 
+
 	    				if($counter == 1 || $counter == 3):
-	    					echo '<div class="process-half">';
-	    				endif; ?>
+?>
+    				<div class="process-half">
+<?php
+	    				endif; 
+?>
 
-					<div class="bordered">
-						<h3><?php if( $header ): ?>
-							<?php echo $header; ?>
-						<?php endif; ?></h3>
-
-	    				<?php if( have_rows('items') ): ?>
-	    					<ul>
-			    			<?php while( have_rows('items') ): the_row(); 
+						<div class="bordered anm-item <?php echo $animation; ?>">
+							<h3><?php if( $header ) { echo $header; } ?></h3>
+    					
+    						<ul>
+<?php 
+	    				if( have_rows('items') ): 
+							while( have_rows('items') ): the_row(); 
 			    				
 			    				$item = get_sub_field('item');
 
-			    				if( $item ): ?>
-		    						<li><?php echo $item; ?></li>
-		    					<?php endif; ?>
-
-			    			<?php endwhile; ?>
-			    			</ul>
-			    		<?php endif; ?>
-	    			</div>
-					<?php 
-						if($counter == 2 || $counter == 3):
-							echo '</div>';
+			    				if( $item ): 
+?>
+	    						<li><?php echo $item; ?></li>
+<?php 
+								endif; 
+							endwhile; 
 						endif; 
-						$counter++; ?>
-	    			<?php endwhile; ?>
-	    		<?php endif; ?>
+?>
+							</ul>
+	    				</div>
+<?php 
+						if($counter == 2 || $counter == 3):
+?>
+					</div>
+<?php
+						endif; 
+
+						$counter++; 
+					endwhile;
+				endif; 
+?>
 	    		</div>
 			</div>
+
 			<div class="medium-container challenge-details">
 	    		<a href="/submit" class="btn">Submit your design</a>
 				<p><a href="/rules-and-regulations">View rules and regulations</a></p>

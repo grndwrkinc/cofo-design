@@ -66,12 +66,12 @@ get_header(); ?>
 				<div class="medium-container">
 					<h2 class="slideright"><span class="highlight"><?php the_field('process_section_header'); ?></span></h2>
 					<p><?php the_field('process_section_text'); ?></p>
+					
+					<div class="process-container anm-container">
 <?php 
 					if( have_rows('process_section_group') ):
 						$counter = 1;
-?>
-						<div class="process-container anm-container">
-<?php 
+
 						while( have_rows('process_section_group') ): the_row(); 
 		    				
 							switch($counter) {
@@ -108,11 +108,9 @@ get_header(); ?>
 
 							$counter++; 
 		    			endwhile;
-?>
-		    			</div>
-<?php 
 					endif;
 ?>
+	    			</div>
 	    		</div>
 			</section>
 

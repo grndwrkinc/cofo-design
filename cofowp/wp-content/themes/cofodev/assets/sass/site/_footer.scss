@@ -96,6 +96,7 @@
 
 }
 
+.page-cart footer,
 footer {
 	p {
 		text-align: center;
@@ -124,7 +125,8 @@ footer {
 	}
 }
 
-.newsletter p {
+.newsletter p, 
+.page-cart .newsletter p {
 	@include font-size(1.8);
 	line-height: 1;
 	text-transform: uppercase;
