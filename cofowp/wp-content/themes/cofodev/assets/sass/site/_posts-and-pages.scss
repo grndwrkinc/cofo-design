@@ -681,13 +681,16 @@ p:empty,
 
 //ABOUT PAGE
 .page-about {
+	.hero {
+		background-position: top center;
+	}
 	.hero-text {
-		padding-left: 10%;
+		padding-left: 18%;
 		position: relative;
 		z-index: 2;
 
 		h1 {
-			width: 25%;
+			width: 35%;
 		}
 
 		.bordered {
