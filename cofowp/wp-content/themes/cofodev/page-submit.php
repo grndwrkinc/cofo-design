@@ -20,7 +20,7 @@ get_header(); ?>
 					</div>
 				</div>
 			</section>
-			<div class="medium-container">
+			<div class="medium-container form-container">
 				<?php 
 				$formcode = get_field('submission_form_shortcode');
 				echo do_shortcode($formcode); ?>
