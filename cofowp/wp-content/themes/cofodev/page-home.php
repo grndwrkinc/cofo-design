@@ -27,6 +27,8 @@ get_header(); ?>
 
 						<a href="<?php the_permalink(); ?>" class="btn">View <?php the_title(); ?></a>
 
+						<small>Now accepting pre-orders for April delivery!</small>
+
 						<?php wp_reset_postdata(); 
 					 endif; ?>
 					</div>

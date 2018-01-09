@@ -40,7 +40,9 @@ img {
 }
 
 small,sup {
-	font-size: 1.3rem;
+	@include font-size(1.3);
+	@include line-height(1.8);
+	display: inline-block;
 }
 
 
