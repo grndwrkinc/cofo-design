@@ -154,13 +154,15 @@ cofo.initProductGallery = function() {
 cofo.initMasonry = function() {
 	var $container = $('.masonry-gallery');
 
-	$container.masonry({
-		gutter: ".gutter-sizer",
-		columnWidth: ".grid-sizer",
-		itemSelector: '.grid-item',
-		transitionDuration: 0,
-		percentPosition: true,
-		stamp: '.stamp'
+	$container.imagesLoaded(function() {
+		$container.masonry({
+			gutter: ".gutter-sizer",
+			columnWidth: ".grid-sizer",
+			itemSelector: '.grid-item',
+			transitionDuration: 0,
+			percentPosition: true,
+			stamp: '.stamp'
+		});
 	});
 };
 
