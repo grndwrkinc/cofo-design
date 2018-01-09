@@ -963,6 +963,11 @@ p:empty,
 			// border-top: 0;
 			// border-left: 0;
 		}
+
+		ul li {
+			margin-left: 5rem;
+			text-indent: -5rem;
+		}
 	}
 
 	.bordered {
@@ -975,6 +980,8 @@ p:empty,
 			list-style-type: none;
 			@include font-size(1.4);
 			margin-bottom: 0.6rem;
+			 margin-left: 2rem;
+    		text-indent: -2rem;
 		}
 	}
 }
@@ -991,6 +998,10 @@ p:empty,
 		p {
 			margin-bottom: 0;
 		}
+	}
+
+	.mood-board-description-mobile {
+		display: none;
 	}
 
 	.img0 {
