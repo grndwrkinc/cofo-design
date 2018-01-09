@@ -91,6 +91,36 @@ td.right, th.right {
 	padding-top: 0;
 }
 
+@media only screen and (max-width: 600px), only screen and (max-device-width: 480px) and (orientation: portrait) {
+
+	.remove-line-item {
+		width: 20px;
+		height: 20px;
+	}
+
+	.remove-line-item:after, .remove-line-item:before {
+		width: 20px;
+		top: 10px;
+	}
+
+	td:first-of-type {
+		padding-left: 0;
+	}
+
+	td:last-of-type {
+		padding-right: 0;
+	}
+
+	td {
+		padding: 2rem 0.6rem;
+
+		&.product-img img {
+			width: 100px;
+		}
+	}
+
+}
+
 
 
 
