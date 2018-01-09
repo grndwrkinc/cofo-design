@@ -23,6 +23,11 @@ get_header(); ?>
 				</div>
 			</div>
 			<div class="medium-container challenge-mood-board">
+				<div class="mood-board-description-mobile anm-container">
+					<p class="pre-header anm-item slideright-item"><?php the_field('inspiration_header'); ?></p>
+					<h2 class="anm-item slideright-item"><span class="highlight"><?php the_field('inspiration_text'); ?></span></h2>
+					<p class="anm-item slideright-item"><?php the_field('inspiration_text_cont'); ?></p>
+				</div>
 				<?php  $images = get_field('mood_board_gallery');
 				if( $images ): ?>
 			    <div class="masonry-gallery">
@@ -78,7 +83,7 @@ get_header(); ?>
 				<?php endwhile; // End of the loop.
 				?>
 			</div>
-			<div class="medium-container">
+			<div class="medium-container challenge-boxes">
 				<div class="process-container anm-container">
 <?php 
 				if( have_rows('challenge_details') ):

@@ -1533,6 +1533,9 @@ p:empty,
     margin-top: 10rem; }
   .process-container .process-half:nth-of-type(2) .bordered:nth-of-type(2) {
     width: 60%; }
+  .process-container .process-half:nth-of-type(2) ul li {
+    margin-left: 5rem;
+    text-indent: -5rem; }
   .process-container .bordered {
     width: auto;
     min-width: 30rem; }
@@ -1540,7 +1543,9 @@ p:empty,
     list-style-type: none;
     font-size: 14px;
     font-size: 1.4rem;
-    margin-bottom: 0.6rem; }
+    margin-bottom: 0.6rem;
+    margin-left: 2rem;
+    text-indent: -2rem; }
 
 .challenge-mood-board .mood-board-description {
   width: 40%;
@@ -1548,6 +1553,8 @@ p:empty,
   right: 0; }
   .challenge-mood-board .mood-board-description p {
     margin-bottom: 0; }
+.challenge-mood-board .mood-board-description-mobile {
+  display: none; }
 .challenge-mood-board .img0 {
   margin-top: 16%; }
 .challenge-mood-board .img1 {
@@ -1963,6 +1970,8 @@ footer img {
 
   .footer-cta {
     padding: 6rem 2rem; }
+    .footer-cta .medium-container {
+      padding: 0; }
 
   .social-nav ul li a {
     height: 40px;
@@ -2306,6 +2315,86 @@ footer img {
     margin-bottom: 8rem; }
     .challenge-cta p, .challenge-cta h4 {
       padding: 0;
-      margin-bottom: 2rem; } }
+      margin-bottom: 2rem; }
+
+  .page-design-challenge .hero .large-container {
+    padding: 4rem 2rem; }
+  .page-design-challenge .hero h4 {
+    font-size: 26px;
+    font-size: 2.6rem;
+    line-height: 26px;
+    line-height: 2.6rem; }
+  .page-design-challenge .hero-text {
+    padding-left: 0; }
+    .page-design-challenge .hero-text .btn {
+      width: 100%;
+      text-align: center; }
+    .page-design-challenge .hero-text p {
+      text-align: center;
+      margin-bottom: 0; }
+  .page-design-challenge .challenge-mood-board {
+    padding: 8rem 0; }
+  .page-design-challenge .mood-board-description {
+    display: none; }
+  .page-design-challenge .mood-board-description-mobile {
+    display: block;
+    padding: 0 2rem; }
+  .page-design-challenge .grid-item.small {
+    width: 30%; }
+  .page-design-challenge .grid-item.medium {
+    width: 40%; }
+  .page-design-challenge .grid-item.large {
+    width: 50%; }
+  .page-design-challenge .process-half:first-of-type .bordered:last-of-type {
+    width: auto; }
+
+  .challenge-categories {
+    margin-top: 0;
+    width: 100%;
+    padding: 8rem 2rem; }
+    .challenge-categories h3 {
+      top: 6rem;
+      left: 4rem; }
+    .challenge-categories p {
+      margin-bottom: 0; }
+
+  .challenge-boxes {
+    padding: 8rem 0; }
+
+  .process-container .bordered {
+    min-width: 0; }
+  .process-container .process-half:nth-of-type(1) .bordered:nth-of-type(1),
+  .process-container .process-half:nth-of-type(2) .bordered:nth-of-type(1) {
+    width: auto;
+    margin-top: 0; }
+  .process-container .process-half:nth-of-type(1) .bordered:nth-of-type(1) {
+    margin-left: 4rem;
+    margin-bottom: -8px; }
+  .process-container .process-half:nth-of-type(1) .bordered:nth-of-type(2) {
+    margin-right: 2rem; }
+  .process-container .process-half:nth-of-type(2) .bordered:nth-of-type(1) {
+    margin-left: 2rem;
+    margin-top: -8px; }
+
+  .slideupright.animate-me, .slideupright-item.animate-me {
+    transform: translate(0px, 0px); }
+
+  .slideleft.animate-me, .slideleft-item.animate-me {
+    transform: translateX(0px); }
+
+  .challenge-details .btn {
+    width: 100%; }
+
+  .challenge-share {
+    padding: 6rem 2rem; } }
+@media only screen and (max-width: 400px), only screen and (max-device-width: 480px) {
+  .challenge-categories ul {
+    width: 50%;
+    margin-bottom: 2rem; }
+    .challenge-categories ul:nth-of-type(4), .challenge-categories ul:nth-of-type(5) {
+      margin-top: 0; }
+
+  .categories-inner {
+    justify-content: center; } }
 
 /*# sourceMappingURL=style.css.map */

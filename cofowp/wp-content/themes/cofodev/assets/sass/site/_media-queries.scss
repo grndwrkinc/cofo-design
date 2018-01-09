@@ -504,8 +504,144 @@
 	}
 
 
+	//DESIGN CHALLENGE PAGE
+	.page-design-challenge {
+		.hero {
+			.large-container {
+				padding: 4rem 2rem;
+			}
+
+			h4 {
+				@include font-size(2.6);
+				@include line-height(2.6);
+			}
+		}
+
+		.hero-text {
+			padding-left: 0;
+
+			.btn {
+				width: 100%;
+				text-align: center;
+			}
+			p {
+				text-align: center;
+				margin-bottom: 0;
+			}
+		}
+
+		.challenge-mood-board {
+			padding: 8rem 0;
+		}
+
+		.mood-board-description {
+			display: none;
+		}
+
+		.mood-board-description-mobile {
+			display: block;
+			padding: 0 2rem;
+		}
+		
+		.grid-item.small {
+			width: 30%;
+		}
+		.grid-item.medium {
+			width: 40%;
+		}
+		.grid-item.large {
+			width: 50%;
+		}
+
+		.process-half:first-of-type .bordered:last-of-type {
+			width: auto;
+		}
+	}
+
+	.challenge-categories {
+		margin-top: 0;
+		width: 100%;
+		padding: 8rem 2rem;
+
+		h3 {
+			top: 6rem;
+			left: 4rem;
+		}
+
+		p {
+			margin-bottom: 0;
+		}
+	}
+
+	.challenge-boxes {
+		padding: 8rem 0;
+	}
+
+	.process-container {
+
+		.bordered {
+			min-width: 0;
+		}
+
+		.process-half:nth-of-type(1) .bordered:nth-of-type(1),
+		.process-half:nth-of-type(2) .bordered:nth-of-type(1) {
+			width: auto;
+			margin-top: 0;
+		}
+
+		.process-half:nth-of-type(1) .bordered:nth-of-type(1) {
+			margin-left: 4rem;
+			margin-bottom: -8px;
+		}
+
+		.process-half:nth-of-type(1) .bordered:nth-of-type(2) {
+			margin-right: 2rem;
+		}
+
+		.process-half:nth-of-type(2) .bordered:nth-of-type(1) {
+			margin-left: 2rem;
+			margin-top: -8px;
+		}
+	}
+
+	.slideupright.animate-me, .slideupright-item.animate-me {
+		transform: translate(0px, 0px);
+	}
+
+	.slideleft.animate-me, .slideleft-item.animate-me {
+		transform: translateX(0px);
+	}
+
+	.challenge-details {
+		.btn {
+			width: 100%;
+		}
+	}
+
+	.challenge-share {
+		padding: 6rem 2rem;
+	}
+
+
 }
 
+//Final tweaks for small smartphones
+@media only screen and (max-width: 400px), only screen and (max-device-width: 480px) {
+
+	.challenge-categories ul {
+		width: 50%;
+		margin-bottom: 2rem;
+
+		&:nth-of-type(4), &:nth-of-type(5) {
+			margin-top: 0;
+		}
+	}
+
+	.categories-inner {
+		justify-content: center;
+	}
+
+}
 
 
 
