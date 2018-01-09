@@ -757,6 +757,10 @@
 			min-width: 0;
 		}
 
+		.process-half .bordered {
+			min-width: 0;
+		}
+
 		.process-half:nth-of-type(1) .bordered:nth-of-type(1),
 		.process-half:nth-of-type(2) .bordered:nth-of-type(1) {
 			width: auto;
@@ -796,6 +800,35 @@
 		padding: 6rem 2rem;
 	}
 
+	//SUBMISSION PAGE 
+	.page-submit {
+
+		.hero .hero-text {
+			padding: 0;
+		}
+
+		.large-container {
+			padding: 8rem 2rem;
+		}
+
+		.text-steps {
+			margin-top: 0;
+
+			li {
+				margin: 1.2rem 0;
+				padding-top: 0;
+			}
+		}
+
+		.form-container {
+			padding: 8rem 0;
+		}
+	}
+
+	//CART PAGE
+	.page-cart .medium-container {
+		padding: 8rem 2rem;
+	}
 
 }
 
