@@ -377,6 +377,11 @@ p:empty,
 		padding: 3rem 0;
 	}
 	.product-text {
+
+		.social p {
+			margin-bottom: 0;
+		}
+
 		width: 55%;
 	}
 
@@ -976,8 +981,8 @@ p:empty,
 		}
 
 		ul li {
-			margin-left: 5rem;
-			text-indent: -5rem;
+			margin-left: 5.7rem;
+			text-indent: -5.7rem;
 		}
 	}
 
@@ -989,7 +994,7 @@ p:empty,
 	ul {
 		li {
 			list-style-type: none;
-			@include font-size(1.4);
+			@include font-size(1.6);
 			margin-bottom: 0.6rem;
 			 margin-left: 2rem;
     		text-indent: -2rem;
@@ -1053,7 +1058,8 @@ p:empty,
 
 	.header {
 		text-transform: uppercase;
-		@include semi-bold;
+		font-weight: bold;
+		@include font-size(1.8);
 	}
 
 	p {
