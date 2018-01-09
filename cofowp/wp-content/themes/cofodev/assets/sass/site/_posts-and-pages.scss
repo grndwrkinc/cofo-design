@@ -208,6 +208,10 @@ p:empty,
 				margin-bottom: 1rem;
 			}
 		}
+
+		small {
+			@include font-size(1.1);
+		}
 	}
 
 	h1 {
