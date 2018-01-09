@@ -1106,6 +1106,9 @@ p:empty,
   margin-left: 9rem; }
   .home .hero .hero-text .bordered .btn {
     margin-bottom: 1rem; }
+.home .hero .hero-text small {
+  font-size: 11px;
+  font-size: 1.1rem; }
 .home .hero h1 {
   width: 60%; }
 
