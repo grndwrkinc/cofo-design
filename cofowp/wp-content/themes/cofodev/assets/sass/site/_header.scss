@@ -116,7 +116,8 @@ header {
 	}
 }
 
-@media (max-width: 766px) {
+@media only screen and (max-width: 768px), 
+only screen and (max-device-width: 1024px) {
 
 	header {
 		padding: 2.4rem 1.2rem;
@@ -170,7 +171,7 @@ header {
 		left: 0;
 		bottom: 0;
 		right: 0;
-		z-index: 1;
+		z-index: 10000;
 		padding: 2.4rem 1.2rem;
 
 		.mobile-menu {

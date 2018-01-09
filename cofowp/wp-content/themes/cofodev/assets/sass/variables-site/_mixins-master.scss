@@ -92,6 +92,11 @@
 	opacity: 1;
 }
 
+@mixin slidedownright-end-2 {
+	transform: translate(0px, 0px);
+	opacity: 1;
+}
+
 @mixin slideupleft-start {
 	transform: translate(24px,24px);
 	opacity: 0;
@@ -112,5 +117,3 @@
 @mixin fadein-end {
 	opacity: 1;
 }
-
-
