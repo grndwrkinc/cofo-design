@@ -37,7 +37,21 @@ get_header();
 ?>
 			<!-- Add fallback for no product available -->
 			<!-- ########## HERO IMAGE ########## -->
-			<div class="hero" style="background-image: url('<?php the_post_thumbnail_url(); ?>')"></div>
+
+			<!-- ########## HERO IMAGE ########## -->
+			<div class="hero">
+<?php
+				if( have_rows('hero_image') ):
+					while ( have_rows('hero_image') ): the_row();
+						$variant = get_sub_field('variant');
+	    				$image = get_sub_field('image'); 
+?>
+				<div class="togglable hero <?php if($selected != $variant) echo "hidden"; ?>" style="background-image: url(<?php echo $image; ?>)" data-id="<?php echo $variant; ?>"></div>
+<?php
+					endwhile;
+				endif;
+?>
+			</div>
 
 			<!-- ########## PRODUCT DETAILS (NAME, PRICE, VARIANTS, ADD TO CART) ########## -->
 			<div class="product-details-container medium-container">
