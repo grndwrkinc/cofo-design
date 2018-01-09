@@ -37,7 +37,7 @@
 			<div class="mobile-menu">
 				<?php wp_nav_menu( array( 'menu' => 'Mobile Menu' ) ); ?>
 			</div>
-			<a class="logo" href="<?php get_home_url(); ?>">
+			<a class="logo" href="/">
 				<img class="logo" src="/wp-content/themes/cofodev/assets/images/logo-white.svg" alt="">
 			</a>
 			<a class="nav-cart" href="/cart">Cart</a>

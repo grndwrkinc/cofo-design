@@ -136,7 +136,7 @@ footer {
 	margin-bottom: 0.7rem;
 }
 
-@media (max-width: 1023px) {
+@media only screen and (max-width: 1024px), screen and (min-device-width: 768px) and (max-device-width: 1024px) {
 	#menu-footer-menu li a {
 		@include font-size(1.4);
 	}
@@ -156,7 +156,7 @@ footer {
 	}
 }
 
-@media (max-width: 766px) {
+@media only screen and (max-width: 768px) {
 
 	.footer-cta .medium-container {
 		flex-direction: column;
@@ -200,7 +200,3 @@ footer {
 		text-align: center;
 	}
 }
-
-
-
-

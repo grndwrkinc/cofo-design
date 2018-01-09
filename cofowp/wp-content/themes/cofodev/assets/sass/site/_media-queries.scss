@@ -1,24 +1,33 @@
 //IE 10 and 11 specific styles
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {}
 
-@media (max-width: 1259px) {
+/* #### Desktop #### */
+@media only screen and (max-width: 1259px) {
 	.product-details-container.medium-container {
 		max-width: 90%;
 	}
 }
 
-@media (max-width: 1040px) {
+@media only screen and (max-width: 1040px) {
 	.challenge-cta {
 		max-width: calc(100% - 4rem);
 		margin-bottom: 10%;
 	}
 }
-@media (max-width: 1023px) {
+
+/* #### Desktop Small (1024px) or Tablets Portrait or Landscape #### */
+@media only screen and (max-width: 1024px), screen and (min-device-width: 768px) and (max-device-width: 1024px) {
 	.bordered,
 	.details {
 		padding: calc(2rem + 2%);
 	}
 
+	.text-section-offset {
+		width: 100%;
+		margin-left: 0;
+	}
+
+	//HOME PAGE
 	.home-challenge {
 		margin-bottom: calc(5rem + 10%);
 
@@ -35,20 +44,29 @@
 		}
 	}
 
-	.text-section-offset {
-		width: 100%;
-		margin-left: 0;
-	}
 
+	//ABOUT PAGE
 	.about-what-we-do.text-section-offset {
 	    padding-bottom: 0%;
 	    margin-bottom: -5%;
 	}
 
+	.about-cofounders-video {
+		padding: 0;
+
+		.text-section-offset {
+			width: 100%;
+		}
+
+		.about-video-container {
+			width: 100%;
+			padding-right: 10%;
+		}
+	}
+
 	.about-differentiators {
 		h2 {
-		    top: 7%;
-		    left: 60%;
+		    left: 40%;
 		}
 
 		.container:nth-of-type(1) {
@@ -56,11 +74,12 @@
 		}
 
 		.container:nth-of-type(2) {
-	    	margin-top: -35%;
-	    }
+		    margin-bottom: 9rem;
+		    margin-top: -55rem;
+		}
 
 	    .container:nth-of-type(4) {
-		    margin-top: -30%;
+		    margin-top: -55rem;
 		    right: 7% !important;
 		}
 
@@ -165,7 +184,8 @@
 	}
 }
 
-@media (max-width: 999px) {
+/* #### Desktop Small (1000px) or Tablets Portrait or Landscape #### */
+@media only screen and (max-width: 1000px), only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
 	.home-challenge {
 		.text-section-offset {
 			width: 90%;
@@ -173,7 +193,12 @@
 	}
 }
 
-@media (max-width: 766px) {
+/* #### Desktop Narrow (600px) or Mobile Phones Portrait #### */
+@media only screen and (max-width: 600px), only screen and (max-device-width: 480px) and (orientation: portrait) {
+	.hero {
+		min-height: 50vh;
+		// margin-bottom: 17rem;
+	}
 
 	//HOME PAGE
 	.hero-text .bordered {
@@ -222,8 +247,6 @@
 		}
 	}
 
-
-
 	.home-challenge .text-section-offset {
 		padding: 0 2rem;
 	}
@@ -259,6 +282,95 @@
 		}
 	}
 
+	//ABOUT PAGE
+	.page-about {
+		.hero-text {
+			padding-left: 0;
+			position: absolute;
+    		top: 55%;
+
+			h1 {
+				margin-left: -1rem;
+			}
+
+			.bordered {
+				margin-left: 0;
+				width: calc(100% - 2rem);
+			}
+		}
+	}
+
+	.about-cofounders-video .text-section-offset {
+		padding-top: 25%;
+	}
+
+	.about-differentiators {
+		h2 {
+		    position: static;
+		    margin-left: 5%;
+		}
+
+		.container {
+			img {
+				display: block;
+		    	width: 80%;
+			}
+
+			.details {
+				margin-top: -3rem;
+			}
+		}
+
+		.container:nth-of-type(1), 
+		.container:nth-of-type(2), 
+		.container:nth-of-type(3), 
+		.container:nth-of-type(4) {
+			width: 90%;
+			margin-top: 0;
+			margin-bottom: 5rem;
+		}
+
+		.container:nth-of-type(1) {
+		    margin-top: 25%;
+		}
+
+		.container:nth-of-type(1),
+		.container:nth-of-type(3) {
+		    margin-left: 10%;
+
+			img {
+			    margin-left: auto;
+		    }
+
+		    .details {
+		    	max-width: 90%;
+		    	margin-right: 5%;
+    			margin-left: -5%;
+		    }
+		}
+
+		.container:nth-of-type(2),
+		.container:nth-of-type(4) {
+		    // margin-right: 10%;
+
+		    .details {
+		    	max-width: 90%;
+    			margin-left: 5%;
+    			// margin-right: 0!important;
+		    }
+		}
+
+		// .container:nth-of-type(2) {
+		//     margin-bottom: 9rem;
+		// }
+
+	    .container:nth-of-type(4) {
+		    margin-top: 0;
+		    
+		    .details {
+		    	max-width: 85%;
+    			margin-left: 10%;
+		    }
+		}
+	}
 }
-
-
