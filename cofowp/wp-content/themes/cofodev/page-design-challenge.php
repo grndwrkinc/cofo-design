@@ -18,7 +18,7 @@ get_header(); ?>
 						<h1><span class="highlight"><?php the_title(); ?></span></h1>
 						<h4><?php the_field('subtitle'); ?></h4>
 						<a href="/submit" class="btn animate">Submit your design</a>
-						<p class="animate"><a href="/rules-and-regulations">View rules and regulations</a></p>
+						<p class="animate"><a class="link" href="/rules-and-regulations">View rules and regulations</a></p>
 					</div>
 				</div>
 			</div>
@@ -143,7 +143,7 @@ get_header(); ?>
 
 			<div class="medium-container challenge-details">
 	    		<a href="/submit" class="btn">Submit your design</a>
-				<p><a href="/rules-and-regulations">View rules and regulations</a></p>
+				<p><a class="link" href="/rules-and-regulations">View rules and regulations</a></p>
 			</div>
 			<div class="challenge-share anm-container fadein">
 				<h4 class="anm-item slideright-item">Share the challenge</h4>
