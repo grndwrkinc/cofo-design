@@ -35,7 +35,7 @@
 			    'menu' => 'Footer Menu' // Do not fall back to first non-empty menu.
 			) ); ?>
 		</div>
-		<p>Copyright © COFO Design Challenge 2017</p>
+		<p>Copyright © COFO Design</p>
 	</footer><!-- #colophon -->
 </div><!-- #page -->
 

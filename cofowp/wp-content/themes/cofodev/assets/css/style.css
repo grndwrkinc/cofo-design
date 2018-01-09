@@ -1271,6 +1271,8 @@ p:empty,
         background-image: radial-gradient(circle at center, #141414 50%, transparent 50%);
         background-color: white;
         border-color: #141414; }
+      .social .social-nav ul li i {
+        color: #141414; }
       .social .social-nav ul li a:hover {
         color: white; }
         .social .social-nav ul li a:hover i {
