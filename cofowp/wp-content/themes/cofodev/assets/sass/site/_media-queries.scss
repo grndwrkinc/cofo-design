@@ -595,13 +595,13 @@
 
 			.flex-item:nth-of-type(1){
 				margin-left: 0;
-				margin-bottom: 2rem;
+				margin-bottom: 10%;
 				width: 70%;
 			}
 
 			.flex-item:nth-of-type(2){
 				margin-left: 0;
-				padding-left: 2rem;
+				padding-left: 10%;
 				width: 100%;
 			}
 		}
@@ -640,6 +640,10 @@
 		.designer-extras {
 			display: block;
 
+			.details {
+				max-width: 90%;
+			}
+
 			.container:nth-of-type(1) {
 				padding-top: 4rem;
 				padding-left: 2rem;
@@ -652,6 +656,7 @@
 
 				.details {
 					padding-left: 2rem;
+					max-width: 90%;
 				}
 			}
 		}
@@ -665,6 +670,10 @@
 		p, h4 {
 			padding: 0;
 			margin-bottom: 2rem;
+		}
+
+		.btn {
+			width: 100%;
 		}
 	}
 
