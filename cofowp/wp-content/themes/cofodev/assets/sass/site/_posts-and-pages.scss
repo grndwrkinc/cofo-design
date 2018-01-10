@@ -837,7 +837,9 @@ p:empty,
 }
 
 .about-cofounders-lead {
-	// padding-bottom: 24rem;
+	.medium-container {
+		padding-bottom: 4rem;
+	}
 
 	h2 {
 		width: 23rem;
