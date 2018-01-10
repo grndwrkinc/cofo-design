@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "Integrate Shopify JS Buy SDK into the CoFo Design website",
   "dependencies": {
+    "es6-promise": "^4.2.2",
     "inherits": "file:node_modules/inherits",
+    "isomorphic-fetch": "^2.2.1",
     "shopify-buy": "^1.0.2"
   },
   "devDependencies": {

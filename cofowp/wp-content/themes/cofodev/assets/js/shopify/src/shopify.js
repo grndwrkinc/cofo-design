@@ -1,4 +1,6 @@
 import Client from 'shopify-buy';
+require('es6-promise').polyfill();
+require('isomorphic-fetch');
 
 const ls = window.localStorage;
 const checkoutID = ls.getItem("checkoutID");
@@ -9,6 +11,8 @@ const client = Client.buildClient({
 
 //Append a container for the cart counter to the DOM in the header
 $('.nav-cart a').append("<span class='nav-cart-counter'></span>");
+$('a.nav-cart').append("<span class='nav-cart-counter'></span>");
+
 
 /**
  * Get the Checkout Object and hook up the cart event listeners
@@ -99,30 +103,30 @@ const getCartContents = function(checkout) {
 	let cartContent;
 
 	//Haz items
-	if(lineItems.length) {
-		cartContent = lineItems.reduce((markup,lineItem) => {
-			const lineItemID = lineItem[0];
-			const variantID = lineItem[1];
-			const productTitle = lineItem[2];
-			const variantTitle = lineItem[3];
-			const variantQuantity = lineItem[4];
-			const variantPrice = lineItem[5];
-			const variantImg = lineItem[6];
+	 if (lineItems.length && $(window).width() > 600) {
+		cartContent = lineItems.reduce(function (markup, lineItem) {
+			var lineItemID = lineItem[0];
+			var variantID = lineItem[1];
+			var productTitle = lineItem[2];
+			var variantTitle = lineItem[3];
+			var variantQuantity = lineItem[4];
+			var variantPrice = lineItem[5];
+			var variantImg = lineItem[6];
 
 			markup += '<tr class="cart-item">';
-			markup += 	'<td><a href="#" class="remove-line-item" data-product-id="' + lineItemID + '" data-variant-id="' + variantID + '"> </a></td>';
-			markup += 	'<td class="product-img"><img src="' + variantImg + '" alt=""></td>';
-			markup +=	'<td class="product">';
-			markup +=		'<span class="product-title">' + productTitle + ' (Pre-order<sup>1</sup>)</span><br>';
-			markup +=		'<span class="variant-title">Style: ' + variantTitle + '</span>';
-			markup +=	'</td>';
-			markup +=	'<td class="variant-quantity">';
-			markup +=		'<input data-product-id="' + lineItemID + '" data-variant-id="' + variantID + '" type="number" min="0" pattern="[0-9]*" value="' + variantQuantity + '">';
-			markup +=	'</td>';
-			markup +=	'<td class="variant-price right">$';
-			markup +=		parseFloat(variantPrice).formatMoney(2);
-			markup +=	'</td>';
-			markup +='</tr>';
+			markup += '<td><a href="#" class="remove-line-item" data-product-id="' + lineItemID + '" data-variant-id="' + variantID + '"> </a></td>';
+			markup += '<td class="product-img"><img src="' + variantImg + '" alt=""></td>';
+			markup += '<td class="product">';
+			markup += '<span class="product-title">' + productTitle + ' (Pre-order<sup>1</sup>)</span><br>';
+			markup += '<span class="variant-title">Style: ' + variantTitle + '</span>';
+			markup += '</td>';
+			markup += '<td class="variant-quantity">';
+			markup += '<input data-product-id="' + lineItemID + '" data-variant-id="' + variantID + '" type="number" min="0" pattern="[0-9]*" value="' + variantQuantity + '">';
+			markup += '</td>';
+			markup += '<td class="variant-price right">$';
+			markup += parseFloat(variantPrice).formatMoney(2);
+			markup += '</td>';
+			markup += '</tr>';
 			return markup;
 		}, "<tr><th></th><th colspan='2'>Description</th><th>Qty</th><th class='right'>Price</th></tr>");
 
@@ -136,6 +140,39 @@ const getCartContents = function(checkout) {
 		cartContent += '	<div><a href="#" class="btn btn-update-cart">Update</a> <a href="#" class="btn btn-checkout">Checkout</a></div>';
 		cartContent += '</div>';
 	}
+
+	  else if (lineItems.length && $(window).width() <= 600) {
+	    cartContent = lineItems.reduce(function (markup, lineItem) {
+	      var lineItemID = lineItem[0];
+	      var variantID = lineItem[1];
+	      var productTitle = lineItem[2];
+	      var variantTitle = lineItem[3];
+	      var variantQuantity = lineItem[4];
+	      var variantPrice = lineItem[5];
+	      var variantImg = lineItem[6];
+
+	      markup += '<div class="cart-item"><div class="cart-row"><a href="#" class="remove-line-item" data-product-id="' + lineItemID + '" data-variant-id="' + variantID + '"> </a>';
+	      markup += '<div class="product-img"><img src="' + variantImg + '" alt=""></div>';
+	      markup += '<div class="product-title">' + productTitle + ' (Pre-order<sup>1</sup>)<br><span class="variant-title">Style: ' + variantTitle + '</span></div>';
+	      markup += '<div class="variant-price right">$';
+	      markup += parseFloat(variantPrice).formatMoney(2);
+	      markup += '</div></div>';
+	      markup += '<div class="cart-row"><div class="placeholder"></div><div class="variant-quantity"><p>Qty</p>';
+	      markup += '<input data-product-id="' + lineItemID + '" data-variant-id="' + variantID + '" type="number" min="0" pattern="[0-9]*" value="' + variantQuantity + '">';
+	      markup += '</div><div class="update"><a href="#" class="btn-update-cart">Update</a></div></div></div>';
+	      return markup;
+	    }, "<div></div>");
+
+	    cartContent = '<div>' + cartContent + '</div>';
+	    cartContent += '<div class="cart-footer">';
+	    cartContent += '  <div class="cart-subtotal">';
+	    cartContent += '    <h4><span class="cart-subtotal-title">Subtotal</span><span class="cart-subtotal-amount">$' + parseFloat(checkout.totalPrice).formatMoney(2) + '</span></h4>';
+	    cartContent += '    <p>Shipping & taxes calculated at checkout</p>';
+	    cartContent += '    <p class="preorder-disclaimer"><sup>1</sup><small>Your credit card will be charged immediately upon completing the purchase of a pre-ordered item. You will be notified when your order has shipped at a later date.</small></p>';
+	    cartContent += '  </div>';
+	    cartContent += '  <div><a href="#" class="btn btn-update-cart">Update</a> <a href="#" class="btn btn-checkout">Checkout</a></div>';
+	    cartContent += '</div>';
+	  }
 
 	//Cart is empty
 	else {
@@ -194,9 +231,9 @@ const updateCart = function() {
  */
 
 const updateCartCounter = function(checkout) {
-	console.log(checkout);
 	// Set the cart count
 	const cartCount = (checkout.lineItems.length) ? checkout.lineItems.map(lineItem => lineItem.quantity).reduce((count,quantity) => count + quantity) : 0;
+	console.log(cartCount);
 	$('.nav-cart-counter').text(cartCount);
 }
 

@@ -153,16 +153,19 @@ footer {
 
 	.logo {
 
-		img {
+		a {
 			width: 70px;
+			display: inline-block;
+		}
+
+		img {
+			width: 100%;
 		}
 	}
 
 	.v-logo {
 
-		p {
-			text-align: left;
-		}
+		text-align: left;
 
 		img {
 			width: 16rem;

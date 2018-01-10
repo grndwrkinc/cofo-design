@@ -487,6 +487,29 @@ p:empty,
 	}
 }
 
+//IE only
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+	.product-explore .img-container img {
+		cursor: url('plus-cursor.cur'), crosshair;
+	}
+
+	.product-360 .threesixty_images img {
+		cursor: url('plus-cursor.cur'), crosshair;
+	}
+}
+
+//Edge only 
+@supports (-ms-ime-align:auto) {
+
+	.product-explore .img-container img {
+		cursor: url('plus-cursor.cur'), crosshair;
+	}
+
+	.product-360 .threesixty_images img {
+		cursor: url('plus-cursor.cur'), crosshair;
+	}
+}
+
 .product-dimensions,
 .product-craftsmanship {
 	padding-top: 0;
@@ -709,6 +732,11 @@ p:empty,
 	label > input:checked + img {
 		border: 2px solid $black;
 		padding: 4px;
+	}
+
+	label > input + img {
+		border: 2px solid white;
+		padding: 2px;
 	}
 }
 
