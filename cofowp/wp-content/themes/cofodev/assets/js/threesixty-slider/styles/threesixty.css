@@ -93,15 +93,15 @@
 /* html */
 .threesixty:-webkit-full-screen {
   background: #ffffff;
-  width: 100%;
-  height: 100%;
+  width: 100%!important;
+  height: 100%!important;
   margin-top: 0;
   padding-top: 200px;
 }
 .threesixty:-moz-full-screen {
   background: #ffffff;
-  width: 100%;
-  height: 100%;
+  width: 100%!important;
+  height: 100%!important;
   margin-top: 0;
   padding-top: 200px;
 }
