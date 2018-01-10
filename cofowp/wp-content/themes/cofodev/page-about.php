@@ -64,7 +64,7 @@ get_header(); ?>
 
 			<section class="about-process dark">
 				<div class="medium-container">
-					<h2 class="slideright"><span class="highlight"><?php the_field('process_section_header'); ?></span></h2>
+					<h2 class="slideright"><span class="lowlight"><?php the_field('process_section_header'); ?></span></h2>
 					<p><?php the_field('process_section_text'); ?></p>
 					
 					<div class="process-container anm-container">
@@ -117,7 +117,7 @@ get_header(); ?>
 			<section class="about-cofounders">
 				<div class="about-cofounders-lead">
 					<div class="medium-container">
-						<h2 class="slideright"><span class="lowlight"><?php the_field('story_section_header'); ?></span></h2>
+						<h2 class="slideright"><span class="highlight"><?php the_field('story_section_header'); ?></span></h2>
 						<p><?php the_field('story_section_text'); ?></p>
 					</div>
 				</div>

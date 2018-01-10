@@ -629,6 +629,17 @@ td.right, th.right {
 .cart-footer {
   text-align: right;
   padding: 6rem 0 0 0; }
+  .cart-footer .btn-update-cart {
+    background-color: white;
+    color: #141414;
+    border: 2px solid #141414; }
+  .cart-footer .btn-update-cart:before {
+    background: #141414; }
+  .cart-footer .btn-update-cart:hover {
+    color: white; }
+    .cart-footer .btn-update-cart:hover:before {
+      width: 100%;
+      left: 0; }
 
 .cart-subtotal {
   padding-bottom: 4.8rem; }
@@ -1804,20 +1815,23 @@ header {
     #site-navigation li.active a:after {
       width: 100%;
       left: 0; }
-  #site-navigation .nav-cart-counter {
-    display: inline-block;
-    position: absolute;
-    top: -16px;
-    right: -22px;
-    text-align: center;
-    font-size: 1.2rem;
-    line-height: 2rem;
-    color: #141414;
-    background-color: white;
-    min-width: 20px;
-    height: 20px;
-    padding: 0 6px;
-    border-radius: 50px; }
+
+header a.nav-cart {
+  position: relative; }
+header .nav-cart-counter {
+  display: inline-block;
+  position: absolute;
+  top: -16px;
+  right: -22px;
+  text-align: center;
+  font-size: 1.2rem;
+  line-height: 2rem;
+  color: #141414;
+  background-color: white;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  border-radius: 50px; }
 
 .mobile-nav {
   display: none; }
@@ -1856,7 +1870,7 @@ header {
       width: 6rem; } }
 @media only screen and (max-width: 768px), only screen and (max-device-width: 1024px) {
   header {
-    padding: 2.4rem 1.2rem; }
+    padding: 2.4rem 3.2rem 2.4rem 1.2rem; }
 
   .main-navigation {
     display: none; }
@@ -2665,7 +2679,13 @@ footer .v-logo img {
     text-decoration: none; }
 
   .placeholder {
-    width: 116px; } }
+    width: 116px; }
+
+  .cart-footer .btn {
+    width: 100%;
+    text-align: center; }
+  .cart-footer .btn-update-cart {
+    margin-bottom: 2rem; } }
 @media only screen and (max-width: 480px) {
   .process-container {
     padding-left: 0;

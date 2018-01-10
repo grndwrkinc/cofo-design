@@ -889,6 +889,17 @@
 	.placeholder {
 		width: 116px;
 	}
+
+	.cart-footer {
+		.btn {
+			width: 100%;
+			text-align: center;
+		}
+
+		.btn-update-cart {
+			margin-bottom: 2rem;
+		}
+	}
 }
 
 
