@@ -9,6 +9,7 @@ button, .btn {
 	font-weight: 600;
 	position: relative;
 	z-index: 1;
+	transition: color 0.2s ease-out
 }
 
 button:before, .btn:before {
