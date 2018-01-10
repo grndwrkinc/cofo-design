@@ -47,7 +47,7 @@ get_header();
 
 				<div class="large-container">
 					<div class="hero-text">
-						<h1><span class="highlight"><?php the_title(); ?></span></h1>
+						<h1><span class="highlight"><?php (get_field('custom_title')) ? the_field('custom_title') : the_title(); ?></span></h1>
 <?php
 						if(the_field('subtitle')) :					
 ?>
