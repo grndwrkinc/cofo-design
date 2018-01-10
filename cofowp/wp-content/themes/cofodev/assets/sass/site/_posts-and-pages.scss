@@ -559,6 +559,12 @@ p:empty,
 		        background-image: radial-gradient(circle at center , $black 50%, transparent 50%);
 		        background-color: white;
 		        border-color: $black;
+
+		        @media all and (-ms-high-contrast:none) {
+					&:hover {
+						background-color: $black;
+					}
+				}
 		    }
 
 		    i {
