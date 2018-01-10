@@ -1668,9 +1668,12 @@ p:empty,
     font-size: 14px;
     font-size: 1.4rem; }
   .challenge-categories li.icon {
-    text-align: center; }
+    text-align: center;
+    width: 54px;
+    padding-bottom: 1.2rem;
+    margin: 0 auto; }
     .challenge-categories li.icon img {
-      width: 54px; }
+      width: 100%; }
   .challenge-categories h3 {
     position: absolute;
     top: 18%;
