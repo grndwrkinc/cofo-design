@@ -37,21 +37,34 @@ get_header();
 ?>
 			<!-- Add fallback for no product available -->
 			<!-- ########## HERO IMAGE ########## -->
+<?php
+			if( have_rows('hero_image') ):
+				while ( have_rows('hero_image') ): the_row();
+					$variant = get_sub_field('variant');
+    				$image = get_sub_field('image'); 
+?>
+			<div class="togglable hero <?php if($selected != $variant) echo "hidden"; ?>" style="background-image: url(<?php echo $image; ?>)" data-id="<?php echo $variant; ?>">
 
-			<!-- ########## HERO IMAGE ########## -->
-			<div class="hero">
+				<div class="large-container">
+					<div class="hero-text">
+						<h1><span class="highlight"><?php the_title(); ?></span></h1>
 <?php
-				if( have_rows('hero_image') ):
-					while ( have_rows('hero_image') ): the_row();
-						$variant = get_sub_field('variant');
-	    				$image = get_sub_field('image'); 
+						if(the_field('subtitle')) :					
 ?>
-				<div class="togglable hero <?php if($selected != $variant) echo "hidden"; ?>" style="background-image: url(<?php echo $image; ?>)" data-id="<?php echo $variant; ?>"></div>
+						<div class="bordered">	
+							<p><?php the_field('subtitle'); ?></p>
+						</div>
 <?php
-					endwhile;
-				endif;
+						endif;
 ?>
+					</div>
+				</div>
+
 			</div>
+<?php
+				endwhile;
+			endif;
+?>
 
 			<!-- ########## PRODUCT DETAILS (NAME, PRICE, VARIANTS, ADD TO CART) ########## -->
 			<div class="product-details-container medium-container">
@@ -67,12 +80,10 @@ get_header();
 						<ul id="variant-attribute-options">
 <?php 
 				$cnt = 0;
-				// $selected = "";
 
 				foreach($product->variants as $variant) : // This inner loop will need to change when there are more than one $production->options
 
 					$id = $variant->product_id . "_" . $variant->id;
-					// if($cnt == 0) $selected = $id;
 
 					//Remove special characters and whitespace from variant title to match variant swatch image name
 					$scrubTitle = preg_replace("/[^a-zA-Z]/", "", strtolower($variant->title));
