@@ -5333,7 +5333,7 @@ var getCartContents = function getCartContents(checkout) {
 	var cartContent = void 0;
 
 	//Haz items
-	if (lineItems.length) {
+	if (lineItems.length && $(window).width() > 600) {
 		cartContent = lineItems.reduce(function (markup, lineItem) {
 			var lineItemID = lineItem[0];
 			var variantID = lineItem[1];
@@ -5370,6 +5370,39 @@ var getCartContents = function getCartContents(checkout) {
 		cartContent += '	<div><a href="#" class="btn btn-update-cart">Update</a> <a href="#" class="btn btn-checkout">Checkout</a></div>';
 		cartContent += '</div>';
 	}
+
+  else if (lineItems.length && $(window).width() <= 600) {
+    cartContent = lineItems.reduce(function (markup, lineItem) {
+      var lineItemID = lineItem[0];
+      var variantID = lineItem[1];
+      var productTitle = lineItem[2];
+      var variantTitle = lineItem[3];
+      var variantQuantity = lineItem[4];
+      var variantPrice = lineItem[5];
+      var variantImg = lineItem[6];
+
+      markup += '<div class="cart-item"><div class="cart-row"><a href="#" class="remove-line-item" data-product-id="' + lineItemID + '" data-variant-id="' + variantID + '"> </a>';
+      markup += '<div class="product-img"><img src="' + variantImg + '" alt=""></div>';
+      markup += '<div class="product-title">' + productTitle + ' (Pre-order<sup>1</sup>)<br><span class="variant-title">Style: ' + variantTitle + '</span></div>';
+      markup += '<div class="variant-price right">$';
+      markup += parseFloat(variantPrice).formatMoney(2);
+      markup += '</div></div>';
+      markup += '<div class="cart-row"><div class="placeholder"></div><div class="variant-quantity"><p>Qty</p>';
+      markup += '<input data-product-id="' + lineItemID + '" data-variant-id="' + variantID + '" type="number" min="0" pattern="[0-9]*" value="' + variantQuantity + '">';
+      markup += '</div><div class="update"><a href="#" class="btn-update-cart">Update</a></div></div></div>';
+      return markup;
+    }, "<div></div>");
+
+    cartContent = '<div>' + cartContent + '</div>';
+    cartContent += '<div class="cart-footer">';
+    cartContent += '  <div class="cart-subtotal">';
+    cartContent += '    <h4><span class="cart-subtotal-title">Subtotal</span><span class="cart-subtotal-amount">$' + parseFloat(checkout.totalPrice).formatMoney(2) + '</span></h4>';
+    cartContent += '    <p>Shipping & taxes calculated at checkout</p>';
+    cartContent += '    <p class="preorder-disclaimer"><sup>1</sup><small>Your credit card will be charged immediately upon completing the purchase of a pre-ordered item. You will be notified when your order has shipped at a later date.</small></p>';
+    cartContent += '  </div>';
+    cartContent += '  <div><a href="#" class="btn btn-update-cart">Update</a> <a href="#" class="btn btn-checkout">Checkout</a></div>';
+    cartContent += '</div>';
+  }
 
 	//Cart is empty
 	else {
