@@ -16,9 +16,7 @@
 	<footer id="colophon" class="site-footer" role="contentinfo">
 		<div class="footer-cta dark slideup">
 			<div class="medium-container">
-				<a href="<?php get_home_url(); ?>">
-					<img class="logo" src="/wp-content/themes/cofodev/assets/images/logo-white.svg" alt="">
-				</a>
+				
 				<div class="newsletter">
 					<p>Let's keep in touch!</p>
 					<a href="http://www.google.ca" class="btn">Join our mailing list</a>
@@ -28,14 +26,20 @@
 					    'menu' => 'Social Media Footer Menu' // Do not fall back to first non-empty menu.
 					) ); ?>
 				</div>
+				<?php wp_nav_menu( array(
+				    'menu' => 'Footer Menu' // Do not fall back to first non-empty menu.
+				) ); ?>
 			</div>
 		</div>
 		<div class="footer-nav medium-container">
-			<?php wp_nav_menu( array(
-			    'menu' => 'Footer Menu' // Do not fall back to first non-empty menu.
-			) ); ?>
+			<p><a href="<?php get_home_url(); ?>">
+				<img class="logo" src="/wp-content/themes/cofodev/assets/images/logo-black.svg" alt="">
+			</a></p>
+			<p><a href="<?php get_home_url(); ?>">
+				<img class="logo" src="/wp-content/themes/cofodev/assets/images/logo-black.svg" alt="">
+			</a></p>
+			<p>Copyright © COFO Design</p>
 		</div>
-		<p>Copyright © COFO Design</p>
 	</footer><!-- #colophon -->
 </div><!-- #page -->
 

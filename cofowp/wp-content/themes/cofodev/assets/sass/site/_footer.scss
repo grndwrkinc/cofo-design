@@ -67,6 +67,13 @@
 
 .footer-nav {
 	margin: 3rem auto 1.4rem;
+	display: flex;
+	flex-direction: space-around;
+	align-items: center;
+
+	p {
+		width: 33.3%;
+	}
 
 	a {
 		display: block;
@@ -92,8 +99,8 @@
 	}
 }
 
-.challenge-share .social-nav ul li i {
-
+.menu-footer-menu-container ul li {
+	list-style-type: none;
 }
 
 .page-cart footer,
@@ -207,4 +214,27 @@ footer {
 	.newsletter p {
 		text-align: center;
 	}
+
+	.menu-footer-menu-container {
+		margin-top: 4rem;
+
+		li {
+			text-align: center;
+		}
+	}
 }
+
+@media only screen and (max-width: 480px) {
+	.footer-nav {
+		display: block;
+
+		p {
+			width: 100%;
+		}
+	}
+}
+
+
+
+
+
