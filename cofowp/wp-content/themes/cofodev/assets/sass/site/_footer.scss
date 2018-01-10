@@ -85,17 +85,21 @@
 }
 
 .footer-nav {
-	margin: 3rem auto 1.4rem;
 	display: flex;
 	flex-direction: space-around;
 	align-items: center;
+	padding: 6rem 2rem !important;
 
 	p {
 		width: 33.3%;
 	}
+}
+
+.menu-footer-menu-container ul li {
+	list-style-type: none;
 
 	a {
-		display: block;
+		display: inline;
 		position: relative;
 	}
 
@@ -118,10 +122,6 @@
 	}
 }
 
-.menu-footer-menu-container ul li {
-	list-style-type: none;
-}
-
 .page-cart footer,
 footer {
 	p {
@@ -129,7 +129,7 @@ footer {
 		@include font-size(1.4);
 		font-weight: 600;
 		color: $grey;
-		margin-bottom: 6.5rem;
+		margin-bottom: 0;
 	}
 
 	.footer-cta p {
@@ -142,6 +142,14 @@ footer {
 
 	img {
 		width: 10.2rem;
+	}
+
+	.logo {
+		width: 8.4rem;
+	}
+
+	.v-logo {
+		width: 16rem;
 	}
 }
 
@@ -173,7 +181,7 @@ footer {
 
 	footer {
 		p {
-			margin-bottom: 4rem;
+			margin-bottom: 0;
 		}
 
 		img {
@@ -244,11 +252,12 @@ footer {
 }
 
 @media only screen and (max-width: 480px) {
-	.footer-nav {
+	footer .footer-nav {
 		display: block;
 
 		p {
 			width: 100%;
+			margin-bottom: 2rem;
 		}
 	}
 }
