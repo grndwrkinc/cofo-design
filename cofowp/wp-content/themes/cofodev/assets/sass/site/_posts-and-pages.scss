@@ -1086,6 +1086,7 @@ p:empty,
 		text-transform: uppercase;
 		font-weight: bold;
 		@include font-size(1.8);
+		color: $black;
 	}
 
 	p {

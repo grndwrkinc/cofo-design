@@ -1653,7 +1653,8 @@ p:empty,
     text-transform: uppercase;
     font-weight: bold;
     font-size: 18px;
-    font-size: 1.8rem; }
+    font-size: 1.8rem;
+    color: #141414; }
   .challenge-categories p {
     text-align: center;
     margin-top: 2.4rem; }
@@ -1987,7 +1988,12 @@ header {
     width: 33.3%; }
 
 .menu-footer-menu-container ul li {
-  list-style-type: none; }
+  list-style-type: none;
+  font-size: 14px;
+  font-size: 1.4rem;
+  line-height: 14px;
+  line-height: 1.4rem;
+  text-align: right; }
   .menu-footer-menu-container ul li a {
     display: inline;
     position: relative; }
@@ -2009,8 +2015,8 @@ footer p {
   text-align: center;
   font-size: 14px;
   font-size: 1.4rem;
-  font-weight: 600;
-  color: #696969;
+  font-weight: 300;
+  color: #141414;
   margin-bottom: 0; }
 .page-cart footer .footer-cta p,
 footer .footer-cta p {
@@ -2021,11 +2027,17 @@ footer .medium-container {
 .page-cart footer img,
 footer img {
   width: 10.2rem; }
-.page-cart footer .logo,
-footer .logo {
-  width: 8.4rem; }
-.page-cart footer .v-logo,
-footer .v-logo {
+.page-cart footer .copyright,
+footer .copyright {
+  text-align: right; }
+.page-cart footer .logo img,
+footer .logo img {
+  width: 70px; }
+.page-cart footer .v-logo p,
+footer .v-logo p {
+  text-align: left; }
+.page-cart footer .v-logo img,
+footer .v-logo img {
   width: 16rem; }
 
 .footer-cta {
@@ -2093,14 +2105,15 @@ footer .v-logo {
 
   .menu-footer-menu-container {
     margin-top: 4rem; }
-    .menu-footer-menu-container li {
+    .menu-footer-menu-container ul li {
       text-align: center; } }
 @media only screen and (max-width: 480px) {
   footer .footer-nav {
     display: block; }
-    footer .footer-nav p {
+    footer .footer-nav p, footer .footer-nav .v-logo, footer .footer-nav .copyright {
       width: 100%;
-      margin-bottom: 2rem; } }
+      margin-bottom: 2rem;
+      text-align: center; } }
 /*--------------------------------------------------------------
 ## Media Queries
 --------------------------------------------------------------*/

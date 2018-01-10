@@ -15,30 +15,32 @@
 
 	<footer id="colophon" class="site-footer" role="contentinfo">
 		<div class="footer-cta dark slideup">
-			<div class="medium-container">
+			<div class="medium-container anm-container">
 				
-				<div class="newsletter">
+				<div class="newsletter anm-item slideup-item">
 					<p>Let's keep in touch!</p>
 					<a href="http://www.google.ca" class="btn">Join our mailing list</a>
 				</div>
-				<div class="social-nav">
+				<div class="social-nav anm-item slideup-item">
 					<?php wp_nav_menu( array(
 					    'menu' => 'Social Media Footer Menu' // Do not fall back to first non-empty menu.
 					) ); ?>
 				</div>
+				<div class="anm-item slideup-item">
 				<?php wp_nav_menu( array(
 				    'menu' => 'Footer Menu' // Do not fall back to first non-empty menu.
 				) ); ?>
+				</div>
 			</div>
 		</div>
 		<div class="footer-nav medium-container">
-			<p><a href="<?php echo get_home_url(); ?>">
-				<img class="v-logo" src="/wp-content/themes/cofodev/assets/images/VisualElements.png" alt="">
+			<p class="v-logo"><a href="<?php echo get_home_url(); ?>">
+				<img src="/wp-content/themes/cofodev/assets/images/VisualElements.png" alt="">
 			</a></p>
-			<p><a href="<?php echo get_home_url(); ?>">
-				<img class="logo" src="/wp-content/themes/cofodev/assets/images/logo-black.svg" alt="">
+			<p class="logo"><a href="<?php echo get_home_url(); ?>">
+				<img src="/wp-content/themes/cofodev/assets/images/logo-black.svg" alt="">
 			</a></p>
-			<p>Copyright © COFO Design</p>
+			<p class="copyright">Copyright © COFO Design</p>
 		</div>
 	</footer><!-- #colophon -->
 </div><!-- #page -->
