@@ -34,7 +34,7 @@
 			</div>
 		</div>
 		<div class="footer-nav medium-container">
-			<p class="v-logo"><a href="<?php echo get_home_url(); ?>">
+			<p class="v-logo"><a href="http://www.visual-elements.ca/" target="_blank">
 				<img src="/wp-content/themes/cofodev/assets/images/VisualElements.png" alt="">
 			</a></p>
 			<p class="logo"><a href="<?php echo get_home_url(); ?>">

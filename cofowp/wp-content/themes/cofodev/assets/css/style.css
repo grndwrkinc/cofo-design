@@ -632,7 +632,10 @@ td.right, th.right {
 .cart-footer {
   text-align: right;
   padding: 6rem 0 0 0; }
+  .cart-footer .btn {
+    padding: 2.2rem 3.2rem; }
   .cart-footer .btn-update-cart {
+    padding: 2rem 3rem;
     background-color: white;
     color: #141414;
     border: 3px solid #141414; }
