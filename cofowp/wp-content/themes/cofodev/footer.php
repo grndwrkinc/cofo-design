@@ -33,7 +33,7 @@
 		</div>
 		<div class="footer-nav medium-container">
 			<p><a href="<?php get_home_url(); ?>">
-				<img class="logo" src="/wp-content/themes/cofodev/assets/images/logo-black.svg" alt="">
+				<img class="v-logo" src="/wp-content/themes/cofodev/assets/images/VisualElements.png" alt="">
 			</a></p>
 			<p><a href="<?php get_home_url(); ?>">
 				<img class="logo" src="/wp-content/themes/cofodev/assets/images/logo-black.svg" alt="">
