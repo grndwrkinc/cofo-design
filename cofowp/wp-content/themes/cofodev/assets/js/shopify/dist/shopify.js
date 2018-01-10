@@ -5374,7 +5374,7 @@ var getCartContents = function getCartContents(checkout) {
 	//Cart is empty
 	else {
 			cartContent = "<p class='pre-header'>Your shopping cart is empty.<p>";
-			cartContent += "<p><a href='/product/the-roque/'>&laquo; Shop The Roque Chair</a><p>";
+			cartContent += "<p><a class='link' href='/product/the-roque/'>&laquo; Shop The Roque Chair</a><p>";
 		}
 
 	$cart.html(cartContent);
