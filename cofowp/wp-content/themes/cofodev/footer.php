@@ -32,10 +32,10 @@
 			</div>
 		</div>
 		<div class="footer-nav medium-container">
-			<p><a href="<?php get_home_url(); ?>">
+			<p><a href="<?php echo get_home_url(); ?>">
 				<img class="v-logo" src="/wp-content/themes/cofodev/assets/images/VisualElements.png" alt="">
 			</a></p>
-			<p><a href="<?php get_home_url(); ?>">
+			<p><a href="<?php echo get_home_url(); ?>">
 				<img class="logo" src="/wp-content/themes/cofodev/assets/images/logo-black.svg" alt="">
 			</a></p>
 			<p>Copyright © COFO Design</p>
