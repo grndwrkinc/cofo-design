@@ -598,8 +598,8 @@ p:empty,
 
 	.details {
 		background: none;
-		padding: 3.8%;
-		max-width: 48%;
+		// padding: 3.8%;
+		max-width: 60%;
 
 		h2 {
 			width: 15rem;
@@ -629,6 +629,12 @@ p:empty,
 
 	.designer-extras {
 		display: flex;
+
+		@-moz-document url-prefix() { 
+			.container {
+				display: table;
+			}
+		}
 
 		img {
 			display: block;
