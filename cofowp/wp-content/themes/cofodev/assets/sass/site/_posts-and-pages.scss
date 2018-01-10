@@ -320,6 +320,10 @@ p:empty,
 		max-width: 50rem;
     	margin-left: auto;
 	}
+
+	.btn:before {
+		border: 3px solid $black;
+	}
 }
 
 
@@ -1155,6 +1159,10 @@ p:empty,
 				border-bottom: 2px solid black;
 			}
 		}
+
+		.btn:before {
+			border: 3px solid $black;
+		}
 	}
 
 	.process-half:first-of-type {
@@ -1198,6 +1206,10 @@ p:empty,
 
 	a {
 		margin: 0 auto;
+	}
+
+	.btn:before {
+		border: 3px solid $black;
 	}
 }
 

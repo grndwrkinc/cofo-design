@@ -73,6 +73,10 @@ button {
 	}
 }
 
+.btn-checkout:before {
+	border: 3px solid $black;
+}
+
 @media (max-width: 1023px) {
 
 	button, .btn {

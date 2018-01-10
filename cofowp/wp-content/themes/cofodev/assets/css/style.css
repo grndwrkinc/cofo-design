@@ -590,6 +590,9 @@ button {
     right: 0;
     left: auto; }
 
+.btn-checkout:before {
+  border: 3px solid #141414; }
+
 @media (max-width: 1023px) {
   button, .btn {
     padding: 1.5rem 2rem; } }
@@ -632,7 +635,7 @@ td.right, th.right {
   .cart-footer .btn-update-cart {
     background-color: white;
     color: #141414;
-    border: 2px solid #141414; }
+    border: 3px solid #141414; }
   .cart-footer .btn-update-cart:before {
     background: #141414; }
   .cart-footer .btn-update-cart:hover {
@@ -1203,6 +1206,8 @@ p:empty,
   .home-challenge ol {
     max-width: 50rem;
     margin-left: auto; }
+  .home-challenge .btn:before {
+    border: 3px solid #141414; }
 
 .product-details-container {
   padding: 0;
@@ -1709,6 +1714,8 @@ p:empty,
     .page-design-challenge .hero-text p a {
       padding-bottom: 0.4rem;
       border-bottom: 2px solid black; }
+  .page-design-challenge .hero-text .btn:before {
+    border: 3px solid #141414; }
 .page-design-challenge .process-half:first-of-type .bordered:first-of-type li:before {
   content: '+';
   padding-right: 1.2rem; }
@@ -1727,6 +1734,8 @@ p:empty,
       border-bottom: 2px solid black; }
   .challenge-details a {
     margin: 0 auto; }
+  .challenge-details .btn:before {
+    border: 3px solid #141414; }
 
 .challenge-share {
   background-color: #EEEEEE;
