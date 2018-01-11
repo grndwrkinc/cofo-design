@@ -153,7 +153,7 @@ get_header(); ?>
 							<?php global $wp;
 							$url = home_url( $wp->request ); ?>
 							<a class="social-share" href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $url; ?>" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-						<li><a class="social-share" href="https://twitter.com/intent/tweet?text=Hello%20world" data-size="large" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+						<li><a class="social-share" href="https://twitter.com/intent/tweet?text=<?php echo get_post_meta(get_the_ID(), '_yoast_wpseo_metadesc', true); ?>" data-size="large" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
 					</ul>
 				</div>
 			</div>
