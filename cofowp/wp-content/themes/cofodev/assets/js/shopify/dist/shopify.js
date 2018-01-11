@@ -7095,6 +7095,9 @@ var _shopifyBuy2 = _interopRequireDefault(_shopifyBuy);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+require('es6-promise').polyfill();
+require('isomorphic-fetch');
+
 //Polyfill for Object.assign
 if (typeof Object.assign != 'function') {
 	// Must be writable: true, enumerable: false, configurable: true
@@ -7129,10 +7132,6 @@ if (typeof Object.assign != 'function') {
 		configurable: true
 	});
 }
-
-
-require('es6-promise').polyfill();
-require('isomorphic-fetch');
 
 var ls = window.localStorage;
 var checkoutID = ls.getItem("checkoutID");
@@ -7315,7 +7314,11 @@ var getCartContents = function getCartContents(checkout) {
 
 var removeLineItem = function removeLineItem(event) {
 	event.preventDefault();
-	$($(this).parent().siblings('.variant-quantity').find('input')).val(0);
+	if ($(window).width() > 600) {
+		$($(this).parent().siblings('.variant-quantity').find('input')).val(0);
+	} else {
+		$($(this).parents('.cart-item').find('.variant-quantity').find('input')).val(0);
+	}
 	updateCart();
 };
 
@@ -7352,7 +7355,6 @@ var updateCartCounter = function updateCartCounter(checkout) {
 	}).reduce(function (count, quantity) {
 		return count + quantity;
 	}) : 0;
-	console.log(cartCount);
 	$('.nav-cart-counter').text(cartCount);
 };
 

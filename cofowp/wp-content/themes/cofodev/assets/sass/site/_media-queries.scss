@@ -42,6 +42,10 @@
 		h3 {
 			top: 26rem;
 		}
+
+		.full-collection {
+			padding-top: 8rem;
+		}
 	}
 
 
@@ -209,7 +213,7 @@
 		.container:nth-of-type(3), 
 		.container:nth-of-type(4) {
 			width: 100%;
-			margin: 5% 0;
+			margin: 1.2rem 0;
 
 			.details {
 				max-width: calc(70% - 4rem);
@@ -242,11 +246,18 @@
 		}
 	}
 
+	.about-what-we-do .small-container {
+		padding-bottom: 5.4rem;
+	}
+
+	.about-process {
+		margin-top: 7.2rem;
+	}
+
 	.about-process,
 	.about-cofounders-lead {
 		 .medium-container {
-			padding-left: 0;
-			padding-right: 0;
+			padding: 6rem 0;
 		}
 
 		h2 {
@@ -254,6 +265,14 @@
 			padding-right: 10%;
 			margin-left: 0;
 			margin-right: 0;
+		}
+	}
+
+	.about-cofounders {
+		padding: 2.4rem 0 8.4rem 0;
+
+		.large-container {
+			padding: 0;
 		}
 	}
 
@@ -308,6 +327,10 @@
 	.founder:nth-of-type(1) .bordered {
 	    max-width: 36rem;
 	}
+
+	.about-cofounders-video .about-video-container {
+		padding: 8.4rem 2rem;
+	}
 }
 
 /* #### Desktop Narrow (600px) or Mobile Phones Portrait #### */
@@ -352,6 +375,10 @@
 	.home-challenge {
 		margin-top: 0;
 		margin-bottom: 0;
+
+		.full-collection {
+			padding: 6rem 2rem;
+		}
 
 		.text-section-offset {
 			background-color: white;
@@ -462,7 +489,6 @@
 	}
 
 	.about-cofounders {
-		padding-bottom: 0;
 
 		.large-container {
 			padding-left: 0;

@@ -1,3 +1,8 @@
+import Client from 'shopify-buy';
+
+require('es6-promise').polyfill();
+require('isomorphic-fetch');
+
 //Polyfill for Object.assign
 if (typeof Object.assign != 'function') {
   // Must be writable: true, enumerable: false, configurable: true
@@ -28,11 +33,6 @@ if (typeof Object.assign != 'function') {
     configurable: true
   });
 }
-import Client from 'shopify-buy';
-
-require('es6-promise').polyfill();
-require('isomorphic-fetch');
-
 
 const ls = window.localStorage;
 const checkoutID = ls.getItem("checkoutID");
@@ -230,7 +230,11 @@ const getCartContents = function(checkout) {
 
 const removeLineItem = function(event) {
 	event.preventDefault();
-	$($(this).parent().siblings('.variant-quantity').find('input')).val(0);
+	if ($(window).width() > 600) {
+		$($(this).parent().siblings('.variant-quantity').find('input')).val(0);
+	} else {
+		$($(this).parents('.cart-item').find('.variant-quantity').find('input')).val(0);
+	}
 	updateCart();
 }
 
@@ -265,7 +269,6 @@ const updateCart = function() {
 const updateCartCounter = function(checkout) {
 	// Set the cart count
 	const cartCount = (checkout.lineItems.length) ? checkout.lineItems.map(lineItem => lineItem.quantity).reduce((count,quantity) => count + quantity) : 0;
-	console.log(cartCount);
 	$('.nav-cart-counter').text(cartCount);
 }
 

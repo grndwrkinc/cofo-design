@@ -110,17 +110,19 @@
 		content: '';
 	    position: absolute;
 	    height: 1px;
-	    width: 0;
-	    right: 0;
+	    width: 100%;
+	    left: 0;
 	    bottom: -2px;
 	    background-color: $grey;
-	    transition: width 0.3s ease;
+	    transform: scale(0, 1);
+		transform-origin: right center;
+		transition: transform 0.3s ease;
 	}
 
 	a:hover {
 		&:after {
-			width: 100%;
-			left: 0;
+			transform: scale(1, 1);
+			transform-origin: left center;
 		}
 	}
 }
@@ -137,6 +139,7 @@ footer {
 
 	.footer-cta p {
 		color: white;
+		text-align: center;
 	}
 
 	.medium-container {
@@ -273,12 +276,23 @@ footer {
 
 @media only screen and (max-width: 480px) {
 	footer .footer-nav {
-		display: block;
+		flex-direction: column;
 
 		p, .v-logo, .copyright {
 			width: 100%;
 			margin-bottom: 2rem;
 			text-align: center;
+		}
+
+		.logo {
+			order: 1;
+		}
+		.v-logo {
+			order: 2;
+		}
+		.copyright {
+			order: 3;
+			margin-bottom: 0;
 		}
 	}
 }
