@@ -122,14 +122,13 @@ get_header();
 						<p class="anm-item slideright-item">Share</p>
 						<div class="social-nav">
 							<ul>
-								<?php global $wp;
-								echo "<pre>";
-								var_dump($post);
-								echo "</pre>";
-									$url = home_url( $wp->request ); ?>
-								<li class="anm-item slideright-item"><a class="social-share" href="http://pinterest.com/pin/create/button/?url=<?php echo $url ?>&description=<?php echo urlencode(get_post_meta($post->ID, '_yoast_wpseo_metadesc', true)); ?>"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
+<?php 
+								global $wp;
+								$url = home_url( $wp->request );
+?>
+								<li class="anm-item slideright-item"><a class="social-share" href="http://pinterest.com/pin/create/button/?url=<?php echo $url ?>&description=<?php echo urlencode(strip_tags(get_the_content())); ?>"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
 								<li class="anm-item slideright-item"><a class="social-share" href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $url; ?>" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-								<li class="anm-item slideright-item"><a class="social-share" href="https://twitter.com/intent/tweet?text=<?php echo urlencode(get_post_meta($post->ID, '_yoast_wpseo_metadesc', true)); ?>" data-size="large" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+								<li class="anm-item slideright-item"><a class="social-share" href="https://twitter.com/intent/tweet?text=<?php echo urlencode(strip_tags(get_the_content())); ?>" data-size="large" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
 							</ul>
 						</div>
 					</div>
