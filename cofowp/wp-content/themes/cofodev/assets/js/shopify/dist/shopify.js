@@ -7171,13 +7171,21 @@ if (checkoutID) {
 	console.log(client);
 
 	//This is a new session, create a new empty Checkout
-	client.checkout.create().then(function (checkout) {
+	// client.checkout.create().then((checkout) => {
+	// 	console.log('checkout create');
+	// 	//Save the checkout ID to local storage
+	// 	ls.setItem('checkoutID', checkout.id);
+	// 	initCart(checkout);
+	// });
+
+	var checkout = client.checkout.create();
+
+	setTimeout(function () {
 		console.log('checkout create');
 		//Save the checkout ID to local storage
 		ls.setItem('checkoutID', checkout.id);
 		initCart(checkout);
-	});
-	setTimeout(function () {}, 1);
+	}, 1000);
 }
 
 var initCart = function initCart(checkout) {
