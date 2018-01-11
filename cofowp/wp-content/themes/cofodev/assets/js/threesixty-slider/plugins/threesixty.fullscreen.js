@@ -56,12 +56,14 @@
         }
         m = pfx[p] + m;
         t = typeof obj[m];
+        console.log(m,t);
         if (t !== 'undefined') {
           pfx = [pfx[p]];
           return (t === 'function' ? obj[m]() : obj[m]);
         }
         p++;
       }
+      return false;
     };
     /**
      * Initilize the fullscreen plugin
@@ -102,12 +104,29 @@
     };
 
     plugin.toggleFullscreen = function(elem) {
-      if (plugin.RunPrefixMethod(document, 'FullScreen') || plugin.RunPrefixMethod(document, 'IsFullScreen')) {
-        plugin.RunPrefixMethod(document, 'CancelFullScreen');
+      var match = false;
+
+      if(!match) {
+        if (plugin.RunPrefixMethod(document, 'FullScreen') || plugin.RunPrefixMethod(document, 'IsFullScreen')) {
+          match = plugin.RunPrefixMethod(document, 'CancelFullScreen');
+        }
       }
-      else {
-        plugin.RunPrefixMethod(elem, 'RequestFullScreen');
+
+      if(!match) {
+        if (plugin.RunPrefixMethod(document, 'Fullscreen') || plugin.RunPrefixMethod(document, 'IsFullscreen')) {
+          console.log('b');
+          match = plugin.RunPrefixMethod(document, 'CancelFullscreen');
+        }
       }
+
+      if(!match) {
+        match = plugin.RunPrefixMethod(elem, 'RequestFullScreen'); 
+      }
+
+      if(!match) {
+        match = plugin.RunPrefixMethod(elem, 'RequestFullscreen'); 
+      }
+
       plugin.toggleButton();
     };
     plugin.init();
