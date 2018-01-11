@@ -164,6 +164,8 @@ cofo.initMasonry = function() {
 			stamp: '.stamp'
 		});
 	});
+
+	setTimeout(function() { $container.masonry('layout');}, 1000);
 };
 
 cofo.animateHero = function() {
