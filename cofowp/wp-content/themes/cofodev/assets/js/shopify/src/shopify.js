@@ -39,14 +39,10 @@ if (!String.prototype.endsWith) {
 	};
 }
 
-console.log('a');
-
 import Client from 'shopify-buy';
 
 require('es6-promise').polyfill();
 require('isomorphic-fetch');
-
-console.log('b');
 
 const ls = window.localStorage;
 const checkoutID = ls.getItem("checkoutID");
@@ -54,8 +50,6 @@ const client = Client.buildClient({
 	domain: 'cofodesign-com.myshopify.com',
 	storefrontAccessToken: '8bc18701933e1f8b51aa4119d960e0ff'
 });
-
-console.log('c');
 
 //Append a container for the cart counter to the DOM in the header
 $('.nav-cart a').append("<span class='nav-cart-counter'></span>");
@@ -66,39 +60,27 @@ $('a.nav-cart').append("<span class='nav-cart-counter'></span>");
  * Get the Checkout Object and hook up the cart event listeners
  */
 
-console.log('d');
-
 if(checkoutID) {
-
-	console.log('if');
-	console.log(client);
 
 	//Use the checkoutID that already exists in local storage
 	client.checkout.fetch(checkoutID).then((checkout) => {
-		console.log('checkout fetch');
 		initCart(checkout);
 	}, (err) => console.log("rejected: ", err));
 }
 else {
 
-	console.log('else');
-	console.log(client);
-
 	//This is a new session, create a new empty Checkout
 	client.checkout.create().then((checkout) => {
-		console.log('checkout create');
 		//Save the checkout ID to local storage
 		ls.setItem('checkoutID', checkout.id);
 		initCart(checkout);
-	}, (err) => console.log('rejected: ', err));
+	}, (err) => console.log('rejected: ', err));x
 }
 
 
 
 
 const initCart = function(checkout) {
-
-	console.log('in initCart');
 
 	//Set the Cart link in the nav to point to the current shopping cart
 	// $('.nav-cart a').attr('href',"http://shop.cofo-dev.grndwrk.ca/cart/");
@@ -123,8 +105,6 @@ const initCart = function(checkout) {
  * addToCartListener()
  */
 const addToCartListener = function(checkout) {
-	
-	console.log('in addToCartListener');
 
 	$('#add-to-cart').on('click', function() {  
 		const checkoutId = checkout.id;
@@ -148,8 +128,6 @@ const addToCartListener = function(checkout) {
  * swapProductImagesListener()
  */
 const swapProductImagesListener = function(checkout) {
-	
-	console.log('in swapProductImagesListener');
 
 	$('#variant-attribute-options li :radio').on('click', function() { 
 		/** do something **/
@@ -164,8 +142,6 @@ const swapProductImagesListener = function(checkout) {
  */
 
 const getCartContents = function(checkout) {
-
-	console.log('in getCartContents');
 
 	const $cart = $('#cart');
 	const lineItems = checkout.lineItems.map(lineItem => {
@@ -270,16 +246,12 @@ const getCartContents = function(checkout) {
 
 const removeLineItem = function(event) {
 
-	console.log('in removeLineItem');
-
 	event.preventDefault();
 	$($(this).parent().siblings('.variant-quantity').find('input')).val(0);
 	updateCart();
 }
 
 const updateCart = function() {
-
-	console.log('in updateCart');
 
 	const lineItems = $('.cart-item').toArray().map(cartItem => {
 		const id = $(cartItem).find('.variant-quantity input').data('product-id');
@@ -309,12 +281,9 @@ const updateCart = function() {
  */
 
 const updateCartCounter = function(checkout) {
-	
-	console.log('in updateCartCounter');
 
 	// Set the cart count
 	const cartCount = (checkout.lineItems.length) ? checkout.lineItems.map(lineItem => lineItem.quantity).reduce((count,quantity) => count + quantity) : 0;
-	console.log(cartCount);
 	$('.nav-cart-counter').text(cartCount);
 }
 
