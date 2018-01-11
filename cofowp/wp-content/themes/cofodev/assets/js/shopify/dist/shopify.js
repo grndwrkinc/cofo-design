@@ -7335,7 +7335,11 @@ var getCartContents = function getCartContents(checkout) {
 var removeLineItem = function removeLineItem(event) {
 
 	event.preventDefault();
-	$($(this).parent().siblings('.variant-quantity').find('input')).val(0);
+	if ($(window).width() > 600) {
+		$($(this).parent().siblings('.variant-quantity').find('input')).val(0);
+	} else {
+		$($(this).parents('.cart-item').find('.variant-quantity').find('input')).val(0);
+	}
 	updateCart();
 };
 

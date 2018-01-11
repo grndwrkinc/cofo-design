@@ -18,8 +18,8 @@
 			<div class="medium-container anm-container">
 				
 				<div class="newsletter anm-item slideup-item">
-					<p>Let's keep in touch!</p>
-					<a href="http://www.google.ca" class="btn">Join our mailing list</a>
+					<p>Let's keep in touch</p>
+					<a href="http://eepurl.com/dgO0jL" target="_blank" class="btn">Join our mailing list</a>
 				</div>
 				<div class="social-nav anm-item slideup-item">
 					<?php wp_nav_menu( array(

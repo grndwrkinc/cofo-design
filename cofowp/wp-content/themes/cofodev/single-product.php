@@ -235,7 +235,7 @@ get_header();
 			<div class="product-dimensions large-container">
 				<div class="small-container anm-container">
 					<p class="pre-header slideright-item anm-item">Dimensions</p>
-					<h2 class="slideright-item anm-item"><span class="highlight">Imagine <?php the_title(); ?> in your space</span></h2>
+					<h2 class="slideright-item anm-item"><span class="highlight">Imagine The Chair in your space</span></h2>
 				</div>
 <?php
 					while( have_rows('product_dimensions_images')) : the_row();

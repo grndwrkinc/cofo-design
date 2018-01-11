@@ -27,7 +27,7 @@ get_header(); ?>
 
 						<a href="<?php the_permalink(); ?>" class="btn">View <?php the_title(); ?></a>
 
-						<small>Now accepting pre-orders for April delivery!</small>
+						<small>Now accepting pre-orders for April delivery</small>
 
 						<?php wp_reset_postdata(); 
 					 endif; ?>
@@ -80,6 +80,13 @@ get_header(); ?>
 			    			</ol>
 			    		<?php endif; ?>
 			    	</div>
+				</div>
+
+				<div class="medium-container full-collection anm-container">
+					<h2 class="anm-item slideright-item"><span class="highlight">Full <br/>Collection <br/>Coming</span></h2>
+					<div class="bordered anm-item slideright-item">
+						<h3>Fall 2018</h3>
+					</div>
 				</div>
 			</section>
 

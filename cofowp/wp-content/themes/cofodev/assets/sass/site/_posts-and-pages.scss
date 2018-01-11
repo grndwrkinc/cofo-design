@@ -228,7 +228,7 @@ p:empty,
 	li {
 		width: calc(50% - 4.8rem);
 		border-top: 8px solid $black;
-		margin: 1.2rem 2.4rem;
+		margin: 2.4rem;
 		padding-top: 1.2rem;
 	}
 
@@ -282,7 +282,7 @@ p:empty,
 
 .home-challenge {
 	margin-top: 10%;
-	margin-bottom: calc(19rem + 10%);
+	margin-bottom: 10%;
 	position: relative;
 
 	.medium-container,
@@ -324,6 +324,27 @@ p:empty,
 	.btn:before {
 		border: 3px solid $black;
 	}
+}
+
+.home-challenge .full-collection {
+	padding-top: 24rem;
+    padding-left: 8rem;
+
+    h2 {
+    	margin-bottom: 0;
+    }
+
+    .bordered {
+    	margin-left: 12rem;
+    	display: inline-block;
+
+    	h3 {
+    		position: relative;
+    		transform: none;
+    		left: auto;
+    		top: auto;
+    	}
+    }
 }
 
 
@@ -1069,7 +1090,7 @@ p:empty,
 		position: absolute;
 		right: 0;
 
-		p {
+		p:not(.pre-header) {
 			margin-bottom: 0;
 		}
 	}

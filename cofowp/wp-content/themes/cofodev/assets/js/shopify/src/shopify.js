@@ -44,6 +44,7 @@ import Client from 'shopify-buy';
 require('es6-promise').polyfill();
 require('isomorphic-fetch');
 
+
 const ls = window.localStorage;
 const checkoutID = ls.getItem("checkoutID");
 const client = Client.buildClient({
@@ -247,7 +248,11 @@ const getCartContents = function(checkout) {
 const removeLineItem = function(event) {
 
 	event.preventDefault();
-	$($(this).parent().siblings('.variant-quantity').find('input')).val(0);
+	if ($(window).width() > 600) {
+		$($(this).parent().siblings('.variant-quantity').find('input')).val(0);
+	} else {
+		$($(this).parents('.cart-item').find('.variant-quantity').find('input')).val(0);
+	}
 	updateCart();
 }
 
