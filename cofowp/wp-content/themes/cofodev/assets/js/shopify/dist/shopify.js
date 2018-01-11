@@ -7166,8 +7166,8 @@ if (checkoutID) {
 		console.log('checkout fetch');
 		initCart(checkout);
 	}, function (err) {
-		return console.log('rejected: ');
-	}, err);
+		return console.log("rejected: ", err);
+	});
 } else {
 
 	console.log('else');
@@ -7180,8 +7180,8 @@ if (checkoutID) {
 		ls.setItem('checkoutID', checkout.id);
 		initCart(checkout);
 	}, function (err) {
-		return console.log('rejected: ');
-	}, err);
+		return console.log('rejected: ', err);
+	});
 }
 
 var initCart = function initCart(checkout) {

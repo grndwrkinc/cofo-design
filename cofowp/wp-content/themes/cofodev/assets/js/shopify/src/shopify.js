@@ -67,7 +67,7 @@ if(checkoutID) {
 	client.checkout.fetch(checkoutID).then((checkout) => {
 		console.log('checkout fetch');
 		initCart(checkout);
-	}, (err) => console.log('rejected: '), err);
+	}, (err) => console.log("rejected: ", err));
 }
 else {
 
@@ -80,7 +80,7 @@ else {
 		//Save the checkout ID to local storage
 		ls.setItem('checkoutID', checkout.id);
 		initCart(checkout);
-	}, (err) => console.log('rejected: '), err);
+	}, (err) => console.log('rejected: ', err));
 }
 
 
