@@ -126,7 +126,7 @@ get_header();
 								global $wp;
 								$url = home_url( $wp->request );
 ?>
-								<li class="anm-item slideright-item"><a class="social-share" href="http://pinterest.com/pin/create/button/?url=<?php echo $url ?>&description=<?php echo urlencode(strip_tags(get_the_content())); ?>"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
+								<li class="anm-item slideright-item"><a class="social-share" href="http://pinterest.com/pin/create/button/?url=<?php echo $url ?>&description=<?php echo urlencode(strip_tags(get_the_content())); ?>&media=<?php echo get_the_post_thumbnail_url(); ?>"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
 								<li class="anm-item slideright-item"><a class="social-share" href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $url; ?>" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
 								<li class="anm-item slideright-item"><a class="social-share" href="https://twitter.com/intent/tweet?text=<?php echo urlencode(strip_tags(get_the_content())); ?>" data-size="large" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
 							</ul>
