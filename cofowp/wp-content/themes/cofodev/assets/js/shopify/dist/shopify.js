@@ -7162,40 +7162,26 @@ if (checkoutID) {
 	console.log(client);
 
 	//Use the checkoutID that already exists in local storage
-	// client.checkout.fetch(checkoutID).then((checkout) => {
-	// 	console.log('checkout fetch');
-	// 	initCart(checkout);
-	// });
-
-	client.checkout.fetch(checkoutID);
-
-	setTimeout(function () {
-		var checkout = client.checkout;
+	client.checkout.fetch(checkoutID).then(function (checkout) {
 		console.log('checkout fetch');
 		initCart(checkout);
-	}, 1000);
+	}, function (err) {
+		return console.log('rejected: ');
+	}, err);
 } else {
 
 	console.log('else');
 	console.log(client);
 
 	//This is a new session, create a new empty Checkout
-	// client.checkout.create().then((checkout) => {
-	// 	console.log('checkout create');
-	// 	//Save the checkout ID to local storage
-	// 	ls.setItem('checkoutID', checkout.id);
-	// 	initCart(checkout);
-	// });
-
-	client.checkout.create();
-
-	setTimeout(function () {
-		var checkout = client.checkout;
+	client.checkout.create().then(function (checkout) {
 		console.log('checkout create');
 		//Save the checkout ID to local storage
 		ls.setItem('checkoutID', checkout.id);
 		initCart(checkout);
-	}, 1000);
+	}, function (err) {
+		return console.log('rejected: ');
+	}, err);
 }
 
 var initCart = function initCart(checkout) {
