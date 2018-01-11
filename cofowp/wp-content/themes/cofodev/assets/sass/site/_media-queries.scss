@@ -348,6 +348,10 @@
 	}
 
 	//HOME PAGE
+	.home .hero h1 {
+		width: 80%;
+	}
+
 	.hero-text .bordered {
 		width: calc(100% - 4rem);
 	}
@@ -359,11 +363,13 @@
 	.home .hero .hero-text .bordered {
 		margin-left: 0;
 		position: absolute;
-		bottom: -12rem;
+		bottom: -20rem;
 	}
 
 	.home-about {
-		margin-top: 16rem;
+		margin-top: 24rem;
+		width: 90%;
+    	margin-left: auto;	
 	}
 
 	.home-about-img {

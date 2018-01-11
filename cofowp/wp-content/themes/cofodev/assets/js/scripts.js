@@ -219,7 +219,12 @@ cofo.animateOne = function(elements){
 	var scrolled = $(window).scrollTop() + $(window).height();
 	elements.each(function(){
 		var _this = this;
-		var extraOffset = 200;
+		var extraOffset = '';
+		if($(window).width() <= 600) {
+			extraOffset = 20;
+		} else {
+			extraOffset = 200;
+		}
 		// get top measurement
 		if($(_this).is($("#product-details"))) {
 			extraOffset = 0;
@@ -237,8 +242,14 @@ cofo.animateSet = function(elements){
 	var scrolled = $(window).scrollTop() + $(window).height();
 	elements.each(function(){
 		var _this = this;
+		var extraOffset = '';
+		if($(window).width() <= 600) {
+			extraOffset = 20;
+		} else {
+			extraOffset = 200;
+		}
 		// get top measurement
-		var offset = $(_this).offset().top + 200;
+		var offset = $(_this).offset().top + extraOffset;
 
 		if(scrolled > offset){
 			//find all children to be animated
