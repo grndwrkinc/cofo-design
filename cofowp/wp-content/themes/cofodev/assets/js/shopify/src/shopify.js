@@ -61,12 +61,23 @@ console.log('d');
 if(checkoutID) {
 
 	console.log('if');
+	console.log(client);
 
 	//Use the checkoutID that already exists in local storage
-	client.checkout.fetch(checkoutID).then((checkout) => {
+	// client.checkout.fetch(checkoutID).then((checkout) => {
+	// 	console.log('checkout fetch');
+	// 	initCart(checkout);
+	// });
+
+	client.checkout.fetch(checkoutID);
+
+	setTimeout(function(){
+		var checkout = client.checkout;
 		console.log('checkout fetch');
 		initCart(checkout);
-	});
+	},1000);
+
+	
 }
 else {
 
