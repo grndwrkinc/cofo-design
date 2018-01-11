@@ -7157,12 +7157,18 @@ $('a.nav-cart').append("<span class='nav-cart-counter'></span>");
 console.log('d');
 
 if (checkoutID) {
+
+	console.log('if');
+
 	//Use the checkoutID that already exists in local storage
 	client.checkout.fetch(checkoutID).then(function (checkout) {
 		console.log('checkout fetch');
 		initCart(checkout);
 	});
 } else {
+
+	console.log('else');
+
 	//This is a new session, create a new empty Checkout
 	client.checkout.create().then(function (checkout) {
 		console.log('checkout create');
