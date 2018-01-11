@@ -81,9 +81,10 @@ else {
 	// 	initCart(checkout);
 	// });
 
-	var checkout = client.checkout.create();
+	client.checkout.create();
 	
 	setTimeout(function(){
+		var checkout = client.checkout;
 		console.log('checkout create');
 		//Save the checkout ID to local storage
 		ls.setItem('checkoutID', checkout.id);
