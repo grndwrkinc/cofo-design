@@ -1714,9 +1714,8 @@ p:empty,
   .page-design-challenge .hero-text p {
     font-weight: 600;
     margin-top: 1.2rem; }
-    .page-design-challenge .hero-text p a {
-      padding-bottom: 0.4rem;
-      border-bottom: 2px solid black; }
+    .page-design-challenge .hero-text p .link {
+      padding-bottom: 0.4rem; }
   .page-design-challenge .hero-text .btn:before {
     border: 3px solid #141414; }
 .page-design-challenge .process-half:first-of-type .bordered:first-of-type li:before {
