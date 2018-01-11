@@ -56,7 +56,6 @@
         }
         m = pfx[p] + m;
         t = typeof obj[m];
-        console.log(m,t);
         if (t !== 'undefined') {
           pfx = [pfx[p]];
           return (t === 'function' ? obj[m]() : obj[m]);
@@ -114,7 +113,6 @@
 
       if(!match) {
         if (plugin.RunPrefixMethod(document, 'Fullscreen') || plugin.RunPrefixMethod(document, 'IsFullscreen')) {
-          console.log('b');
           match = plugin.RunPrefixMethod(document, 'CancelFullscreen');
         }
       }
