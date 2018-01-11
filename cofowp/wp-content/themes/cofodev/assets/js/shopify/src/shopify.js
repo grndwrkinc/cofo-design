@@ -71,6 +71,7 @@ if(checkoutID) {
 else {
 
 	console.log('else');
+	console.log(client);
 
 	//This is a new session, create a new empty Checkout
 	client.checkout.create().then((checkout) => {
