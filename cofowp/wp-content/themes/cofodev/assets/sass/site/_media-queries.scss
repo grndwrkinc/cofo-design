@@ -199,6 +199,13 @@
 
 /* #### 768 #### */
 @media only screen and (max-width: 768px) {
+	//HOME PAGE
+
+	.home-about-content {
+		width: 100%;
+		right: auto;
+		transform: none;
+	}
 
 	//ABOUT PAGE
 	.about-differentiators {
@@ -269,7 +276,7 @@
 	}
 
 	.about-cofounders {
-		padding: 2.4rem 0 8.4rem 0;
+		padding: 2.4rem 0 6rem 0;
 
 		.large-container {
 			padding: 0;
@@ -341,6 +348,10 @@
 	}
 
 	//HOME PAGE
+	.home .hero h1 {
+		width: 80%;
+	}
+
 	.hero-text .bordered {
 		width: calc(100% - 4rem);
 	}
@@ -352,11 +363,13 @@
 	.home .hero .hero-text .bordered {
 		margin-left: 0;
 		position: absolute;
-		bottom: -12rem;
+		bottom: -20rem;
 	}
 
 	.home-about {
-		margin-top: 16rem;
+		margin-top: 24rem;
+		width: 90%;
+    	margin-left: auto;	
 	}
 
 	.home-about-img {
@@ -654,12 +667,14 @@
     			padding: 0 2rem;
 			}
 
-			h2, img {
-				width: 100%;
+			h2 {
+				width: 60%;
+				margin-left: auto;
 			}
 
 			img {
 				padding-right: 2rem;
+				width: 100%;
 			}
 		}
 
@@ -691,7 +706,7 @@
 	.challenge-cta {
 		display: block;
 		padding: 2rem;
-		margin-bottom: 8rem;
+		margin-bottom: 6rem;
 
 		p, h4 {
 			padding: 0;

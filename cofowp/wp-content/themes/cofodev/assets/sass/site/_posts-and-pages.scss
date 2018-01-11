@@ -264,8 +264,9 @@ p:empty,
 	z-index: 1;
 	bottom: -23rem;
 	// right: 15%;
-	left: 50%;
-	transform: translateX(-50%);
+	width: auto;
+	right: 10%;
+	// transform: translateX(-50%);
 	padding-top: 0;
 	padding-bottom: 0;
 
@@ -327,7 +328,7 @@ p:empty,
 }
 
 .home-challenge .full-collection {
-	padding-top: 24rem;
+	padding-top: 36rem;
     padding-left: 8rem;
 
     h2 {
