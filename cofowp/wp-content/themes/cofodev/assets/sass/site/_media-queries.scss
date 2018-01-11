@@ -199,6 +199,13 @@
 
 /* #### 768 #### */
 @media only screen and (max-width: 768px) {
+	//HOME PAGE
+
+	.home-about-content {
+		width: 100%;
+		right: auto;
+		transform: none;
+	}
 
 	//ABOUT PAGE
 	.about-differentiators {
@@ -269,7 +276,7 @@
 	}
 
 	.about-cofounders {
-		padding: 2.4rem 0 8.4rem 0;
+		padding: 2.4rem 0 6rem 0;
 
 		.large-container {
 			padding: 0;
@@ -654,12 +661,14 @@
     			padding: 0 2rem;
 			}
 
-			h2, img {
-				width: 100%;
+			h2 {
+				width: 60%;
+				margin-left: auto;
 			}
 
 			img {
 				padding-right: 2rem;
+				width: 100%;
 			}
 		}
 
@@ -691,7 +700,7 @@
 	.challenge-cta {
 		display: block;
 		padding: 2rem;
-		margin-bottom: 8rem;
+		margin-bottom: 6rem;
 
 		p, h4 {
 			padding: 0;
