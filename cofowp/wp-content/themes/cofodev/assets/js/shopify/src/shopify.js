@@ -28,6 +28,7 @@ if (typeof Object.assign != 'function') {
     configurable: true
   });
 }
+
 import Client from 'shopify-buy';
 
 require('es6-promise').polyfill();
@@ -53,12 +54,14 @@ $('a.nav-cart').append("<span class='nav-cart-counter'></span>");
 if(checkoutID) {
 	//Use the checkoutID that already exists in local storage
 	client.checkout.fetch(checkoutID).then((checkout) => {
+		console.log('checkout fetch');
 		initCart(checkout);
 	});
 }
 else {
 	//This is a new session, create a new empty Checkout
 	client.checkout.create().then((checkout) => {
+		console.log('checkout create');
 		//Save the checkout ID to local storage
 		ls.setItem('checkoutID', checkout.id);
 		initCart(checkout);
