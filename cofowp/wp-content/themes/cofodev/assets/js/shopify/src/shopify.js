@@ -80,6 +80,7 @@ else {
 		ls.setItem('checkoutID', checkout.id);
 		initCart(checkout);
 	});
+	setTimeout(function(){},1);
 }
 
 
