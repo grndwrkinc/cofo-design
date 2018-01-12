@@ -10,7 +10,7 @@ get_header(); ?>
 
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
-			<section class="hero" style="background-image: url(<?php the_post_thumbnail_url(); ?>)">
+			<section class="hero">
 				<div class="large-container">
 					<div class="hero-text">
 						<h1><span class="lowlight"><?php the_title(); ?></span></h1>
