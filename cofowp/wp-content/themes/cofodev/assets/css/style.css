@@ -527,7 +527,7 @@ small, sup {
   font-size: 1.3rem;
   line-height: 18px;
   line-height: 1.8rem;
-  display: inline-block; }
+  display: inline; }
 
 strong, b {
   font-weight: 700; }
@@ -2371,14 +2371,20 @@ footer .v-logo {
         transform: translateX(0);
         margin-top: -8px; }
     .process-container .process-half:nth-of-type(1) .bordered:nth-of-type(odd) {
-      margin-left: 10%; }
+      margin-left: 10%;
+      width: 90%; }
     .process-container .process-half:nth-of-type(1) .bordered:nth-of-type(even) {
       margin-right: 10%; }
     .process-container .process-half:nth-of-type(2) .bordered:nth-of-type(1) {
       margin-top: 0;
       margin-right: 10%; }
     .process-container .process-half:nth-of-type(2) .bordered:nth-of-type(2) {
-      margin-left: 10%; }
+      margin-left: 10%;
+      width: 90%; }
+
+  .page-design-challenge .process-container .process-half:nth-of-type(2) .bordered:nth-of-type(1) {
+    width: 90%;
+    margin-left: 10%; }
 
   .about-cofounders-lead h2 {
     width: 25rem; }
@@ -2708,7 +2714,6 @@ footer .v-logo {
   .process-container .process-half:nth-of-type(1) .bordered:nth-of-type(2) {
     margin-right: 2rem; }
   .process-container .process-half:nth-of-type(2) .bordered:nth-of-type(1) {
-    margin-left: 2rem;
     margin-top: -8px; }
 
   .slideupright.animate-me, .slideupright-item.animate-me {

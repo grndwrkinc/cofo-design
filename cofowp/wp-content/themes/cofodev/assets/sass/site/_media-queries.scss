@@ -298,6 +298,7 @@
 		.process-half:nth-of-type(1) {
 			.bordered:nth-of-type(odd) {
 			    margin-left: 10%;
+			    width: 90%;
 			}
 
 			.bordered:nth-of-type(even) {
@@ -313,8 +314,14 @@
 
 			.bordered:nth-of-type(2) {
 			    margin-left: 10%;
+			    width: 90%;
 			}
 		}
+	}
+
+	.page-design-challenge .process-container .process-half:nth-of-type(2) .bordered:nth-of-type(1) {
+		width: 90%;
+		margin-left: 10%;
 	}
 
 	.about-cofounders-lead {
@@ -848,7 +855,6 @@
 		}
 
 		.process-half:nth-of-type(2) .bordered:nth-of-type(1) {
-			margin-left: 2rem;
 			margin-top: -8px;
 		}
 	}

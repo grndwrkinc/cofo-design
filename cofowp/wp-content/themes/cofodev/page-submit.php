@@ -21,9 +21,12 @@ get_header(); ?>
 				</div>
 			</section>
 			<div class="medium-container form-container">
+				
 				<?php 
 				$formcode = get_field('submission_form_shortcode');
-				echo do_shortcode($formcode); ?>
+				echo do_shortcode($formcode); 
+				?>
+				                              
 			</div>
 			<div class="challenge-share anm-container fadein">
 				<h4 class="anm-item slideright-item">Share the challenge</h4>
