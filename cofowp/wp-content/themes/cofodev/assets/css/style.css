@@ -1979,7 +1979,8 @@ header .nav-cart-counter {
     padding: 2.4rem 1.2rem; }
     .mobile-nav.opened .mobile-menu {
       display: block;
-      margin-top: 1.2rem; }
+      margin-top: 1.2rem;
+      padding-right: 3rem; }
     .mobile-nav.opened li {
       text-transform: uppercase;
       font-weight: bold;
