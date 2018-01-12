@@ -42,7 +42,7 @@ img {
 small,sup {
 	@include font-size(1.3);
 	@include line-height(1.8);
-	display: inline-block;
+	display: inline;
 }
 
 strong, b {
