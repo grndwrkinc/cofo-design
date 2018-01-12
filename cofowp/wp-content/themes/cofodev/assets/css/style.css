@@ -597,6 +597,15 @@ button {
 @media (max-width: 1023px) {
   button, .btn {
     padding: 1.5rem 2rem; } }
+@media only screen and (max-width: 600px), only screen and (max-device-width: 480px) and (orientation: portrait) {
+  button:before, .btn:before {
+    transition: none; }
+
+  button:hover, .btn:hover {
+    color: white; }
+    button:hover:before, .btn:hover:before {
+      width: 0;
+      left: auto; } }
 table {
   margin: 0 auto 1.5em;
   width: 100%;
@@ -703,7 +712,13 @@ td.right, th.right {
   td {
     padding: 2rem 0.6rem; }
     td.product-img img {
-      width: 100px; } }
+      width: 100px; }
+
+  .cart-footer .btn-update-cart:hover {
+    color: #141414; }
+
+  .cart-footer .btn-update-cart:hover:before {
+    width: 0; } }
 input[type="text"],
 input[type="email"],
 input[type="url"],
@@ -764,7 +779,8 @@ textarea {
     color: white;
     margin-top: 4.8rem; }
   .page-submit .hero .text-steps span {
-    color: white; }
+    color: white;
+    width: 72px; }
   .page-submit .hero li {
     border-top: 0;
     width: auto; }
@@ -2363,11 +2379,6 @@ footer .v-logo {
     margin-left: 0;
     margin-right: 0; }
 
-  .about-cofounders {
-    padding: 2.4rem 0 6rem 0; }
-    .about-cofounders .large-container {
-      padding: 0; }
-
   .process-container {
     display: block;
     margin: 0;
@@ -2429,6 +2440,8 @@ footer .v-logo {
   .home-about-content {
     position: relative;
     bottom: 8rem; }
+    .home-about-content h2 {
+      margin: 0 auto 0 0; }
 
   .home-about-content .bordered {
     width: 100%; }
@@ -2519,6 +2532,8 @@ footer .v-logo {
     .founder .bordered {
       width: 90%;
       transform: translateY(0); }
+    .founder .details {
+      padding: 2.7rem; }
     .founder:nth-of-type(1) {
       margin-bottom: 10%; }
       .founder:nth-of-type(1) .details {
@@ -2534,8 +2549,13 @@ footer .v-logo {
     .founder:nth-of-type(2) .bordered {
       margin-left: 0;
       transform: none;
-      margin-top: 6.2rem;
+      margin-top: 6.4rem;
       max-width: 100%; }
+
+  .about-cofounders {
+    padding: 2.4rem 0 6rem 0; }
+    .about-cofounders .large-container {
+      padding: 0; }
 
   #product-details {
     position: relative;
@@ -2574,15 +2594,21 @@ footer .v-logo {
         max-width: 100%; }
     .product-dimensions h2 {
       width: 100%; }
+    .product-dimensions .small-container, .product-dimensions .preorder-disclaimer {
+      margin-bottom: -3rem; }
+      .product-dimensions .small-container h2, .product-dimensions .preorder-disclaimer h2 {
+        margin-bottom: 0; }
 
   .product-craftsmanship {
     margin-top: 0;
     margin-bottom: 10rem; }
     .product-craftsmanship .medium-container {
       position: relative;
-      top: 0; }
+      top: 0;
+      margin-bottom: -3rem; }
     .product-craftsmanship h2 {
-      width: 80%; }
+      width: 80%;
+      margin-bottom: 0; }
     .product-craftsmanship .inner {
       display: block; }
       .product-craftsmanship .inner .flex-item:nth-of-type(1) {
@@ -2629,6 +2655,15 @@ footer .v-logo {
         .product-designer .designer-extras .container:nth-of-type(2) .details {
           padding-left: 2rem;
           max-width: 90%; }
+
+  .social-nav ul a:hover {
+    background-size: 0 0; }
+
+  .social-nav ul a:hover, .social-nav ul a:hover i {
+    color: white; }
+
+  .social .social-nav ul li a:hover, .social .social-nav ul li a:hover i {
+    color: #141414; }
 
   .challenge-cta {
     display: block;

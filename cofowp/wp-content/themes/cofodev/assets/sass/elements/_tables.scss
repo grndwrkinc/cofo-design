@@ -143,6 +143,14 @@ td.right, th.right {
 		}
 	}
 
+	.cart-footer .btn-update-cart:hover {
+		color: $black;
+	}
+
+	.cart-footer .btn-update-cart:hover:before {
+		width: 0;
+	}
+
 }
 
 
