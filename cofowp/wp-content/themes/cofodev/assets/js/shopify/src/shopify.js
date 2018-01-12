@@ -48,7 +48,7 @@ require('isomorphic-fetch');
 const ls = window.localStorage;
 const checkoutID = ls.getItem("checkoutID");
 const client = Client.buildClient({
-	domain: 'cofodesign-com.myshopify.com',
+	domain: 'shop.cofodesign.com',
 	storefrontAccessToken: '8bc18701933e1f8b51aa4119d960e0ff'
 });
 
@@ -82,6 +82,8 @@ else {
 
 
 const initCart = function(checkout) {
+
+	console.log(checkout);
 
 	//Set the Cart link in the nav to point to the current shopping cart
 	// $('.nav-cart a').attr('href',"http://shop.cofo-dev.grndwrk.ca/cart/");
@@ -231,7 +233,10 @@ const getCartContents = function(checkout) {
 
 	$cart.html(cartContent);
 	$('a.remove-line-item').on('click', removeLineItem);
-	$('.btn-checkout').attr('href',checkout.webUrl);
+
+	var checkoutURL = checkout.webUrl.replace("cofodesign-com.myshopify.com","shop.cofodesign.com")
+	$('.btn-checkout').attr('href',checkoutURL);
+	
 	$('.btn-update-cart').on('click', function(event) {
 		event.preventDefault();
 		updateCart();
