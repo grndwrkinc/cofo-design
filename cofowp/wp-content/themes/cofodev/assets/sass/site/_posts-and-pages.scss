@@ -716,7 +716,8 @@ p:empty,
 	}
 
 	.btn {
-		width: auto;	
+		width: auto;
+		min-width: 200px;
 	}
 }
 
