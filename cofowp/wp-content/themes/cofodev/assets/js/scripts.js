@@ -12,7 +12,9 @@ cofo.init = function() {
 
 	if($('.single-product').length){
 		cofo.initProductDetails();
-		cofo.initProductGallery();
+		if($(window).width() > 600) {
+			cofo.initProductGallery();
+		}
 	}
 
 	if($('.page-about').length){
