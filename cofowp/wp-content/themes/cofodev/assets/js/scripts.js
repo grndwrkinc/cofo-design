@@ -9,6 +9,7 @@ cofo.init = function() {
 
 	cofo.animatePageElements();
 	cofo.animateHero();
+	cofo.fixNav();
 
 	if($('.single-product').length){
 		cofo.initProductDetails();
@@ -39,7 +40,7 @@ cofo.init = function() {
 //Initialize the Product Details container
 cofo.initProductDetails = function() {
 	var $details = $('.product-details-container');
-	var heroOverlap = 155;
+	var heroOverlap = 223;
 	var detailsHeight = $('#product-details').outerHeight();
 	var scrollTop = ($details.offset().top) - heroOverlap;
 	var offset, dimensionsTop, activeVariant;
@@ -168,6 +169,37 @@ cofo.initMasonry = function() {
 	});
 
 	setTimeout(function() { $container.masonry('layout');}, 1000);
+};
+
+cofo.fixNav = function() {
+	var $nav = $('header');
+	var navHeight = $nav.outerHeight();
+	var offset;
+
+	// Fix/unfix the nav on scroll
+	if($(window).width() > 600) {
+		$(window).scroll(function() {
+			offset = $(this).scrollTop();
+
+			// Fix nav
+			if(offset >= navHeight) {
+				//Keep the header height consistent
+				$('header').css('height', navHeight);
+				//Fix the nav
+				$('.main-navigation').addClass('fixed');
+				$('.main-navigation').removeClass('unfixed');
+			}
+			// Unfix and return to OG position
+			if( offset < navHeight - 68 && $('.main-navigation.fixed').length) {
+				$('.main-navigation').addClass('unfixed');
+			}
+
+			if (offset == 0) {
+				$('header').css('height', 'auto');
+				$('.main-navigation').removeClass('fixed unfixed');
+			}
+		});
+	};
 };
 
 cofo.animateHero = function() {
