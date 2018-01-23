@@ -141,7 +141,7 @@ header .fixed .nav-cart-counter {
 header .fixed.unfixed .nav-cart-counter {
 	top: -16px;
     right: -22px;
-    transition: all 1s ease;
+    transition: all 0.4s ease;
 }
 
 .mobile-nav {
@@ -163,6 +163,7 @@ header .fixed.unfixed .nav-cart-counter {
 	}
 
 	img.logo {
+		margin: 0 auto;
 		width: 3.5rem;
 	}
 

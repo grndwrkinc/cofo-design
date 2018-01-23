@@ -1909,7 +1909,7 @@ header .fixed .nav-cart-counter {
 header .fixed.unfixed .nav-cart-counter {
   top: -16px;
   right: -22px;
-  transition: all 1s ease; }
+  transition: all 0.4s ease; }
 
 .mobile-nav {
   display: none;
@@ -1927,6 +1927,7 @@ header .fixed.unfixed .nav-cart-counter {
     font-size: 14px;
     font-size: 1.4rem; }
   .mobile-nav.fixed img.logo {
+    margin: 0 auto;
     width: 3.5rem; }
   .mobile-nav.fixed .hamburger .patty, .mobile-nav.fixed .hamburger:after, .mobile-nav.fixed .hamburger:before {
     width: 2.5rem; }
