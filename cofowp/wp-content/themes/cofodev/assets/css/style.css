@@ -1912,7 +1912,38 @@ header .fixed.unfixed .nav-cart-counter {
   transition: all 1s ease; }
 
 .mobile-nav {
-  display: none; }
+  display: none;
+  padding: 2.4rem 3.2rem 2.4rem 1.2rem; }
+
+.mobile-nav.fixed {
+  position: fixed;
+  z-index: 2;
+  background-color: #141414;
+  padding: 0.8rem 3.5rem 0.8rem 1.5rem;
+  width: 100%;
+  top: 0;
+  animation: fixnav 0.4s ease; }
+  .mobile-nav.fixed .nav-cart {
+    font-size: 14px;
+    font-size: 1.4rem; }
+  .mobile-nav.fixed img.logo {
+    width: 3.5rem; }
+  .mobile-nav.fixed .hamburger .patty, .mobile-nav.fixed .hamburger:after, .mobile-nav.fixed .hamburger:before {
+    width: 2.5rem; }
+
+.mobile-nav.fixed.unfixed {
+  padding: 2.4rem 3.2rem 2.4rem 1.2rem;
+  transition: all 0.4s ease; }
+  .mobile-nav.fixed.unfixed .nav-cart {
+    font-size: 16px;
+    font-size: 1.6rem;
+    transition: all 0.4s ease; }
+  .mobile-nav.fixed.unfixed img.logo {
+    width: 6rem;
+    transition: all 0.4s ease; }
+  .mobile-nav.fixed.unfixed .hamburger .patty, .mobile-nav.fixed.unfixed .hamburger:after, .mobile-nav.fixed.unfixed .hamburger:before {
+    width: 3.6rem;
+    transition: all 0.4s ease; }
 
 @keyframes slidedown {
   0% {
@@ -1955,7 +1986,10 @@ header .fixed.unfixed .nav-cart-counter {
       width: 6rem; } }
 @media only screen and (max-width: 768px), only screen and (max-device-width: 1024px) {
   header {
-    padding: 2.4rem 3.2rem 2.4rem 1.2rem; }
+    padding: 0; }
+
+  header .fixed .nav-cart-counter {
+    top: 0px; }
 
   .main-navigation {
     display: none; }
@@ -1966,15 +2000,15 @@ header .fixed.unfixed .nav-cart-counter {
     padding: 2rem 0; }
     .hamburger .patty, .hamburger:after, .hamburger:before {
       width: 3.6rem;
-      height: 2px;
+      height: 1px;
       background-color: white; }
     .hamburger:after, .hamburger:before {
       content: '';
       position: absolute; }
     .hamburger:after {
-      bottom: 1rem; }
+      bottom: 11px; }
     .hamburger:before {
-      top: 1rem; }
+      top: 11px; }
 
   .mobile-menu {
     display: none; }

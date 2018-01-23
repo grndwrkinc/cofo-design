@@ -146,6 +146,53 @@ header .fixed.unfixed .nav-cart-counter {
 
 .mobile-nav {
 	display: none;
+	padding: 2.4rem 3.2rem 2.4rem 1.2rem;
+}
+
+.mobile-nav.fixed {
+	position: fixed;
+	z-index: 2;
+	background-color: $black;
+	padding: 0.8rem 3.5rem 0.8rem 1.5rem;
+	width: 100%;
+	top: 0;
+	animation: fixnav 0.4s ease;
+
+	.nav-cart {
+		@include font-size(1.4);
+	}
+
+	img.logo {
+		width: 3.5rem;
+	}
+
+	.hamburger {
+		.patty, &:after, &:before {
+			width: 2.5rem;
+		}
+	}
+}
+
+.mobile-nav.fixed.unfixed {
+	padding: 2.4rem 3.2rem 2.4rem 1.2rem;
+	transition: all 0.4s ease;
+
+	.nav-cart {
+		@include font-size(1.6);
+		transition: all 0.4s ease;
+	}
+
+	img.logo {
+		width: 6rem;
+		transition: all 0.4s ease;
+	}
+
+	.hamburger {
+		.patty, &:after, &:before {
+			width: 3.6rem;
+			transition: all 0.4s ease;
+		}
+	}
 }
 
 @keyframes slidedown {
@@ -184,7 +231,11 @@ header .fixed.unfixed .nav-cart-counter {
 only screen and (max-device-width: 1024px) {
 
 	header {
-		padding: 2.4rem 3.2rem 2.4rem 1.2rem;
+		padding: 0;
+	}
+
+	header .fixed .nav-cart-counter {
+		top: 0px;
 	}
 
 	.main-navigation {
@@ -199,7 +250,7 @@ only screen and (max-device-width: 1024px) {
 
 		.patty, &:after, &:before {
 			width: 3.6rem;
-			height: 2px;
+			height: 1px;
 			background-color: white;
 		}
 
@@ -209,11 +260,11 @@ only screen and (max-device-width: 1024px) {
 		}
 
 		&:after {
-			bottom: 1rem;
+			bottom: 11px;
 		}
 
 		&:before {
-			top: 1rem;
+			top: 11px;
 		}
 	}
 

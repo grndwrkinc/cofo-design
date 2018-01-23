@@ -175,35 +175,41 @@ cofo.fixNav = function() {
 	var $nav = $('header');
 	var navHeight = $nav.outerHeight();
 	var offset;
+	var deviceNav;
+	var fixeddeviceNav;
 
 	// Fix/unfix the nav on scroll
-	if($(window).width() > 600) {
-		$(window).scroll(function() {
-			offset = $(this).scrollTop();
+	if($(window).width() > 768) {
+		deviceNav = '.main-navigation';
+		fixeddeviceNav = '.main-navigation.fixed';
+	} else {
+		deviceNav = '.mobile-nav';
+		fixeddeviceNav = '.mobile-nav.fixed';
+	}
 
-			// Fix nav
-			if(offset >= navHeight) {
-				//Keep the header height consistent
-				$('header').css('height', navHeight);
-				//Fix the nav
-				$('.main-navigation').addClass('fixed');
-				$('.main-navigation').removeClass('unfixed');
-			}
-			// Unfix and return to OG position
-			if( offset < navHeight - 68 && $('.main-navigation.fixed').length) {
-				$('.main-navigation').addClass('unfixed');
-			}
+	$(window).scroll(function() {
+		offset = $(this).scrollTop();
+		// Fix nav
+		if(offset >= navHeight) {
+			//Keep the header height consistent
+			$('header').css('height', navHeight);
+			//Fix the nav
+			$(deviceNav).addClass('fixed');
+			$(deviceNav).removeClass('unfixed');
+		}
+		// Unfix and return to OG position
+		if( offset < navHeight - 68 && $(fixeddeviceNav).length) {
+			$(deviceNav).addClass('unfixed');
+		}
 
-			if (offset == 0) {
-				//Set timeout to wait for unfixed animation to end
-				setTimeout(function(){ 
-					$('header').css('height', 'auto');
-					$('.main-navigation').removeClass('fixed unfixed');
-				}, 400);
-				
-			}
-		});
-	};
+		if (offset == 0) {
+			//Set timeout to wait for unfixed animation to end
+			setTimeout(function(){ 
+				$('header').css('height', 'auto');
+				$(deviceNav).removeClass('fixed unfixed');
+			}, 400);
+		}
+	});
 };
 
 cofo.animateHero = function() {
