@@ -195,8 +195,12 @@ cofo.fixNav = function() {
 			}
 
 			if (offset == 0) {
-				$('header').css('height', 'auto');
-				$('.main-navigation').removeClass('fixed unfixed');
+				//Set timeout to wait for unfixed animation to end
+				setTimeout(function(){ 
+					$('header').css('height', 'auto');
+					$('.main-navigation').removeClass('fixed unfixed');
+				}, 400);
+				
 			}
 		});
 	};
