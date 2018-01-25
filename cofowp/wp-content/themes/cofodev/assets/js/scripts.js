@@ -66,7 +66,7 @@ cofo.initProductDetails = function() {
 				$details.css({'position': 'relative', 'top': 0 });
 			}
 		});
-	};
+	}
 
 	$('.swatch-toggle').on('mouseup', function() {
 		activeVariant = $(this).attr('for');
@@ -195,18 +195,21 @@ cofo.fixNav = function() {
 			$('header').css('height', navHeight);
 			//Fix the nav
 			$(deviceNav).addClass('fixed');
-			$(deviceNav).removeClass('unfixed');
+			$(deviceNav).removeClass('reset');
+			setTimeout(function(){ 
+				$(deviceNav).addClass('transition');
+			}, 400);
 		}
 		// Unfix and return to OG position
-		if( offset < navHeight - 68 && $(fixeddeviceNav).length) {
-			$(deviceNav).addClass('unfixed');
+		if( offset < (navHeight - 68) && $(fixeddeviceNav).length) {
+			$(deviceNav).addClass('reset');
 		}
 
-		if (offset == 0) {
-			//Set timeout to wait for unfixed animation to end
+		if (offset === 0) {
+			//Set timeout to wait for reset animation to end
 			setTimeout(function(){ 
 				$('header').css('height', 'auto');
-				$(deviceNav).removeClass('fixed unfixed');
+				$(deviceNav).removeClass('fixed transition reset');
 			}, 400);
 		}
 	});
