@@ -1883,7 +1883,7 @@ header .nav-cart-counter {
 
 #site-navigation.fixed {
   position: fixed;
-  z-index: 2;
+  z-index: 3;
   background-color: #141414;
   padding: 1.5rem;
   width: 100%;
@@ -1922,7 +1922,7 @@ header .fixed.unfixed .nav-cart-counter {
 
 .mobile-nav.fixed {
   position: fixed;
-  z-index: 2;
+  z-index: 3;
   background-color: #141414;
   padding: 0.8rem 3.5rem 0.8rem 1.5rem;
   width: 100%;
