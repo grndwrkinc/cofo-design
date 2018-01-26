@@ -78,6 +78,8 @@ header {
 }
 
 header {
+	height: 149px !important;
+
 	a.nav-cart {
 		position: relative;
 	}
@@ -244,11 +246,12 @@ header {
 	}
 }
 
-@media only screen and (max-width: 768px), 
+@media only screen and (max-width: 1024px), 
 only screen and (max-device-width: 1024px) {
 
 	header {
 		padding: 0;
+		height: 103px !important;
 	}
 
 	header .fixed .nav-cart-counter {

@@ -179,7 +179,7 @@ cofo.fixNav = function() {
 	var fixeddeviceNav;
 
 	// Fix/unfix the nav on scroll
-	if($(window).width() > 768) {
+	if($(window).width() > 1024) {
 		deviceNav = '.main-navigation';
 		fixeddeviceNav = '.main-navigation.fixed';
 	} else {
@@ -192,7 +192,7 @@ cofo.fixNav = function() {
 		// Fix nav
 		if(offset >= navHeight) {
 			//Keep the header height consistent
-			$('header').css('height', navHeight);
+			// $('header').css('height', navHeight);
 			//Fix the nav
 			$(deviceNav).addClass('fixed');
 			$(deviceNav).removeClass('reset');
@@ -208,7 +208,7 @@ cofo.fixNav = function() {
 		if (offset === 0) {
 			//Set timeout to wait for reset animation to end
 			setTimeout(function(){ 
-				$('header').css('height', 'auto');
+				// $('header').css('height', 'auto');
 				$(deviceNav).removeClass('fixed transition reset');
 			}, 400);
 		}
