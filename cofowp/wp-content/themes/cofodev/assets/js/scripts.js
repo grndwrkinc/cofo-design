@@ -189,10 +189,9 @@ cofo.fixNav = function() {
 
 	$(window).scroll(function() {
 		offset = $(this).scrollTop();
+		
 		// Fix nav
 		if(offset >= navHeight) {
-			//Keep the header height consistent
-			// $('header').css('height', navHeight);
 			//Fix the nav
 			$(deviceNav).addClass('fixed');
 			$(deviceNav).removeClass('reset');
@@ -208,7 +207,6 @@ cofo.fixNav = function() {
 		if (offset === 0) {
 			//Set timeout to wait for reset animation to end
 			setTimeout(function(){ 
-				// $('header').css('height', 'auto');
 				$(deviceNav).removeClass('fixed transition reset');
 			}, 400);
 		}
