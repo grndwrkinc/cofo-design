@@ -8,15 +8,7 @@
  * @package ndrscrs
  */
 
-//Temporarily added here to fix the <title> tag while the Design Challenge is closed
-function cofo_set_title($title){
-	$title['title'] = "Design Challenge";
-	return $title;
-}
-add_filter( 'document_title_parts', 'cofo_set_title', 10, 2 );
-
-get_header();
-?>
+get_header(); ?>
 
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
