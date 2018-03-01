@@ -8,7 +8,15 @@
  * @package ndrscrs
  */
 
-get_header(); ?>
+//Temporarily added here to fix the <title> tag while the Design Challenge is closed
+function cofo_set_title($title){
+	$title['title'] = "Design Challenge";
+	return $title;
+}
+add_filter( 'document_title_parts', 'cofo_set_title', 10, 2 );
+
+get_header();
+?>
 
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
@@ -17,7 +25,8 @@ get_header(); ?>
 					<div class="hero-text">
 						<h1><span class="highlight"><?php the_title(); ?></span></h1>
 						<h4><?php the_field('subtitle'); ?></h4>
-						<p class="animate"><a href="/submit" class="btn">Submit your design</a></p>
+						<p class="" ass="animate"><a href="http://eepurl.com/dgO0jL" target="_blank" class="btn">Sign up to get notified</a></p>
+						<!-- <p class="animate"><a href="/submit" class="btn">Submit your design</a></p> -->
 						<p class="animate"><a class="link" href="/rules-and-regulations">View rules and regulations</a></p>
 					</div>
 				</div>
@@ -141,7 +150,7 @@ get_header(); ?>
 	    		</div>
 			</div>
 
-			<div class="medium-container challenge-details">
+			<!-- <div class="medium-container challenge-details">
 	    		<a href="/submit" class="btn">Submit your design</a>
 				<p><a class="link" href="/rules-and-regulations">View rules and regulations</a></p>
 			</div>
@@ -156,7 +165,7 @@ get_header(); ?>
 						<li><a class="social-share" href="https://twitter.com/intent/tweet?text=<?php echo get_post_meta(get_the_ID(), '_yoast_wpseo_metadesc', true); ?> <?php echo $url ?>" data-size="large" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
 					</ul>
 				</div>
-			</div>
+			</div> -->
 		</main><!-- #main -->
 	</div><!-- #primary -->
 

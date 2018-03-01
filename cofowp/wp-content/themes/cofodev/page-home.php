@@ -58,7 +58,8 @@ get_header(); ?>
 						<p class="pre-header anm-item slideright-item">Design Challenge</p>
 						<h2 class="anm-item slideright-item"><span class="highlight"><?php the_field('design_challenge_header'); ?></span></h2>
 						<p class="anm-item slideright-item"><?php the_field('design_challenge_text'); ?></p>
-						<p class=" anm-item slideright-item"><a href="/design-challenge" class="btn">View challenge details</a></p>
+						<!-- <p class=" anm-item slideright-item"><a href="/design-challenge" class="btn">View challenge details</a></p> -->
+						<p class=" anm-item slideright-item"><a href="/design-challenge" class="btn">Learn more</a></p>
 					</div>
 				</div>
 
