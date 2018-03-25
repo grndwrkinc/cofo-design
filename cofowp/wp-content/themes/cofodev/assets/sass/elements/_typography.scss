@@ -147,6 +147,19 @@ span.lowlight {
     margin-bottom: 1rem;
 }
 
+.sale-tag {
+	text-transform: uppercase;
+	color: white;
+	font-weight: 400;
+	font-family: $font__main;
+	@include font-size(1.2);
+	@include line-height(1.2);
+}
+
+.center {
+	text-align: center;
+}
+
 @media only screen and (max-width: 1024px), screen and (min-device-width: 768px) and (max-device-width: 1024px) {
 	.pre-header {
 		@include font-size(1.2);

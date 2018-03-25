@@ -59,21 +59,25 @@
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'ndrscrs' ); ?></a>
 
 	<header id="masthead" class="site-header dark" role="banner">
-		<nav id="site-navigation" class="main-navigation" role="navigation">
-			<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu' ) ); ?>
-		</nav><!-- #site-navigation -->
-		<div class="mobile-nav">
-			<div class="hamburger">
-				<div class="patty"></div>
+			<nav id="site-navigation" class="main-navigation" role="navigation">
+				<div class="inner">
+					<a class="logo" href="/"><img src="/wp-content/themes/cofodev/assets/images/logo-white.svg" alt="Home"></a>
+					<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu' ) ); ?>
+				<div>
+			</nav><!-- #site-navigation -->
+
+			<div class="mobile-nav">
+				<div class="hamburger">
+					<div class="patty"></div>
+				</div>
+				<div class="mobile-menu">
+					<?php wp_nav_menu( array( 'menu' => 'Mobile Menu' ) ); ?>
+				</div>
+				<a class="logo" href="/">
+					<img class="logo" src="/wp-content/themes/cofodev/assets/images/logo-white.svg" alt="">
+				</a>
+				<a class="nav-cart" href="/cart">Cart</a>
 			</div>
-			<div class="mobile-menu">
-				<?php wp_nav_menu( array( 'menu' => 'Mobile Menu' ) ); ?>
-			</div>
-			<a class="logo" href="/">
-				<img class="logo" src="/wp-content/themes/cofodev/assets/images/logo-white.svg" alt="">
-			</a>
-			<a class="nav-cart" href="/cart">Cart</a>
-		</div>
 	</header><!-- #masthead -->
 
 	<div id="content" class="site-content">

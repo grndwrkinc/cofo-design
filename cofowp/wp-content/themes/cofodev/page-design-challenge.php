@@ -1,10 +1,8 @@
 <?php
 /**
- * Template Name: Home Page
- * Description: Only for use on home page
+ * Description: Default page template for Design Challenge Page
  *
- * @link https://codex.wordpress.org/Template_Hierarchy
- *
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  * @package ndrscrs
  */
 

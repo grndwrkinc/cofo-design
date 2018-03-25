@@ -1,12 +1,12 @@
 {
-    "key": "group_5a3432bf9b8f6",
-    "title": "Product - Designer",
+    "key": "group_5ab694e5cf137",
+    "title": "Product - Pre-order",
     "fields": [
         {
-            "key": "field_5a3439103e233",
-            "label": "Designer",
-            "name": "designer",
-            "type": "post_object",
+            "key": "field_5ab69572423e7",
+            "label": "Available for Pre-order?",
+            "name": "pre-order",
+            "type": "checkbox",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -15,14 +15,15 @@
                 "class": "",
                 "id": ""
             },
-            "post_type": [
-                "desinger"
-            ],
-            "taxonomy": [],
-            "allow_null": 0,
-            "multiple": 0,
-            "return_format": "object",
-            "ui": 1
+            "choices": {
+                "true": "Yes"
+            },
+            "allow_custom": 0,
+            "save_custom": 0,
+            "default_value": [],
+            "layout": "vertical",
+            "toggle": 0,
+            "return_format": "value"
         }
     ],
     "location": [
@@ -34,13 +35,13 @@
             }
         ]
     ],
-    "menu_order": 7,
-    "position": "side",
+    "menu_order": 0,
+    "position": "normal",
     "style": "default",
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1521828996
+    "modified": 1521915301
 }

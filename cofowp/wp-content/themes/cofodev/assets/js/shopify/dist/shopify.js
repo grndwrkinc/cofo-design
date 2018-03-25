@@ -7180,7 +7180,7 @@ if (checkoutID) {
 
 var initCart = function initCart(checkout) {
 
-	console.log(checkout);
+	// console.log(checkout);
 
 	//Set the Cart link in the nav to point to the current shopping cart
 	// $('.nav-cart a').attr('href',"http://shop.cofo-dev.grndwrk.ca/cart/");
@@ -7243,6 +7243,7 @@ var getCartContents = function getCartContents(checkout) {
 	});
 
 	var cartContent = void 0;
+	var hasPreOrderProduct = false;
 
 	//Haz items
 	if (lineItems.length && $(window).width() > 600) {
@@ -7259,7 +7260,12 @@ var getCartContents = function getCartContents(checkout) {
 			markup += '<td><a href="#" class="remove-line-item" data-product-id="' + lineItemID + '" data-variant-id="' + variantID + '"> </a></td>';
 			markup += '<td class="product-img"><img src="' + variantImg + '" alt=""></td>';
 			markup += '<td class="product">';
-			markup += '<span class="product-title">' + productTitle + ' (Pre-order<sup>1</sup>)</span><br>';
+			markup += '<span class="product-title">' + productTitle;
+			if (products.indexOf(productTitle) != -1) {
+				markup += ' (Pre-order<sup>1</sup>)';
+				hasPreOrderProduct = true;
+			}
+			markup += '</span><br>';
 			markup += '<span class="variant-title">Style: ' + variantTitle + '</span>';
 			markup += '</td>';
 			markup += '<td class="variant-quantity">';
@@ -7277,7 +7283,9 @@ var getCartContents = function getCartContents(checkout) {
 		cartContent += '	<div class="cart-subtotal">';
 		cartContent += '		<h4><span class="cart-subtotal-title">Subtotal</span><span class="cart-subtotal-amount">$' + parseFloat(checkout.totalPrice).formatMoney(2) + '</span></h4>';
 		cartContent += '		<p>Shipping & taxes calculated at checkout</p>';
-		cartContent += '		<p class="preorder-disclaimer"><sup>1</sup><small>Your credit card will be charged immediately upon completing the purchase of a pre-ordered item. You will be notified when your order has shipped at a later date.</small></p>';
+		if (hasPreOrderProduct) {
+			cartContent += '		<p class="preorder-disclaimer"><sup>1</sup><small>Your credit card will be charged immediately upon completing the purchase of a pre-ordered item. You will be notified when your order has shipped at a later date.</small></p>';
+		}
 		cartContent += '	</div>';
 		cartContent += '	<div><a href="#" class="btn btn-update-cart">Update</a> <a href="#" class="btn btn-checkout">Checkout</a></div>';
 		cartContent += '</div>';
@@ -7308,7 +7316,9 @@ var getCartContents = function getCartContents(checkout) {
 		cartContent += '  <div class="cart-subtotal">';
 		cartContent += '    <h4><span class="cart-subtotal-title">Subtotal</span><span class="cart-subtotal-amount">$' + parseFloat(checkout.totalPrice).formatMoney(2) + '</span></h4>';
 		cartContent += '    <p>Shipping & taxes calculated at checkout</p>';
-		cartContent += '    <p class="preorder-disclaimer"><sup>1</sup><small>Your credit card will be charged immediately upon completing the purchase of a pre-ordered item. You will be notified when your order has shipped at a later date.</small></p>';
+		if (hasPreOrderProduct) {
+			cartContent += '    <p class="preorder-disclaimer"><sup>1</sup><small>Your credit card will be charged immediately upon completing the purchase of a pre-ordered item. You will be notified when your order has shipped at a later date.</small></p>';
+		}
 		cartContent += '  </div>';
 		cartContent += '  <div><a href="#" class="btn btn-update-cart">Update</a> <a href="#" class="btn btn-checkout">Checkout</a></div>';
 		cartContent += '</div>';
@@ -7317,7 +7327,12 @@ var getCartContents = function getCartContents(checkout) {
 	//Cart is empty
 	else {
 			cartContent = "<p class='pre-header'>Your shopping cart is empty.<p>";
-			cartContent += "<p><a class='link' href='/product/the-roque/'>&laquo; Shop The Roque Chair</a><p>";
+
+			if (hasShop) {
+				cartContent += "<p><a class='link' href='/shop/'>&laquo; Continue shopping</a><p>";
+			} else {
+				cartContent += "<p><a class='link' href='/product/the-roque/'>&laquo; Shop The Roque Chair</a><p>";
+			}
 		}
 
 	$cart.html(cartContent);
