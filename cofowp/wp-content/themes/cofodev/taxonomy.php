@@ -30,7 +30,7 @@ $term = get_queried_object();
 
 			//The Loop
 			if ( $posts->have_posts() ) {
-				$collection_image = (get_field('image', $term)) ? get_field('image', $term) : "http://via.placeholder.com/1160x500";
+				$collection_image = (get_field('image', $term)) ? get_field('image', $term) : get_template_directory_uri() . "/assets/images/1160x500.png";
 
 				//Add 20% margin to the bottom of <div id="listing"> if
 				// the last collection has an even number of products.

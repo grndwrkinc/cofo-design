@@ -13,7 +13,7 @@
 
 	<div class="category-items">
 		<div class="item">
-			<h3><?php echo str_replace(" ", "<br>", $term->name); ?></h3>
+			<h3 class="slideup"><?php echo str_replace(" ", "<br>", $term->name); ?></h3>
 		</div>
 
 <?php
@@ -27,9 +27,9 @@
 		$price 			= number_format(floatval($product->variants[0]->price),2);
 		$compareAtPrice = $product->variants[0]->compare_at_price;
 		$designer 		= get_field('designer');
-		$designerThumb 	= "http://via.placeholder.com/140x140";
 		$designerName 	= "Designer Designer";
-		$productImages 	= array("http://via.placeholder.com/872x660","http://via.placeholder.com/872x660");
+		$designerThumb 	= get_template_directory_uri() . "/assets/images/140x140.png";
+		$productImages 	= array(get_template_directory_uri() . "/assets/images/1500x1000.png", get_template_directory_uri() . "/assets/images/1500x1000.png");
 		$cnt 			= 0;
 
 		//Get the product images
@@ -54,7 +54,7 @@
 		}
 ?>
 		<div class="item">
-			<div class="item-image">
+			<div class="item-image slideup">
 <?php 
 		if($compareAtPrice) {
 ?>
@@ -73,7 +73,7 @@
 				</a>
 			</div>
 
-			<div class="item-details">
+			<div class="item-details slideup">
 				<div class="item-designer"><img src="<?php echo $designerThumb; ?>" /></div>
 				<div class="item-info">
 					<h4><a href="<?php echo $permalink; ?>"><?php echo $title; ?></a></h4>

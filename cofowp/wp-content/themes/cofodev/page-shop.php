@@ -35,7 +35,7 @@ rsort($terms);
 				//The Loop
 				if ( $posts->have_posts() ) {
 					$term = get_term($term_id);
-					$collection_image = (get_field('image', $term)) ? get_field('image', $term) : "http://via.placeholder.com/1160x500";
+					$collection_image = (get_field('image', $term)) ? get_field('image', $term) : get_template_directory_uri() . "/assets/images/1160x500.png";
 
 					//This is the last collection
 					if($termsCnt+1 == sizeof($terms)) {

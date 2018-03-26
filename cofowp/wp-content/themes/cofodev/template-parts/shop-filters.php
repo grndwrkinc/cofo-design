@@ -14,9 +14,9 @@
 ?>
 
 <div id="filters">
-	<a href="/shop/" <?php if(is_page('shop')) { ?>class="active"<?php } ?>>View all </a><br>
+	<a href="/shop/" class="slideright<?php if(is_page('shop')) { ?> active<?php } ?>">View all </a><br>
 	<br>
-	<strong>Collections </strong><br>
+	<strong class="slideright">Collections </strong><br>
 <?php 
 	//Get list of all Collection terms 
 	$terms = get_terms( 'collection', array('hide_empty' => false) );
@@ -39,14 +39,14 @@
 		//If the Collection has Products, display the Collection filter
 		if($posts->have_posts()) {
 ?>
-	<a href="/shop/collection/<?php echo $term->slug; ?>" <?php if($obj->slug == $term->slug) { ?>class="active"<?php } ?>><?php echo $term->name; ?></a><br>
+	<a href="/shop/collection/<?php echo $term->slug; ?>" class="slideright<?php if($obj->slug == $term->slug) { ?> active<?php } ?>"><?php echo $term->name; ?></a><br>
 <?php
 			wp_reset_postdata();
 		}
 	endforeach;
 ?>
 	 <br>
-	<strong>Categories</strong><br>
+	<strong class="slideright">Categories</strong><br>
 <?php 
 	//Get list of all Category terms 
 	$terms = get_terms( 'product_category', array('hide_empty' => false) );
@@ -68,7 +68,7 @@
 		//If the Collection has Products, display the Collection
 		if($posts->have_posts()) {
 ?>
-	<a href="/shop/category/<?php echo $term->slug; ?>" <?php if($obj->slug == $term->slug) { ?>class="active"<?php } ?>><?php echo $term->name; ?></a><br>
+	<a href="/shop/category/<?php echo $term->slug; ?>" class="slideright<?php if($obj->slug == $term->slug) { ?> active<?php } ?>"><?php echo $term->name; ?></a><br>
 <?php
 			wp_reset_postdata();
 		}
@@ -92,7 +92,7 @@
 			//If at least one Product is on sale, show the Sale filter
 			if($compareAtPrice) :
 ?>
-	<a href="/shop/sale/" class="sale-filter<?php if($obj->slug == "sale") { ?> active<?php } ?>">Sale</a><br>
+	<a href="/shop/sale/" class="slideright sale-filter<?php if($obj->slug == "sale") { ?> active<?php } ?>">Sale</a><br>
 <?php
 				break; // Only needed one. Let's get outta here!
 			endif;

@@ -10,13 +10,13 @@
 ?>
 
 <div class="collection">
-	<div class="collection-about">
-		<p class="pre-header anm-item slideright-item animate-me">Collection</p>
-		<h2><span class="highlight"><?php echo str_replace(" ", "<br>", $term->name); ?></span></h2>
-		<p class="collection-description"><?php echo $term->description; ?></p>
+	<div class="collection-about anm-container">
+		<p class="pre-header anm-item slideright-item">Collection</p>
+		<h2 class="anm-item slideright-item"><span class="highlight"><?php echo str_replace(" ", "<br>", $term->name); ?></span></h2>
+		<p class="anm-item slideright-item collection-description"><?php echo $term->description; ?></p>
 	</div>
 	<div class="collection-items-container">
-		<img class="collection-hero" src="<?php echo $collection_image; ?>" />
+		<img class="collection-hero slideup" src="<?php echo $collection_image; ?>" />
 
 		<div class="collection-items">
 <?php
@@ -30,9 +30,9 @@
 		$price 			= number_format(floatval($product->variants[0]->price),2);
 		$compareAtPrice = $product->variants[0]->compare_at_price;
 		$designer 		= get_field('designer');
-		$designerThumb 	= "http://via.placeholder.com/140x140";
 		$designerName 	= "Designer Designer";
-		$productImages 	= array("http://via.placeholder.com/1500x1000","http://via.placeholder.com/1500x1000");
+		$designerThumb 	= get_template_directory_uri() . "/assets/images/140x140.png";
+		$productImages 	= array(get_template_directory_uri() . "/assets/images/1500x1000.png", get_template_directory_uri() . "/assets/images/1500x1000.png");
 		$cnt 			= 0;
 
 		//Get the product images
@@ -56,7 +56,7 @@
 			$designerName = get_the_title($designer);
 		}
 ?>
-			<div class="item">
+			<div class="item slideup">
 				<div class="item-image">
 <?php 
 		if($compareAtPrice) {
