@@ -64,7 +64,15 @@ dfn, cite, em, i {
 }
 
 blockquote {
-	margin: 0 1.5em;
+	width: 75%;
+    margin: 10% auto;
+
+	p {
+		font-size: 2.6rem;
+		font-style: italic;
+		@include font-size(2.6);
+		@include line-height(4.8);
+	}
 }
 
 address {
@@ -158,6 +166,10 @@ span.lowlight {
 
 .center {
 	text-align: center;
+}
+.aligncenter {
+	margin-left:auto;
+	margin-right:auto;
 }
 
 @media only screen and (max-width: 1024px), screen and (min-device-width: 768px) and (max-device-width: 1024px) {
