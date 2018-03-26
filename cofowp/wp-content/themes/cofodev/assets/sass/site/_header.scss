@@ -236,7 +236,7 @@ header#masthead {
 
 
 @media (max-width: 1023px) {
-	header {
+	header#masthead {
 		padding: 2.5rem 0;
 
 		img {
@@ -248,11 +248,11 @@ header#masthead {
 @media only screen and (max-width: 768px), 
 only screen and (max-device-width: 1024px) {
 
-	header {
+	header#masthead {
 		padding: 0;
 	}
 
-	header .fixed .nav-cart-counter {
+	header#masthead .fixed .nav-cart-counter {
 		top: 0px;
 	}
 

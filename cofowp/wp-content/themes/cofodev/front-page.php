@@ -149,11 +149,13 @@ get_header(); ?>
 				<div class="large-container anm-container">			
 					<h2 class="anm-item slideright-item"><span class="highlight"><?php the_field('blog_section_header'); ?></span></h2>
 					<div class="offset">
-						<div class="home-blog-right">
+						<div class="home-blog-right slideright">
 							<p class="anm-item slideright-item"><?php the_field('blog_section_blurb'); ?></p>
 							<p class="anm-item slideright-item"><a href="/blog" class="btn"><?php the_field('blog_section_button_label'); ?></a></p>
 						</div>
-						<img class="fadein" src="<?php the_field('blog_section_image'); ?>" />
+						<div class="home-blog-left fadein">
+							<img src="<?php the_field('blog_section_image'); ?>" />
+						</div>
 					</div>
 				</div>
 			</section>
