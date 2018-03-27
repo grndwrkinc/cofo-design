@@ -1401,8 +1401,13 @@ p:empty,
 	    left: 10% !important;
 	}
 
+
 	* {
 		display: inline-block;
+	}
+	
+	button {
+		display: none;
 	}
 }
 
@@ -1538,8 +1543,11 @@ p:empty,
 	&:nth-of-type(2n) {
 		transform: translateY(60%);
 	}
-	&:last-of-type {
+	&:nth-last-child(1):nth-child(odd) {
 		margin-bottom: 0;
+	}
+	&:nth-last-child(1):nth-child(even) {
+		margin-bottom: 15%;
 	}
 }
 

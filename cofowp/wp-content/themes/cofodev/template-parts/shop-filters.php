@@ -14,6 +14,8 @@
 ?>
 
 <div id="filters">
+	<button class="inverted">Catalog</button>
+	<div class="inner">
 	<a href="/shop/" class="slideright<?php if(is_page('shop')) { ?> active<?php } ?>">View all </a><br>
 	<br>
 	<strong class="slideright">Collections </strong><br>
@@ -101,4 +103,5 @@
 		wp_reset_postdata();
 	endif;
 ?>
+	</div>
 </div>

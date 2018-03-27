@@ -418,6 +418,14 @@ cofo.shopPage_FiltersMenu = function() {
 			}
 		});
 	}
+
+	console.log('yo');
+
+	$("#filters button").on('click', function() {
+		if($(window).width() < 769) {
+			$("#filters .inner").show();
+		}
+	});
 };
 
 cofo.shopPage_VariantSelectors = function() {

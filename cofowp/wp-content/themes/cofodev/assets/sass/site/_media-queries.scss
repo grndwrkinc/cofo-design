@@ -14,6 +14,17 @@
 			top: 40rem;
 		}
 	}
+
+	.page-shop {
+		.collection {
+			.collection-description {
+				padding: 3rem;
+				background-color: rgba(255,255,255,0.9);
+				max-width: calc(100% - 14rem);
+    			margin-left: 9rem;
+			}
+		}
+	}
 }
 
 @media only screen and (max-width: 1040px) {
@@ -140,6 +151,40 @@
 	}
 
 
+	//SHOP PAGE
+	.page-shop {
+		.collection {
+			h2 {
+				margin-bottom: 2rem;
+			}
+			.collection-description {
+				padding: 2rem;
+				@include font-size(1.4);
+				@include line-height(1.8);
+			}
+		}
+		.item {
+			.item-info {
+				// margin: 0;
+
+				h4 {
+					@include font-size(1.2);
+					@include line-height(1.2);
+				}
+				p {
+					@include font-size(1.2);
+					@include line-height(1.8);
+				}
+			}
+			.item-designer {
+				max-width: none;
+				width: 3.2rem;
+				flex-shrink: 0;
+			}
+		}
+	}
+
+	//PRODUCT PAGE
 	.single-product {
 		.small-container {
 			max-width: 80rem;
@@ -309,7 +354,7 @@
 
 	.about-process,
 	.about-cofounders-lead {
-		 .medium-container {
+		.medium-container {
 			padding: 6rem 0;
 		}
 
@@ -382,6 +427,71 @@
 
 	.about-cofounders-video .about-video-container {
 		padding: 8.4rem 2rem;
+	}
+
+
+	// SHOP PAGE
+	.page-shop {
+		#filters {
+			// display: none; //temporary
+			position: relative;
+
+			.inner {
+				display: none;
+				position: fixed;
+				background: white;
+				width: 100vw;
+				height: 100vh;
+				z-index: 1000;
+				top: 0;
+				left: 0;
+				padding: 10%;
+				font-size: 2rem;
+			}
+
+			button {
+				display: inline-block;
+				@include font-size(1.2);
+				position: absolute;
+				content: "Catalogue";
+				padding: 0.5rem 2rem;
+				border: 3px solid #141414;
+				text-align: center;
+				top: -8rem;
+				width: 70%;
+				max-width: 30rem;
+				left: 50%;
+				transform: translateX(-50%);
+			}
+		}
+		#listing {
+			width: 100%;
+			padding-left: 20px;
+			padding-right: 20px;
+			padding-top: 10rem;
+		}
+		.collection {
+			.collection-description {
+				font-size: 1.6rem;
+			    line-height: 2.4rem;
+			    margin-left: 0;
+				max-width: 100%;
+				margin-bottom: 0;
+			}
+			.collection-about {
+				position: static;
+			}
+			.collection-items-container {
+				padding-top: 0;
+			}
+			.collection-items {
+				justify-content: space-between;
+			}
+		}
+		.item {
+			padding: 0;
+			flex-basis: 47%;
+		}
 	}
 }
 
@@ -1108,6 +1218,26 @@
 
 	.categories-inner {
 		justify-content: center;
+	}
+
+	// SHOP PAGE
+	.page-shop {
+		
+		.collection .collection-items,
+		.category .category-items {
+			margin-top: 10%;
+			display: block;
+		}
+
+		.item {
+			transform: none;
+			padding: 0;
+			flex-basis: 47%;
+		}
+
+		.category h3 {
+			margin-top: 0;
+		}
 	}
 
 }

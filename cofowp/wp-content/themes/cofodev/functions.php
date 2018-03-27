@@ -175,7 +175,7 @@ require get_template_directory() . '/inc/jetpack.php';
 function add_slug_body_class( $classes ) {
 	global $post;
 
-	if (is_tax('collection') || is_tax('product_category')) {
+	if (is_tax('collection') || is_tax('product_category') || is_tax('sale')) {
 		$classes[] = "page-shop";
     }
 	else if ( isset( $post ) ) {
