@@ -800,12 +800,16 @@ p:empty,
 		}
 
 		.copy {
+			flex-basis: 75%;
+
 			p {
 				margin: 5% 0 0 5%;
 			}
 		}
 		.image {
 			margin-left: 5%;
+			flex-basis: 30rem;
+
 			img {
 				display: block;
 			}
@@ -1405,7 +1409,7 @@ p:empty,
 	* {
 		display: inline-block;
 	}
-	
+
 	button {
 		display: none;
 	}
@@ -1680,8 +1684,10 @@ p:empty,
 		&:first-of-type {
 			flex-direction: column;
 			align-items: left;
-			padding-left: 0;
-			padding-bottom: 8%;
+			padding: 10% 2rem 15%;
+			// padding-left: 2rem;
+			// padding-right: 10%;
+			// padding-bottom: 10%;
 
 			.post-summary {
 				width: 33%;

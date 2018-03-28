@@ -156,11 +156,30 @@ cofo.animate_Set = function(elements){
 };
 
 cofo.blogIndexPage_PositionContent = function() {
-	var imageHeight = $('#main .large-container .post-image').height();
-	$('#main .large-container .post-summary').css( {
-		'margin-top' : 'calc(-'+imageHeight+'px + 5%)',
-		'display' : 'block'
-	});
+	if($(window).width() > 768) {
+		var imageHeight = $('#main .large-container .post-image').height();
+		var padding = $('#main .large-container').outerHeight() - $('#main .large-container').height();
+
+		var summaryBottomOffset = $('#main .large-container .post-summary').offset().top + parseInt($('#main .large-container .post-summary').css('margin-top')) + $('#main .large-container .post-summary').outerHeight();
+		var imageBottomOffset = $('#main .large-container .post-image').offset().top + $('#main .large-container .post-image').height();
+		var offset = 0;
+		if(summaryBottomOffset > imageBottomOffset) {
+			offset = summaryBottomOffset - imageBottomOffset;
+		}
+
+		$('#main .large-container .post-summary').css( {
+			'transform' : 'translateY(calc(-'+imageHeight+'px + 5%))',
+			'display' : 'block'
+		});
+		$('#main .large-container').css('height', imageHeight+padding+offset+'px');
+	}
+	else {
+		$('#main .large-container .post-summary').css( {
+			'transform' : 'none',
+			'display' : 'block'
+		});
+		$('#main .large-container').attr('style','');
+	}
 };
 
 cofo.designChallengePage_Masonry = function() {
@@ -225,8 +244,6 @@ cofo.navigation_Fixed = function() {
 			deviceNav = '.mobile-nav';
 			fixedDeviceNav = '.mobile-nav.fixed';
 		}
-		console.log('called setNavVars');
-		console.log(deviceNav, fixedDeviceNav);
 	};
 
 	// Fix/unfix the nav on scroll
@@ -419,11 +436,15 @@ cofo.shopPage_FiltersMenu = function() {
 		});
 	}
 
-	console.log('yo');
-
 	$("#filters button").on('click', function() {
 		if($(window).width() < 769) {
-			$("#filters .inner").show();
+			$("#filters .inner").toggle();
+			if($("#filters .inner:visible").length) {
+				$("#filters button").html('&ndash; Collections');
+			}
+			else {
+				$("#filters button").html('+ Collections');
+			}
 		}
 	});
 };

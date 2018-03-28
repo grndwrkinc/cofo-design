@@ -247,6 +247,10 @@
 		.details {
 			max-width: none;
 		}
+
+		.designer-extras {
+	    	margin-left: 0;
+		}
 	}
 
 	.challenge-cta {
@@ -343,15 +347,12 @@
 		    }
 		}
 	}
-
 	.about-what-we-do .small-container {
 		padding-bottom: 5.4rem;
 	}
-
 	.about-process {
 		margin-top: 7.2rem;
 	}
-
 	.about-process,
 	.about-cofounders-lead {
 		.medium-container {
@@ -365,7 +366,6 @@
 			margin-right: 0;
 		}
 	}
-
 	.process-container {
 		display: block;
 		margin: 0;
@@ -384,8 +384,6 @@
 				margin-top: -8px;
 			}
 		}
-
-
 		.process-half:nth-of-type(1) {
 			.bordered:nth-of-type(odd) {
 			    margin-left: 10%;
@@ -396,7 +394,6 @@
 			    margin-right: 10%;
 			}
 		}
-
 		.process-half:nth-of-type(2) {
 			.bordered:nth-of-type(1) {
 				margin-top: 0;
@@ -409,26 +406,25 @@
 			}
 		}
 	}
-
-	.page-design-challenge .process-container .process-half:nth-of-type(2) .bordered:nth-of-type(1) {
-		width: 90%;
-		margin-left: 10%;
-	}
-
 	.about-cofounders-lead {
 		h2 {
 			width: 25rem;	
 		}
 	}
-
 	.founder:nth-of-type(1) .bordered {
 	    max-width: 36rem;
 	}
-
 	.about-cofounders-video .about-video-container {
 		padding: 8.4rem 2rem;
 	}
 
+	//DESIGN CHALLENGE PAGE
+	.page-design-challenge {
+		.process-container .process-half:nth-of-type(2) .bordered:nth-of-type(1) {
+			width: 90%;
+			margin-left: 10%;
+		}
+	}
 
 	// SHOP PAGE
 	.page-shop {
@@ -438,30 +434,33 @@
 
 			.inner {
 				display: none;
-				position: fixed;
+			    position: absolute;
 				background: white;
-				width: 100vw;
-				height: 100vh;
-				z-index: 1000;
-				top: 0;
-				left: 0;
-				padding: 10%;
-				font-size: 2rem;
+				width: 20rem;
+				top: -5rem;
+				padding: 2rem;
+				border: 3px solid #141414;
+				z-index: 1;
+				left: 0rem;
+				font-size: 1.4rem;
+				line-height: 2.4rem;
 			}
 
 			button {
 				display: inline-block;
 				@include font-size(1.2);
+				letter-spacing: 1px;
+				font-weight: normal;
 				position: absolute;
-				content: "Catalogue";
-				padding: 0.5rem 2rem;
-				border: 3px solid #141414;
-				text-align: center;
+				padding: 0;
 				top: -8rem;
-				width: 70%;
-				max-width: 30rem;
-				left: 50%;
-				transform: translateX(-50%);
+				width: auto;
+				color: $grey-2;
+
+				&:before {
+					width: 0;
+					left: auto;
+				}
 			}
 		}
 		#listing {
@@ -491,6 +490,58 @@
 		.item {
 			padding: 0;
 			flex-basis: 47%;
+		}
+	}
+
+	//SINGLE PRODUCT PAGE
+	.single-product {
+		.product-differentiators ul {
+		    display: block;
+		}
+	}
+
+	//BLOG INDEX
+	.blog {
+		article {
+			flex-direction: column;
+
+			&:nth-of-type(2n),
+			&:nth-of-type(2n+1) {
+				padding-left: 40px;
+				padding-right: 40px;
+				margin: 0;
+				max-width: 56rem;
+				padding-bottom: 10%;
+			}
+
+			&:nth-of-type(2n+1) {
+				flex-direction: column;
+				align-items: flex-end;
+				margin: 0 0 0 auto;
+				// max-width: 56rem;
+			}
+		}
+		.post-image,
+		.post-image+.post-summary {
+			width: 100%;
+		}
+		#main > article:first-of-type {
+			margin: 0 auto;
+			max-width: 100%;
+			width: 100%;
+
+			.post-summary {
+				transform: none;
+				display: block;
+				width: calc(100% - 4rem);
+				margin-left: 2rem;
+				margin-top: -8rem;
+				position: relative;
+			}
+			.post-image {
+				width: 100%;
+				min-width: auto;
+			}
 		}
 	}
 }
@@ -534,7 +585,7 @@
 
 	.home .hero, .single-product .hero {
 		min-height: 65vh;
-		margin-bottom: 25rem;
+		// margin-bottom: 25rem;
 	}
 
 	.home .hero .hero-text .bordered {
@@ -1198,6 +1249,23 @@
 			margin-bottom: 2rem;
 		}
 	}
+
+	//SINGLE PRODUCT PAGE
+	.single-product {
+		.designer-extras {
+			padding-left: 20px;
+			padding-right: 20px;
+			.copy {
+				p {
+					margin: 0 0 3rem 0;
+				}
+			}
+			.image {
+				width: 50%;
+				margin: 0 auto;
+			}
+		}
+	}
 }
 
 
@@ -1225,8 +1293,10 @@
 		
 		.collection .collection-items,
 		.category .category-items {
-			margin-top: 10%;
 			display: block;
+		}
+		.collection .collection-items {
+			margin-top: 10%;
 		}
 
 		.item {
@@ -1235,8 +1305,13 @@
 			flex-basis: 47%;
 		}
 
-		.category h3 {
-			margin-top: 0;
+		.category {
+			h3 {
+				margin-top: 0;
+			}
+			.item:nth-of-type(1) {
+				justify-content: left;
+			}
 		}
 	}
 

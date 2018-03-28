@@ -14,7 +14,7 @@
 ?>
 
 <div id="filters">
-	<button class="inverted">Catalog</button>
+	<button class="inverted">+ Collections</button>
 	<div class="inner">
 	<a href="/shop/" class="slideright<?php if(is_page('shop')) { ?> active<?php } ?>">View all </a><br>
 	<br>

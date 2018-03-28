@@ -341,11 +341,11 @@ get_header();
 				<div class="anm-container">
 					<p class="pre-header anm-item slideright-item">The Difference</p>
 					<h2 class="anm-item slideright-item"><span class="highlight" data-title="<?php the_field('differentiator_title', 'option'); ?>"><?php the_field('differentiator_title', 'option'); ?></span></h2>
-					<ul>
+					<ul class="anm-container">
 <?php
 					while(have_rows('differentiators', 'option')): the_row();
 ?>
-						<li>
+						<li class="anm-item slideup-item">
 							<h4><?php echo the_sub_field('title'); ?></h4>
 							<p><?php echo the_sub_field('description'); ?></p>
 						</li>
@@ -368,7 +368,8 @@ get_header();
 				// setup_postdata( $post ); 
 				$designerImage = get_the_post_thumbnail_url($designer);
 				$designerName  = get_the_title($designer);
-				wp_reset_postdata(); 
+				$designerBio   = $designer->post_content;
+				// wp_reset_postdata(); 
 
 ?>
 		   <div class="product-designer">
@@ -379,7 +380,7 @@ get_header();
 		   					<p class="pre-header anm-item slideright-item">Designed by</p>
 				    		<h2 class=" anm-item slideright-item"><span class="highlight"><?php echo $designerName; ?></span></h2>
 		   				</div>
-			    		<div class=""><?php the_content($designer); ?></div>
+			    		<div class=""><p><?php echo $designerBio; ?></p></div>
 		   			</div>
 		   		</div>
 
