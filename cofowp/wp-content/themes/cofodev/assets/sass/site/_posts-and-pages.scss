@@ -800,15 +800,15 @@ p:empty,
 		}
 
 		.copy {
-			flex-basis: 75%;
+			flex-basis: 50%;
 
 			p {
-				margin: 5% 0 0 5%;
+				margin: 5% 0 0 0;
 			}
 		}
 		.image {
 			margin-left: 5%;
-			flex-basis: 30rem;
+			flex-basis: 50%;
 
 			img {
 				display: block;
