@@ -2,6 +2,13 @@
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {}
 
 /* #### Desktop #### */
+@media only screen and (max-width: 1600px) {
+	.home-challenge {
+		h3 {
+			top: 40rem;
+		}
+	}
+}
 @media only screen and (max-width: 1259px) {
 	.product-details-container.medium-container {
 		max-width: 90%;
@@ -9,12 +16,6 @@
 }
 
 @media only screen and (max-width: 1200px) {
-	.home-challenge {
-		h3 {
-			top: 40rem;
-		}
-	}
-
 	.page-shop {
 		.collection {
 			.collection-description {
