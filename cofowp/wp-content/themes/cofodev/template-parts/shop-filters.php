@@ -21,7 +21,10 @@
 	<strong class="slideright">Collections </strong><br>
 <?php 
 	//Get list of all Collection terms 
-	$terms = get_terms( 'collection', array('hide_empty' => false) );
+	$terms = get_terms( 'collection', array(
+		'hide_empty' => false,
+		'order' => 'DESC') 
+	);
 	foreach ($terms as $term) :
 
 		//Check for Products belonging to the Collection
