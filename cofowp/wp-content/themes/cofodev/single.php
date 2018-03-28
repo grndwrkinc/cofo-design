@@ -11,80 +11,47 @@ get_header(); ?>
 
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
-
-		<?php
+			<div class="hero" style="background-image: url(<?php the_post_thumbnail_url(); ?>)"></div>
+<?php
 		while ( have_posts() ) : the_post();
+?>
+			<div class="post-content slideup small-container">
+				<h1><?php echo the_title(); ?></h1>
 
-			$ch = curl_init();
+				<div class="post-sidebar anm-container"> 
+					<ul class="post-meta anm-container anm-item slideright-item">
+						<li class="anm-item slideright-item"><?php the_author(); ?></li>
+						<li class="anm-item slideright-item"><?php the_date(); ?></li>
+					</ul>
 
-			$productID = get_field('product_id');
-			$apiKey = '0804f07642e66e6ea0f18eb356b3079c';
-			$pwd = '10873519cffcddb7f84951a786c6eb5c';
-			//#{apikey}:#{password}@#{shop-name}.myshopify.com/admin/#{resource}.json
-
-			$baseUrl = "https://" . $apiKey . ":" . $pwd . "@cofodesign-com.myshopify.com/admin/products/" . $productID . ".json";
-
-			curl_setopt($ch, CURLOPT_URL, $baseUrl);
-			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-			$product = json_decode(curl_exec($ch));
-			curl_close($ch);
-
-			$product = $product->product;
-
-			var_dump($product); 
-
-			?>
-			<!-- Add fallback for no product available -->
-
-			<div class="product-hero">
-				<div class="hero" style="background-image: url(<?php the_post_thumbnail_url(); ?>)"></div>
-				<div class="description">
-					<?php the_content(); ?>
-					<div class="social">
-						<p>Share <i class="fa fa-pinterest-p" aria-hidden="true"></i><i class="fa fa-facebook" aria-hidden="true"></i><i class="fa fa-instagram" aria-hidden="true"></i></p>
+					<div class="social anm-item slideright-item">
+						<div class="social-nav">
+							<h4 class="slideright">Share</h4>
+							<ul class="anm-container">
+								<li class="anm-item slideright-item"><a class="social-share" href="https://www.facebook.com/sharer/sharer.php?u=<?php the_permalink(); ?>" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+								<li class="anm-item slideright-item"><a class="social-share" href="https://twitter.com/intent/tweet?text=<?php echo urlencode(strip_tags(get_the_title())); ?> <?php the_permalink() ?>" data-size="large" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+							</ul>
+						</div>
 					</div>
 				</div>
+<?php
+				the_content();
+?>
 			</div>
-			<div class="product-details">
-				<h4><?php echo $product->variants[0]->price; ?></h4>
-				<h3><?php echo $product->title; ?></h3>
-				<div class="variant">
-					<p>Colour</p>
-					<ul>
-						<?php foreach($product->variants as $variant){
-							echo '<li class="' . $variant->title . '">';
-							echo $variant->title;
-							echo '</li>';
-						} ?>
-					</ul>
+
+			<div class="post-navigation-container large-container">
+				<div class="bordered slideup">
+<?php
+				the_post_navigation(array(
+					'prev_text' => '<p class="pre-header">Previous</p><h4>%title</h4>',
+					'next_text' => '<p class="pre-header">Next</p><h4>%title</h4>',
+				));
+?>
 				</div>
-				<div class="variant">
-					<p></p>
-				</div>
+<?php
+		endwhile; // End of the loop.
+?>
 			</div>
-			<div class="product-nav"></div>
-			<div class="product-explore"></div>
-			<div class="product-dimensions"></div>
-			<div class="product-craftsmanship"></div>
-			<?php $post_object = get_field('designer');
-
-			if( $post_object ): 
-
-				$post = $post_object;
-				setup_postdata( $post ); 
-
-				?>
-			   <div class="product-designer">
-			    	<h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
-			    	<span>Post Object Custom Field: <?php the_field('field_name'); ?></span>
-			    </div>
-			    <?php wp_reset_postdata(); // IMPORTANT - reset the $post object so the rest of the page works correctly ?>
-			<?php endif; ?>
-			</div>
-
-		<?php endwhile; // End of the loop.
-		?>
-
 		</main><!-- #main -->
 	</div><!-- #primary -->
 

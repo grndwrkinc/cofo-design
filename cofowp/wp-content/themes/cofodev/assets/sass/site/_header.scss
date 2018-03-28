@@ -1,12 +1,5 @@
-header {
+header#masthead {
 	padding: 3.6rem 0;
-	height: 149px !important;
-	position: relative;
-	z-index: 100;
-
-	img {
-		display: block;
-	}
 
 	a.nav-cart {
 		position: relative;
@@ -38,6 +31,14 @@ header {
 	    right: -22px;
 	    transition: all 0.4s ease;
 	}
+
+	.inner {
+		max-width: 83.3333%;
+		margin: 0 auto;
+		padding: 0 20px;
+		display: flex;
+		align-items: center;
+	}
 }
 
 .nav-underline {
@@ -51,21 +52,82 @@ header {
     transition: width 0.3s ease;
 }
 
-#site-navigation {
+.main-navigation {
+	width: 100%;
+	top: -77px;
 	font-weight: 400;
+	display: inline-block;
+	margin-left: auto;
+
+	.logo {
+		display: inline-block;
+		width: 8.4rem;
+		animation: slidedown 0.6s ease;
+
+		img {
+			margin: 0 auto;
+			width: auto;
+			display: inline-block;
+			transition: width 0.4s ease;
+		}
+		
+		&:after {
+			display: none;
+		}
+	}
+
+	&.transition {
+		.nav-cart-counter {
+		    transition: all 0.4s ease;
+		}
+	}
+
+	&.fixed {
+		position: fixed;
+		z-index: 3;
+		background-color: $black;
+		padding: 1.5rem;
+		width: 100%;
+		top: 0;
+		left: 0;
+		transition: padding 0.4s ease, top 0.4s ease;
+
+		img {
+			width: 50%;
+		}
+	}
 	
+	
+	&.fixed.reset {
+		padding: 3.6rem 0;
+
+		li {
+			@include font-size(1.4);
+			transition: all 0.4s ease;
+		}
+
+		img {
+			width: 100%;
+			transition: all 0.4s ease;
+		}
+	}
+
+	.menu-menu-1-container {
+		flex-grow: 1;
+	}
+
 	ul {
 		display: flex;
 		list-style-type: none;
-		justify-content: center;
-		align-items: center;
+		justify-content: flex-end;
 	}
 
 	li {
 		animation: slidedowndelay 0.6s ease;
 		text-transform: uppercase;
-		padding: 0 2.25rem;
+		padding: 0 2rem;
 		margin-bottom: 0;
+		flex-shrink: 0;
 
 		&:nth-of-type(1), &:nth-of-type(5) {
 			animation: slidedownsuperdelay 0.6s ease;
@@ -80,23 +142,6 @@ header {
 			@extend .nav-underline;
 		}
 
-		&.nounderline {
-			animation: slidedown 0.6s ease;
-
-			a {
-				width: 8.4rem;
-			}
-
-			img {
-				margin: 0 auto;
-				width: 100%;
-			}
-		}
-
-		&.nounderline a:after {
-			display: none;
-		}
-
 		a:hover {
 			&:after {
 				width: 100%;
@@ -107,50 +152,6 @@ header {
 		&.active a:after {
 			width: 100%;
 			left: 0;
-		}
-	}
-}
-
-
-#site-navigation {
-	top: -77px;
-	
-	&.transition {
-		img.logo {
-			transition: width 0.4s ease;
-		}
-
-		.nav-cart-counter {
-		    transition: all 0.4s ease;
-		}
-	}
-
-	&.fixed {
-		position: fixed;
-		z-index: 3;
-		background-color: $black;
-		padding: 1.5rem;
-		width: 100%;
-		top: 0;
-		transition: padding 0.4s ease, top 0.4s ease;
-
-		img.logo {
-			width: 50%;
-		}
-	}
-	
-	
-	&.fixed.reset {
-		padding: 3.6rem 0;
-
-		li {
-			@include font-size(1.4);
-			transition: all 0.4s ease;
-		}
-
-		img.logo {
-			width: 100%;
-			transition: all 0.4s ease;
 		}
 	}
 }
@@ -236,7 +237,7 @@ header {
 
 
 @media (max-width: 1023px) {
-	header {
+	header#masthead {
 		padding: 2.5rem 0;
 
 		img {
@@ -245,15 +246,14 @@ header {
 	}
 }
 
-@media only screen and (max-width: 1024px), 
+@media only screen and (max-width: 768px), 
 only screen and (max-device-width: 1024px) {
 
-	header {
+	header#masthead {
 		padding: 0;
-		height: 103px !important;
 	}
 
-	header .fixed .nav-cart-counter {
+	header#masthead .fixed .nav-cart-counter {
 		top: 0px;
 	}
 

@@ -120,7 +120,7 @@ function ndrscrs_scripts() {
 	//Masonry
 	wp_deregister_script('masonry');
 	wp_enqueue_script( 'imagesloaded', 'https://npmcdn.com/imagesloaded@4.1/imagesloaded.pkgd.min.js', array(), '4.1', true);
-	wp_enqueue_script( 'masonry', 'https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js', array('imagesloaded'), '4', true);
+	wp_enqueue_script( 'masonry', 'https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.1/masonry.pkgd.min.js', array('imagesloaded'), '4', true);
 
 	//Scrollmagic required JS
 	wp_register_script('greenSock', '//' . $_SERVER['HTTP_HOST'] . '/wp-content/themes/cofodev/assets/js/greensock/TweenMax.min.js', array(), '1.14.1', false);
@@ -138,7 +138,12 @@ function ndrscrs_scripts() {
 	//Theme scripts
 	wp_enqueue_script( 'shopify-scripts', '//' . $_SERVER['HTTP_HOST'] . '/wp-content/themes/cofodev/assets/js/shopify/dist/shopify.js', array(), '2.4.1', true);
 	wp_enqueue_script( 'cofo-scripts', '//' . $_SERVER['HTTP_HOST'] . '/wp-content/themes/cofodev/assets/js/scripts-min.js', array(), '2.4.1', true);
-}
+
+	if(is_front_page()) {
+		wp_enqueue_style( 'slick-css', '//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css', array(), '1.8.0' );
+		wp_enqueue_script( 'slick-js', '//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js', array('jquery'), '1.8.0', true  );
+	}
+} 
 add_action( 'wp_enqueue_scripts', 'ndrscrs_scripts' );
 
 /**
@@ -169,9 +174,16 @@ require get_template_directory() . '/inc/jetpack.php';
 //Page Slug Body Class
 function add_slug_body_class( $classes ) {
 	global $post;
-	if ( isset( $post ) ) {
+
+	if (is_tax('collection') || is_tax('product_category') || is_tax('sale')) {
+		$classes[] = "page-shop";
+    }
+	else if ( isset( $post ) ) {
 		$classes[] = $post->post_type . '-' . $post->post_name;
-	} return $classes; }
+	} 
+
+	return $classes; 
+}
 add_filter( 'body_class', 'add_slug_body_class' );
 
 /* Allow SVG file upload */
@@ -183,10 +195,19 @@ add_filter( 'upload_mimes', 'cc_mime_types' );
 
 /* Add active class to current nav item */
 function special_nav_class ($classes, $item) {
-    if (in_array('current-menu-item', $classes) ){
+    if (
+		in_array('current-menu-item', $classes) ||
+		in_array('menu-item-shop', $classes) && (is_tax('collection') || is_tax('product_category') || is_tax('sale') || is_singular('product')) ||
+		in_array('menu-item-blog', $classes) && (is_singular('post')) )
+    {
         $classes[] = 'active ';
     }
+
     return $classes;
 }
 add_filter('nav_menu_css_class' , 'special_nav_class' , 10 , 2);
 
+/* Add custom Options page */
+if( function_exists('acf_add_options_page') ) {
+	acf_add_options_page();	
+}

@@ -1,57 +1,11 @@
 {
     "key": "group_5a3acda493936",
-    "title": "Additional Home Page Fields",
+    "title": "Home Page - Design Challenge",
     "fields": [
         {
-            "key": "field_5a3acdae1cdde",
-            "label": "Featured Product",
-            "name": "featured_product",
-            "type": "post_object",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "post_type": [
-                "product"
-            ],
-            "taxonomy": [],
-            "allow_null": 0,
-            "multiple": 0,
-            "return_format": "object",
-            "ui": 1
-        },
-        {
-            "key": "field_5a3bd55ff9f90",
-            "label": "Secondary Hero Image",
-            "name": "secondary_hero_image",
-            "type": "image",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "return_format": "array",
-            "preview_size": "thumbnail",
-            "library": "all",
-            "min_width": "",
-            "min_height": "",
-            "min_size": "",
-            "max_width": "",
-            "max_height": "",
-            "max_size": "",
-            "mime_types": ""
-        },
-        {
-            "key": "field_5a3bd5cef9f91",
-            "label": "Secondary Header",
-            "name": "secondary_header",
+            "key": "field_5aa6d368e3b67",
+            "label": "Section Title",
+            "name": "design_challenge_section_title",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -61,26 +15,7 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
-        },
-        {
-            "key": "field_5a3bd5f8f9f92",
-            "label": "Secondary Text",
-            "name": "secondary_text",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
+            "default_value": "Design Challenge",
             "placeholder": "",
             "prepend": "",
             "append": "",
@@ -88,11 +23,11 @@
         },
         {
             "key": "field_5a3be11005126",
-            "label": "Design Challenge Header",
+            "label": "Title",
             "name": "design_challenge_header",
             "type": "text",
             "instructions": "",
-            "required": 0,
+            "required": 1,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
@@ -107,11 +42,30 @@
         },
         {
             "key": "field_5a3be11a05127",
-            "label": "Design Challenge Text",
+            "label": "Sub-title",
             "name": "design_challenge_text",
             "type": "text",
             "instructions": "",
-            "required": 0,
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5aa6d2d779752",
+            "label": "Process Title",
+            "name": "process_title",
+            "type": "text",
+            "instructions": "",
+            "required": 1,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
@@ -126,11 +80,11 @@
         },
         {
             "key": "field_5a3be13a05128",
-            "label": "Design Challenge Steps",
+            "label": "Process Steps",
             "name": "design_challenge_steps",
             "type": "repeater",
             "instructions": "",
-            "required": 0,
+            "required": 1,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
@@ -163,6 +117,25 @@
                     "maxlength": ""
                 }
             ]
+        },
+        {
+            "key": "field_5aa6d448dce2d",
+            "label": "Button Label",
+            "name": "design_challenge_button_label",
+            "type": "text",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "View Challenge Details",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
         }
     ],
     "location": [
@@ -182,5 +155,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1514564962
+    "modified": 1520882847
 }

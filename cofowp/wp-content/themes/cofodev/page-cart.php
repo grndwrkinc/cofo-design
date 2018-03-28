@@ -1,20 +1,42 @@
 <?php
 /**
- * The template for displaying all pages.
+ * Description: Default page template for Cart Page
  *
- * This is the template that displays all pages by default.
- * Please note that this is the WordPress construct of pages
- * and that other 'pages' on your WordPress site may use a
- * different template.
- *
- * @link https://codex.wordpress.org/Template_Hierarchy
- *
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  * @package ndrscrs
  */
 
-get_header(); 
+get_header(); ?>
 
+<script>
+	var products = [];
+<?php
+	if(get_page_by_title( 'Shop' )) {
 ?>
+	var hasShop = true;
+<?php
+	} else {
+?>
+	var hasShop = false;
+	
+<?php
+	}
+
+	$args = setQueryArgs();
+	$posts = new WP_Query( $args );
+
+	while($posts->have_posts()): $posts->the_post();
+		$preOrder = get_field("pre-order");
+
+		if($preOrder) {
+?>
+	products.push("<?php the_title(); ?>");
+<?php
+		}
+		wp_reset_postdata();
+	endwhile;
+?>
+</script>
 
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">

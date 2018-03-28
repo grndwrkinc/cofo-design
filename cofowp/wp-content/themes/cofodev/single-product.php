@@ -1,6 +1,6 @@
 <?php
 /**
- * The template for displaying all single posts.
+ * The template for displaying all single Product posts.
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
  *
@@ -24,6 +24,10 @@ get_header();
 			$product = gwsh_getProduct($productID);
 			$selected = $product->variants[0]->product_id . "_" . $product->variants[0]->id;
 
+			// echo "<pre>";
+			// var_dump($product);
+			// echo "</pre>";
+
 			// Load the product variants into the page as a JS variable
 			// that can be referenced later in scripts.js
 			wp_add_inline_script('cofo-scripts', 'var variants = ' . $productVariants, 'before'); 
@@ -38,8 +42,8 @@ get_header();
 			<!-- Add fallback for no product available -->
 			<!-- ########## HERO IMAGE ########## -->
 <?php
-			if( have_rows('hero_image') ):
-				while ( have_rows('hero_image') ): the_row();
+			if( have_rows('hero_images') ):
+				while ( have_rows('hero_images') ): the_row();
 					$variant = get_sub_field('variant');
     				$image = get_sub_field('image'); 
 ?>
@@ -47,7 +51,7 @@ get_header();
 
 				<div class="large-container">
 					<div class="hero-text">
-						<h1><span class="highlight"><?php (get_field('custom_title')) ? the_field('custom_title') : the_title(); ?></span></h1>
+						<h1><span class="highlight"><?php (get_field('title')) ? the_field('title') : the_title(); ?></span></h1>
 <?php
 						if(the_field('subtitle')) :					
 ?>
@@ -64,14 +68,36 @@ get_header();
 <?php
 				endwhile;
 			endif;
+
+			$compareAtPrice = $product->variants[0]->compare_at_price;
+			$designer = get_field('designer');
+
+			if( $designer ) {
+				$designerName = get_the_title($designer);
+			}
 ?>
 
 			<!-- ########## PRODUCT DETAILS (NAME, PRICE, VARIANTS, ADD TO CART) ########## -->
 			<div class="product-details-container medium-container">
 				<div id="product-details" class="bordered slideup">
-					<h4>$<?php echo number_format(floatval($product->variants[0]->price),2); ?></h4>
 					<h3><?php the_title(); ?></h3>
-
+<?php
+			if($designer) {
+?>
+					<div class="designer"><em>designed by <?php echo $designerName; ?></em></div>
+<?php
+			}
+?>
+					<div class="pricing">
+						<div class="price">$<?php echo number_format(floatval($product->variants[0]->price),2); ?></div>
+<?php
+			if($compareAtPrice) {
+?>
+						<div class="sale">Sale</div>
+<?php
+			}
+?>
+					</div>
 <?php
 			foreach ($product->options as $option) :
 ?>
@@ -108,8 +134,45 @@ get_header();
 
 <?php
 			endforeach;
+
+			//Check for product inventory and quantity and show appropriate messaging
+			$inventoryMessage = "";
+			$buttonLabel = "Add to cart";
+
+			$preOrder = get_field('pre-order');
+			if($preOrder) {
+				$buttonLabel = "Pre-order";
+			}
+			else {
+				if(isset($product->variants[0]->inventory_management)) {
+					//Out of inventory
+					if($product->variants[0]->inventory_quantity == "0" && $product->variants[0]->inventory_policy == "deny") {
+						$inventoryMessage = "Out of Stock";
+						$buttonLabel = "Notify Me";
+					}
+					//Limited stock
+					else if($product->variants[0]->inventory_quantity < 5) {
+						$inventoryMessage = "Limited Quantity";
+					}
+				}
+			}
 ?>
-					<button id="add-to-cart">Pre-order</button>
+					<div class="inventory-message center"><?php echo $inventoryMessage; ?></div>
+<?php
+			if($buttonLabel == "Notify Me") {
+?>
+					<a href="mailto:info@cofodesign.com?subject=Out of stock: <?php the_title(); ?>&amp;body=Please notify me when <?php the_title(); ?> is available for purchase.">
+<?php
+			}
+?>
+					<button <?php if($buttonLabel != "Notify Me") { ?>id="add-to-cart"<?php } ?>><?php echo $buttonLabel; ?></button>
+<?php
+			if($buttonLabel == "Notify Me") {
+?>
+					</a>
+<?php
+			}
+?>
 				</div>
 			</div>
 
@@ -145,10 +208,12 @@ get_header();
 		    			$variant = get_sub_field('variant');
 	    				$images = get_sub_field('images');
 
-	    				// Extract the image paths from the $images array, then 
-	    				// join them into a string representing an array like:
-	    				// ['url1', 'url2', 'url3',...]
-	    				$imageArrayString = "['" . join("','", array_column($images, 'url'))  . "']"; 
+	    				if(sizeof($images) > 1) {
+
+		    				// Extract the image paths from the $images array, then 
+		    				// join them into a string representing an array like:
+		    				// ['url1', 'url2', 'url3',...]
+		    				$imageArrayString = "['" . join("','", array_column($images, 'url'))  . "']"; 
 ?>
 					<div id="viewer_<?php echo $variant; ?>" class="threesixty togglable <?php if($selected != $variant) echo "hidden"; ?>" data-id="<?php echo $variant; ?>">
 						<div class="spinner"><span>0%</span></div>
@@ -157,31 +222,36 @@ get_header();
 					</div>
 <?php
 
-						$viewerScript .= "$(document).ready(function() {\n";
-						$viewerScript .= "	initViewer_" . $variant . "();\n";
-						$viewerScript .= "	var viewer_" . $variant . ";\n";
-						$viewerScript .= "	function initViewer_" . $variant . "() {\n";
-						$viewerScript .= "		viewer_" . $variant . " = $('#viewer_" . $variant . "').ThreeSixty({\n";
-						$viewerScript .= "			totalFrames: " . sizeof($images) . ",\n"; // Total no. of image you have for 360 slider"
-						$viewerScript .= "			endFrame: " . sizeof($images) . ",\n"; // end frame for the auto spin animation
-						$viewerScript .= "			currentFrame: 1,\n"; // This the start frame for auto spin
-						$viewerScript .= "			imgList: '.threesixty_images',\n"; // selector for image list
-						$viewerScript .= "			progress: '#viewer_" . $variant . " .spinner',\n"; // selector to show the loading progress
-						$viewerScript .= "			imgArray: " . $imageArrayString . ",\n"; // path of the image assets
-						$viewerScript .= "			height: 384,\n";
-						$viewerScript .= "			width: 576,\n";
-						$viewerScript .= "			responsive: true,\n";
-						$viewerScript .= "			showCursor: true,\n";
-						$viewerScript .= "			plugins: ['ThreeSixtyFullscreen']\n";
-						$viewerScript .= "		});\n";
-						$viewerScript .= "	}\n";
-						$viewerScript .= "});\n";
+							$viewerScript .= "$(document).ready(function() {\n";
+							$viewerScript .= "	initViewer_" . $variant . "();\n";
+							$viewerScript .= "	var viewer_" . $variant . ";\n";
+							$viewerScript .= "	function initViewer_" . $variant . "() {\n";
+							$viewerScript .= "		viewer_" . $variant . " = $('#viewer_" . $variant . "').ThreeSixty({\n";
+							$viewerScript .= "			totalFrames: " . sizeof($images) . ",\n"; // Total no. of image you have for 360 slider"
+							$viewerScript .= "			endFrame: " . sizeof($images) . ",\n"; // end frame for the auto spin animation
+							$viewerScript .= "			currentFrame: 1,\n"; // This the start frame for auto spin
+							$viewerScript .= "			imgList: '.threesixty_images',\n"; // selector for image list
+							$viewerScript .= "			progress: '#viewer_" . $variant . " .spinner',\n"; // selector to show the loading progress
+							$viewerScript .= "			imgArray: " . $imageArrayString . ",\n"; // path of the image assets
+							$viewerScript .= "			height: 384,\n";
+							$viewerScript .= "			width: 576,\n";
+							$viewerScript .= "			responsive: true,\n";
+							$viewerScript .= "			showCursor: true,\n";
+							$viewerScript .= "			plugins: ['ThreeSixtyFullscreen']\n";
+							$viewerScript .= "		});\n";
+							$viewerScript .= "	}\n";
+							$viewerScript .= "});\n";
+						}
+						else {
+?>
+					<div id="viewer_<?php echo $variant; ?>" class="threesixty togglable <?php if($selected != $variant) echo "hidden"; ?>" data-id="<?php echo $variant; ?>">
+						<img src="<?php echo $images[0]['url']; ?>">
+					</div>
+
+<?php
+						}
 
 					endwhile;
-
-					// echo "<pre>";
-					// var_dump($viewerScript);
-					// echo "</pre>";
 
 					wp_add_inline_script('threesixty_script', $viewerScript, 'after'); 
 
@@ -195,13 +265,13 @@ get_header();
 
 				<!-- ########## PRODUCT DETAIL IMAGES ########## -->
 <?php 
-				if( have_rows('product_shots') ): 
+				if( have_rows('product_detail_images') ): 
 					
 					$cnt = 0;
 ?>
 				<div class="product-explore offset">
 <?php
-					while( have_rows('product_shots') ): the_row();
+					while( have_rows('product_detail_images') ): the_row();
 	    				$variant = get_sub_field('variant');
 						if( have_rows('images') ) : 
 							while( have_rows('images') ) : the_row();
@@ -237,7 +307,7 @@ get_header();
 			<div class="product-dimensions large-container">
 				<div class="small-container anm-container">
 					<p class="pre-header slideright-item anm-item">Dimensions</p>
-					<h2 class="slideright-item anm-item"><span class="highlight">Imagine The<br>Chair in<br>your space</span></h2>
+					<h2 class="slideright-item anm-item"><span class="highlight"><?php the_field('product_dimensions_title'); ?></span></h2>
 				</div>
 <?php
 					while( have_rows('product_dimensions_images')) : the_row();
@@ -256,56 +326,82 @@ get_header();
 ?>
 
 			<!-- ########## CRAFTSMANSHIP ########## -->
-			<div class="product-craftsmanship">
+			<!-- <div class="product-craftsmanship">
 				<div class="medium-container anm-container">
 					<p class="pre-header anm-item slideright-item">Craftsmanship</p>
 					<h2 class="anm-item slideright-item"><span class="highlight" data-title="<?php the_field('craftsmanship_title'); ?>"><?php the_field('craftsmanship_title'); ?></span></h2>
 				</div>
-				<div class="inner">
-<?php
-				$images = get_field('craftsmanship_detail_images');
+			</div> -->
 
-				foreach ($images as $image) {
-?>
-					<div class="flex-item"><img class="slideup" src="<?php echo $image['url']; ?>" /></div>
+			<!-- ########## DIFFERENTIATORS ########## -->
 <?php
-				}
+				if(have_rows('differentiators', 'option')) :
 ?>
-
-		    	</div>
+			<div class="product-differentiators medium-container">
+				<div class="anm-container">
+					<p class="pre-header anm-item slideright-item">The Difference</p>
+					<h2 class="anm-item slideright-item"><span class="highlight" data-title="<?php the_field('differentiator_title', 'option'); ?>"><?php the_field('differentiator_title', 'option'); ?></span></h2>
+					<ul class="anm-container">
+<?php
+					while(have_rows('differentiators', 'option')): the_row();
+?>
+						<li class="anm-item slideup-item">
+							<h4><?php echo the_sub_field('title'); ?></h4>
+							<p><?php echo the_sub_field('description'); ?></p>
+						</li>
+<?php
+					endwhile;
+?>
+					</ul>
+				</div>
 			</div>
+<?php
+				endif;
+?>
 
 			<!-- ########## PRODUCT DESIGNER ########## -->
 <?php 
-			$post_object = get_field('designer');
+			$designer = get_field('designer');
 
-			if( $post_object ): 
-				$post = $post_object;
-				setup_postdata( $post ); 
+			if( $designer ): 
+				// $post = $post_object;
+				// setup_postdata( $post ); 
+				$designerImage = get_the_post_thumbnail_url($designer);
+				$designerName  = get_the_title($designer);
+				$designerBio   = $designer->post_content;
+				// wp_reset_postdata(); 
 
 ?>
 		   <div class="product-designer">
 		   		<div class="designer-details anm-container">
-		   			<img class="anm-item slideup-item" src="<?php the_post_thumbnail_url(); ?>" alt="">
+		   			<img class="anm-item slideup-item" src="<?php echo $designerImage; ?>" alt="Photo of designer <?php echo $designerName; ?>">
 		   			<div class="details">
 		   				<div class="for-fixin">
 		   					<p class="pre-header anm-item slideright-item">Designed by</p>
-				    		<h2 class=" anm-item slideright-item"><span class="highlight"><?php the_title(); ?></span></h2>
+				    		<h2 class=" anm-item slideright-item"><span class="highlight"><?php echo $designerName; ?></span></h2>
 		   				</div>
-			    		<div class=""><?php the_content(); ?></div>
+			    		<div class=""><p><?php echo $designerBio; ?></p></div>
 		   			</div>
 		   		</div>
-	    		<?php if( have_rows('designer_info') ): ?>
-	    			<div class="designer-extras">
-	    			<?php while( have_rows('designer_info') ): the_row(); 
-	    				
-	    			get_template_part( 'template-parts/content', 'imagetext' );
 
-	    			endwhile; ?>
-	    			</div>
-	    		<?php endif; ?>
+<?php
+				if(get_field('project_details_text')) {
+					$img = get_field('project_details_image');
+?>
+    			<div class="designer-extras anm-container">
+    				<div class="copy">
+						<h3 class="anm-item slideright-item">Project Highlight</h3>
+						<p><?php the_field('project_details_text'); ?></p>
+					</div>
+					<div class="image">
+						<img class="anm-item slideup-item" src="<?php echo $img['url']; ?>" alt="<?php echo $img['alt']; ?>" />
+					</div>
+				</div>
+<?php
+				}
+?>	    		
 		    </div>
-		    <?php wp_reset_postdata(); // IMPORTANT - reset the $post object so the rest of the page works correctly ?>
+		    <?php //wp_reset_postdata(); // IMPORTANT - reset the $post object so the rest of the page works correctly ?>
 		<?php endif; ?>
 
 <?php 

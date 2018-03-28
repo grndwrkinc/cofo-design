@@ -1,10 +1,8 @@
 <?php
 /**
- * Template Name: Home Page
- * Description: Only for use on home page
+ * Description: Default page template for Design Challenge Page
  *
- * @link https://codex.wordpress.org/Template_Hierarchy
- *
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  * @package ndrscrs
  */
 
@@ -17,7 +15,7 @@ get_header(); ?>
 					<div class="hero-text">
 						<h1><span class="highlight"><?php the_title(); ?></span></h1>
 						<h4><?php the_field('subtitle'); ?></h4>
-						<p class="" ass="animate"><a href="http://eepurl.com/dgO0jL" target="_blank" class="btn">Sign up to get notified</a></p>
+						<p class="animate"><a href="http://eepurl.com/dgO0jL" target="_blank" class="btn">Sign up to get notified</a></p>
 						<!-- <p class="animate"><a href="/submit" class="btn">Submit your design</a></p> -->
 						<p class="animate"><a class="link" href="/rules-and-regulations">View rules and regulations</a></p>
 					</div>

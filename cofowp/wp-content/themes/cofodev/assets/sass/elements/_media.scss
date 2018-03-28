@@ -18,7 +18,8 @@ object {
 ## Captions
 --------------------------------------------------------------*/
 .wp-caption {
-	margin-bottom: 1.5em;
+	margin-top: 10%;
+	margin-bottom: 10%;
 	max-width: 100%;
 
 	img[class*="wp-image-"] {
@@ -31,7 +32,9 @@ object {
 }
 
 .wp-caption-text {
-	text-align: center;
+	text-align: left;
+	font-size: 1.4rem;
+	font-style: italic;
 }
 
 /*--------------------------------------------------------------
@@ -85,6 +88,42 @@ object {
 }
 
 //IMAGE GALLERY
+.btn-prev, .btn-next {
+	position: absolute;
+	z-index: 1;
+	width: 60px;
+	height: 60px;
+	background-color: $black;
+	cursor: pointer;
+
+	&:after {
+		content: '';
+		width: 24px;
+		height: 24px;
+		border-top: 2px solid white;
+		border-left: 2px solid white;
+		position: absolute;
+		top: 30%;
+	}
+}
+
+.btn-next {
+	right: 0;
+
+	&:after {
+		transform: rotate(135deg);
+		left: 20%;
+	}
+}
+
+.btn-prev {
+	left: 0;
+
+	&:after {
+		transform: rotate(-45deg);
+		left: 40%;
+	}
+}
 
 .image-gallery {
 	padding: 2.4rem;
@@ -98,42 +137,9 @@ object {
     background-color: white;
     z-index: 100;
 
-	.btn-prev, .btn-next {
-		position: absolute;
-		width: 60px;
-		height: 60px;
-		background-color: $black;
-		cursor: pointer;
+    .btn-prev, .btn-next {
 		top: 50%;
 		transform: translateY(-50%);
-
-		&:after {
-			content: '';
-			width: 24px;
-			height: 24px;
-			border-top: 2px solid white;
-			border-left: 2px solid white;
-			position: absolute;
-			top: 30%;
-		}
-	}
-
-	.btn-next {
-		right: 0;
-
-		&:after {
-			transform: rotate(135deg);
-			left: 20%;
-		}
-	}
-
-	.btn-prev {
-		left: 0;
-
-		&:after {
-			transform: rotate(-45deg);
-			left: 40%;
-		}
 	}
 }
 

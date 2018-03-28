@@ -9,7 +9,7 @@ Author URI: https://www.grndwrk.ca
 */
 
 require_once("settings.php");
-require_once("product.php");
+require_once("api.php");
 require_once("ajax.php");
 
 // Get a list of all the product from Shopify
@@ -104,17 +104,13 @@ add_filter('acf/load_field/name=variant', 'acf_load_variant_field_choices');
 /**************************************************
  *
  * Function: gwsh_save_post()
+ * Called on Save and Update
  *
  **************************************************/
 function gwsh_save_post($post_id) {
-	// STEP 1
-
 	// Checks save status
     $is_autosave = wp_is_post_autosave( $post_id );
     $is_revision = wp_is_post_revision( $post_id );
-
-    //Get original post meta so we can check if it's been updated
-    $lead_metadata_before = get_post_meta($post_id);
 
    if ( isset( $_POST[ 'gwsh_product_nonce' ] ) && wp_verify_nonce( $_POST[ 'gwsh_product_nonce' ], basename( __FILE__ ) ) ) {
    		 $is_valid_nonce = true;
@@ -130,11 +126,65 @@ function gwsh_save_post($post_id) {
 
     // Checks for input and sanitizes/saves if needed 
     if(isset($_POST['gwsh_product_id'])) {
+		
+		$collections = gwsh_getCollections();
+		$product = gwsh_getProduct($_POST['gwsh_product_id']);
+    	
+    	// Find the collection(s) that the product belongs to
+    	// by going through all collections and checking if the product
+    	// is a part of it. The list of collections is saved to an array.
+		$productCollections = array();
+    	foreach ($collections as $collection) {
+    		$products = gwsh_getProductsByCollection($collection->collection_id);
+    		foreach ($products as $product_id) {
+    			if($product_id == $_POST['gwsh_product_id']) {
+    				$productCollections[$collection->title] = $collection->body_html;
+    			}
+    		}
+    	}
+    	// Now that we have a list of all the collections this product belongs to,
+    	// create a new Collection (taxonomy) Term for each, if it doesn't already exist,
+    	// and link the product to the Collection Term
+    	foreach ($productCollections as $collectionName => $collectionDescription) {
+    		$collectionTerm = get_term_by('name', $collectionName, CPT_COLLECTION_TAXONOMY);
+
+    		//Term doesn't currently exist
+		    if(!$collectionTerm) {
+				// Create new term
+		    	$collectionTerm = wp_insert_term($collectionName, CPT_COLLECTION_TAXONOMY, array('description' => $collectionDescription));
+		    }
+
+		    // Link the product to the term
+		    $collectionTerm = get_term_by('name', $collectionName, CPT_COLLECTION_TAXONOMY);
+		    if(!has_term($collectionTerm->term_id, CPT_COLLECTION_TAXONOMY, $post_id)) {
+		    	wp_set_post_terms( $post_id, array($collectionTerm->term_id), CPT_COLLECTION_TAXONOMY );
+		    }
+    	}
+
+
+		// Create a new Category (taxonomy) Term for the product if it doesn't already exist,
+    	// and link the product to the Category Term    	
+    	$categoryTerm = get_term_by('name', $product->product_type, CPT_CATEGORY_TAXONOMY);
+    	//Term doesn't currently exist
+	    if(!$categoryTerm) {
+			// Create new term
+	    	$categoryTerm = wp_insert_term($product->product_type, CPT_CATEGORY_TAXONOMY);
+	    }
+
+	    // Link the product to the term
+	    $categoryTerm = get_term_by('name', $product->product_type, CPT_CATEGORY_TAXONOMY);
+	    if(!has_term($categoryTerm->term_id, CPT_CATEGORY_TAXONOMY, $post_id)) {
+	    	wp_set_post_terms( $post_id, array($categoryTerm->term_id), CPT_CATEGORY_TAXONOMY );
+	    }
+
+
+    	// Update custom post meta data
+    	$post_meta_product_id = get_post_meta($post_id, "gwsh_product_id", true);
     	if($_POST['gwsh_product_id'] != $post_meta_product_id) {
 		    update_post_meta( $post_id, 'gwsh_product_id', sanitize_text_field( $_POST[ 'gwsh_product_id' ] ) );
 		    update_post_meta( $post_id, 'gwsh_product_title', sanitize_text_field( $_POST[ 'gwsh_product_title' ] ) );
 		    update_post_meta( $post_id, 'gwsh_product_variants', sanitize_text_field( $_POST[ 'gwsh_product_variants' ] ) );
-    	}
+    	}	
     }
 }
 add_action('save_post', 'gwsh_save_post');
@@ -142,18 +192,61 @@ add_action('save_post', 'gwsh_save_post');
 
 /**************************************************
  *
- * Function: gwsh_enqueue_scripts()
+ * Function: gwsh_enqueue_admin_scripts()
  *
  **************************************************/
-if ( ! function_exists('gwsh_enqueue_scripts') ) {
-	function gwsh_enqueue_scripts( $hook ) {
+if ( ! function_exists('gwsh_enqueue_admin_scripts') ) {
+	function gwsh_enqueue_admin_scripts( $hook ) {
 		global $post;
 
 		if ( ('post.php' === $hook || 'post-new.php' === $hook) && $post->post_type == GWSH_CPT ) {
-			wp_enqueue_script( 'gwsh_scripts', plugins_url('js/scripts.js', __FILE__), false, null, true );
+			wp_enqueue_script( 'gwsh_admin', plugins_url('js/admin.js', __FILE__), false, null, true );
 		}
 	}
-	add_action( 'admin_enqueue_scripts', 'gwsh_enqueue_scripts' );
+	add_action( 'admin_enqueue_scripts', 'gwsh_enqueue_admin_scripts' );
 }
 
 
+
+/**************************************************
+ *
+ * Function: gwsh_enqueue_plugin_scripts()
+ *
+ **************************************************/
+if ( ! function_exists('gwsh_enqueue_plugin_scripts') ) {
+	function gwsh_enqueue_plugin_scripts( $hook ) {
+		global $post;
+
+		if(!is_admin()) {
+			wp_enqueue_script( 'gwsh_plugin', plugins_url('js/plugin.js', __FILE__), false, null, true );
+		}
+	}
+	add_action( 'wp_enqueue_scripts', 'gwsh_enqueue_plugin_scripts' );
+}
+
+
+/**************************************************
+ *
+ * Function: setQueryArgs($taxonomy, $terms)
+ *
+ **************************************************/
+function setQueryArgs($taxonomy = null, $terms = null) {
+	if(isset($taxonomy) && isset($terms)) {
+		$args = array(
+				'post_type' => 'product',
+				'tax_query' => array(
+					array(
+						'taxonomy' 	=> $taxonomy,
+						'field'		=> 'term_id',
+						'terms'		=> $terms,
+					)
+				),
+				'order' 	=> 'DESC'
+			);
+	}
+	else {
+		$args = array('post_type' => 'product');
+	}
+
+	return $args;
+}
