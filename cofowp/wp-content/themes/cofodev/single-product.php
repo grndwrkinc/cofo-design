@@ -367,7 +367,7 @@ get_header();
 				// $post = $post_object;
 				// setup_postdata( $post ); 
 				$designerImage = get_the_post_thumbnail_url($designer);
-				$designerName  = get_the_title($designer);
+				$designerName  = str_replace(" ", "<br>", get_the_title($designer));
 				$designerBio   = $designer->post_content;
 				// wp_reset_postdata(); 
 
