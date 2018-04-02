@@ -1541,6 +1541,11 @@ p:empty,
 		    width: 25px;
 		    padding: 5px;
 		    cursor: pointer;
+
+		    &.active {
+		    	border: 2px solid black;
+    			padding: 3px;
+		    }
 		}
 	}
 

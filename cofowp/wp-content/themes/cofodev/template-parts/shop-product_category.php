@@ -35,21 +35,24 @@
 		//Get the product images
 		if(have_rows('360_image_viewer')) {
 			$threesixty_images = get_field('360_image_viewer');
+
 			//Assume there's only one variant, so the hover image should be the same
-			$productImages[0] = $productImages[1] = $threesixty_images[0]["images"][0]["url"];
+			$productImages[0] = $productImages[1] = $threesixty_images[0]["images"][0]["sizes"]["medium_large"];
+
+			//Get the hover image (i.e. an alternate view of the first variant)
 			if(sizeof($threesixty_images[0]["images"]) > 2) {
-				$productImages[1] = $threesixty_images[0]["images"][2]["url"];
+				$productImages[1] = $threesixty_images[0]["images"][2]["sizes"]["medium_large"];
 			}
 			if(sizeof($threesixty_images) > 1) {
 				for($i=1; $i < sizeof($threesixty_images); $i++) {
-					$productImages[$i] = $threesixty_images[$i]["images"][0]["url"];
+					$productImages[$i+1] = $threesixty_images[$i]["images"][0]["sizes"]["medium_large"];
 				}
 			}
 		}
 
 		//Get the designer details
 		if( $designer ) {
-			$designerThumb = get_the_post_thumbnail_url($designer);
+			$designerThumb = get_the_post_thumbnail_url($designer,'thumbnail');
 			$designerName = get_the_title($designer);
 		}
 ?>
@@ -86,28 +89,31 @@
 					<ul class="variant-attribute-options">
 <?php 
 		//Get the variant swatches
-		foreach($product->variants as $variant) : // This inner loop will need to change when there are more than one $production->options
+		if(sizeof($product->variants) > 1) :
+			foreach($product->variants as $variant) : // This inner loop will need to change when there are more than one $production->options
 
-			$id = $variant->product_id . "_" . $variant->id;
+				$id = $variant->product_id . "_" . $variant->id;
 
-			//Remove special characters and whitespace from variant title to match variant swatch image name
-			$scrubTitle = preg_replace("/[^a-zA-Z]/", "", strtolower($variant->title));
-			$imgSrc = "";
-			foreach($product->images as $image) {
-				if(strpos($image->src, $scrubTitle)) {
-					$imgSrc = $image->src;
+				//Remove special characters and whitespace from variant title to match variant swatch image name
+				$scrubTitle = preg_replace("/[^a-zA-Z]/", "", strtolower($variant->title));
+				$imgSrc = "";
+				foreach($product->images as $image) {
+					if(strpos($image->src, $scrubTitle)) {
+						$imgSrc = $image->src;
 ?>
 						<li>
 							<label class="swatch-toggle" for="<?php echo $variant->product_id . "_" . $variant->id; ?>">
 								<?php /* <input type="radio" name="variant" value="<?php echo $variant->id; ?>" id="<?php echo $id; ?>" <?php if(!$cnt) { ?>checked<?php } ?>> */?>
-								<img src="<?php echo $imgSrc; ?>" data-id="#<?php echo $id; ?>" data-alt="<?php echo $cnt; ?>" alt="<?php echo $variant->title; ?>" />
+								<img <?php if($cnt == 0) { ?>class="active"<?php } ?> src="<?php echo $imgSrc; ?>" data-id="#<?php echo $id; ?>" data-alt="<?php echo $cnt; ?>" alt="<?php echo $variant->title; ?>" />
 							</label>
 						</li>
 <?php
 				}
 			}
-			$cnt++;
-		endforeach;
+				if($cnt == 0) { $cnt++; };
+				$cnt++;
+			endforeach;
+		endif;
 ?>
 					</ul>
 				</div>
