@@ -239,6 +239,7 @@ cofo.navigation_Fixed = function() {
 	var offset;
 	var deviceNav;
 	var fixedDeviceNav;
+	var isSafari = !!navigator.userAgent.match(/safari/i) && !navigator.userAgent.match(/chrome/i) && typeof document.body.style.webkitFilter !== "undefined" && !window.chrome;
 	var setNavVars = function() {
 		deviceNav = '.main-navigation';
 		fixedDeviceNav = '.main-navigation.fixed';
@@ -250,6 +251,10 @@ cofo.navigation_Fixed = function() {
 
 	// Fix/unfix the nav on scroll
 	setNavVars(); $(window).on('resize', setNavVars);
+
+	if(isSafari) {	
+		$(deviceNav).addClass('fixed transition reset');
+	}
 
 	$(window).scroll(function() {
 		offset = $(this).scrollTop();
@@ -271,10 +276,12 @@ cofo.navigation_Fixed = function() {
 
 		if (offset === 0) {
 			//Set timeout to wait for reset animation to end
-			setTimeout(function(){ 
-				$('header#masthead').css('height', 'auto');
-				$(deviceNav).removeClass('fixed transition reset');
-			}, 400);
+			if(!isSafari) {
+				setTimeout(function(){
+					$('header#masthead').css('height', 'auto');
+					$(deviceNav).removeClass('fixed transition reset');
+				}, 400);
+			}
 		}
 	});
 };
