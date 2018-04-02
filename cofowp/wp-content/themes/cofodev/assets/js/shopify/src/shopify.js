@@ -116,12 +116,18 @@ const addToCartListener = function(checkout) {
 			variantId : btoa("gid://shopify/ProductVariant/" + variantId), // https://github.com/Shopify/js-buy-sdk/issues/105#issuecomment-313111323
 			quantity : 1
 		}];
-		
-		client.checkout.addLineItems(checkoutId, lineItems).then((checkout) => {
-		  //Update the cart counter
-		  updateCartCounter(checkout);
-		  window.location.href= '/cart/';
-		});
+
+		if($(this).text() === "Notify Me") {
+			window.location.href = "mailto:info@cofodesign.com?subject=Out of stock: " + $('#product-details h3').text() + "&body=Please notify me when " + $('#product-details h3').text() + " is available for purchase.";
+		}
+		else {
+			client.checkout.addLineItems(checkoutId, lineItems).then((checkout) => {
+			  //Update the cart counter
+			  updateCartCounter(checkout);
+			  window.location.href= '/cart/';
+			});
+		}
+
 	});
 }
 

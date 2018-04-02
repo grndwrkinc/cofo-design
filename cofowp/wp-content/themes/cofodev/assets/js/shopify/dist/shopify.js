@@ -7212,11 +7212,15 @@ var addToCartListener = function addToCartListener(checkout) {
 			quantity: 1
 		}];
 
-		client.checkout.addLineItems(checkoutId, lineItems).then(function (checkout) {
-			//Update the cart counter
-			updateCartCounter(checkout);
-			window.location.href = '/cart/';
-		});
+		if ($(this).text() === "Notify Me") {
+			window.location.href = "mailto:info@cofodesign.com?subject=Out of stock: " + $('#product-details h3').text() + "&body=Please notify me when " + $('#product-details h3').text() + " is available for purchase.";
+		} else {
+			client.checkout.addLineItems(checkoutId, lineItems).then(function (checkout) {
+				//Update the cart counter
+				updateCartCounter(checkout);
+				window.location.href = '/cart/';
+			});
+		}
 	});
 };
 

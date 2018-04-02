@@ -24,10 +24,6 @@ get_header();
 			$product = gwsh_getProduct($productID);
 			$selected = $product->variants[0]->product_id . "_" . $product->variants[0]->id;
 
-			// echo "<pre>";
-			// var_dump($product);
-			// echo "</pre>";
-
 			// Load the product variants into the page as a JS variable
 			// that can be referenced later in scripts.js
 			wp_add_inline_script('cofo-scripts', 'var variants = ' . $productVariants, 'before'); 
@@ -71,7 +67,8 @@ get_header();
 
 			$compareAtPrice = $product->variants[0]->compare_at_price;
 			$designer = get_field('designer');
-
+			$preOrder = get_field('pre-order'); if($preOrder) $preOrder = true;
+			
 			if( $designer ) {
 				$designerName = get_the_title($designer);
 			}
@@ -120,7 +117,7 @@ get_header();
 					}
 ?>
 							<li>
-								<label class="swatch-toggle" for="<?php echo $variant->product_id . "_" . $variant->id; ?>">
+								<label class="swatch-toggle" for="<?php echo $variant->product_id . "_" . $variant->id; ?>" data-inventory-quantity="<?php echo $variant->inventory_quantity; ?>" data-inventory-management="<?php echo $variant->inventory_management; ?>" data-inventory-policy="<?php echo $variant->inventory_policy; ?>"  data-pre-order="<?php echo $preOrder; ?>">
 									<input type="radio" name="variant" value="<?php echo $variant->id; ?>" id="<?php echo $id; ?>" <?php if(!$cnt) { ?>checked<?php } ?>>
 									<img src="<?php echo $imgSrc; ?>" alt="">
 								</label>
@@ -139,7 +136,6 @@ get_header();
 			$inventoryMessage = "";
 			$buttonLabel = "Add to cart";
 
-			$preOrder = get_field('pre-order');
 			if($preOrder) {
 				$buttonLabel = "Pre-order";
 			}
@@ -159,19 +155,20 @@ get_header();
 ?>
 					<div class="inventory-message center"><?php echo $inventoryMessage; ?></div>
 <?php
-			if($buttonLabel == "Notify Me") {
+			/* if($buttonLabel == "Notify Me") {
 ?>
 					<a href="mailto:info@cofodesign.com?subject=Out of stock: <?php the_title(); ?>&amp;body=Please notify me when <?php the_title(); ?> is available for purchase.">
 <?php
-			}
+			} */
 ?>
-					<button <?php if($buttonLabel != "Notify Me") { ?>id="add-to-cart"<?php } ?>><?php echo $buttonLabel; ?></button>
+					<?php /* <button <?php if($buttonLabel != "Notify Me") { ?>id="add-to-cart"<?php } ?>><?php echo $buttonLabel; ?></button> */ ?>
+					<button id="add-to-cart"><?php echo $buttonLabel; ?></button>
 <?php
-			if($buttonLabel == "Notify Me") {
+			/* if($buttonLabel == "Notify Me") {
 ?>
 					</a>
 <?php
-			}
+			} */
 ?>
 				</div>
 			</div>
@@ -405,9 +402,6 @@ get_header();
 		<?php endif; ?>
 
 <?php 
-		// echo "<pre>";
-		// var_dump($productID);
-		// echo "</pre>";
 
 		endwhile; // End of the loop.
 ?>

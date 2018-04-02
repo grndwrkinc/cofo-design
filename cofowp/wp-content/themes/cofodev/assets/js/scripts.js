@@ -289,6 +289,7 @@ cofo.navigation_Mobile = function(){
 //Initialize the Product Details container
 cofo.productPage_DetailsContainer = function() {
 	var $details = $('.product-details-container');
+	var $button = $('#product-details button');
 	var heroOverlap = 273;
 	var detailsHeight = $('#product-details').outerHeight();
 	var scrollTop = ($details.offset().top) - heroOverlap;
@@ -319,6 +320,34 @@ cofo.productPage_DetailsContainer = function() {
 
 	$('.swatch-toggle').on('mouseup', function() {
 		activeVariant = $(this).attr('for');
+
+		//Update the Product Details (i.e. Out of Stock, Add to cart, Notify Me, etc.)
+		var inventoryMessage = "";
+		var buttonLabel = "Add to cart";
+		$('#product-details button').attr('id','add-to-cart');
+
+		if($(this).data('pre-order')) {
+			buttonLabel = "Pre-order";
+		}
+
+		if($(this).data('inventory-management')){
+			if($(this).data('inventory-quantity') === 0 && $(this).data('inventory-policy') === "deny") {
+				inventoryMessage = "Out of Stock";
+				buttonLabel = "Notify Me";
+				$('#product-details button').attr('id','');
+
+			}
+			//Limited stock
+			else if($(this).data('inventory-quantity') < 5) {
+				inventoryMessage = "Limited Quantity";
+			}
+		}
+
+		$('.inventory-message').text(inventoryMessage);
+		$button.text(buttonLabel);
+
+
+		//Switch product images
 		$('.togglable')
 			.addClass('hidden')
 			.each(function() {
