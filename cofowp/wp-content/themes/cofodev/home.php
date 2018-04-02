@@ -36,13 +36,6 @@ get_header();
 				 */
 				//get_template_part( 'template-parts/content', 'get_post_format()' );
 
-				// if($first) {
-				// 	get_template_part( 'template-parts/content', 'first' );
-				// }
-				// else {
-				// 	get_template_part( 'template-parts/content', 'others' );	
-				// }
-
 				get_template_part( 'template-parts/content', 'blog_index' );
 ?>
 			<?php /* </div> */ ?>

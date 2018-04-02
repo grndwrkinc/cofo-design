@@ -12,11 +12,13 @@ global $first;
 $imageAnm = 'slideup-item';
 $summaryAnm = 'slideup-item';
 $containerClass = "medium-container";
+$imageSize = "medium_large";
 
 if($first) { 
 	$imageAnm = 'slideright-item';
 	$summaryAnm = 'slideleft-item';
 	$containerClass = "large-container";
+	$imageSize = "large";
 }
 ?>
 
@@ -26,7 +28,7 @@ if($first) {
 ?>
 	<div class="post-image anm-item <?php echo $imageAnm; ?>">
 		<a href="<?php echo esc_url( get_permalink() ); ?>">
-			<img src="<?php the_post_thumbnail_url(); ?>" />
+			<img src="<?php the_post_thumbnail_url($imageSize); ?>" />
 		</a>
 	</div>
 <?php
