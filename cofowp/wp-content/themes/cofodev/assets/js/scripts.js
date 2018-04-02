@@ -207,18 +207,19 @@ cofo.homePage_Slider = function() {
 		nextArrow: ".btn-next",
 		appendArrows: ".slider",
 		draggable: false,
-		autoplay: true,
-  		autoplaySpeed: 7000,
+		// autoplay: false,
+		// autoplaySpeed: 7000,
   		fade: true,
   		speed: 1100
 	});
 
-	$('.slider-bottom')
-	.slick({
+	$('.slider-bottom').slick({
 		asNavFor: '.slider-top',
 		prevArrow: ".btn-prev",
 		nextArrow: ".btn-next",
 		draggable: false,
+		autoplay: true,
+		autoplaySpeed: 7000,
 		speed: 1300
 	})
 	.init(function() {
@@ -470,10 +471,10 @@ cofo.shopPage_FiltersMenu = function() {
 		if($(window).width() < 769) {
 			$("#filters .inner").toggle();
 			if($("#filters .inner:visible").length) {
-				$("#filters button").html('&ndash; Collections');
+				$("#filters button").html('&ndash; Filter');
 			}
 			else {
-				$("#filters button").html('+ Collections');
+				$("#filters button").html('+ Filter');
 			}
 		}
 	});

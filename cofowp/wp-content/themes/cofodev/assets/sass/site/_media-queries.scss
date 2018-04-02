@@ -609,11 +609,12 @@
 		}
 		.slider-bottom {
 			bottom: 15rem;
+			margin-top: 5rem;
 			margin-bottom: -10rem;
 		}
 		.home-slider-content,
 		.home-slider-content .bordered {
-			width: calc(100% - 4rem);
+			width: calc(100% - 2rem);
 			margin: 0 auto;
 		}
 		.home-slider-content h2 {
