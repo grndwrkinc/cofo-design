@@ -289,7 +289,7 @@ cofo.navigation_Mobile = function(){
 //Initialize the Product Details container
 cofo.productPage_DetailsContainer = function() {
 	var $details = $('.product-details-container');
-	var heroOverlap = 223;
+	var heroOverlap = 273;
 	var detailsHeight = $('#product-details').outerHeight();
 	var scrollTop = ($details.offset().top) - heroOverlap;
 	var offset, dimensionsTop, activeVariant;
