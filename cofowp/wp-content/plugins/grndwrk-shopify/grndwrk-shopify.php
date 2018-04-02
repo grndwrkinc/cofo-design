@@ -180,11 +180,11 @@ function gwsh_save_post($post_id) {
 
     	// Update custom post meta data
     	$post_meta_product_id = get_post_meta($post_id, "gwsh_product_id", true);
-    	if($_POST['gwsh_product_id'] != $post_meta_product_id) {
+    	// if($_POST['gwsh_product_id'] != $post_meta_product_id) {
 		    update_post_meta( $post_id, 'gwsh_product_id', sanitize_text_field( $_POST[ 'gwsh_product_id' ] ) );
 		    update_post_meta( $post_id, 'gwsh_product_title', sanitize_text_field( $_POST[ 'gwsh_product_title' ] ) );
 		    update_post_meta( $post_id, 'gwsh_product_variants', sanitize_text_field( $_POST[ 'gwsh_product_variants' ] ) );
-    	}	
+    	// }	
     }
 }
 add_action('save_post', 'gwsh_save_post');
