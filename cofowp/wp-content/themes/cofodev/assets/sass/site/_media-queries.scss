@@ -538,6 +538,7 @@
 			width: 100%;
 
 			.post-summary {
+				min-width: 20rem;
 				transform: none;
 				display: block;
 				width: calc(100% - 4rem);
