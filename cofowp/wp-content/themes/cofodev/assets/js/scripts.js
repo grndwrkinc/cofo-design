@@ -31,9 +31,9 @@ cofo.init = function() {
 	}
 
 	if($('.page-shop').length){
-		cofo.shopPage_FiltersMenu();
-		cofo.shopPage_VariantSelectors();
-		cofo.shopPage_TouchEvent();
+		cofo.shopPage_PositionFiltersMenu();
+		cofo.shopPage_VariantSelectorEvents();
+		cofo.shopPage_ProductImageTouchEvent();		
 	}
 
 	if($('.blog').length) {
@@ -440,7 +440,7 @@ cofo.productPage_Gallery = function() {
 };
 
 //Initialize the Filter Menu on the Shop Page
-cofo.shopPage_FiltersMenu = function() {
+cofo.shopPage_PositionFiltersMenu = function() {
 	var $filters = $('#filters');
 	var $listing = $('#listing');
 	var filtersHeight = $filters.outerHeight();
@@ -487,7 +487,7 @@ cofo.shopPage_FiltersMenu = function() {
 	});
 };
 
-cofo.shopPage_VariantSelectors = function() {
+cofo.shopPage_VariantSelectorEvents = function() {
 	var $items = ($('.collection .item').length) ? $('.collection .item') : $('.category .item');
 
 
@@ -525,7 +525,7 @@ cofo.shopPage_VariantSelectors = function() {
 	});
 };
 
-cofo.shopPage_TouchEvent = function() {
+cofo.shopPage_ProductImageTouchEvent = function() {
 	$('.item-image').on('touchend', function() {
 		window.location.url = $(this).find('a').attr('href');
 	});
