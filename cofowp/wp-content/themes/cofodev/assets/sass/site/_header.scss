@@ -241,7 +241,7 @@ header#masthead {
 		padding: 2.5rem 0;
 
 		img {
-			width: 6rem;
+			width: 5rem;
 		}
 	}
 }
@@ -295,6 +295,7 @@ only screen and (max-device-width: 1024px) {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
+		padding: 1.4rem 3.2rem 1rem 1.2rem;
 	}
 
 	.mobile-nav.opened {
