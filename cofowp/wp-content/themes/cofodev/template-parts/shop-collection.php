@@ -13,12 +13,14 @@
 	<div class="collection-about anm-container">
 		<p class="pre-header anm-item slideright-item">Collection</p>
 		<h2 class="anm-item slideright-item"><span class="highlight"><?php echo str_replace(" ", "<br>", $term->name); ?></span></h2>
-		<p class="anm-item slideright-item collection-description"><?php echo $term->description; ?></p>
 	</div>
 	<div class="collection-items-container">
 		<img class="collection-hero slideup" src="<?php echo $collection_image; ?>" />
 
-		<div class="collection-items">
+		<div class="items">
+			<div class="item slideup">
+				<p><?php echo $term->description; ?></p>
+			</div>
 <?php
 	//Spit out the Products for this Collection
 	while ( $posts->have_posts() ) : $posts->the_post();

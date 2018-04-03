@@ -11,7 +11,7 @@
 
 <div class="category">
 
-	<div class="category-items">
+	<div class="items">
 		<div class="item">
 			<h3 class="slideup"><?php echo str_replace(" ", "<br>", $term->name); ?></h3>
 		</div>

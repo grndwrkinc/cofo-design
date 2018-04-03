@@ -17,12 +17,10 @@
 
 @media only screen and (max-width: 1200px) {
 	.page-shop {
-		.collection {
-			.collection-description {
-				padding: 3rem;
-				background-color: rgba(255,255,255,0.9);
-				max-width: calc(100% - 14rem);
-    			margin-left: 9rem;
+		.category, .collection {
+			.item:nth-of-type(1) p {
+				@include font-size(1.4);
+				@include line-height(2);
 			}
 		}
 	}
@@ -158,11 +156,6 @@
 			h2 {
 				margin-bottom: 2rem;
 			}
-			.collection-description {
-				padding: 2rem;
-				@include font-size(1.4);
-				@include line-height(1.8);
-			}
 		}
 		.item {
 			.item-info {
@@ -280,6 +273,26 @@
 
 		li {
 			text-align: center;
+		}
+	}
+
+	.page-shop {
+		.category, .collection {
+			.items {
+				flex-direction: row-reverse;
+			}
+			.item {
+				transform: translateY(60%);
+				
+				&:nth-of-type(1) {
+					flex-basis: 100%;
+	    			margin-bottom: 0;
+				}
+				&:nth-of-type(1),
+				&:nth-of-type(2n) {
+					transform: translateY(0);
+				}
+			}
 		}
 	}
 }
@@ -471,20 +484,13 @@
 			padding-top: 10rem;
 		}
 		.collection {
-			.collection-description {
-				font-size: 1.6rem;
-			    line-height: 2.4rem;
-			    margin-left: 0;
-				max-width: 100%;
-				margin-bottom: 0;
-			}
 			.collection-about {
 				position: static;
 			}
 			.collection-items-container {
 				padding-top: 0;
 			}
-			.collection-items {
+			.items {
 				justify-content: space-between;
 			}
 		}
@@ -1294,20 +1300,20 @@
 	// SHOP PAGE
 	.page-shop {
 		
-		.collection .collection-items,
-		.category .category-items {
-			display: block;
-		}
-		.collection .collection-items {
-			margin-top: 10%;
-		}
+		.collection, .category {
+			.items {
+				display: block;
+			}	
 
-		.item {
-			transform: none;
-			padding: 0;
-			flex-basis: 47%;
+			.item {
+				transform: none;
+				padding: 0;
+				flex-basis: 47%;
+			}
+		} 
+		.collection .items {
+			margin-top: 5%;
 		}
-
 		.category {
 			h3 {
 				margin-top: 0;
