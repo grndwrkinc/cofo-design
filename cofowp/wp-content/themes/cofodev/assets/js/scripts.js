@@ -252,7 +252,7 @@ cofo.navigation_Fixed = function() {
 	// Fix/unfix the nav on scroll
 	setNavVars(); $(window).on('resize', setNavVars);
 
-	if(isSafari) {	
+	if(isSafari && $(window).width() > 1024) {	
 		$(deviceNav).addClass('fixed transition reset');
 	}
 
@@ -276,7 +276,7 @@ cofo.navigation_Fixed = function() {
 
 		if (offset === 0) {
 			//Set timeout to wait for reset animation to end
-			if(!isSafari) {
+			if(!isSafari  && $(window).width() > 1024) {
 				setTimeout(function(){
 					$('header#masthead').css('height', 'auto');
 					$(deviceNav).removeClass('fixed transition reset');
