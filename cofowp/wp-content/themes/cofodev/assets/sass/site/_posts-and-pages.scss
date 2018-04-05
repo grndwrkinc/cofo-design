@@ -1537,8 +1537,9 @@ p:empty,
 		}
 		img {
 		    width: 25px;
-		    padding: 5px;
 		    cursor: pointer;
+		    border: 2px solid white;
+    		padding: 3px;
 
 		    &.active {
 		    	border: 2px solid black;
@@ -1561,6 +1562,7 @@ p:empty,
 .category, .collection {
 	.items {
 		display: flex;
+		flex: 1;
 		flex-wrap: wrap;
 		padding: 5% 20px;
 	    width: 100%;

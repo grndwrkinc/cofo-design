@@ -1326,5 +1326,13 @@
 	}
 
 }
+//IE specific styles!!!
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+	.item {
+		width: 50%;
+		flex-basis: auto;
+	}
+}
+
 
 
