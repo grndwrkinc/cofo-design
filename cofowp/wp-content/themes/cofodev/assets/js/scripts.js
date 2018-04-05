@@ -158,7 +158,7 @@ cofo.animate_Set = function(elements){
 
 cofo.blogIndexPage_PositionContent = function() {
 	if($(window).width() > 768) {
-		var imageHeight = $('#main .large-container .post-image').height();
+		var imageHeight = Math.round($('#main .large-container .post-image').height());
 		var padding = $('#main .large-container').outerHeight() - $('#main .large-container').height();
 
 		var summaryBottomOffset = $('#main .large-container .post-summary').offset().top + parseInt($('#main .large-container .post-summary').css('margin-top')) + $('#main .large-container .post-summary').outerHeight();
@@ -167,9 +167,9 @@ cofo.blogIndexPage_PositionContent = function() {
 		if(summaryBottomOffset > imageBottomOffset) {
 			offset = summaryBottomOffset - imageBottomOffset;
 		}
-
+		var postHeight = $('#main .large-container .post-summary').outerHeight() * 0.05;
 		$('#main .large-container .post-summary').css( {
-			'transform' : 'translateY(calc(-'+imageHeight+'px + 5%))',
+			'transform' : 'translateY(-' + Math.round(imageHeight - postHeight) + 'px)',
 			'display' : 'block'
 		});
 		$('#main .large-container').css('height', imageHeight+padding+offset+'px');
