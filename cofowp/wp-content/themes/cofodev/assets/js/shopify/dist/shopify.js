@@ -7175,7 +7175,7 @@ if (checkoutID) {
 		initCart(checkout);
 	}, function (err) {
 		return console.log('rejected: ', err);
-	});x;
+	});
 }
 
 var initCart = function initCart(checkout) {

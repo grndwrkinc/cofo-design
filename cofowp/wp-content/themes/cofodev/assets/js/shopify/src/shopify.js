@@ -75,7 +75,7 @@ else {
 		//Save the checkout ID to local storage
 		ls.setItem('checkoutID', checkout.id);
 		initCart(checkout);
-	}, (err) => console.log('rejected: ', err));x
+	}, (err) => console.log('rejected: ', err));
 }
 
 
