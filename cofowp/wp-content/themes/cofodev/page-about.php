@@ -30,10 +30,12 @@ get_header(); ?>
 
 			<section class="about-what-we-do text-section-offset anm-container">
 				<div class="small-container">
-					<?php
+					<h2 class="anm-item slideright-item"><span class="highlight"><?php the_field('what_section_title'); ?></span></h2>
+					<p class="anm-item slideright-item"><?php the_field('what_section_blurb'); ?></p>
+					<?php /*
 					while ( have_posts() ) : the_post();
 						the_content(); 
-					endwhile; // End of the loop.
+					endwhile; // End of the loop. */
 					?>
 				</div>
 			</section>
