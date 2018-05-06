@@ -78,10 +78,9 @@ get_header(); ?>
 		    			<?php endwhile; ?>
 		    		<?php endif; ?>
 		    	</div>
-		    	<?php while ( have_posts() ) : the_post(); ?>
-					<div class="anm-item slideright-item"><?php the_content(); ?></div>
-				<?php endwhile; // End of the loop.
-				?>
+
+		    	<div class="anm-item slideright-item"><?php the_field('categories_blurb'); ?></div>
+
 			</div>
 			<div class="medium-container challenge-boxes">
 				<div class="process-container anm-container">
