@@ -79,7 +79,7 @@ get_header(); ?>
 		    		<?php endif; ?>
 		    	</div>
 
-		    	<div class="anm-item slideright-item"><?php the_field('categories_blurb'); ?></div>
+		    	<div class="anm-item slideright-item"><p><?php the_field('categories_blurb'); ?></p></div>
 
 			</div>
 			<div class="medium-container challenge-boxes">
