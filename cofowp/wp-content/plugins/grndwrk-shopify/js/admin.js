@@ -2,7 +2,9 @@ var gwsh = {};
 
 gwsh.init = function() {
 
-	gwsh.getProductVariants();
+	if($('#gwsh_product_id').val() !== "") {
+		gwsh.getProductVariants();
+	}
 
 	$('.select-product').on('click', gwsh.selectProduct);
 	$('.edit-product').on('click', gwsh.editProductSelection);
