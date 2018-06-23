@@ -15,8 +15,13 @@ get_header(); ?>
 <?php
 		while ( have_posts() ) : the_post();
 ?>
-			<div class="post-content slideup small-container">
-				<h1><?php echo the_title(); ?></h1>
+			<div class="post-wrapper medium-container">
+				<div class="post-content slideup small-container">
+					<h1><?php echo the_title(); ?></h1>
+<?php
+					the_content();
+?>
+				</div>
 
 				<div class="post-sidebar anm-container"> 
 					<ul class="post-meta anm-container anm-item slideright-item">
@@ -34,9 +39,6 @@ get_header(); ?>
 						</div>
 					</div>
 				</div>
-<?php
-				the_content();
-?>
 			</div>
 
 			<div class="post-navigation-container large-container">

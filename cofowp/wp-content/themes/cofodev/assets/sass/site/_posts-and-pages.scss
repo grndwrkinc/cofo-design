@@ -1727,10 +1727,17 @@ p:empty,
 }
 
 .single-post {
+	.post-wrapper {
+		display: flex;
+	}
+
 	.post-content {
+		order:2;
 		position: relative;
 		padding-top: 0;
 		padding-bottom: 0;
+		padding-right: 0;
+
 		margin-top: -5%;
 
 		h1 {
@@ -1745,10 +1752,6 @@ p:empty,
 		h4 {
 			@include line-height(4.8);
 		}
-	}
-
-	h4 {
-		@include line-height(2.4);
 	}
 
 	.post-navigation-container {
@@ -1769,10 +1772,15 @@ p:empty,
 		}
 	}
 	.post-sidebar {
-		position: absolute;
-		top: 10%;
-		left: -20rem;
-		width: 20rem;
+		order:1;
+		h4 {
+			@include line-height(4.8);
+		}
+		// position: absolute;
+		// top: 10%;
+		// left: -20rem;
+		// width: 20rem;
+		// padding-left: 20px;
 		
 		li {
 			margin-bottom: 0;

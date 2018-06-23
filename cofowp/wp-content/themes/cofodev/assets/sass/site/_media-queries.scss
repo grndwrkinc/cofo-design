@@ -553,8 +553,21 @@
 		}
 	}
 
-	.single-post .post-content h1 {
-		width: 100%;
+	.single-post {
+		.post-content {
+			padding-left: 0;
+
+			h1 {
+				width: 100%;
+			}
+		} 
+		.post-wrapper {
+			display: block;
+		}
+		.post-sidebar .social li {
+			display: inline-block;
+			margin: 0 1rem 0 0;
+		}
 	}
 }
 
