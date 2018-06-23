@@ -11,11 +11,17 @@ get_header(); ?>
 
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
-			<div class="hero" style="background-image: url(<?php the_post_thumbnail_url(); ?>)"></div>
 <?php
+	if(has_post_thumbnail()) {
+?>
+			<div class="hero" style="background-image: url(<?php the_post_thumbnail_url(); ?>)"></div>
+
+<?php
+	}
+
 		while ( have_posts() ) : the_post();
 ?>
-			<div class="post-wrapper medium-container">
+			<div class="post-wrapper medium-container <?php if(!has_post_thumbnail()) {?>post-no-hero<?php } ?>">
 				<div class="post-content slideup small-container">
 					<h1><?php echo the_title(); ?></h1>
 <?php

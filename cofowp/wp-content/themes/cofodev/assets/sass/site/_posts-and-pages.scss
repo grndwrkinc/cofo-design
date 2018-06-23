@@ -1732,7 +1732,9 @@ p:empty,
 		padding-top: 0;
 		padding-bottom: 0;
 	}
-
+	.post-no-hero {
+		padding-top: 10rem;
+	}
 	.post-content {
 		order:2;
 		position: relative;
@@ -1755,7 +1757,6 @@ p:empty,
 			@include line-height(4.8);
 		}
 	}
-
 	.post-navigation-container {
 		padding-top: 5%;
 		// padding-bottom: 5%;
