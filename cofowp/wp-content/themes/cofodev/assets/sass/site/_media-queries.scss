@@ -564,9 +564,13 @@
 		.post-wrapper {
 			display: block;
 		}
-		.post-sidebar .social li {
-			display: inline-block;
-			margin: 0 1rem 0 0;
+		.post-sidebar {
+			margin-top: 10%;
+			
+			.social li {
+				display: inline-block;
+				margin: 0 1rem 0 0;
+			}
 		}
 	}
 }
