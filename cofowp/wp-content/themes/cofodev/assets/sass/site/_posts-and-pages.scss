@@ -1729,6 +1729,8 @@ p:empty,
 .single-post {
 	.post-wrapper {
 		display: flex;
+		padding-top: 0;
+		padding-bottom: 0;
 	}
 
 	.post-content {
