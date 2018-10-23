@@ -1,11 +1,11 @@
 {
-    "key": "group_5a4bb1b06c586",
-    "title": "Additional Submission Page Fields",
+    "key": "group_5ac7b8df6d94d",
+    "title": "About Page - Video",
     "fields": [
         {
-            "key": "field_5a4bb1bbaa894",
-            "label": "Submission Form Shortcode",
-            "name": "submission_form_shortcode",
+            "key": "field_5ac7b8f185a48",
+            "label": "Video URL",
+            "name": "story_section_video",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -27,7 +27,7 @@
             {
                 "param": "page",
                 "operator": "==",
-                "value": "427"
+                "value": "5"
             }
         ]
     ],
@@ -39,5 +39,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1514910161
+    "modified": 1523038506
 }

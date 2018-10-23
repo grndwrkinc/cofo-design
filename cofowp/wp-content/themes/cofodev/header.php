@@ -61,7 +61,7 @@
 	<header id="masthead" class="site-header dark" role="banner">
 			<nav id="site-navigation" class="main-navigation" role="navigation">
 				<div class="inner">
-					<a class="logo" href="/"><img src="/wp-content/themes/cofodev/assets/images/logo-white.svg" alt="Home"></a>
+					<a class="logo" href="/"><img src="/wp-content/themes/cofodev/assets/images/logo-white-1.svg" alt="Home"></a>
 					<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu' ) ); ?>
 				<div>
 			</nav><!-- #site-navigation -->

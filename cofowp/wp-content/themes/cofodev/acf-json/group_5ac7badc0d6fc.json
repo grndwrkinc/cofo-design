@@ -1,11 +1,49 @@
 {
-    "key": "group_5a3819f1d1d0d",
-    "title": "Additional Designer Fields",
+    "key": "group_5ac7badc0d6fc",
+    "title": "About Page - Meet the Cofounders",
     "fields": [
         {
-            "key": "field_5a3819fb78717",
-            "label": "Designer Info",
-            "name": "designer_info",
+            "key": "field_5ac7bb3778f12",
+            "label": "Title",
+            "name": "story_section_header",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5ac7bb4978f13",
+            "label": "Blurb",
+            "name": "story_section_text",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5ac7bb5c78f14",
+            "label": "Cofounders Details",
+            "name": "founders_group",
             "type": "repeater",
             "instructions": "",
             "required": 0,
@@ -22,7 +60,7 @@
             "button_label": "",
             "sub_fields": [
                 {
-                    "key": "field_5a381a0f78718",
+                    "key": "field_5ac7bb7378f15",
                     "label": "Title",
                     "name": "title",
                     "type": "text",
@@ -41,10 +79,10 @@
                     "maxlength": ""
                 },
                 {
-                    "key": "field_5a381a1d78719",
+                    "key": "field_5ac7bb7c78f16",
                     "label": "Text",
                     "name": "text",
-                    "type": "textarea",
+                    "type": "text",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -55,12 +93,12 @@
                     },
                     "default_value": "",
                     "placeholder": "",
-                    "maxlength": "",
-                    "rows": 3,
-                    "new_lines": ""
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
                 },
                 {
-                    "key": "field_5a381a287871a",
+                    "key": "field_5ac7bb8278f17",
                     "label": "Image",
                     "name": "image",
                     "type": "image",
@@ -89,19 +127,19 @@
     "location": [
         [
             {
-                "param": "post_type",
+                "param": "page",
                 "operator": "==",
-                "value": "desinger"
+                "value": "5"
             }
         ]
     ],
-    "menu_order": 0,
+    "menu_order": 4,
     "position": "normal",
-    "style": "seamless",
+    "style": "default",
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1514652854
+    "modified": 1525606514
 }

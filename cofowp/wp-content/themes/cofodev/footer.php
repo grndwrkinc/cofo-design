@@ -38,7 +38,7 @@
 				<img src="/wp-content/themes/cofodev/assets/images/VisualElements.png" alt="">
 			</a></p>
 			<p class="logo"><a href="<?php echo get_home_url(); ?>">
-				<img src="/wp-content/themes/cofodev/assets/images/logo-black.svg" alt="">
+				<img src="/wp-content/themes/cofodev/assets/images/logo-black-1.svg" alt="">
 			</a></p>
 			<p class="copyright">Copyright © COFO Design</p>
 		</div>
