@@ -270,19 +270,25 @@ get_header();
 <?php
 					while( have_rows('product_detail_images') ): the_row();
 	    				$variant = get_sub_field('variant');
+?>
+					<div class="product_image_set">
+<?php
 						if( have_rows('images') ) : 
 							while( have_rows('images') ) : the_row();
 								$image = get_sub_field('image');
 								$description = get_sub_field('description');
 ?>
-					<div class="togglable img-container <?php if($selected != $variant) echo "hidden"; ?>" data-id="<?php echo $variant; ?>" >
-						<img class="no<?php echo $cnt; ?> slideup" src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt'] ?>" />
-    					<p><?php if( $description ) echo $description; ?></p>
-					</div>
+						<div class="togglable img-container <?php if($selected != $variant) echo "hidden"; ?>" data-id="<?php echo $variant; ?>" >
+							<img class="no<?php echo $cnt; ?> slideup" src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt'] ?>" />
+	    					<p><?php if( $description ) echo $description; ?></p>
+						</div>
 <?php
 								$cnt++;
 							endwhile;
 						endif;
+?>
+					</div>
+<?php
 					endwhile; 
 ?>
 				</div>

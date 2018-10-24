@@ -239,7 +239,7 @@ cofo.navigation_Fixed = function() {
 	var offset;
 	var deviceNav;
 	var fixedDeviceNav;
-	var isSafari = !!navigator.userAgent.match(/safari/i) && !navigator.userAgent.match(/chrome/i) && typeof document.body.style.webkitFilter !== "undefined" && !window.chrome;
+	// var isSafari = !!navigator.userAgent.match(/safari/i) && !navigator.userAgent.match(/chrome/i) && typeof document.body.style.webkitFilter !== "undefined" && !window.chrome;
 	var setNavVars = function() {
 		deviceNav = '.main-navigation';
 		fixedDeviceNav = '.main-navigation.fixed';
@@ -260,7 +260,6 @@ cofo.navigation_Fixed = function() {
 		offset = $(this).scrollTop();
 		// Fix nav
 		if(offset >= navHeight) {
-			console.log('poop');
 			//Keep the header height consistent
 			$('header#masthead').css('height', navHeight);
 			//Fix the nav
@@ -275,7 +274,7 @@ cofo.navigation_Fixed = function() {
 			$(deviceNav).addClass('reset');
 		}
 
-		if (offset === 0) {
+		// if (offset === 0) {
 			//Set timeout to wait for reset animation to end
 			// if(!isSafari  && $(window).width() > 1024) {
 			// 	setTimeout(function(){
@@ -283,7 +282,7 @@ cofo.navigation_Fixed = function() {
 			// 		$(deviceNav).removeClass('fixed transition reset');
 			// 	}, 400);
 			// }
-		}
+		// }
 	});
 };
 
@@ -310,8 +309,6 @@ cofo.productPage_DetailsContainer = function() {
 		$(window).scroll(function() {
 			offset = $(this).scrollTop();
 			dimensionsTop = $('.product-dimensions').offset().top;
-
-			console.log($details.offset().top, $('.product-details-container').offset().top, heroOverlap, scrollTop, offset);
 			
 			//Fix product details
 			if( offset >= scrollTop ) {
