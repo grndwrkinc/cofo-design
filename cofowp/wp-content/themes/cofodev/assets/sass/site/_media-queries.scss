@@ -45,6 +45,12 @@
 		margin-left: 0;
 	}
 
+	.home .hero,
+	.single-product .hero {
+		// min-height: calc(100vh - 163px);
+		min-height: calc(100vh - 74px);
+	}
+
 	//HOME PAGE
 	.home-blog {
 		h2 {
@@ -201,8 +207,8 @@
 	}
 
 	#product-details {
-	    min-width: 26rem;
-	    top: -12rem;
+	    width: 26rem;
+	    // top: -12rem;
 	    right: 2rem;
 	}
 
@@ -886,7 +892,8 @@
 	#product-details {
 		position: relative;
 		top: -4rem;
-    	right: 0
+    	right: 0;
+    	width: auto;
 	}
 
 	.product-details-container.fixed {
