@@ -24,13 +24,13 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
 	@include font-size(6.8);
-	@include line-height(6.8);
+	@include line-height(7.8);
 	letter-spacing: -0.6px;	
 }
 
 h2 {
 	@include font-size(4.2);
-	@include line-height(4.2);
+	@include line-height(4.8);
 	margin-bottom: 4rem;
 	letter-spacing: -0.6px;
 }
