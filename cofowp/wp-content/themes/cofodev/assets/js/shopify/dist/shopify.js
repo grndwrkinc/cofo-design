@@ -7332,11 +7332,12 @@ var getCartContents = function getCartContents(checkout) {
 	else {
 			cartContent = "<p class='pre-header'>Your shopping cart is empty.<p>";
 
-			if (hasShop) {
-				cartContent += "<p><a class='link' href='/shop/'>&laquo; Continue shopping</a><p>";
-			} else {
-				cartContent += "<p><a class='link' href='/product/the-roque/'>&laquo; Shop The Roque Chair</a><p>";
-			}
+			// if(hasShop) {
+      cartContent += "<p><a class='link' href='/shop/'>&laquo; Continue shopping</a><p>";
+      // }
+      // else {
+      //  cartContent += "<p><a class='link' href='/product/the-roque/'>&laquo; Shop The Roque Chair</a><p>";
+      // }
 		}
 
 	$cart.html(cartContent);
