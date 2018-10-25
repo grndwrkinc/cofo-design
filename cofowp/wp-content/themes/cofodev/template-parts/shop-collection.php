@@ -38,7 +38,6 @@
 		$productImages 	= array(array("variant" => $selected, "image" => get_template_directory_uri() . "/assets/images/1500x1000.png"));
 		$cnt 			= 0;
 
-
 		//Get the product images
 		if(have_rows('collection_images')) :
 			$i = 0;
