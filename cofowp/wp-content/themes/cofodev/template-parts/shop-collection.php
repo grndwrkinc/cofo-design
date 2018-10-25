@@ -18,7 +18,7 @@
 		<img class="collection-hero slideup" src="<?php echo $collection_image; ?>" />
 
 		<div class="items">
-			<div class="item slideup">
+			<div class="item slideup description">
 				<p><?php echo $term->description; ?></p>
 			</div>
 <?php

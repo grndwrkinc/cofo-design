@@ -241,6 +241,7 @@ function setQueryArgs($taxonomy = null, $terms = null) {
 						'terms'		=> $terms,
 					)
 				),
+				'posts_per_page'=>-1,
 				'order' 	=> 'DESC'
 			);
 	}
