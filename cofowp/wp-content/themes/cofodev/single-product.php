@@ -65,7 +65,6 @@ get_header();
 				endwhile;
 			endif;
 
-			$compareAtPrice = $product->variants[0]->compare_at_price;
 			$designer = get_field('designer');
 			$preOrder = get_field('pre-order'); if($preOrder) $preOrder = true;
 			
@@ -86,13 +85,20 @@ get_header();
 			}
 ?>
 					<div class="pricing">
-						<div class="price">$<?php echo number_format(floatval($product->variants[0]->price),2); ?></div>
 <?php
-			if($compareAtPrice) {
+				for ($i = 0; $i < sizeof($product->variants); $i++) {
+					$variant = $product->variants[$i];
+					$id = $variant->product_id . "_" . $variant->id;
+					$compareAtPrice = $variant->compare_at_price;
+?>
+						<div class="price togglable <?php if($selected != $id) echo "hidden"; ?>" data-id="<?php echo $id; ?>">$<?php echo number_format(floatval($variant->price),2); ?><br></div>
+<?php
+					if($compareAtPrice) {
 ?>
 						<div class="sale">Sale</div>
 <?php
-			}
+					}
+				}
 ?>
 					</div>
 <?php
