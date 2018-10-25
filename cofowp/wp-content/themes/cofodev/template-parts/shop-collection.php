@@ -29,12 +29,13 @@
 		$title 			= get_the_title();
 		$productID 		= get_post_meta($post->ID, "gwsh_product_id", true);
 		$product 		= gwsh_getProduct($productID);
+		$selected 		= $product->variants[0]->product_id . "_" . $product->variants[0]->id;
 		$price 			= number_format(floatval($product->variants[0]->price),2);
 		$compareAtPrice = $product->variants[0]->compare_at_price;
 		$designer 		= get_field('designer');
 		$designerName 	= "Designer Designer";
 		$designerThumb 	= get_template_directory_uri() . "/assets/images/140x140.png";
-		$productImages 	= array(get_template_directory_uri() . "/assets/images/1500x1000.png", get_template_directory_uri() . "/assets/images/1500x1000.png");
+		$productImages 	= array(array("variant" => $selected, "image" => get_template_directory_uri() . "/assets/images/1500x1000.png"));
 		$cnt 			= 0;
 
 
@@ -42,7 +43,8 @@
 		if(have_rows('collection_images')) :
 			$i = 0;
 			while(have_rows('collection_images')) : the_row();
-				$productImages[$i] = get_sub_field('image')['sizes']['medium_large'];
+				$productImages[$i]["variant"] = get_sub_field('variant');
+				$productImages[$i]["image"] = get_sub_field('image')['sizes']['medium_large'];
 				$i++;
 			endwhile;
 		endif;
@@ -66,7 +68,7 @@
 <?php
 		for($i=0; $i<sizeof($productImages); $i++) {
 ?>
-						<img data-alt="<?php echo $i; ?>" src="<?php echo $productImages[$i]; ?>" />
+						<img class="togglable <?php if($selected != $productImages[$i]['variant']) echo "hidden"; ?>" data-id="<?php echo $productImages[$i]['variant']; ?>" data-alt="<?php echo $i; ?>" src="<?php echo $productImages[$i]['image']; ?>" />
 <?php
 		}
 ?>
@@ -85,32 +87,32 @@
 					<div class="variant-attribute">
 						<ul class="variant-attribute-options">
 <?php 
-		//Get the variant swatches
-		if(sizeof($product->variants) > 1) :
-			foreach($product->variants as $variant) : // This inner loop will need to change when there are more than one $production->options
+			//Get the variant swatches
+			if(sizeof($product->variants) > 1) :
+				foreach($product->variants as $variant) : // This inner loop will need to change when there are more than one $production->options
 
-				$id = $variant->product_id . "_" . $variant->id;
+					$id = $variant->product_id . "_" . $variant->id;
 
-				//Remove special characters and whitespace from variant title to match variant swatch image name
-				$scrubTitle = preg_replace("/[^a-zA-Z]/", "", strtolower($variant->title));
-				$imgSrc = "";
-				foreach($product->images as $image) {
-					if(strpos($image->src, $scrubTitle)) {
-						$imgSrc = $image->src;
+					//Remove special characters and whitespace from variant title to match variant swatch image name
+					$scrubTitle = preg_replace("/[^a-zA-Z]/", "", strtolower($variant->title));
+					$imgSrc = "";
+					foreach($product->images as $image) {
+						if(strpos($image->src, $scrubTitle)) {
+							$imgSrc = $image->src;
 ?>
 							<li>
 								<label class="swatch-toggle" for="<?php echo $variant->product_id . "_" . $variant->id; ?>">
 									<?php /* <input type="radio" name="variant" value="<?php echo $variant->id; ?>" id="<?php echo $id; ?>" <?php if(!$cnt) { ?>checked<?php } ?>> */?>
-									<img <?php if($cnt == 0) { ?>class="active"<?php } ?> src="<?php echo $imgSrc; ?>" data-id="#<?php echo $id; ?>" data-alt="<?php echo $cnt; ?>" alt="<?php echo $variant->title; ?>" />
+									<img <?php if($cnt == 0) { ?>class="active"<?php } ?> src="<?php echo $imgSrc; ?>" data-id="<?php echo $id; ?>" data-alt="<?php echo $cnt; ?>" alt="<?php echo $variant->title; ?>" />
 								</label>
 							</li>
 <?php
+						}
 					}
-				}
-				// if($cnt == 0) { $cnt++; };
-				$cnt++;
-			endforeach;
-		endif;
+
+					$cnt++;
+				endforeach;
+			endif;
 ?>
 						</ul>
 					</div>

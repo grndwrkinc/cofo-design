@@ -39,7 +39,7 @@ i<t-68&&$(a).length&&$(o).addClass("reset")})},
 //Open/close mobile menu
 cofo.navigation_Mobile=function(){$(".hamburger").on("click",function(){$(".mobile-nav").toggleClass("opened")})},
 //Initialize the Product Details container
-cofo.productPage_DetailsContainer=function(){var e=$(".product-details-container"),i=$("#product-details button"),t=78,o=$("#product-details").outerHeight(),a=e.offset().top-t,n,s,l;
+cofo.productPage_DetailsContainer=function(){var e=$(".product-details-container"),i=$("#product-details button"),t=78,o=$("#product-details").outerHeight(),a=e.offset().top-t,n,s,l,r;
 // Fix/unfix the container on scroll
 600<$(window).width()&&$(window).scroll(function(){n=$(this).scrollTop(),s=$(".product-dimensions").offset().top,
 //Fix product details
@@ -47,11 +47,11 @@ a<=n&&e.addClass("fixed"),
 //Unfix and position product details
 s<=n+o+t&&(e.removeClass("fixed"),e.css({position:"absolute",top:s-o})),
 //Unfix and return to OG position
-n<a&&(e.removeClass("fixed"),e.css({position:"relative",top:0}))}),$(".swatch-toggle").on("mouseup",function(){l=$(this).attr("for");
+n<a&&(e.removeClass("fixed"),e.css({position:"relative",top:0}))}),$(".swatch-toggle").on("mouseup",function(){l=$(this).attr("for"),r=l.split("_")[0];
 //Update the Product Details (i.e. Out of Stock, Add to cart, Notify Me, etc.)
 var e="",t="Add to cart";$("#product-details button").attr("id","add-to-cart"),$(this).data("pre-order")&&(t="Pre-order"),$(this).data("inventory-management")&&(0===$(this).data("inventory-quantity")&&"deny"===$(this).data("inventory-policy")?(e="Out of Stock",t="Notify Me",$("#product-details button").attr("id","")):$(this).data("inventory-quantity")<5&&(e="Limited Quantity")),$(".inventory-message").text(e),i.text(t),
 //Switch product images
-$(".togglable").addClass("hidden").each(function(){$(this).data("id")===l&&$(this).removeClass("hidden")}),$(window).trigger("resize")})},cofo.productPage_Gallery=function(){
+$(".togglable").each(function(){$(this).data("id").includes(r)&&$(this).addClass("hidden"),$(this).data("id")===l&&$(this).removeClass("hidden")}),$(window).trigger("resize")})},cofo.productPage_Gallery=function(){
 //Determine which image has been clicked and open the gallery
 $(".product-explore img").on("click",function(){$(".image-gallery").fadeIn(100);var e=$(this).attr("class").split(" ")[0];
 //Match images by class
@@ -77,10 +77,9 @@ o<=a&&e.addClass("fixed").css({top:t.css("padding-top")}),
 //Unfix and position product details
 n<=a+i&&e.removeClass("fixed").css({position:"absolute",top:n-i}),
 //Unfix and return to OG position
-a<o&&e.removeClass("fixed").css({position:"absolute",top:"auto"})}),$("#filters button").on("click",function(){$(window).width()<769&&($("#filters .inner").toggle(),$("#filters .inner:visible").length?$("#filters button").html("&ndash; Filter"):$("#filters button").html("+ Filter"))})},cofo.shopPage_VariantSelectorEvents=function(){var e;($(".collection .item").length?$(".collection .item"):$(".category .item")).each(function(){var t=$(this).find(".item-image img"),i=$(this).find(".variant-attribute-options li img");i.on("mouseover",function(){var e=$(this);t.hide(),i.removeClass("active"),t.each(function(){$(this).data("alt")===e.data("alt")&&($(this).show(),e.addClass("active"))})}).on("mouseout",function(){$(i[0]).hasClass("active")&&t.each(function(){$(this).attr("style","")});
-// $variants.removeClass('active');
-// $($variants[0]).addClass('active');
-})})},cofo.shopPage_ProductImageTouchEvent=function(){$(".item-image").on("touchend",function(){window.location.url=$(this).find("a").attr("href")})},
+a<o&&e.removeClass("fixed").css({position:"absolute",top:"auto"})}),$("#filters button").on("click",function(){$(window).width()<769&&($("#filters .inner").toggle(),$("#filters .inner:visible").length?$("#filters button").html("&ndash; Filter"):$("#filters button").html("+ Filter"))})},cofo.shopPage_VariantSelectorEvents=function(){var e;($(".collection .item").length?$(".collection .item"):$(".category .item")).each(function(){var i=$(this).find(".variant-attribute-options .swatch-toggle");i.on("mouseover",function(){var e=$(this),t=e.attr("for");i.find("img").removeClass("active"),e.find("img").addClass("active"),
+//Switch product images
+e.parents(".item").find(".togglable").addClass("hidden").each(function(){$(this).data("id")===t&&$(this).removeClass("hidden")}),i.removeClass("active"),$(this).addClass("active")})})},cofo.shopPage_ProductImageTouchEvent=function(){$(".item-image").on("touchend",function(){window.location.url=$(this).find("a").attr("href")})},
 //*****************************************************************
 //* FluidVids.js - Fluid and Responsive YouTube/Vimeo Videos v1.0.0 by 
 //* Todd Motto: http://www.toddmotto.com

@@ -1481,13 +1481,6 @@ p:empty,
 			background-color: $red;
 			padding: 4px 6px;
 		}
-		img {
-			display: none;
-
-			&:nth-of-type(1) {
-				display: inline;
-			}
-		}
 	}
 	.item-details {
 		display: flex;

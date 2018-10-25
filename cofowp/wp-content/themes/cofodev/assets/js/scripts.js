@@ -301,7 +301,7 @@ cofo.productPage_DetailsContainer = function() {
 	var heroOverlap = 78;
 	var detailsHeight = $('#product-details').outerHeight();
 	var scrollTop = ($details.offset().top) - heroOverlap;
-	var offset, dimensionsTop, activeVariant;
+	var offset, dimensionsTop, activeVariant, productId;
 
 
 	// Fix/unfix the container on scroll
@@ -329,6 +329,7 @@ cofo.productPage_DetailsContainer = function() {
 
 	$('.swatch-toggle').on('mouseup', function() {
 		activeVariant = $(this).attr('for');
+		productId = activeVariant.split("_")[0];
 
 		//Update the Product Details (i.e. Out of Stock, Add to cart, Notify Me, etc.)
 		var inventoryMessage = "";
@@ -358,8 +359,10 @@ cofo.productPage_DetailsContainer = function() {
 
 		//Switch product images
 		$('.togglable')
-			.addClass('hidden')
 			.each(function() {
+				if($(this).data('id').includes(productId)) {
+					$(this).addClass('hidden');
+				}
 				if($(this).data('id') === activeVariant) {
 					$(this).removeClass('hidden');
 				}
@@ -493,36 +496,29 @@ cofo.shopPage_VariantSelectorEvents = function() {
 
 
 	$items.each(function() {
-		var $itemImages = $(this).find('.item-image img');
-		var $variants = $(this).find('.variant-attribute-options li img');
+		var $variants = $(this).find('.variant-attribute-options .swatch-toggle');
 		
-
 		$variants
-		.on('mouseover', function() {
-			var $variant = $(this);
+			.on('mouseover', function() {
+				var variant = $(this);
+				var activeVariant = variant.attr('for');
 
-			$itemImages.hide();
-			$variants.removeClass('active');
+				$variants.find('img').removeClass('active');
+				variant.find('img').addClass('active');
 
-			$itemImages.each(function() {
-				if($(this).data('alt') === $variant.data('alt')) {
-					$(this).show();
-					$variant.addClass('active');
-				}
+				//Switch product images
+				variant.parents('.item').find('.togglable')
+					.addClass('hidden')
+					.each(function() {
+						if($(this).data('id') === activeVariant) {
+							$(this).removeClass('hidden');
+						}
+					});
+
+				$variants.removeClass('active');
+				$(this).addClass('active');
+
 			});
-
-			// $itemImages.find("[data-alt='" + $(this).data('alt') + "']").show();
-
-		})
-		.on('mouseout', function() {
-			if($($variants[0]).hasClass('active')) {
-				$itemImages.each(function() {
-					$(this).attr('style','');
-				});
-			}
-			// $variants.removeClass('active');
-			// $($variants[0]).addClass('active');
-		});
 	});
 };
 
