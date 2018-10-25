@@ -26,7 +26,7 @@ get_header(); ?>
 					if( $link_to ): 
 						$link_to_post = $link_to[0]; 
 ?>
-						<a href="<?php echo get_permalink($link_to_post); ?>" class="btn">View <?php echo get_the_title($link_to_post); ?></a>
+						<a href="<?php echo get_permalink($link_to_post); ?>" class="btn"><?php the_field('button_label'); //echo get_the_title($link_to_post); ?></a>
 						<small><?php the_field('sub-text'); ?></small>
 <?php
 					 endif; 
