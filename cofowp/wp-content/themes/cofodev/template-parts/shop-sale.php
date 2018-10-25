@@ -24,31 +24,24 @@
 		$title 			= get_the_title();
 		$productID 		= get_post_meta($post->ID, "gwsh_product_id", true);
 		$product 		= gwsh_getProduct($productID);
+		$selected 		= $product->variants[0]->product_id . "_" . $product->variants[0]->id;
 		$price 			= number_format(floatval($product->variants[0]->price),2);
 		$compareAtPrice = $product->variants[0]->compare_at_price;
 		$designer 		= get_field('designer');
 		$designerName 	= "Designer Designer";
 		$designerThumb 	= get_template_directory_uri() . "/assets/images/140x140.png";
-		$productImages 	= array(get_template_directory_uri() . "/assets/images/1500x1000.png", get_template_directory_uri() . "/assets/images/1500x1000.png");
+		$productImages 	= array(array("variant" => $selected, "image" => get_template_directory_uri() . "/assets/images/1500x1000.png"));
 		$cnt 			= 0;
 
 		//Get the product images
-		if(have_rows('360_image_viewer')) {
-			$threesixty_images = get_field('360_image_viewer');
-
-			//Assume there's only one variant, so the hover image should be the same
-			$productImages[0] = $productImages[1] = $threesixty_images[0]["images"][0]["sizes"]["medium_large"];
-
-			//Get the hover image (i.e. an alternate view of the first variant)
-			if(sizeof($threesixty_images[0]["images"]) > 2) {
-				$productImages[1] = $threesixty_images[0]["images"][2]["sizes"]["medium_large"];
-			}
-			if(sizeof($threesixty_images) > 1) {
-				for($i=1; $i < sizeof($threesixty_images); $i++) {
-					$productImages[$i+1] = $threesixty_images[$i]["images"][0]["sizes"]["medium_large"];
-				}
-			}
-		}
+		if(have_rows('collection_images')) :
+			$i = 0;
+			while(have_rows('collection_images')) : the_row();
+				$productImages[$i]["variant"] = get_sub_field('variant');
+				$productImages[$i]["image"] = get_sub_field('image')['sizes']['medium_large'];
+				$i++;
+			endwhile;
+		endif;
 
 		//Get the designer details
 		if( $designer ) {
@@ -67,7 +60,7 @@
 <?php
 			for($i=0; $i<sizeof($productImages); $i++) {
 ?>
-					<img data-alt="<?php echo $i; ?>" src="<?php echo $productImages[$i]; ?>" />
+					<img class="togglable <?php if($selected != $productImages[$i]['variant']) echo "hidden"; ?>" data-id="<?php echo $productImages[$i]['variant']; ?>" data-alt="<?php echo $i; ?>" src="<?php echo $productImages[$i]['image']; ?>" />
 <?php
 			}
 ?>
