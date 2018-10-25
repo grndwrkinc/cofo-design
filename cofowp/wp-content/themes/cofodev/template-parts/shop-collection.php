@@ -37,23 +37,15 @@
 		$productImages 	= array(get_template_directory_uri() . "/assets/images/1500x1000.png", get_template_directory_uri() . "/assets/images/1500x1000.png");
 		$cnt 			= 0;
 
+
 		//Get the product images
-		if(have_rows('360_image_viewer')) {
-			$threesixty_images = get_field('360_image_viewer');
-
-			//Assume there's only one variant, so the hover image should be the same
-			$productImages[0] = $productImages[1] = $threesixty_images[0]["images"][0]["sizes"]["medium_large"];
-
-			//Get the hover image (i.e. an alternate view of the first variant)
-			if(sizeof($threesixty_images[0]["images"]) > 2) {
-				$productImages[1] = $threesixty_images[0]["images"][2]["sizes"]["medium_large"];
-			}
-			if(sizeof($threesixty_images) > 1) {
-				for($i=1; $i < sizeof($threesixty_images); $i++) {
-					$productImages[$i+1] = $threesixty_images[$i]["images"][0]["sizes"]["medium_large"];
-				}
-			}
-		}
+		if(have_rows('collection_images')) :
+			$i = 0;
+			while(have_rows('collection_images')) : the_row();
+				$productImages[$i] = get_sub_field('image')['sizes']['medium_large'];
+				$i++;
+			endwhile;
+		endif;
 
 		//Get the designer details
 		if( $designer ) {
@@ -115,7 +107,7 @@
 <?php
 					}
 				}
-				if($cnt == 0) { $cnt++; };
+				// if($cnt == 0) { $cnt++; };
 				$cnt++;
 			endforeach;
 		endif;

@@ -1,30 +1,11 @@
 {
-    "key": "group_5ab52d37c558f",
-    "title": "Product - 360 Viewer",
+    "key": "group_5bd1ddafa2237",
+    "title": "Shop Page - Collection Images",
     "fields": [
         {
-            "key": "field_5ab52f151e6d2",
-            "label": "Caption",
-            "name": "360_text",
-            "type": "textarea",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "maxlength": "",
-            "rows": 2,
-            "new_lines": ""
-        },
-        {
-            "key": "field_5ab52d587cb3d",
-            "label": "360 Image Viewer",
-            "name": "360_image_viewer",
+            "key": "field_5bd1ddf8db158",
+            "label": "Collection Images",
+            "name": "collection_images",
             "type": "repeater",
             "instructions": "",
             "required": 0,
@@ -38,10 +19,10 @@
             "min": 0,
             "max": 0,
             "layout": "table",
-            "button_label": "Add 360 Viewer for a Variant",
+            "button_label": "",
             "sub_fields": [
                 {
-                    "key": "field_5ab52d737cb3e",
+                    "key": "field_5bd1dea0db159",
                     "label": "Variant",
                     "name": "variant",
                     "type": "select",
@@ -63,10 +44,10 @@
                     "placeholder": ""
                 },
                 {
-                    "key": "field_5ab52d817cb3f",
-                    "label": "Images",
-                    "name": "images",
-                    "type": "gallery",
+                    "key": "field_5bd1deccdb15a",
+                    "label": "Image",
+                    "name": "image",
+                    "type": "image",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -75,9 +56,8 @@
                         "class": "",
                         "id": ""
                     },
-                    "min": "",
-                    "max": "",
-                    "insert": "append",
+                    "return_format": "array",
+                    "preview_size": "thumbnail",
                     "library": "all",
                     "min_width": "",
                     "min_height": "",
@@ -99,7 +79,7 @@
             }
         ]
     ],
-    "menu_order": 0,
+    "menu_order": 20,
     "position": "normal",
     "style": "default",
     "label_placement": "top",
@@ -107,5 +87,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1521823690
+    "modified": 1540481269
 }

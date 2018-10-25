@@ -1482,40 +1482,11 @@ p:empty,
 			padding: 4px 6px;
 		}
 		img {
+			display: none;
+
 			&:nth-of-type(1) {
 				display: inline;
 			}
-			&:nth-of-type(2) {
-				display: none;
-			}
-			&:nth-of-type(3) {
-				display: none;
-			}
-			&:nth-of-type(4) {
-				display: none;
-			}
-			&:nth-of-type(5) {
-				display: none;
-			}
-		}
-		&:hover {
-			img {
-				&:nth-of-type(1) {
-					display: none;
-				}
-				&:nth-of-type(2) {
-					display: inline;
-				}
-				&:nth-of-type(3) {
-					display: none;
-				}
-				&:nth-of-type(4) {
-					display: none;
-				}
-				&:nth-of-type(5) {
-					display: none;
-				}
-			}			
 		}
 	}
 	.item-details {
