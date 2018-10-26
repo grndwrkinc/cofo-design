@@ -853,7 +853,7 @@ p:empty,
 }
 
 .variant-attribute {
-	display: flex;
+	// display: flex;
 	// align-items: center;
 	margin-bottom: 2.4rem;
 
@@ -867,8 +867,9 @@ p:empty,
 		display: flex;
 		flex-wrap: wrap;
 		list-style-type: none;
+		margin-top: 1rem;
 		// max-width: 20rem;
-		justify-content: flex-end;
+		// justify-content: flex-end;
 	}
 
 	li {

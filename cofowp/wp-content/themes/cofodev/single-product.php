@@ -105,7 +105,7 @@ get_header();
 			foreach ($product->options as $option) :
 ?>
 					<div class="variant-attribute">
-						<p><?php echo $option->name; ?></p>
+						<h4><?php echo $option->name; ?></h4>
 						<ul id="variant-attribute-options">
 <?php 
 				$cnt = 0;
@@ -133,6 +133,17 @@ get_header();
 				endforeach;
 ?>
 						</ul>
+						<p><small>
+<?php
+				for ($i = 0; $i < sizeof($product->variants); $i++) {
+					$variant = $product->variants[$i];
+					$id = $variant->product_id . "_" . $variant->id;
+?>
+						<span class="colour-variant togglable <?php if($selected != $id) echo "hidden"; ?>" data-id="<?php echo $id; ?>"><?php echo $variant->title; ?></span>
+<?php
+				}
+?>
+						</small></p>
 					</div>
 
 <?php
