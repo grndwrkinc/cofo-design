@@ -1023,6 +1023,12 @@
 		"sC": 1,
 		"tS": 0
 		},
+	"/js/node_modules": {
+		"ft": 65536,
+		"oA": 2,
+		"oAP": "/build/js/node_modules",
+		"oF": 0
+		},
 	"/js/package-lock.json": {
 		"ft": 524288,
 		"oA": 1,

@@ -66,7 +66,7 @@ if(checkoutID) {
 	//Use the checkoutID that already exists in local storage
 	client.checkout.fetch(checkoutID).then((checkout) => {
 		initCart(checkout);
-	}, (err) => console.log("rejected: ", err));
+	}, (err) => console.log("1 rejected: ", err));
 }
 else {
 
@@ -75,7 +75,7 @@ else {
 		//Save the checkout ID to local storage
 		ls.setItem('checkoutID', checkout.id);
 		initCart(checkout);
-	}, (err) => console.log('rejected: ', err));
+	}, (err) => console.log('2 rejected: ', err));
 }
 
 
@@ -83,7 +83,7 @@ else {
 
 const initCart = function(checkout) {
 
-	// console.log(checkout);
+	console.log(checkout);
 
 	//Set the Cart link in the nav to point to the current shopping cart
 	// $('.nav-cart a').attr('href',"http://shop.cofo-dev.grndwrk.ca/cart/");
