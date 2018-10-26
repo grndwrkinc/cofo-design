@@ -147,15 +147,20 @@ get_header(); ?>
 			<!-- BLOG -->
 			<section class="home-blog">
 				<div class="large-container anm-container">			
-					<h2 class="anm-item slideright-item"><span class="highlight"><?php the_field('blog_section_header'); ?></span></h2>
+					<?php if(get_field('log_section_header')) { ?><h2 class="anm-item slideright-item"><span class="highlight"><?php the_field('blog_section_header'); ?></span></h2><?php } ?>
 					<div class="offset">
 						<div class="home-blog-right slideright">
-							<p class="anm-item slideright-item"><?php the_field('blog_section_blurb'); ?></p>
-							<p class="anm-item slideright-item"><a href="/blog" class="btn"><?php the_field('blog_section_button_label'); ?></a></p>
+
+							<?php if(get_field('blog_section_blurb')) { ?><p class="anm-item slideright-item"><?php the_field('blog_section_blurb'); ?></p><?php } ?>
+							<?php if(get_field('blog_section_button_label')) { ?><p class="anm-item slideright-item"><a href="/blog" class="btn"><?php the_field('blog_section_button_label'); ?></a></p><?php } ?>
 						</div>
+
+						<?php if(get_field('blog_section_image')) { ?>
 						<div class="home-blog-left fadein">
 							<img src="<?php the_field('blog_section_image'); ?>" />
 						</div>
+						<?php } ?>
+
 					</div>
 				</div>
 			</section>
