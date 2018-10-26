@@ -13,11 +13,11 @@
 	<div class="close"></div>
 	<div class="main-container">
 <?php 
-	if( have_rows('product_shots') ): 
+	if( have_rows('product_detail_images') ): 
 
 		$cnt = 0;
 		
-		while( have_rows('product_shots') ): the_row();
+		while( have_rows('product_detail_images') ): the_row();
 			$variant = get_sub_field('variant');
 			
 			if( have_rows('images') ) : 
@@ -42,11 +42,11 @@
 	</div>
 	<div class="thumbnails">
 <?php 
-	if( have_rows('product_shots') ): 
+	if( have_rows('product_detail_images') ): 
 
 		$cnt = 0;
 		
-		while( have_rows('product_shots') ): the_row();
+		while( have_rows('product_detail_images') ): the_row();
 			$variant = get_sub_field('variant');
 			
 			if( have_rows('images') ) : 
