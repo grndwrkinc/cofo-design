@@ -5313,7 +5313,7 @@ if (checkoutID) {
 	client.checkout.fetch(checkoutID).then(function (checkout) {
 		initCart(checkout);
 	}, function (err) {
-		return console.log("1 rejected: ", err, client, client.checkout, checkoutID);
+		return console.log("1 rejected: ", err, "CLIENT", client, "CLIENT CHECKOUT", client.checkout, "CHECKOUT ID", checkoutID);
 	});
 } else {
 
