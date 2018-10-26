@@ -66,7 +66,7 @@ if(checkoutID) {
 	//Use the checkoutID that already exists in local storage
 	client.checkout.fetch(checkoutID).then((checkout) => {
 		initCart(checkout);
-	}, (err) => console.log("1 rejected: ", err, checkout, checkoutID));
+	}, (err) => console.log("1 rejected: ", err, client, client.checkout, checkout, checkoutID));
 }
 else {
 
@@ -75,7 +75,7 @@ else {
 		//Save the checkout ID to local storage
 		ls.setItem('checkoutID', checkout.id);
 		initCart(checkout);
-	}, (err) => console.log('2 rejected: ', err, checkout, checkoutID));
+	}, (err) => console.log('2 rejected: ', err, client, client.checkout, checkout, checkoutID));
 }
 
 
