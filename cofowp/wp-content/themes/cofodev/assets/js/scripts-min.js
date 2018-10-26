@@ -4,7 +4,7 @@ $(document).ready(function(){cofo.init()}),cofo.init=function(){cofo.animate_Pag
 //Open FB share in modal 
 $(".social-share").click(function(e){return e.preventDefault(),window.open($(this).attr("href"),"fbShareWindow","height=450, width=550, top="+($(window).height()/2-275)+", left="+($(window).width()/2-225)+", toolbar=0, location=0, menubar=0, directories=0, scrollbars=0"),!1})},cofo.animate_Hero=function(){var e=$(".hero-text").children(),t=300;e.each(function(){var e=this;setTimeout(function(){$(e).addClass("animate-me")},t),t+=200})},cofo.animate_One=function(e){
 // add animate-me class when element is in view
-var o=$(window).scrollTop()+$(window).height();e.each(function(){var e=this,t="",i;t=$(window).width()<=600?20:200,
+var o=$(window).scrollTop()+$(window).height();e.each(function(){var e=this,t="",i;t=$(window).width()<=600?20:50,
 // get top measurement
 $(e).is($("#product-details"))&&(t=0),
 //add animation class if scrolled into view
@@ -16,7 +16,7 @@ cofo.animate_One(e),cofo.animate_One(o),cofo.animate_One(t),cofo.animate_One(i),
 //do the same on scroll
 $(window).scroll(function(){cofo.animate_One(e),cofo.animate_One(o),cofo.animate_One(t),cofo.animate_One(i),cofo.animate_One(a),cofo.animate_One(n),cofo.animate_One(s),cofo.animate_Set(l)})},cofo.animate_Set=function(e){
 // add animate-me class when container element is in view
-var n=$(window).scrollTop()+$(window).height();e.each(function(){var e=this,t="",i;if(t=$(window).width()<=600?20:200,$(e).offset().top+t<n){
+var n=$(window).scrollTop()+$(window).height();e.each(function(){var e=this,t="",i;if(t=$(window).width()<=600?20:50,$(e).offset().top+t<n){
 //find all children to be animated
 var o=$(e).find(".anm-item"),a=300;o.each(function(){var e=this;setTimeout(function(){$(e).addClass("animate-me")},a),a+=150})}})},cofo.blogIndexPage_PositionContent=function(){if(768<$(window).width()){var e=Math.round($("#main .large-container .post-image").height()),t=$("#main .large-container").outerHeight()-$("#main .large-container").height(),i=$("#main .large-container .post-summary").offset().top+parseInt($("#main .large-container .post-summary").css("margin-top"))+$("#main .large-container .post-summary").outerHeight(),o=$("#main .large-container .post-image").offset().top+$("#main .large-container .post-image").height(),a=0;o<i&&(a=i-o);var n=.05*$("#main .large-container .post-summary").outerHeight();$("#main .large-container .post-summary").css({transform:"translateY(-"+Math.round(e-n)+"px)",display:"block"}),$("#main .large-container").css("height",e+t+a+"px")}else $("#main .large-container .post-summary").css({transform:"none",display:"block"}),$("#main .large-container").attr("style","")},cofo.designChallengePage_Masonry=function(){var e=$(".masonry-gallery");e.imagesLoaded(function(){e.masonry({gutter:".gutter-sizer",columnWidth:".grid-sizer",itemSelector:".grid-item",transitionDuration:0,percentPosition:!0,stamp:".stamp"})}),setTimeout(function(){e.masonry("layout")},1e3)},cofo.homePage_Slider=function(){$(".slider-top").slick({asNavFor:".slider-bottom",prevArrow:".btn-prev",nextArrow:".btn-next",appendArrows:".slider",draggable:!1,
 // autoplay: false,

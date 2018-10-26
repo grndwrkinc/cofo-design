@@ -76,7 +76,7 @@ cofo.animate_One = function(elements){
 		if($(window).width() <= 600) {
 			extraOffset = 20;
 		} else {
-			extraOffset = 200;
+			extraOffset = 50;
 		}
 		// get top measurement
 		if($(_this).is($("#product-details"))) {
@@ -133,7 +133,7 @@ cofo.animate_Set = function(elements){
 		if($(window).width() <= 600) {
 			extraOffset = 20;
 		} else {
-			extraOffset = 200;
+			extraOffset = 50;
 		}
 		// get top measurement
 		var offset = $(_this).offset().top + extraOffset;
