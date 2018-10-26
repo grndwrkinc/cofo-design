@@ -1481,6 +1481,10 @@ p:empty,
 			background-color: $red;
 			padding: 4px 6px;
 		}
+
+		img:hover {
+			cursor: url(../images/plus-cursor.svg) 22 22, crosshair;
+		}
 	}
 	.item-details {
 		display: flex;
