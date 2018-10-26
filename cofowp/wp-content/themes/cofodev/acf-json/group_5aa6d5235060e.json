@@ -8,7 +8,7 @@
             "name": "blog_section_header",
             "type": "text",
             "instructions": "",
-            "required": 1,
+            "required": 0,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
@@ -27,7 +27,7 @@
             "name": "blog_section_blurb",
             "type": "text",
             "instructions": "",
-            "required": 1,
+            "required": 0,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
@@ -46,7 +46,7 @@
             "name": "blog_section_button_label",
             "type": "text",
             "instructions": "",
-            "required": 1,
+            "required": 0,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
@@ -65,7 +65,7 @@
             "name": "blog_section_image",
             "type": "image",
             "instructions": "",
-            "required": 1,
+            "required": 0,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
@@ -93,7 +93,7 @@
             }
         ]
     ],
-    "menu_order": 3,
+    "menu_order": 17,
     "position": "normal",
     "style": "default",
     "label_placement": "top",
@@ -101,5 +101,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1520883387
+    "modified": 1540569881
 }
