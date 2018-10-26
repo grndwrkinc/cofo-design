@@ -396,10 +396,10 @@ get_header();
 		   		<div class="designer-details anm-container">
 		   			<img class="anm-item slideup-item" src="<?php echo $designerImage; ?>" alt="Photo of designer <?php echo $designerName; ?>">
 		   			<div class="details">
-		   				<div class="for-fixin">
-		   					<p class="pre-header anm-item slideright-item">Designed by</p>
-				    		<h2 class=" anm-item slideright-item"><span class="highlight"><?php echo $designerName; ?></span></h2>
-		   				</div>
+		   				<!-- <div class="for-fixin"> -->
+	   					<p class="pre-header anm-item slideright-item">Designed by</p>
+			    		<h2 class=" anm-item slideright-item"><span class="highlight"><?php echo $designerName; ?></span></h2>
+		   				<!-- </div> -->
 			    		<div class=""><p><?php echo $designerBio; ?></p></div>
 		   			</div>
 		   		</div>
