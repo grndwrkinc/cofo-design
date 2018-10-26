@@ -622,14 +622,20 @@
 	}
 
 	.home .hero, .single-product .hero {
-		min-height: 65vh;
+		min-height: 25rem;
 		// margin-bottom: 25rem;
+
+		.hero-text {
+			display: none;
+		}
 	}
 
-	.home .hero .hero-text .bordered {
-		margin-left: 0;
-		position: absolute;
-		bottom: -20rem;
+	.home .hero .hero-text {
+		.bordered {
+			margin-left: 0;
+			position: absolute;
+			bottom: -20rem;
+		}
 	}
 
 	.home-slider {
