@@ -5292,7 +5292,7 @@ if (!String.prototype.endsWith) {
 require('es6-promise').polyfill();
 require('isomorphic-fetch');
 
-var ls = window.localStorage;
+var ls = window.sessionStorage;
 var checkoutID = ls.getItem("checkoutID");
 var client = _shopifyBuy2.default.buildClient({
 	domain: 'shop.cofodesign.com',
@@ -5313,7 +5313,14 @@ if (checkoutID) {
 	client.checkout.fetch(checkoutID).then(function (checkout) {
 		initCart(checkout);
 	}, function (err) {
-		return console.log("1 rejected: ", err, "CLIENT", client, "CLIENT CHECKOUT", client.checkout, "CHECKOUT ID", checkoutID);
+		//Possibly a stale checkoutID, create a new empty Checkout
+		client.checkout.create().then(function (checkout) {
+			//Save the checkout ID to local storage
+			ls.setItem('checkoutID', checkout.id);
+			initCart(checkout);
+		}, function (err) {
+			return console.log('Rejected: ', err);
+		});
 	});
 } else {
 
@@ -5323,7 +5330,7 @@ if (checkoutID) {
 		ls.setItem('checkoutID', checkout.id);
 		initCart(checkout);
 	}, function (err) {
-		return console.log('2 rejected: ', err, client, client.checkout, checkoutID);
+		return console.log('Rejected: ', err);
 	});
 }
 

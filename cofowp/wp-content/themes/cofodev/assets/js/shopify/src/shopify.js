@@ -45,7 +45,7 @@ require('es6-promise').polyfill();
 require('isomorphic-fetch');
 
 
-const ls = window.localStorage;
+const ls = window.sessionStorage;
 const checkoutID = ls.getItem("checkoutID");
 const client = Client.buildClient({
 	domain: 'shop.cofodesign.com',
@@ -66,7 +66,14 @@ if(checkoutID) {
 	//Use the checkoutID that already exists in local storage
 	client.checkout.fetch(checkoutID).then((checkout) => {
 		initCart(checkout);
-	}, (err) => console.log("1 rejected: ", err, "CLIENT", client, "CLIENT CHECKOUT", client.checkout, "CHECKOUT ID", checkoutID));
+	}, (err) => {
+		//Possibly a stale checkoutID, create a new empty Checkout
+		client.checkout.create().then((checkout) => {
+			//Save the checkout ID to local storage
+			ls.setItem('checkoutID', checkout.id);
+			initCart(checkout);
+		}, (err) => console.log('Rejected: ', err));
+	});
 }
 else {
 
@@ -75,7 +82,7 @@ else {
 		//Save the checkout ID to local storage
 		ls.setItem('checkoutID', checkout.id);
 		initCart(checkout);
-	}, (err) => console.log('2 rejected: ', err, client, client.checkout, checkoutID));
+	}, (err) => console.log('Rejected: ', err));
 }
 
 
