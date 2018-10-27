@@ -90,7 +90,7 @@ else {
 
 const initCart = function(checkout) {
 
-	console.log(checkout);
+	// console.log(checkout);
 
 	//Set the Cart link in the nav to point to the current shopping cart
 	// $('.nav-cart a').attr('href',"http://shop.cofo-dev.grndwrk.ca/cart/");
