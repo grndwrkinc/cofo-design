@@ -621,13 +621,10 @@
 		width: calc(100% - 4rem);
 	}
 
-	.home .hero, .single-product .hero {
+	.home .hero, 
+	.single-product .hero {
 		min-height: 25rem;
 		// margin-bottom: 25rem;
-
-		.hero-text {
-			display: none;
-		}
 	}
 
 	.home .hero .hero-text {
@@ -894,6 +891,10 @@
 	}
 
 	//PRODUCT PAGE
+
+	.single-product .hero .hero-text {
+		display: none;
+	}
 
 	#product-details {
 		position: relative;
