@@ -80,7 +80,7 @@
 						<h4><a href="<?php echo $permalink; ?>"><?php echo $title; ?></a></h4>
 						<p>										
 							<em>designed by <?php echo $designerName; ?></em><br>
-							$<?php echo $price ; ?>
+							From $<?php echo $price ; ?>
 						</p>
 					</div>
 					<div class="variant-attribute">
