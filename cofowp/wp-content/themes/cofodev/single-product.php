@@ -12,6 +12,10 @@ wp_enqueue_script( 'threesixty_script', '//' . $_SERVER['HTTP_HOST'] . '/wp-cont
 wp_enqueue_script( 'threesixty_plugin', '//' . $_SERVER['HTTP_HOST'] . '/wp-content/themes/cofodev/assets/js/threesixty-slider/plugins/threesixty.fullscreen-min.js', array('threesixty_script'), '1.0.0', true);
 get_header();
 
+
+$geoipData = geoip_detect2_get_info_from_current_ip();
+$countryIsoCode = $geoshitData["country"]["iso_code"];
+
 ?>
 
 	<div id="primary" class="content-area">
@@ -84,24 +88,30 @@ get_header();
 <?php
 			}
 ?>
-					<div class="pricing">
+
 <?php
-				for ($i = 0; $i < sizeof($product->variants); $i++) {
-					$variant = $product->variants[$i];
-					$id = $variant->product_id . "_" . $variant->id;
-					$compareAtPrice = $variant->compare_at_price;
-?>
-						<div class="price togglable <?php if($selected != $id) echo "hidden"; ?>" data-id="<?php echo $id; ?>">$<?php echo number_format(floatval($variant->price),2); ?><br></div>
-<?php
-					if($compareAtPrice) {
-?>
-						<div class="sale">Sale</div>
-<?php
-					}
+			$pricingStr = '<div class="pricing">';
+
+			for ($i = 0; $i < sizeof($product->variants); $i++) {
+				$variant = $product->variants[$i];
+				$id = $variant->product_id . "_" . $variant->id;
+				$compareAtPrice = $variant->compare_at_price;
+
+				$pricingStr .= '<div class="price togglable ';
+
+				if($selected != $id) $pricingStr .= "hidden"; 
+
+				$pricingStr .= '" data-id="' . $id . '">$' . number_format(floatval($variant->price),2) . '<br></div>';
+
+				if($compareAtPrice) {
+					$pricingStr .= '<div class="sale">Sale</div>';
 				}
-?>
-					</div>
-<?php
+			}
+
+			$pricingStr .= '</div>';
+
+			echo do_shortcode('[geoip_detect2_hide_if not_country="US"]' . $pricingStr . '[/geoip_detect2_hide_if]');
+
 			foreach ($product->options as $option) :
 ?>
 					<div class="variant-attribute">
@@ -169,9 +179,12 @@ get_header();
 					}
 				}
 			}
+
+			if($countryIsoCode == 'US') {
 ?>
 					<div class="inventory-message center"><?php echo $inventoryMessage; ?></div>
 <?php
+			}
 			/* if($buttonLabel == "Notify Me") {
 ?>
 					<a href="mailto:info@cofodesign.com?subject=Out of stock: <?php the_title(); ?>&amp;body=Please notify me when <?php the_title(); ?> is available for purchase.">
@@ -179,7 +192,26 @@ get_header();
 			} */
 ?>
 					<?php /* <button <?php if($buttonLabel != "Notify Me") { ?>id="add-to-cart"<?php } ?>><?php echo $buttonLabel; ?></button> */ ?>
+<?php
+			if($countryIsoCode == 'US') {
+?>
 					<button id="add-to-cart"><?php echo $buttonLabel; ?></button>
+<?php
+			} else {
+				if(have_rows('1stdibs_links')) :
+					while(have_rows('1stdibs_links')) : the_row();
+						$variant = get_sub_field('variant');
+    					$url = get_sub_field('url'); 
+?>
+					<a href="<?php echo $url; ?>" target="_blank" class="togglable <?php if($selected != $variant) echo "hidden"; ?>" data-id="<?php echo $variant; ?>">
+						<button>Buy now</button>
+					</a>
+<?php
+					endwhile;
+				endif;
+			}
+?>
+
 <?php
 			/* if($buttonLabel == "Notify Me") {
 ?>

@@ -30,6 +30,9 @@
 <script src="https://use.fontawesome.com/e5f296b829.js"></script>
 
 <?php wp_head(); ?>
+
+<?php echo do_shortcode('[geoip_detect2_hide_if country="US"]<style>.nav-cart {display:none!important;}</style>[/geoip_detect2_hide_if]'); ?>
+
 <!-- icons & favicons -->
 <link rel="apple-touch-icon-precomposed" sizes="57x57" href="/wp-content/themes/cofodev/assets/images/icons/apple-touch-icon-57x57.png" />
 <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/wp-content/themes/cofodev/assets/images/icons/apple-touch-icon-114x114.png" />
@@ -76,7 +79,7 @@
 				<a class="logo" href="/">
 					<img class="logo" src="/wp-content/themes/cofodev/assets/images/logo-white.svg" alt="">
 				</a>
-				<a class="nav-cart" href="/cart">Cart</a>
+				<!-- <a class="nav-cart" href="/cart">Cart</a> -->
 			</div>
 	</header><!-- #masthead -->
 

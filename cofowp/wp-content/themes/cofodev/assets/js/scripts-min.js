@@ -10,11 +10,11 @@ $(e).is($("#product-details"))&&(t=0),
 //add animation class if scrolled into view
 $(e).offset().top+t<o&&$(e).addClass("animate-me")})},cofo.animate_PageElements=function(){
 //find each animation element
-var e=$(".fadein"),t=$(".slideright"),i=$(".slideleft"),o=$(".slideup"),a=$(".slideupright"),n=$(".slidedownright"),s=$(".slideupleft"),l=$(".anm-container");
+var e=$(".fadein"),t=$(".slideright"),i=$(".slideleft"),o=$(".slideup"),a=$(".slideupright"),n=$(".slidedownright"),s=$(".slideupleft"),r=$(".anm-container");
 // add animate-me class when element is in view
-cofo.animate_One(e),cofo.animate_One(o),cofo.animate_One(t),cofo.animate_One(i),cofo.animate_One(a),cofo.animate_One(n),cofo.animate_One(s),cofo.animate_Set(l),
+cofo.animate_One(e),cofo.animate_One(o),cofo.animate_One(t),cofo.animate_One(i),cofo.animate_One(a),cofo.animate_One(n),cofo.animate_One(s),cofo.animate_Set(r),
 //do the same on scroll
-$(window).scroll(function(){cofo.animate_One(e),cofo.animate_One(o),cofo.animate_One(t),cofo.animate_One(i),cofo.animate_One(a),cofo.animate_One(n),cofo.animate_One(s),cofo.animate_Set(l)})},cofo.animate_Set=function(e){
+$(window).scroll(function(){cofo.animate_One(e),cofo.animate_One(o),cofo.animate_One(t),cofo.animate_One(i),cofo.animate_One(a),cofo.animate_One(n),cofo.animate_One(s),cofo.animate_Set(r)})},cofo.animate_Set=function(e){
 // add animate-me class when container element is in view
 var n=$(window).scrollTop()+$(window).height();e.each(function(){var e=this,t="",i;if(t=$(window).width()<=600?20:50,$(e).offset().top+t<n){
 //find all children to be animated
@@ -39,7 +39,7 @@ i<t-68&&$(a).length&&$(o).addClass("reset")})},
 //Open/close mobile menu
 cofo.navigation_Mobile=function(){$(".hamburger").on("click",function(){$(".mobile-nav").toggleClass("opened")})},
 //Initialize the Product Details container
-cofo.productPage_DetailsContainer=function(){var e=$(".product-details-container"),i=$("#product-details button"),t=78,o=$("#product-details").outerHeight(),a=e.offset().top-t,n,s,l,r;
+cofo.productPage_DetailsContainer=function(){var e=$(".product-details-container"),i=$("#product-details button#add-to-cart"),t=78,o=$("#product-details").outerHeight(),a=e.offset().top-t,n,s,r,l;
 // Fix/unfix the container on scroll
 600<$(window).width()&&$(window).scroll(function(){n=$(this).scrollTop(),s=$(".product-dimensions").offset().top,
 //Fix product details
@@ -47,11 +47,11 @@ a<=n&&e.addClass("fixed"),
 //Unfix and position product details
 s<=n+o+t&&(e.removeClass("fixed"),e.css({position:"absolute",top:s-o})),
 //Unfix and return to OG position
-n<a&&(e.removeClass("fixed"),e.css({position:"relative",top:0}))}),$(".swatch-toggle").on("mouseup",function(){l=$(this).attr("for"),r=l.split("_")[0];
+n<a&&(e.removeClass("fixed"),e.css({position:"relative",top:0}))}),$(".swatch-toggle").on("mouseup",function(){r=$(this).attr("for"),l=r.split("_")[0];
 //Update the Product Details (i.e. Out of Stock, Add to cart, Notify Me, etc.)
-var e="",t="Add to cart";$("#product-details button").attr("id","add-to-cart"),$(this).data("pre-order")&&(t="Pre-order"),$(this).data("inventory-management")&&(0===$(this).data("inventory-quantity")&&"deny"===$(this).data("inventory-policy")?(e="Out of Stock",t="Notify Me",$("#product-details button").attr("id","")):$(this).data("inventory-quantity")<5&&(e="Limited Quantity")),$(".inventory-message").text(e),i.text(t),
+var e="",t="Add to cart";$("#product-details button#add-to-cart").attr("id","add-to-cart"),$(this).data("pre-order")&&(t="Pre-order"),$(this).data("inventory-management")&&(0===$(this).data("inventory-quantity")&&"deny"===$(this).data("inventory-policy")?(e="Out of Stock",t="Notify Me",$("#product-details button#add-to-cart").attr("id","")):$(this).data("inventory-quantity")<5&&(e="Limited Quantity")),$(".inventory-message").text(e),i.text(t),
 //Switch product images
-$(".togglable").each(function(){$(this).data("id").includes(r)&&$(this).addClass("hidden"),$(this).data("id")===l&&$(this).removeClass("hidden")}),$(window).trigger("resize")})},cofo.productPage_Gallery=function(){
+$(".togglable").each(function(){$(this).data("id").includes(l)&&$(this).addClass("hidden"),$(this).data("id")===r&&$(this).removeClass("hidden")}),$(window).trigger("resize")})},cofo.productPage_Gallery=function(){
 //Determine which image has been clicked and open the gallery
 $(".product-explore img").on("click",function(){$(".image-gallery").fadeIn(100);var e=$(this).attr("class").split(" ")[0];
 //Match images by class
@@ -91,10 +91,10 @@ e.parents(".item").find(".togglable").addClass("hidden").each(function(){$(this)
 //* 
 //* A raw JavaScript alternative to FitVids.js, fluid width video embeds
 //* 
-cofo.fluidVids=function(){for(var e=document.getElementsByTagName("iframe"),t=0;t<e.length;t++){var i=e[t],o=/www.youtube.com|player.vimeo.com/,a=i.src;if(-1!==a.search(o)){i.src="";var n=i.height/i.width*100;i.style.position="absolute",i.style.top="0",i.style.left="0",i.width="100%",i.height="100%",i.webkitallowfullscreen="true",i.mozallowfullscreen="true",i.allowfullscreen="true";var s=document.createElement("div"),l,r;if(s.className="video-wrap",s.style.width="100%",s.style.position="relative",s.style.paddingTop=n+"%",i.parentNode.insertBefore(s,i),s.appendChild(i),
+cofo.fluidVids=function(){for(var e=document.getElementsByTagName("iframe"),t=0;t<e.length;t++){var i=e[t],o=/www.youtube.com|player.vimeo.com/,a=i.src;if(-1!==a.search(o)){i.src="";var n=i.height/i.width*100;i.style.position="absolute",i.style.top="0",i.style.left="0",i.width="100%",i.height="100%",i.webkitallowfullscreen="true",i.mozallowfullscreen="true",i.allowfullscreen="true";var s=document.createElement("div"),r,l;if(s.className="video-wrap",s.style.width="100%",s.style.position="relative",s.style.paddingTop=n+"%",i.parentNode.insertBefore(s,i),s.appendChild(i),
 // Added the following code to add wmode=transparent to the 
 // end of youtube embeds to ensure they don't break 
 // z-indexing.
--1!==a.indexOf("youtube")&&$(".modal").length&&(r="wmode=transparent&autoplay=1"),-1===a.indexOf("youtube")||$(".modal").length||(r="wmode=transparent"),
+-1!==a.indexOf("youtube")&&$(".modal").length&&(l="wmode=transparent&autoplay=1"),-1===a.indexOf("youtube")||$(".modal").length||(l="wmode=transparent"),
 //Add ability for vimeo videos to autoplay
--1!==a.indexOf("vimeo")&&$(".modal").length&&(r="autoplay=1"),-1!==a.indexOf("?")){var c=a.split("?"),d=c[1],m;a=c[0]+"?"+r+"&"+d}else a=a+"?"+r;i.src=a}}};
+-1!==a.indexOf("vimeo")&&$(".modal").length&&(l="autoplay=1"),-1!==a.indexOf("?")){var c=a.split("?"),d=c[1],m;a=c[0]+"?"+l+"&"+d}else a=a+"?"+l;i.src=a}}};
