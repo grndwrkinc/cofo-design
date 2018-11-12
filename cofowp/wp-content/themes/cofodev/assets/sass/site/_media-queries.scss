@@ -315,6 +315,9 @@
 /* #### 768 #### */
 @media only screen and (max-width: 768px) {
 	//HOME PAGE
+	.home .hero .video-container {
+		display: none;
+	}
 
 	.home-about-content {
 		width: 100%;
@@ -625,6 +628,7 @@
 	.single-product .hero {
 		min-height: 25rem;
 		// margin-bottom: 25rem;
+		overflow: visible;
 	}
 
 	.home .hero .hero-text {

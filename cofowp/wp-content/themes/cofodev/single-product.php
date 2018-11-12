@@ -204,10 +204,13 @@ $countryIsoCode = $geoshitData["country"]["iso_code"];
     					$url = get_sub_field('url'); 
 ?>
 					<a href="<?php echo $url; ?>" target="_blank" class="togglable <?php if($selected != $variant) echo "hidden"; ?>" data-id="<?php echo $variant; ?>">
-						<button>Buy now</button>
+						<button>Buy now &nbsp; <i class="fa fa-external-link" aria-hidden="true"></i></button>
 					</a>
 <?php
 					endwhile;
+?>
+					<p class="disclaimer"><small>International clients will be redirected to our partners at 1stdibs.com.</small></p>
+<?php
 				endif;
 			}
 ?>

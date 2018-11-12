@@ -85,7 +85,7 @@
             ],
             "elements": "",
             "min": "",
-            "max": "",
+            "max": 1,
             "return_format": "object"
         },
         {
@@ -106,6 +106,104 @@
             "prepend": "",
             "append": "",
             "maxlength": ""
+        },
+        {
+            "key": "field_5be1f2853352b",
+            "label": "Has Background Video?",
+            "name": "has_background_video",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_5be1f2a53352c",
+            "label": "MP4 Video File",
+            "name": "mp4_video_file",
+            "type": "file",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5be1f2853352b",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "url",
+            "library": "all",
+            "min_size": "",
+            "max_size": "",
+            "mime_types": "mp4"
+        },
+        {
+            "key": "field_5be1f2c83352d",
+            "label": "WEBM Video File",
+            "name": "webm_video_file",
+            "type": "file",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5be1f2853352b",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "url",
+            "library": "all",
+            "min_size": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_5be1f2f23352e",
+            "label": "Note:",
+            "name": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5be1f2853352b",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Don't forget to set the Featured Image. It should be a high res capture of the first frame of the video.",
+            "new_lines": "wpautop",
+            "esc_html": 0
         }
     ],
     "location": [
@@ -117,7 +215,7 @@
             }
         ]
     ],
-    "menu_order": 0,
+    "menu_order": 12,
     "position": "normal",
     "style": "default",
     "label_placement": "top",
@@ -127,5 +225,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1520878993
+    "modified": 1542039759
 }

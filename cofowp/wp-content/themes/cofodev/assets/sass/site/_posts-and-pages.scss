@@ -97,9 +97,13 @@ p:empty,
 	background-position: center;
 	background-size: cover;
 	position: relative;
+	overflow: hidden;
 }
 
 .hero-text {
+	position: relative;
+	z-index: 1;
+
 	h1, h4, .bordered, p.animate, a.animate, .text-steps {
 		transform: translateX(-24px);
 		opacity: 0;
@@ -110,15 +114,35 @@ p:empty,
 			opacity: 1;
 		}
 	}
+
+	.bordered {
+		width: 36rem;
+	}
 }
 
 .home .hero,
 .single-product .hero {
-	min-height: calc(100vh - 163px);
+	min-height: calc(100vh - 162px);
 	// min-height: calc(100vh - 74px);
 }
-.hero-text .bordered {
-	width: 36rem;
+
+.home .hero .video-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform:translate(-50%, -50%);
+    height: 102%;
+    min-width: 102%;
+    overflow: hidden;
+    background: transparent;
+	
+	
+	video {
+		min-width: 100%;
+		min-height: 100%;
+		width: auto;
+		height: auto;
+	}
 }
 
 //SITE WIDE ANIMATIONS/TRANSITIONS
@@ -393,8 +417,7 @@ p:empty,
 	}
 }
 
-.home-challenge,
-.home-blog {
+.home {
 	.btn:before {
 		border: 3px solid $black;
 	}
@@ -481,10 +504,13 @@ p:empty,
     	margin-bottom: 2rem;
     	text-transform: uppercase;
     }
-
     img {
     	cursor: pointer;
     	display: block;
+    }
+    .disclaimer {
+    	margin-top: 1rem;
+    	line-height: 1rem;
     }
 }
 .single-product {

@@ -17,25 +17,38 @@ get_header(); ?>
 ?>
 				<div class="hero-text large-container">
 					<h1><span class="highlight"><?php the_field('title'); ?></span></h1>
+<?php
+					if(get_field('sub-title')) :
+?>
 					<div class="bordered">
 						<p><?php the_field('sub-title'); ?></p>
 
 <?php 
 					$link_to = get_field('link_to');
 					
-					if( $link_to ): 
-						$link_to_post = $link_to[0]; 
+						if( $link_to ): 
+							$link_to_post = $link_to[0]; 
 ?>
 						<a href="<?php echo get_permalink($link_to_post); ?>" class="btn"><?php the_field('button_label'); //echo get_the_title($link_to_post); ?></a>
 						<small><?php the_field('sub-text'); ?></small>
 <?php
-					 endif; 
+					 	endif; 
 ?>
 					</div>
+<?php
+				 	endif; 
+?>
 				</div>
 <?php 
 				endwhile; // End of the loop.
 ?>
+				<div class="video-container" poster="<?php the_post_thumbnail_url(); ?>">
+					<video loop autoplay muted preload="auto">
+						<source src="<?php the_field('mp4_video_file'); ?>" type="video/mp4">
+						<source src="<?php the_field('webm_video_file'); ?>" type="video/webm">
+						Your browser does not support the <video> tag"
+					</video>
+				</div>
 			</section>
 			
 			<!-- SLIDER -->
@@ -145,9 +158,20 @@ get_header(); ?>
 			</section>
 
 			<!-- BLOG -->
+<?php
+			if(!get_field('blog_section_header') || !get_field('blog_section_blurb') || !get_field('blog_section_button_label')) :
+?>
+			<style>@media only screen and (max-width: 768px) { .home-blog {height: 8px;} }</style>
+<?php
+			endif;
+?>		
+
 			<section class="home-blog">
 				<div class="large-container anm-container">			
-					<?php if(get_field('log_section_header')) { ?><h2 class="anm-item slideright-item"><span class="highlight"><?php the_field('blog_section_header'); ?></span></h2><?php } ?>
+					<?php if(get_field('blog_section_header')) { ?><h2 class="anm-item slideright-item"><span class="highlight"><?php the_field('blog_section_header'); ?></span></h2><?php } ?>
+<?php
+					if(get_field('blog_section_blurb') && get_field('blog_section_button_label')) :
+?>
 					<div class="offset">
 						<div class="home-blog-right slideright">
 
@@ -160,8 +184,10 @@ get_header(); ?>
 							<img src="<?php the_field('blog_section_image'); ?>" />
 						</div>
 						<?php } ?>
-
 					</div>
+<?php
+					endif;
+?>
 				</div>
 			</section>
 

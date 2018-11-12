@@ -31,7 +31,7 @@
 
 <?php wp_head(); ?>
 
-<?php echo do_shortcode('[geoip_detect2_hide_if country="US"]<style>.nav-cart {display:none!important;}</style>[/geoip_detect2_hide_if]'); ?>
+<?php echo do_shortcode('[geoip_detect2_hide_if country="US"]<style>.nav-cart {display:none!important;} @media only screen and (max-width: 1024px) { .nav-cart {display:block!important; visibility: hidden;}</style>[/geoip_detect2_hide_if]'); ?>
 
 <!-- icons & favicons -->
 <link rel="apple-touch-icon-precomposed" sizes="57x57" href="/wp-content/themes/cofodev/assets/images/icons/apple-touch-icon-57x57.png" />
@@ -79,7 +79,7 @@
 				<a class="logo" href="/">
 					<img class="logo" src="/wp-content/themes/cofodev/assets/images/logo-white.svg" alt="">
 				</a>
-				<!-- <a class="nav-cart" href="/cart">Cart</a> -->
+				<a class="nav-cart" href="/cart">Cart</a>
 			</div>
 	</header><!-- #masthead -->
 

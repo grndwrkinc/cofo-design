@@ -75,7 +75,7 @@
 					<h4><a href="<?php echo $permalink; ?>"><?php echo $title; ?></a></h4>
 					<p>										
 						<em>designed by <?php echo $designerName; ?></em><br>
-						$<?php echo $price ; ?>
+						<?php echo do_shortcode('[geoip_detect2_hide_if not_country="US"]From $' . $price . '[/geoip_detect2_hide_if]'); ?>
 					</p>
 				</div>
 				<div class="variant-attribute">
