@@ -242,11 +242,16 @@ function setQueryArgs($taxonomy = null, $terms = null) {
 					)
 				),
 				'posts_per_page'=>-1,
-				'order' 	=> 'DESC'
+				'order' 	=> 'ASC',
+				'orderby' => 'menu_order',
 			);
 	}
 	else {
-		$args = array('post_type' => 'product');
+		$args = array(
+			'post_type' => 'product',
+			'order' 	=> 'ASC',
+			'orderby' => 'menu_order',
+		);
 	}
 
 	return $args;
