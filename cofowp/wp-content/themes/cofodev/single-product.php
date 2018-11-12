@@ -201,12 +201,19 @@ $countryIsoCode = $geoshitData["country"]["iso_code"];
 				if(have_rows('1stdibs_links')) :
 					while(have_rows('1stdibs_links')) : the_row();
 						$variant = get_sub_field('variant');
-    					$url = get_sub_field('url'); 
+						$url = get_sub_field('url');
+
+						if(get_sub_field('url')) {
 ?>
 					<a href="<?php echo $url; ?>" target="_blank" class="togglable <?php if($selected != $variant) echo "hidden"; ?>" data-id="<?php echo $variant; ?>">
 						<button>Buy now &nbsp; <i class="fa fa-external-link" aria-hidden="true"></i></button>
 					</a>
 <?php
+						} else {
+?>
+					<button class="togglable disabled <?php if($selected != $variant) echo "hidden"; ?>" data-id="<?php echo $variant; ?>">Coming soon</button>
+<?php
+						}
 					endwhile;
 ?>
 					<p class="disclaimer"><small>International clients will be redirected to our partners at 1stdibs.com.</small></p>

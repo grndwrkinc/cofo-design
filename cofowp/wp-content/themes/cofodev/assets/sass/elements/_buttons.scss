@@ -65,6 +65,22 @@ button, .btn {
 			background: none;
 		}
 	}
+
+	&.disabled {
+		color: $grey;
+		background-color: $lightgrey;
+		cursor: auto;
+
+		&:before {
+			border: none;
+			transition: none;
+		}
+
+		&:hover:before {
+			color: $grey;	
+			background-color: $lightgrey;
+		}
+	}
 }
 
 .bordered {
@@ -89,6 +105,10 @@ button, .btn {
 
 	button.inverted:before {
 		border: 3px solid white;
+	}
+
+	button.disabled:before {
+		border: none;
 	}
 }
 
@@ -174,6 +194,10 @@ button {
 			width: 0;	
 			left: auto;
 		}
+	}
+
+	button.disabled:hover, .btn.disabled:hover {
+		color: $grey;
 	}
 }
 
